@@ -1,1 +1,2 @@
-obligatory file for git to gimme a repo
+Hello and welcome to my 2023 summer reasearch project!
+Todo: spiel more
