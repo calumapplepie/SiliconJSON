@@ -1,16 +1,35 @@
 #include <iostream>
 #include "simdjson.h"
 using namespace simdjson;
-std::vector<uint64_t> simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom){
-	std::cout << toStealFrom.tape.doc->tape[1];
-	std::vector<uint64_t> bob;
-	bob.push_back(10);
-	return bob;
+
+#define TARGET_FILE_NAME twitter.json
+
+void simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom){
+	auto tape = toStealFrom.tape.doc;
+	
+	uint32_t string_length;
+  	size_t tape_idx = 0;
+ 	uint64_t tape_val = tape->tape[tape_idx];
+ 	uint8_t type = uint8_t(tape_val >> 56);
+	tape_idx++;
+  	size_t how_many = 0;
+  	if (type == 'r') {
+    		how_many = size_t(tape_val & internal::JSON_VALUE_MASK);
+  	}
+	else{
+		std::cout << "wtf you had one job! gimme a valid json document";
+		std::abort();
+	}
+	
+	for (; tape_idx < how_many; tape_idx++) {
+		std::cout << tape->tape[tape_idx];
+	}
+
 }
 
 int main(void) {
     dom::parser parser;
-    dom::element json = parser.load("twitter.json");
+    dom::element json = parser.load("TARGET_FILE_NAME");
     dom::ScrewYouIWantTheTape(json);
     //json.dump_raw_tape(std::cout);
 }
