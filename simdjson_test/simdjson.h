@@ -3,6 +3,8 @@
 #ifndef SIMDJSON_H
 #define SIMDJSON_H
 
+#include <vector>
+
 /**
  * @mainpage
  *
@@ -5856,6 +5858,8 @@ private:
   friend struct simdjson_result<element>;
   template<typename T>
   friend class simdjson::internal::string_builder;
+  friend std::vector<uint64_t> ScrewYouIWantTheTape(element toStealFrom);
+
 
 };
 
