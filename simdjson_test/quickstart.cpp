@@ -2,7 +2,7 @@
 #include "simdjson.h"
 using namespace simdjson;
 
-#define TARGET_FILE_NAME "twitter.json"
+#define TARGET_FILE_NAME "../JsonTestFiles/001_most_simple_test.json"
 
 void simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom){
 	auto tape = toStealFrom.tape.doc;
@@ -24,7 +24,7 @@ void simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom){
 	
 	// now write the string
 	for (; tape_idx < how_many; tape_idx++) {
-		std::cout << std::hex << tape->tape[tape_idx];
+		std::cout << std::hex << tape->tape[tape_idx] <<std::endl;
 	}
 
 }
