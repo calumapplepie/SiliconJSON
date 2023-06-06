@@ -1,10 +1,12 @@
 #include <iostream>
 #include "simdjson.h"
+#include <filesystem>
+
 using namespace simdjson;
 
 // Config Parameters
 
-#define TARGET_FILE_NAME "../JsonTestFiles/001_most_simple_test.json"
+const std::string target_file_dir =  "../JsonTestFiles/";
 #define INCLUDE_LINE_BREAKS 1
 
 // Rest of the code should work without modifications
@@ -44,7 +46,21 @@ void simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom, std::ostream 
 
 int main(void) {
     dom::parser parser;
-    dom::element json = parser.load(TARGET_FILE_NAME );
-    dom::ScrewYouIWantTheTape(json, std::cout);
+	std::filesystem::path dir{target_file_dir};
+	
+	for (auto const& file : std::filesystem::directory_iterator{dir}){
+		if(!file.is_regular_file()){
+			std::cout << "please ensure directory is only standard files, only a flat structure is supported";
+			std::abort();
+		}
+		if(file.path().extension() != ".json"){
+			// ignore, its not a target
+			continue;
+		}
+    	dom::element json = parser.load(file.path());
+		std::cout << file.path();
+    	dom::ScrewYouIWantTheTape(json, std::cout);
+	}
+	
     //json.dump_raw_tape(std::cout);
 }
