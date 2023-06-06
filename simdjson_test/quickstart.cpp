@@ -1,6 +1,7 @@
 #include <iostream>
 #include "simdjson.h"
 #include <filesystem>
+#include <fstream>
 
 using namespace simdjson;
 
@@ -58,8 +59,10 @@ int main(void) {
 			continue;
 		}
     	dom::element json = parser.load(file.path());
-		std::cout << file.path();
-    	dom::ScrewYouIWantTheTape(json, std::cout);
+		auto hexPath = file.path();
+		hexPath.replace_extension(".hex");
+		std::ofstream hexOut{hexPath, std::ios_base::trunc} ;
+    	dom::ScrewYouIWantTheTape(json, hexOut);
 	}
 	
     //json.dump_raw_tape(std::cout);
