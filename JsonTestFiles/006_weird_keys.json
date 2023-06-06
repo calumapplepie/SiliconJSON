@@ -1,0 +1,8 @@
+{
+	"Author": "Calum",
+	"Professor": "Nestor",
+		"Subject": "Electrical and Computer Engineering",
+"Year": "2023",
+	"Goal: Primary": "Parse JSON in hardware",
+	"Goal: Secondary, Tertiary": "Do so accurately and efficently"
+}
