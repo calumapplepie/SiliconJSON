@@ -5856,7 +5856,7 @@ private:
   friend struct simdjson_result<element>;
   template<typename T>
   friend class simdjson::internal::string_builder;
-  friend void ScrewYouIWantTheTape(element toStealFrom, std::ostream toSendTo);
+  friend void ScrewYouIWantTheTape(element toStealFrom, std::ostream &toSendTo);
 
 
 };

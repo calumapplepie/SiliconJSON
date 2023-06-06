@@ -9,7 +9,7 @@ using namespace simdjson;
 
 // Rest of the code should work without modifications
 
-void simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom, std::ostream outputHerePlz){
+void simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom, std::ostream &toSendTo){
 	// sneak in and steal the document
 	auto document = toStealFrom.tape.doc;
 	
@@ -32,10 +32,10 @@ void simdjson::dom::ScrewYouIWantTheTape(dom::element toStealFrom, std::ostream 
 	
 	// now write the tape out to a string
 	for (; tape_idx < how_many; tape_idx++) {
-		outputHerePlz << std::hex << document->tape[tape_idx];
+		toSendTo << std::hex << document->tape[tape_idx];
 
 		#ifdef INCLUDE_LINE_BREAKS 
-			outputHerePlz <<std::endl;
+			toSendTo <<std::endl;
 		#endif 
 		
 	}
