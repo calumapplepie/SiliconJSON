@@ -1,0 +1,6 @@
+{
+	"big decimal?": 101.12012,
+    "big but small?": -3113.123,
+    "small but big?": 1.1313013011130,
+    "small but SMALL": 0.00000000000001
+}
