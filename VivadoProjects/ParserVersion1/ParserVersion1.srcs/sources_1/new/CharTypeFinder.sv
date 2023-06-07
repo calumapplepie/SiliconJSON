@@ -24,7 +24,7 @@ module CharTypeFinder(
     output JsonElementType charType
     );
     always_comb begin
-        case (char)
+        case (curChar)
             "{" : charType <= objOpen;
             "}" : charType <= objClose;
             default: charType <= noType;

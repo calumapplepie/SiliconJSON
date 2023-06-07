@@ -24,6 +24,6 @@ module toplevel(
     input UTF8_Char curChar,
     input clk
     );
-    CharTypeFinder charReader (.char (curChar));
+    CharTypeFinder charReader (.curChar (curChar));
     
 endmodule
