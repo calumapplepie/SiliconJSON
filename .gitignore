@@ -1,1 +1,4 @@
+# the extension we apply to built binaries in this house
 *.elf
+# dia (diagram software) temp file
+*.dia~
