@@ -1,0 +1,22 @@
+# it turns out that managing Vivado files with git is devilishly complicated,
+# with no known good solution other than ripping the project out of VCS entirely.
+
+# the project encodes absolute paths and such, and the solution helpfully suggested
+# by Xylinx requires a 41 page tutorial.
+
+# the gitignore file suggested by github is rather ugly; I started working on improving it,
+# when I realized that the gitignore repo hadn't been updated in 6 months, the last merged
+# PR was a year ago, and the contribution requirements ask me to point to project documentation,
+# which does not exist.
+
+# I'm not into dealing with either option, so I'll just track the basics and only ever 
+# build on this machine.  Future contributors are advised to make their own project.
+
+# note to self: make todo for contributors
+
+# This .gitignore file is intended to be placed in a directory containing Vivado project directories
+
+*/*.runs
+*/*.cache
+*/*.hw
+
