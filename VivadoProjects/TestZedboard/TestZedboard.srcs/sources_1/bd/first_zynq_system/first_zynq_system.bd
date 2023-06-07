@@ -25,6 +25,10 @@
       "FIXED_IO": {
         "mode": "Master",
         "vlnv": "xilinx.com:display_processing_system7:fixedio_rtl:1.0"
+      },
+      "leds_8bits": {
+        "mode": "Master",
+        "vlnv": "xilinx.com:interface:gpio_rtl:1.0"
       }
     },
     "components": {
@@ -955,7 +959,15 @@
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "xci_name": "first_zynq_system_axi_gpio_0_0",
         "xci_path": "ip\\first_zynq_system_axi_gpio_0_0\\first_zynq_system_axi_gpio_0_0.xci",
-        "inst_hier_path": "axi_gpio_0"
+        "inst_hier_path": "axi_gpio_0",
+        "parameters": {
+          "GPIO_BOARD_INTERFACE": {
+            "value": "leds_8bits"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
       },
       "ps7_0_axi_periph": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
@@ -1151,6 +1163,12 @@
         "interface_ports": [
           "ps7_0_axi_periph/M00_AXI",
           "axi_gpio_0/S_AXI"
+        ]
+      },
+      "axi_gpio_0_GPIO": {
+        "interface_ports": [
+          "leds_8bits",
+          "axi_gpio_0/GPIO"
         ]
       }
     },
