@@ -21,6 +21,7 @@
 
 
 module StructureTapeMaker(
-
+        input JsonElementType elementType,
+        output [0:63] nextElement
     );
 endmodule

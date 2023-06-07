@@ -21,7 +21,7 @@
 
 
 module StringTapeAccumulator(
-    input [0:7] nextStringByte,
+    input UTF8_Char nextStringByte,
     output [0:56] curIndex,
     output [0:31] strLen,
     input writingString

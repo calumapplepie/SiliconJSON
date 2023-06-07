@@ -19,9 +19,11 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+typedef logic[0:7] UTF8_Char;
+typedef enum {root, objOpen, objClose, arrayOpen, arrayClose, str} JsonElementType;
 
 module toplevel(
-    input [0:7] curChar,
+    input UTF8_Char curChar,
     input clk
     );
     
