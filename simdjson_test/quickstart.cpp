@@ -58,7 +58,7 @@ int main(void) {
 			// ignore, its not a target
 			continue;
 		}
-    	dom::element json = parser.load(file.path());
+    	dom::element json = parser.load(file.path().string());
 		auto hexPath = file.path();
 		hexPath.replace_extension(".hex");
 		std::ofstream hexOut{hexPath, std::ios_base::trunc} ;
