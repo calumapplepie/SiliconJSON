@@ -19,13 +19,11 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-typedef logic[0:7] UTF8_Char;
-typedef enum {root, objOpen, objClose, arrayOpen, arrayClose, str} JsonElementType;
 
 module toplevel(
     input UTF8_Char curChar,
     input clk
     );
-    
+    CharTypeFinder charReader (.char (curChar));
     
 endmodule

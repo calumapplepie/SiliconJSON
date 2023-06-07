@@ -19,9 +19,15 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module CharTypeFinder(
-    input char,
-    output charType
+    input logic [0:7] curChar,
+    output JsonElementType charType
     );
+    always_comb begin
+        case (char)
+            "{" : charType <= objOpen;
+            "}" : charType <= objClose;
+            default: charType <= noType;
+        endcase
+    end
 endmodule

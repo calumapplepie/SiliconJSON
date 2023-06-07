@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 06/07/2023 05:16:29 PM
+// Create Date: 06/07/2023 06:05:57 PM
 // Design Name: 
-// Module Name: StructureTapeMaker
+// Module Name: corePkg
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,9 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+// global include: added to all files
+// why? because i couldnt get packages to work
+typedef bit [0:7] UTF8_Char;
+typedef enum {root, objOpen, objClose, arrayOpen, arrayClose, str, noType} JsonElementType;
 
-module StructureTapeMaker(
-        input bit [0:7] elementType,
-        output [0:63] nextElement
-    );
-endmodule
