@@ -28,7 +28,7 @@ module StructureTapeAccumulator(
     TapeIndex curIndex;
 
     // we statically size our array for now
-    initial tape = new [32]
+    initial tape = new [32];
 
     always @(posedge clk ) begin
         if (rst){
@@ -37,10 +37,11 @@ module StructureTapeAccumulator(
         if(enable){
             // root handler
             if(nextTapeEntry[56:63] == "r" && curIndex != 0){
+                // curindex check might want to be replaced with a flag on reset
                 tape[0][0:55] = curIndex;
             }
             tape[curIndex] = nextTapeEntry;
-            curIndex++
+            curIndex++;
         }
     end
 

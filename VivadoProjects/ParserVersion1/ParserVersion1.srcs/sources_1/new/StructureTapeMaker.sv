@@ -21,8 +21,15 @@
 
 
 module StructureTapeMaker(
-        input JsonElementType elementType,
+        input JsonElementType elementType, input TapeIndex stringTapeIndex,
         input clk, rst,
         output JsonTapeElement nextElement
     );
+    // we literally only handle strings right now
+    ElementTypeToTapeType transformer (.target(elementType), .output(nextElement[56:63]))
+    always_comb begin
+        if(elementType == str){
+            nextElement[0:56] <= stringTapeIndex;
+        }
+    end
 endmodule
