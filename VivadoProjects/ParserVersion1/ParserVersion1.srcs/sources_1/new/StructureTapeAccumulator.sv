@@ -21,8 +21,29 @@
 
 
 module StructureTapeAccumulator(
-    input JsonTapeElement nextTapeEntry,
-    input clk, rst, enable
+        input JsonTapeElement nextTapeEntry,
+        input clk, rst, enable
     );
+    JsonTapeElement tape []
+    TapeIndex curIndex;
+
+    // we statically size our array for now
+    initial tape = new [32]
+
+    always @(posedge clk ) begin
+        if (rst){
+            tape.delete();
+        }
+        if(enable){
+            // root handler
+            if(nextTapeEntry[56:63] == "r" && curIndex != 0){
+                tape[0][0:55] = curIndex;
+            }
+            tape[curIndex] = nextTapeEntry;
+            curIndex++
+        }
+    end
+
+
 
 endmodule
