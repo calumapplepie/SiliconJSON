@@ -24,7 +24,7 @@ module StringTapeAccumulator(
     input UTF8_Char nextStringByte,
     output [0:55] curIndex,
     output [0:31] strLen,
-    input clk, rst, writingString
+    input clk, rst, enable
     );
     reg [0:55] curIndex;
     // could store just string length instead, but flip-flops are cheap

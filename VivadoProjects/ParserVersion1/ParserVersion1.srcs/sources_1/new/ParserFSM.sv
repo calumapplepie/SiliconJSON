@@ -23,6 +23,7 @@
 module ParserFSM(
     input UTF8_Char curChar,
     input JsonElementType curCharType,
-    input clk, rst
+    input clk, rst,
+    output writingString, writeStructure
     );
 endmodule
