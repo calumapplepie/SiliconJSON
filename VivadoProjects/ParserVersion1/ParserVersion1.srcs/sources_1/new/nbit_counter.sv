@@ -4,7 +4,7 @@ module moduleName #(
     bitWidth
 ) (
     input clk, rst, enable,
-    output [0:bitWidth-1] count
+    output [bitWidth-1:0] count
 );
 
     always @(posedge clk ) begin

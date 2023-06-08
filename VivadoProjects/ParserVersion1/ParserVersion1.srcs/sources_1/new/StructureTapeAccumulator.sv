@@ -35,9 +35,9 @@ module StructureTapeAccumulator(
             tape.delete();
         end else if(enable) begin
             // root handler
-            if(nextTapeEntry[56:63] == "r" && curIndex != 0) begin
+            if(nextTapeEntry[63:56] == "r" && curIndex != 0) begin
                 // curindex check might want to be replaced with a flag on reset
-                tape[0][0:55] = curIndex;
+                tape[0][55:0] = curIndex;
             end
             tape[curIndex] = nextTapeEntry;
             curIndex++;

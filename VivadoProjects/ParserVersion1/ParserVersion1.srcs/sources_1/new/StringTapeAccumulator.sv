@@ -25,7 +25,7 @@ module StringTapeAccumulator(
         output TapeIndex curIndex,
         input clk, rst, enable
     );
-    typedef logic [0:31] StringLength;
+    typedef logic [31:0] StringLength;
     StringLength strLen,
     // could store just string length instead, but flip-flops are cheap
     TapeIndex startIndex;
