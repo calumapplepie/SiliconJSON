@@ -21,7 +21,7 @@
 
 module CharTypeFinder(
     input UTF8_Char curChar,
-    output JsonElementType charType
+    output JsonCharType charType
     );
     always_comb begin
         case (curChar)

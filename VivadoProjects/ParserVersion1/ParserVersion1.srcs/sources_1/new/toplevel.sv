@@ -24,19 +24,18 @@ module toplevel(
     input UTF8_Char curChar,
     input clk, rst
     );
-    JsonElementType curCharType;
+    JsonElementType curElementType;
     logic writingString, writeStructure;
 
 
     // our modules!
-    CharTypeFinder charReader (
-        .curChar (curChar), .charType(curCharType) 
-    );
+    
     ParserFSM parser (
-        .curChar (curChar), .curCharType(curCharType),
+        .curChar (curChar), .curElementType(curElementType),
         .writingString(writingString), .writeStructure(writeStructure)
         .clk(clk), .rst(rst)
     );
+    
     // ideal spot for a pipeline stage right here
     // but that will add complexity that we don't really want right now
     // maybe toss all this stuff in its own module?  that would make a lot of sense....
@@ -52,7 +51,7 @@ module toplevel(
 
     // root handling currently elsewhere
     StructureTapeMaker elementBuilder (
-        .elementType(curCharType), .nextElement(nextElement)
+        .elementType(curElementType), .nextElement(nextElement)
         // not currently sequencial, may never be... we'll see
         .clk(clk), .rst(rst)
     );

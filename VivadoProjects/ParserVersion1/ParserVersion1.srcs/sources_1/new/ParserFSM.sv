@@ -22,8 +22,27 @@
 
 module ParserFSM(
     input UTF8_Char curChar,
-    input JsonElementType curCharType,
     input clk, rst,
+    output JsonElementType curElementType,
     output writingString, writeStructure
     );
+
+    logic lookForValue;
+    logic [8:0] bracketDepth;
+    JsonCharType curCharType,
+
+    CharTypeFinder charReader (
+        .curChar (curChar), .charType(curCharType) 
+    );
+
+    always @(posedge clk ) begin
+        if(rst){
+            writingString = 1'b0;
+            writeStructure = 1'b0;
+            lookForValue = 1'b0;
+            curElementType = root;
+        }
+
+    end
+
 endmodule
