@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module CharTypeFinder(
-    input logic [0:7] curChar,
+    input UTF8_Char curChar,
     output JsonElementType charType
     );
     always_comb begin

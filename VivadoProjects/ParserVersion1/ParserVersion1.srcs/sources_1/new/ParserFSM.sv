@@ -21,8 +21,8 @@
 
 
 module ParserFSM(
-    input curChar,
-    input curCharType,
-    input clk
+    input UTF8_Char curChar,
+    input JsonElementType curCharType,
+    input clk, rst
     );
 endmodule

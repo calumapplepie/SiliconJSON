@@ -21,8 +21,8 @@
 
 
 module StructureTapeAccumulator(
-    input [0:63] nextTapeEntry,
-    input clk,
-    input rst
+    input JsonTapeElement nextTapeEntry,
+    input clk, rst, enable
     );
+
 endmodule

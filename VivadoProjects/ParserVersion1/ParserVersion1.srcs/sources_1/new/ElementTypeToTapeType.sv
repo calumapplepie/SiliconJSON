@@ -4,7 +4,8 @@ module ElementTypeToTapeType(
     input JsonElementType target,
     output UTF8_Char output
 );
-    // note: maybe making 'element type' a class would be a more elegant solution
+    // note: making 'element type' a class would be a more elegant solution
+    // reduce namespace collisions, etc.
     // that's a later consideration, lets get this thing working first
     always_comb begin
         unique case (target)
