@@ -20,6 +20,7 @@ void simdjson::dom::ScrewYouIWantTheTape(
 	
 	// code stolen almost verbatim from simdjson.h
 	uint32_t string_length;
+	uint32_t string_buf_pos =0;
   	size_t tape_idx = 0;
  	uint64_t tape_val = document->tape[tape_idx];
  	uint8_t type = uint8_t(tape_val >> 56);
@@ -58,8 +59,13 @@ void simdjson::dom::ScrewYouIWantTheTape(
 			// the only reason we don't just print out the whole tape... is because...
 			// as far as i can tell, they throw away the length of the buffer when
 			// they're done parsing.
-			for(uint32_t i = stringPos; i < stringPos + string_length + 5; i++){
-				stringTape << std::hex << document->string_buf[i];
+			if(string_buf_pos != stringPos){
+				std::cout << "ERROR! String buffer position not as expected" <<std::endl;
+			}
+
+			for(string_buf_pos = stringPos; string_buf_pos < stringPos + string_length + 5; string_buf_pos++){
+				// that little plus promotes it to a real number!
+				stringTape << std::hex << +(document->string_buf[string_buf_pos]);
 			}
 			
 			#ifdef INCLUDE_LINE_BREAKS 
