@@ -21,6 +21,7 @@
 
 // global include: added to all files
 // why? because i couldnt get packages to work
+// note: maybe they didn't work due to an unrelated problem
 typedef bit [0:7] UTF8_Char;
 typedef enum {root, objOpen, objClose, arrayOpen, arrayClose, str, noType} JsonElementType;
 

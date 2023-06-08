@@ -21,7 +21,8 @@
 
 
 module StructureTapeMaker(
-        input bit [0:7] elementType,
+        input JsonElementType elementType,
+        input clk, rst,
         output [0:63] nextElement
     );
 endmodule

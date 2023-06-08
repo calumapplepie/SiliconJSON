@@ -27,6 +27,9 @@ module CharTypeFinder(
         case (curChar)
             "{" : charType <= objOpen;
             "}" : charType <= objClose;
+            "[" : charType <= arrayOpen;
+            "]" : charType <= arrayClose;
+            "\"": charType <= str;
             default: charType <= noType;
         endcase
     end
