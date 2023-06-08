@@ -22,13 +22,13 @@
 
 module StringTapeAccumulator(
     input UTF8_Char nextStringByte,
-    output [0:55] curIndex,
-    output [0:31] strLen,
+    output TapeIndex curIndex,
     input clk, rst, enable
     );
-    reg [0:55] curIndex;
+    typedef logic [0:31] StringLength;
+    StringLength strLen,
     // could store just string length instead, but flip-flops are cheap
-    reg [0:55] startIndex;
+    TapeIndex startIndex;
     logic wasEnabled;
 
     

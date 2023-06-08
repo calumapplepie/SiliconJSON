@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 
 module moduleName #(
-    bits
+    bitWidth
 ) (
     input clk, rst, enable,
-    output [0:bits-1] count
+    output [0:bitWidth-1] count
 );
 
     always @(posedge clk ) begin

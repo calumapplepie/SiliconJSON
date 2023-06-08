@@ -40,12 +40,11 @@ module toplevel(
     // ideal spot for a pipeline stage right here
     // but that will add complexity that we don't really want right now
     // maybe toss all this stuff in its own module?  that would make a lot of sense....
-    logic [0:55] curStringIndex;
-    logic [0:31] stringLength;
+    TapeIndex curStringIndex;
 
     StringTapeAccumulator stringGoHere (
         .nextStringByte(curChar), .enable(writingString),
-        .curIndex(curStringIndex), .strLen(stringLength),
+        .curIndex(curStringIndex),
         .clk(clk), .rst(rst)
     );
     

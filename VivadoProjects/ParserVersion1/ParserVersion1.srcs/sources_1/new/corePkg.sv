@@ -21,7 +21,8 @@
 
 // global include: added to all files
 // reconsider that.  also, lets look at making these classes
-typedef bit [0:7] UTF8_Char;
+typedef logic [0:7] UTF8_Char;
 typedef enum {root, objOpen, objClose, arrayOpen, arrayClose, str, noType} JsonElementType;
-typedef bit [0:63] JsonTapeElement;
+typedef logic [0:63] JsonTapeElement;
+typedef logic [0:55] TapeIndex;
 
