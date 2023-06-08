@@ -8,12 +8,11 @@ module moduleName #(
 );
 
     always @(posedge clk ) begin
-        if (rst){
+        if (rst) begin
             count = 0;
-        }
-        else if (enable){
+        end else if (enable) begin
             count++; //assume no overflow
-        }
+        end
         
     end
     

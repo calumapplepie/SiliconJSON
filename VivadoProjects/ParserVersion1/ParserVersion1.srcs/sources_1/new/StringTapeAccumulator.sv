@@ -36,27 +36,25 @@ module StringTapeAccumulator(
     initial tape = new [64]
 
     always @(posedge clk ) begin
-        if(rst){
+        if(rst) begin
             tape.delete();
-        }
-        else if (enable){
-            if(! wasEnabled){
+        end else if (enable) begin
+            if(! wasEnabled) begin
                 startIndex = curIndex;
                 curIndex += 56'd4;;
                 wasEnabled = 1'b1;
                 strLen = 32'b0;
-            }
+            end
             strLen++;
             tape[curIndex] = nextStringByte;
             curIndex++;
             
-        }
-        else{
-            if(wasEnabled){
+        end else begin
+            if(wasEnabled) begin
                 tape[startIndex:startIndex+3]=strLen;
                 wasEnabled = 1'b0;
-            }
-        }
+            end
+        end
     end
 
     

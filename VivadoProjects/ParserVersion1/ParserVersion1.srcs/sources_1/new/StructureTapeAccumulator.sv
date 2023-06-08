@@ -31,18 +31,17 @@ module StructureTapeAccumulator(
     initial tape = new [32];
 
     always @(posedge clk ) begin
-        if (rst){
+        if (rst) begin
             tape.delete();
-        }
-        if(enable){
+        end else if(enable) begin
             // root handler
-            if(nextTapeEntry[56:63] == "r" && curIndex != 0){
+            if(nextTapeEntry[56:63] == "r" && curIndex != 0) begin
                 // curindex check might want to be replaced with a flag on reset
                 tape[0][0:55] = curIndex;
-            }
+            end
             tape[curIndex] = nextTapeEntry;
             curIndex++;
-        }
+        end
     end
 
 

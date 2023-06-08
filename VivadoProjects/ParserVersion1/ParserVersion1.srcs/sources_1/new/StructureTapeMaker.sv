@@ -28,8 +28,8 @@ module StructureTapeMaker(
     // we literally only handle strings right now
     ElementTypeToTapeType transformer (.target(elementType), .output(nextElement[56:63]))
     always_comb begin
-        if(elementType == str){
+        if(elementType == str)begin
             nextElement[0:56] <= stringTapeIndex;
-        }
+        end
     end
 endmodule
