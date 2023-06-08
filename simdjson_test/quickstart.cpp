@@ -45,24 +45,26 @@ void simdjson::dom::ScrewYouIWantTheTape(
 		#endif
 
 		// check if string element
-		const char elementType = curElement >> 56;
+		const char elementType = uint8_t(curElement >> 56);
 		if (elementType == '"'){
 			// grab the payload
 			const uint64_t stringPos = curElement & 0x00FFFFFF;
 			// now we get to some stuff I took from dump_raw_json again
 			// but not quite, remember we still want hex
-			uint32_t string_length;
 			std::memcpy(&string_length, document->string_buf.get() + stringPos, sizeof(uint32_t));
 
 			// having done that nifty trick, we now go back to my code
 			// we need to include both the null ending byte and the size bytes.
 			// the only reason we don't just print out the whole tape... is because...
-			// wait they probably store an index to the last tape element somewhere...
+			// as far as i can tell, they throw away the length of the buffer when
+			// they're done parsing.
 			for(uint32_t i = stringPos; i < stringPos + string_length + 5; i++){
 				stringTape << std::hex << document->string_buf[i];
 			}
 			
-			
+			#ifdef INCLUDE_LINE_BREAKS 
+				stringTape <<std::endl;
+			#endif
 
 		}
 	}
