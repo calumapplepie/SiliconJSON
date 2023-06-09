@@ -25,11 +25,17 @@ module StructureTapeMaker(
         input clk, rst,
         output JsonTapeElement nextElement
     );
+    logic [55:0] payload;
+    wire [7:0]  prefix;
+    
+    assign nextElement = {prefix, payload};
+    
     // we literally only handle strings right now
-    ElementTypeToTapeType transformer (.target(elementType), .out(nextElement[63:56]));
+    ElementTypeToTapeType transformer (.target(elementType), .out(prefix));
     always_comb begin
-        if(elementType == str)begin
-            nextElement[56:0] <= stringTapeIndex;
-        end
+        case (elementType)
+            str :    payload <= stringTapeIndex;
+            default: payload <= 56'hBADBADBADBADD;
+        endcase
     end
 endmodule

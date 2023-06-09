@@ -27,7 +27,7 @@ module ParserFSM(
     output logic writingString, writeStructure
     );
 
-    typedef enum {
+    typedef enum logic[3:0] {
         Root,        // the first, starting state: we just found the document root
         FindKey,     // waiting for the first quote of a key
         StartKey,    // Found the key's start
@@ -45,6 +45,8 @@ module ParserFSM(
     CharTypeFinder charReader (
         .curChar (curChar), .charType(curCharType) 
     );
+    
+    initial curState <= Root;
 
     always @(posedge clk ) begin
         if(rst) curState <= Root;
@@ -61,6 +63,7 @@ module ParserFSM(
             FindValue   : nextState = (curChar == "\"") ? ReadString : FindValue; // todo: check for colon
             StartString : nextState = ReadString; // NOTE: breaks on empty value
             ReadString  : nextState = (curChar == "\"") ? FindKey: ReadString;
+            default     : nextState = Error;
         endcase
         if(curChar == "}") nextState = Root;
     end

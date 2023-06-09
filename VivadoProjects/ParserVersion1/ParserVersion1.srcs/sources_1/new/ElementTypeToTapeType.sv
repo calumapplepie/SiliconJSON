@@ -15,7 +15,7 @@ module ElementTypeToTapeType(
             arrayOpen  : out <= "[";
             arrayClose : out <= "]";
             str        : out <= "\"";
-            noType     : out <= "\0";
+            default    : out <= "\0";
         endcase
     end
 endmodule

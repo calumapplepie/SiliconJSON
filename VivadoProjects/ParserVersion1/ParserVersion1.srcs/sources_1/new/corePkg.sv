@@ -22,7 +22,7 @@
 // global include: added to all files
 // reconsider that.  also, lets look at making these classes
 typedef logic [7:0] UTF8_Char;
-typedef enum {root, objOpen, objClose, arrayOpen, arrayClose, str, noType} JsonElementType;
+typedef enum logic [3:0] {root, objOpen, objClose, arrayOpen, arrayClose, str, noType} JsonElementType;
 // for now make these synonyms: will split apart later though
 typedef JsonElementType JsonCharType;
 typedef logic [63:0] JsonTapeElement;
