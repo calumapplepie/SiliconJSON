@@ -2,9 +2,10 @@
 // but my SV skill aren't there yet
 
 module StringTapeAccumulator_tb ();
+    typedef logic [55:0] TapeIndex;
     logic rst, clk, enable;
-    logic [7:0] tape [];
-    logic [7:0] expected [];
+    logic [7:0] tape [32];
+    logic [7:0] expected [32];
     TapeIndex curIndex;
     UTF8_Char curChar;
     
@@ -33,8 +34,7 @@ module StringTapeAccumulator_tb ();
         end
         enable = 1'b0; #10;
         // i hope it zero initializes
-        expected = new[32];
-        expected[0:10] = '{5, 0, 0, 0, "a","p","p","l","e",0};
+        expected[0:10] = '{5, 0, 0, 0, "a","p","p","l","e",0,0};
         doCompare();
 
         // now for the next string
@@ -44,8 +44,7 @@ module StringTapeAccumulator_tb ();
         end
 
         enable = 1'b0; #10;
-        expected = new[32];
-        expected[0:20] = '{5, 0, 0, 0, "a","p","p","l","e",0,3,0,0,0,"p","i","e",0};
+        expected[0:20] = '{5, 0, 0, 0, "a","p","p","l","e",0,3,0,0,0,"p","i","e",0,0,0,0};
         doCompare();
     
 

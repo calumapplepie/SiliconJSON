@@ -21,3 +21,4 @@
 */*.hw
 */*.gen
 */*.ip_user_files
+*/*.sim

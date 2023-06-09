@@ -51,12 +51,12 @@ module toplevel(
 
     // root handling currently elsewhere
     StructureTapeMaker elementBuilder (
-        .elementType(curElementType), .nextElement(nextElement), .stringTapeIndex(curStringIndex),
+        .elementType(curElementType), .nextElement(nextElement), .curStringIndex(curStringIndex),
         // not currently sequencial, may never be... we'll see
         .clk(clk), .rst(rst)
     );
 
-    StructureTapeAccumulator(
+    StructureTapeAccumulator structGoHere(
         .nextTapeEntry(nextElement), .enable(writeStructure),
         .clk(clk), .rst(rst)
     );
