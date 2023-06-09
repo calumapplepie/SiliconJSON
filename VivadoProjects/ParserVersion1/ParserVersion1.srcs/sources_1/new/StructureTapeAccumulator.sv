@@ -32,7 +32,7 @@ module StructureTapeAccumulator (
             foreach(tape[i]) tape[i] <= '0;
         end else if(enable) begin
             // root handler
-            if(nextTapeEntry[63:56] == "r" && curIndex != 0) begin
+            if(nextTapeEntry[63:56] == "r" ) begin
                 // curindex check might want to be replaced with a flag on reset
                 tape[0][55:0] <= curIndex;
             end
