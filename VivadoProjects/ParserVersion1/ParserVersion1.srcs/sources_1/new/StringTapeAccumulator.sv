@@ -23,6 +23,7 @@
 module StringTapeAccumulator(
         input UTF8_Char nextStringByte,
         output TapeIndex curIndex,
+        output logic [7:0] tape [],
         input clk, rst, enable
     );
     typedef logic [31:0] StringLength;
@@ -31,7 +32,7 @@ module StringTapeAccumulator(
     TapeIndex startIndex;
     logic wasEnabled;
 
-    logic [7:0] tape [];
+    
     
     initial tape = new [64]
 
