@@ -8,7 +8,7 @@ module ElementTypeToTapeType(
     // reduce namespace collisions, etc.
     // that's a later consideration, lets get this thing working first
     always_comb begin
-        unique case (target)
+        case (target)
             root       : output <= "r";
             objOpen    : output <= "{";
             objClose   : output <= "}";

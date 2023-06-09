@@ -53,7 +53,7 @@ module ParserFSM(
 
     // next state determiner
     always_comb begin
-        unique case(state) 
+        case(state) 
             Root        : nextState = FindKey;
             FindKey     : nextState = (curChar == "\"") ? StartKey  : FindKey;
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
@@ -71,7 +71,7 @@ module ParserFSM(
         writingString  = 1'b0;
         writeStructure = 1'b0;
         curElementType = curCharType;
-        unique case(state)
+        case(state)
             Root : begin
                 curElementType = root;
                 writeStructure = 1'b1;
