@@ -26,7 +26,7 @@ module TapeWriter(
         input writingString, writeStructure,
         input clk, rst,
         output logic [7:0] stringTape [32],
-        output JsonTapeElement structureTape [32]
+        output JsonTapeElement structTape [32]
     );
     
     

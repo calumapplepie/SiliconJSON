@@ -22,12 +22,15 @@
 
 module toplevel(
     input UTF8_Char curChar,
-    input clk, rst
+    input GCLK, rst, enable,
+    output JsonTapeElement structTape[32],
+    output logic [7:0] stringTape[32]
     );
     JsonElementType curElementType;
-    logic writingString, writeStructure;
-
-
+    logic writingString, writeStructure, clk;
+    
+    assign clk = enable ? GCLK : '0;
+    
     // our modules!
     
     ParserFSM parser (
@@ -44,6 +47,7 @@ module toplevel(
     TapeWriter writer (
         .curChar(curChar), .curElementType(curElementType),
         .writingString(writingString), .writeStructure(writeStructure),
+        .stringTape(stringTape), .structTape(structTape),
         .clk(clk),.rst(rst)
     );
 
