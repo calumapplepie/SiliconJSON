@@ -22,6 +22,7 @@
 
 module StructureTapeMaker(
         input JsonElementType elementType, input TapeIndex stringTapeIndex,
+        // currently unused
         input clk, rst,
         output JsonTapeElement nextElement
     );

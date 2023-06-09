@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module StructureTapeAccumulator(
+module StructureTapeAccumulator (
         input JsonTapeElement nextTapeEntry,
         output JsonTapeElement tape[32],
         input clk, rst, enable
