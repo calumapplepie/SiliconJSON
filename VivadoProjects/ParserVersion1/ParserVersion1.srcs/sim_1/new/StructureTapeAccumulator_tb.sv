@@ -23,14 +23,15 @@
 module StructureTapeAccumulator_tb( );
     
     logic rst, clk, enable;
+    logic hadErrors = '0;
     
     JsonTapeElement tape [32];
     JsonTapeElement expected [32];
     
     JsonTapeElement nextElement;
-    JsonElementType curElementType;
+    JsonElementType curElementType = root;
     
-    TapeIndex stringTapeIndex;
+    TapeIndex stringTapeIndex = 0;
     
     StructureTapeMaker elementBuilder (
         .elementType(curElementType), .stringTapeIndex(stringTapeIndex),
@@ -46,14 +47,48 @@ module StructureTapeAccumulator_tb( );
     task doCompare();
         foreach(tape[i]) begin
             if(tape[i] != expected[i])begin
-                $display ("ERROR Does not matach at index %0d", i);
-                $display ("Expected %d, got %d", expected[i], tape[i]);
+                $display ("ERROR Does not match at index %0d", i);
+                $display ("Expected %h, got %h", expected[i], tape[i]);
+                hadErrors++;
             end
         end
     endtask 
 
     task  runTest();
-    
+        enable = '1;
+        foreach(expected[i]) expected[i] = '0;
+        doCompare();
+        curElementType = root;
+        expected[0] = {"r", 56'd0};
+        #10;
+        curElementType = str;
+        doCompare();
+        expected[1] = {"\"",56'd0};
+        #10;
+        doCompare();
+        stringTapeIndex = 56'd12;
+        expected[2]={"\"",56'd12};
+        #10;
+        doCompare();
+        enable = '0;
+        #10;
+        doCompare();
+        enable = '1;
+        stringTapeIndex = 56'd98;
+        expected[3]={"\"",56'd98};
+        #10;
+        doCompare();
+        stringTapeIndex = 56'd12352;
+        expected[4]={"\"",56'd12352};
+        #10;
+        doCompare();
+        curElementType = root;
+        stringTapeIndex = 152;
+        expected[5] = {"r", 56'd0};
+        expected[0] = {"r", 56'd5};
+        #10;
+        doCompare();
+        enable = '0;
     endtask
     
     // rest will be standard testbench stuff
