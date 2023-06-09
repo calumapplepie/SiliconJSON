@@ -27,13 +27,13 @@ module StringTapeAccumulator_tb ();
     endtask
 
     task runTest ();
+        foreach (expected[i]) expected[i] = '0;
         enable <= 1'b1;
         // google says this might work
         foreach (testStringOne[i]) begin
             curChar <= testStringOne[i]; #10;
         end
         enable = 1'b0; #10;
-        // i hope it zero initializes
         expected[0:10] = '{5, 0, 0, 0, "a","p","p","l","e",0,0};
         doCompare();
 
@@ -64,7 +64,7 @@ module StringTapeAccumulator_tb ();
     end
 
     initial begin
-        enable <= 1'b1;
+        enable <= '0;
         rst <= 1'b1;
         curChar <= 8'b0;
         #10;
@@ -78,7 +78,7 @@ module StringTapeAccumulator_tb ();
         #50;
         // run test twice to ensure reset doesn't leave residue
         runTest();
-
+        $finish;
     end
 
 endmodule

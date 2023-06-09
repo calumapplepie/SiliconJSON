@@ -35,6 +35,8 @@ module StringTapeAccumulator(
     always @(posedge clk ) begin
         if(rst) begin
             foreach(tape[i]) tape[i] = '0;
+            curIndex = '0;
+            wasEnabled = '0;
         end else if (enable) begin
             if(! wasEnabled) begin
                 startIndex = curIndex;
@@ -52,7 +54,7 @@ module StringTapeAccumulator(
                 tape[startIndex  ] = {strLen[ 7: 0]};
                 tape[startIndex+1] = {strLen[15: 8]};
                 tape[startIndex+2] = {strLen[23:16]};
-                tape[startIndex+4] = {strLen[31:24]};
+                tape[startIndex+3] = {strLen[31:24]};
                 // add null byte
                 tape[curIndex] = 8'b0;
                 curIndex++;
