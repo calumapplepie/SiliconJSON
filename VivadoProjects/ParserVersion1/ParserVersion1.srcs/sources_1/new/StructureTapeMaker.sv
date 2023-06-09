@@ -36,6 +36,7 @@ module StructureTapeMaker(
     always_comb begin
         case (elementType)
             str :    payload <= stringTapeIndex;
+            root:    payload <= '0;
             default: payload <= 56'hBADBADBADBADD;
         endcase
     end

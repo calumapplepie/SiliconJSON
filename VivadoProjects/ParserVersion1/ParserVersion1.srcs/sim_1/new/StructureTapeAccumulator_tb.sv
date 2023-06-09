@@ -31,7 +31,7 @@ module StructureTapeAccumulator_tb( );
     JsonTapeElement nextElement;
     JsonElementType curElementType = root;
     
-    TapeIndex stringTapeIndex = 0;
+    TapeIndex stringTapeIndex;
     
     StructureTapeMaker elementBuilder (
         .elementType(curElementType), .stringTapeIndex(stringTapeIndex),
@@ -56,6 +56,7 @@ module StructureTapeAccumulator_tb( );
 
     task  runTest();
         enable = '1;
+        stringTapeIndex = '0;
         foreach(expected[i]) expected[i] = '0;
         doCompare();
         curElementType = root;

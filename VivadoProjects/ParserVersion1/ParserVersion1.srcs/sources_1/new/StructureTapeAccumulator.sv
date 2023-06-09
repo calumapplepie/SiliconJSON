@@ -30,6 +30,7 @@ module StructureTapeAccumulator (
     always @(posedge clk ) begin
         if (rst) begin
             foreach(tape[i]) tape[i] <= '0;
+            curIndex = '0;
         end else if(enable) begin
             // root handler
             if(nextTapeEntry[63:56] == "r" ) begin
