@@ -52,8 +52,11 @@ module StringTapeAccumulator(
             
         end else begin
             if(wasEnabled) begin
-                // should give big endian ordering? we will see
+                // this should give it big endian ordering? we will see
                 tape[startIndex:startIndex+3]=strLen;
+                // add null byte
+                tape[curIndex] = 8'b0;
+                curIndex++;
                 wasEnabled = 1'b0;
             end
         end
