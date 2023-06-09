@@ -22,3 +22,6 @@
 */*.gen
 */*.ip_user_files
 */*.sim
+
+// not quite sure what you are
+*/*.dcp
