@@ -27,14 +27,14 @@ module StringTapeAccumulator(
         input clk, rst, enable
     );
     typedef logic [31:0] StringLength;
-    StringLength strLen,
+    StringLength strLen;
     // could store just string length instead, but flip-flops are cheap
     TapeIndex startIndex;
     logic wasEnabled;
 
     
     
-    initial tape = new [64]
+    initial tape = new [64];
 
     always @(posedge clk ) begin
         if(rst) begin
@@ -53,7 +53,10 @@ module StringTapeAccumulator(
         end else begin
             if(wasEnabled) begin
                 // this should give it big endian ordering? we will see
-                tape[startIndex:startIndex+3]=strLen;
+                tape[startIndex]=strLen[0:7];
+                tape[startIndex+1] = strLen[8:15];
+                tape[startIndex+2] = strLen[16:23];
+                tape[startIndex+4] = strLen[24:31];
                 // add null byte
                 tape[curIndex] = 8'b0;
                 curIndex++;

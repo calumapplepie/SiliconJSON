@@ -24,7 +24,7 @@ module ParserFSM(
     input UTF8_Char curChar,
     input clk, rst,
     output JsonElementType curElementType,
-    output writingString, writeStructure
+    output logic writingString, writeStructure
     );
 
     typedef enum {
@@ -40,7 +40,7 @@ module ParserFSM(
     state_t nextState;
 
     logic [8:0] bracketDepth;
-    JsonCharType curCharType,
+    JsonCharType curCharType;
 
     CharTypeFinder charReader (
         .curChar (curChar), .charType(curCharType) 
@@ -53,7 +53,7 @@ module ParserFSM(
 
     // next state determiner
     always_comb begin
-        case(state) 
+        case(curState) 
             Root        : nextState = FindKey;
             FindKey     : nextState = (curChar == "\"") ? StartKey  : FindKey;
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
@@ -71,7 +71,7 @@ module ParserFSM(
         writingString  = 1'b0;
         writeStructure = 1'b0;
         curElementType = curCharType;
-        case(state)
+        case(curState)
             Root : begin
                 curElementType = root;
                 writeStructure = 1'b1;

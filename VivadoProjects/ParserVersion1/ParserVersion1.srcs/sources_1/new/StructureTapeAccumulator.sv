@@ -23,7 +23,7 @@
 module StructureTapeAccumulator(
         input JsonTapeElement nextTapeEntry,
         output JsonTapeElement tape[],
-        input clk, rst, enable,
+        input clk, rst, enable
     );
     TapeIndex curIndex;
 
