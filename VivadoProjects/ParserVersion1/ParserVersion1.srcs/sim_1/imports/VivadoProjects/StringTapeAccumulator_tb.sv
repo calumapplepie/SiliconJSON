@@ -2,11 +2,13 @@
 // but my SV skill aren't there yet
 
 module StringTapeAccumulator_tb ();
+    // idk why tf vivado wants this line
     typedef logic [55:0] TapeIndex;
+    
     logic rst, clk, enable;
     logic [7:0] tape [32];
     logic [7:0] expected [32];
-    TapeIndex curIndex;
+    TapeIndex curIndex, expectedIndex;
     UTF8_Char curChar;
     
     string testStringOne = "apple";
@@ -23,17 +25,26 @@ module StringTapeAccumulator_tb ();
                 $display ("ERROR Does not matach at index %0d", i);
                 $display ("Expected %d, got %d", expected[i], tape[i]);
             end
+            if (expectedIndex != curIndex)begin
+                $display ("ERROR Tape Indicies Do Not Match!!");
+                $display ("Expected %d, got %d", expectedIndex, curIndex);
+            end
         end
     endtask
 
     task runTest ();
         foreach (expected[i]) expected[i] = '0;
+        expectedIndex = 56'd0;
+        doCompare();
+        
         enable <= 1'b1;
         // google says this might work
         foreach (testStringOne[i]) begin
             curChar <= testStringOne[i]; #10;
         end
         enable = 1'b0; #10;
+        
+        expectedIndex = 56'd10; 
         expected[0:10] = '{5, 0, 0, 0, "a","p","p","l","e",0,0};
         doCompare();
 
@@ -45,6 +56,7 @@ module StringTapeAccumulator_tb ();
 
         enable = 1'b0; #10;
         expected[0:20] = '{5, 0, 0, 0, "a","p","p","l","e",0,3,0,0,0,"p","i","e",0,0,0,0};
+        expectedIndex = 56'd18;
         doCompare();
     
 
@@ -78,6 +90,7 @@ module StringTapeAccumulator_tb ();
         #50;
         // run test twice to ensure reset doesn't leave residue
         runTest();
+        #60;
         $finish;
     end
 

@@ -41,7 +41,7 @@ module TapeWriter(
 
     // root handling currently elsewhere
     StructureTapeMaker elementBuilder (
-        .elementType(curElementType), .nextElement(nextElement), .curStringIndex(curStringIndex),
+        .elementType(curElementType), .nextElement(nextElement), .stringTapeIndex(curStringIndex),
         // not currently sequencial, may never be... we'll see
         .clk(clk), .rst(rst)
     );
