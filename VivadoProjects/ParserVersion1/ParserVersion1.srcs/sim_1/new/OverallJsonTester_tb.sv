@@ -107,10 +107,10 @@ module OverallJsonTester_tb();
     task runTest();
         loadBasenames();
         foreach(basenames[i]) begin
-            errorsSoFar = '0;
             rst = '1;
             #10;
             rst = '0;
+            errorsSoFar = '0;
             // all basenames are at least three characters
             if (basenames[i].len() < 3) break;
             evaluateJsonFile(basenames[i]);
