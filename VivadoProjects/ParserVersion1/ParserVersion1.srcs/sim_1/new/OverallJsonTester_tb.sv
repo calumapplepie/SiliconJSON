@@ -29,8 +29,8 @@ module OverallJsonTester_tb();
     integer errorCode;
     UTF8_Char nextChar;
 
-    JsonTapeElement structTape[32], expectedStructTape [32];
-    logic [7:0] stringTape[32], expectedStringTape [32];
+    JsonTapeElement structTape[StructTapeLength], expectedStructTape [StructTapeLength];
+    logic [7:0] stringTape[StringTapeLength], expectedStringTape [StringTapeLength];
 
     TopLevel DUV (
         .curChar(nextChar), 
@@ -100,6 +100,8 @@ module OverallJsonTester_tb();
         
     endtask
     
+    // rest is standard testbench stuff
+
     initial begin
         // cycles are 10 ns long: inputs change on multiples of 10, while positive edges are 5ns later
         forever begin

@@ -6,8 +6,8 @@ module StringTapeAccumulator_tb ();
     typedef logic [55:0] TapeIndex;
     
     logic rst, clk, enable;
-    logic [7:0] tape [32];
-    logic [7:0] expected [32];
+    logic [7:0] tape [StringTapeLength];
+    logic [7:0] expected [StringTapeLength];
     TapeIndex curIndex, expectedIndex;
     UTF8_Char curChar;
     
@@ -62,7 +62,7 @@ module StringTapeAccumulator_tb ();
 
     endtask
 
-    // rest will be standard testbench stuff
+    // rest is be standard testbench stuff
     // todo: get it into a class or include or something
 
 

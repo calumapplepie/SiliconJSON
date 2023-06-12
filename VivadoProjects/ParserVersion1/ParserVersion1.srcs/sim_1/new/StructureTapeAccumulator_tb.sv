@@ -25,8 +25,8 @@ module StructureTapeAccumulator_tb( );
     logic rst, clk, enable;
     logic hadErrors = '0;
     
-    JsonTapeElement tape [32];
-    JsonTapeElement expected [32];
+    JsonTapeElement tape [StructTapeLength];
+    JsonTapeElement expected [StructTapeLength];
     
     JsonTapeElement nextElement;
     JsonElementType curElementType = root;
@@ -92,7 +92,7 @@ module StructureTapeAccumulator_tb( );
         enable = '0;
     endtask
     
-    // rest will be standard testbench stuff
+    // rest is be standard testbench stuff
     // todo: get it into a class or include or something
 
 

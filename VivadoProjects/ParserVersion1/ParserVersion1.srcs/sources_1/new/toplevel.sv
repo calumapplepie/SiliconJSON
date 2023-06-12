@@ -23,8 +23,8 @@
 module TopLevel(
     input UTF8_Char curChar,
     input GCLK, rst, enable,
-    output JsonTapeElement structTape[32],
-    output logic [7:0] stringTape[32]
+    output JsonTapeElement structTape[StructTapeLength],
+    output logic [7:0] stringTape[StringTapeLength]
     );
     JsonElementType curElementType;
     logic writingString, writeStructure, clk;

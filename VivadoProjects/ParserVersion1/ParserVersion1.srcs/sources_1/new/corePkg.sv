@@ -28,3 +28,6 @@ typedef JsonElementType JsonCharType;
 typedef logic [63:0] JsonTapeElement;
 typedef logic [55:0] TapeIndex;
 
+const int StringTapeLength = 32;
+const int StructTapeLength = 32;
+

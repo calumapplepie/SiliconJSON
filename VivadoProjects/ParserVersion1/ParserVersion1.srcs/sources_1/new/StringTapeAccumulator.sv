@@ -23,7 +23,7 @@
 module StringTapeAccumulator(
         input UTF8_Char nextStringByte,
         output TapeIndex curIndex,
-        output logic [7:0] tape [32],
+        output logic [7:0] tape [StringTapeLength],
         input clk, rst, enable
     );
     typedef logic [31:0] StringLength;
