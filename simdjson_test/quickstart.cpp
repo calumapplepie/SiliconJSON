@@ -105,7 +105,11 @@ int main(void) {
 		std::ofstream hexOutString{hexPathString, std::ios_base::trunc} ;
 
     	dom::ScrewYouIWantTheTape(json, hexOutStruct, hexOutString);
+
+		hexOutString.close();
+		hexOutStruct.close();
+		
 	}
-	
+	basenamesOut.close();
     //json.dump_raw_tape(std::cout);
 }
