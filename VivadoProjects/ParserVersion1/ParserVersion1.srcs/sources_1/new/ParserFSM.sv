@@ -60,7 +60,7 @@ module ParserFSM(
             FindKey     : nextState = (curChar == "\"") ? StartKey  : FindKey;
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
             ReadKey     : nextState = (curChar == "\"") ? FindValue : ReadKey; // todo: escaped quotes
-            FindValue   : nextState = (curChar == "\"") ? ReadString : FindValue; // todo: check for colon
+            FindValue   : nextState = (curChar == "\"") ? StartString : FindValue; // todo: check for colon
             StartString : nextState = ReadString; // NOTE: breaks on empty value
             ReadString  : nextState = (curChar == "\"") ? FindKey: ReadString;
             default     : nextState = Error;
@@ -79,10 +79,7 @@ module ParserFSM(
                 curElementType = root;
                 writeStructure = 1'b1;
             end
-            StartKey, StartString   : begin 
-                writeStructure = 1'b1;
-                writingString = '1;
-            end
+            StartKey, StartString   : writeStructure = 1'b1;
             ReadKey, ReadString     : writingString  = 1'b1;
             default: 
             // some states have no output besides default

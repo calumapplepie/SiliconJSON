@@ -39,13 +39,16 @@ module TopLevel(
         .clk(clk), .rst(rst)
     );
     
-    // ideal spot for a pipeline stage right here
-    // but that will add complexity that we don't really want right now
-    // maybe toss all this stuff in its own module?  that would make a lot of sense....
+    // this needs to be a pipeline for proper functionality
+    // FSM's current state describes what should be done with previous character
+    UTF8_Char lastChar;
+    always @(posedge clk) begin
+        lastChar <= curChar;
+    end
     
     
     TapeWriter writer (
-        .curChar(curChar), .curElementType(curElementType),
+        .curChar(lastChar), .curElementType(curElementType),
         .writingString(writingString), .writeStructure(writeStructure),
         .stringTape(stringTape), .structTape(structTape),
         .clk(clk),.rst(rst)
