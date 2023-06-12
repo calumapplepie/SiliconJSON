@@ -50,7 +50,7 @@ module StringTapeAccumulator(
             
         end else begin
             if(wasEnabled) begin
-                // this should give it big endian ordering? we will see
+                // Each string starts with the length of the string, in a 32 byte big-endian integer
                 tape[startIndex  ] = {strLen[ 7: 0]};
                 tape[startIndex+1] = {strLen[15: 8]};
                 tape[startIndex+2] = {strLen[23:16]};

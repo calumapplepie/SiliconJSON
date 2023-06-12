@@ -34,7 +34,7 @@ module StructureTapeAccumulator (
         end else if(enable) begin
             // root handler
             if(nextTapeEntry[63:56] == "r" ) begin
-                // curindex check might want to be replaced with a flag on reset
+                // when this runs right after reset, we just store zeros
                 tape[0][55:0] <= curIndex;
             end
             tape[curIndex] <= nextTapeEntry;

@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+// This module was written because I thought I might want it for the accumulators.
+// I didn't, but here it is anyways
 
 module moduleName #(
     bitWidth
