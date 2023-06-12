@@ -26,19 +26,31 @@ module StructureTapeAccumulator (
         input clk, rst, enable
     );
     TapeIndex curIndex;
+    TapeIndex lastBraceIndex;
 
-    always @(posedge clk ) begin
+    always_ff @(posedge clk ) begin
         if (rst) begin
             foreach(tape[i]) tape[i] <= '0;
-            curIndex = '0;
+            curIndex = 56'd1;
         end else if(enable) begin
-            // root handler
-            if(nextTapeEntry[63:56] == "r" ) begin
-                // when this runs right after reset, we just store zeros
-                tape[0][55:0] <= curIndex;
-            end
             tape[curIndex] <= nextTapeEntry;
+            
+            if(nextTapeEntry[63:56] == "{") lastBraceIndex <= curIndex;
+            
+            // close brace handler
+            else if(nextTapeEntry[63:56] == "}" ) begin
+                tape[lastBraceIndex][55:0] <= curIndex;
+                tape[curIndex][55:0] <= lastBraceIndex;
+                
+                // root handler
+                if(1==1)begin
+                    // always true for now
+                    tape[curIndex+1] <= {"r", 56'b0};
+                    tape[0]          <= {"r", curIndex+1};
+                end
+            end
             curIndex++;
+            
         end
     end
 

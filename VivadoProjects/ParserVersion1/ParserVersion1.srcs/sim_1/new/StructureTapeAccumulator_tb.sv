@@ -29,7 +29,7 @@ module StructureTapeAccumulator_tb( );
     JsonTapeElement expected [StructTapeLength];
     
     JsonTapeElement nextElement;
-    JsonElementType curElementType = root;
+    JsonElementType curElementType;
     
     TapeIndex stringTapeIndex;
     
@@ -59,8 +59,8 @@ module StructureTapeAccumulator_tb( );
         stringTapeIndex = '0;
         foreach(expected[i]) expected[i] = '0;
         doCompare();
-        curElementType = root;
-        expected[0] = {"r", 56'd0};
+        curElementType = objOpen;
+        expected[0] = {"\0", 56'd0};
         expected[1] = {"{", 56'd0};
         #10;
         curElementType = str;
@@ -84,11 +84,12 @@ module StructureTapeAccumulator_tb( );
         expected[5]={"\"",56'd12352};
         #10;
         doCompare();
-        curElementType = root;
+        curElementType = objClose;
         stringTapeIndex = 152;
-        expected[6] = {"{", 56'd1};
+        expected[6] = {"}", 56'd1};
         expected[7] = {"r", 56'd0};
         expected[0] = {"r", 56'd7};
+        expected[1] = {"{", 56'd6};
         #10;
         doCompare();
         enable = '0;

@@ -9,7 +9,7 @@ module ElementTypeToTapeType(
     // that's a later consideration, lets get this thing working first
     always_comb begin
         case (target)
-            root       : out <= "r";
+            root       : out <= "\0";// bad!!!
             objOpen    : out <= "{";
             objClose   : out <= "}";
             arrayOpen  : out <= "[";

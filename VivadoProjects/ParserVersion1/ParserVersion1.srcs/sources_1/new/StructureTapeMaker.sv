@@ -21,7 +21,7 @@
 
 
 module StructureTapeMaker(
-        input JsonElementType elementType, input TapeIndex stringTapeIndex,
+        input JsonElementType elementType, input TapeIndex stringTapeIndex, input TapeIndex structTapeIndex,
         // currently unused
         input clk, rst,
         output JsonTapeElement nextElement
@@ -36,7 +36,7 @@ module StructureTapeMaker(
     always_comb begin
         case (elementType)
             str :    payload <= stringTapeIndex;
-            root:    payload <= '0;
+            root, objOpen:    payload <= '0;
             default: payload <= 56'hBADBADBADBADD;
         endcase
     end

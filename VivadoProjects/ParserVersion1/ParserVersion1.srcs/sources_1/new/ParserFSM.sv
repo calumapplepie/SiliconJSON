@@ -28,13 +28,14 @@ module ParserFSM(
     );
 
     typedef enum logic[3:0] {
-        Root,        // the first, starting state: we just found the document root
+        StartObject, // the first, starting state: we just found the document root, or some other object
         FindKey,     // waiting for the first quote of a key
         StartKey,    // Found the key's start
         ReadKey,     // Read the key
         FindValue,   // Find the value
         StartString, // Found the first quote of a string
         ReadString,  // Read the string
+        EndObject,   // finish off the object we just found
         Error} state_t;
     state_t curState;
     state_t nextState;
@@ -46,17 +47,15 @@ module ParserFSM(
         .curChar (curChar), .charType(curCharType) 
     );
     
-    initial curState <= Root;
-
     always @(posedge clk ) begin
-        if(rst) curState <= Root;
+        if(rst) curState <= StartObject;
         else curState <= nextState;
     end
 
     // next state determiner
     always_comb begin
         case(curState) 
-            Root        : nextState = FindKey;
+            StartObject : nextState = FindKey;
             FindKey     : nextState = (curChar == "\"") ? StartKey  : FindKey;
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
             ReadKey     : nextState = (curChar == "\"") ? FindValue : ReadKey; // todo: escaped quotes
@@ -65,7 +64,6 @@ module ParserFSM(
             ReadString  : nextState = (curChar == "\"") ? FindKey: ReadString;
             default     : nextState = Error;
         endcase
-        if(curChar == "}") nextState = Root;
     end
 
 
@@ -75,14 +73,11 @@ module ParserFSM(
         writeStructure = 1'b0;
         curElementType = curCharType;
         case(curState)
-            Root : begin
-                curElementType = root;
-                writeStructure = 1'b1;
-            end
+            StartObject, EndObject  : writeStructure = 1'b1;
             StartKey, StartString   : writeStructure = 1'b1;
             ReadKey, ReadString     : writingString  = 1'b1;
             default: 
-            // some states have no output besides default
+            // some states have no output besides those default ones
             ;
         endcase
     end
