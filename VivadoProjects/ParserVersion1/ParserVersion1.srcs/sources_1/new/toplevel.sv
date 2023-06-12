@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module toplevel(
+module TopLevel(
     input UTF8_Char curChar,
     input GCLK, rst, enable,
     output JsonTapeElement structTape[32],

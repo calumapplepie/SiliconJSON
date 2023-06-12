@@ -24,11 +24,30 @@ module OverallJsonTester_tb();
     logic clk, rst, enable;
     string basenames [32];
     string VivadoProjectDir = "";    
-    integer errorCode;    
+    integer errorCode;
+    UTF8_Char nextChar;
+
+    JsonTapeElement structTape[32], expectedStructTape [32];
+    logic [7:0] stringTape[32], expectedStringTape [32];
+
+    TopLevel DUV (
+        .curChar(nextChar), 
+        .stringTape(stringTape), .structTape(structTape),
+        .enable(enable), .GCLK(clk), .rst(rst));
     
     task static evaluateJsonFile(string basename);
-        int jsonFileHandle = $fopen({VivadoProjectDir,basename,".json"});
-        
+        int jsonInFileHandle = $fopen({VivadoProjectDir,basename,".json"});
+        int stringFileHandle = $fopen({VivadoProjectDir,basename,".string.hex"});
+        int structFileHandle = $fopen({VivadoProjectDir,basename,".struct.hex"});
+
+        // read the in file
+        while(! $feof(jsonInFileHandle)) begin
+            nextChar = $fgetc(jsonInFileHandle);
+            #10;
+        end
+
+        // read the out files
+
     endtask
     
     task static loadBasenames();
