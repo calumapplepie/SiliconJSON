@@ -9,8 +9,14 @@ using namespace simdjson;
 
 const std::string target_file_dir =  "../JsonTestFiles/";
 #define INCLUDE_LINE_BREAKS 1
+#define FORMAT_FOR_VIVADO 1
 
 // Rest of the code should work without modifications
+
+#ifdef FORMAT_FOR_VIVADO
+#define INCLUDE_LINE_BREAKS 1
+#endif
+
 namespace simdjson {
 namespace dom {
 	void ScrewYouIWantTheTape(
@@ -67,10 +73,17 @@ namespace dom {
 				for(string_buf_pos = stringPos; string_buf_pos < stringPos + string_length + 5; string_buf_pos++){
 					// that little plus promotes it to a real number!
 					stringTape << std::hex << +(document->string_buf[string_buf_pos]);
+
+					#ifdef FORMAT_FOR_VIVADO
+					// the verilog memory read function we use requires each number to be whitespace-separated
+					stringTape << std::endl;
+					#endif
 				}
 				
 				#ifdef INCLUDE_LINE_BREAKS 
+				#ifndef FORMAT_FOR_VIVADO
 					stringTape <<std::endl;
+				#endif
 				#endif
 
 			}
