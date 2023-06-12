@@ -29,7 +29,7 @@ module TopLevel(
     JsonElementType curElementType;
     logic writingString, writeStructure, clk;
     
-    assign clk = enable ? GCLK : '0;
+    assign clk = (enable || rst) ? GCLK : '0;
     
     // our modules!
     

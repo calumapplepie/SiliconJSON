@@ -32,7 +32,7 @@ module TapeWriter(
     
     StringTapeAccumulator stringGoHere (
         .nextStringByte(curChar), .enable(writingString),
-        .curIndex(curStringIndex),
+        .curIndex(curStringIndex), .tape(stringTape),
         .clk(clk), .rst(rst)
     );
     
@@ -47,7 +47,7 @@ module TapeWriter(
     );
 
     StructureTapeAccumulator structGoHere(
-        .nextTapeEntry(nextElement), .enable(writeStructure),
+        .nextTapeEntry(nextElement), .enable(writeStructure), .tape(structTape),
         .clk(clk), .rst(rst)
     );
 endmodule
