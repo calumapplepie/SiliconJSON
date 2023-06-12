@@ -39,12 +39,6 @@ module OverallJsonTester_tb();
     
     task static evaluateJsonFile(input string basename);
         int jsonInFileHandle = $fopen({VivadoProjectDir,basename,".json"});
-
-        // read the in file
-        while(! $feof(jsonInFileHandle)) begin
-            nextChar = $fgetc(jsonInFileHandle);
-            #10;
-        end
         
         // zero the memories
         foreach(expectedStringTape[i]) expectedStringTape[i] = '0;
@@ -53,6 +47,12 @@ module OverallJsonTester_tb();
         // read the out files: should ignore whitespace
         $readmemh({VivadoProjectDir,basename,".string.hex"}, expectedStringTape);
         $readmemh({VivadoProjectDir,basename,".struct.hex"}, expectedStructTape);
+
+        // read the in file
+        while(! $feof(jsonInFileHandle)) begin
+            nextChar = $fgetc(jsonInFileHandle);
+            #10;
+        end
 
         // compare
         foreach(expectedStringTape[i]) begin
