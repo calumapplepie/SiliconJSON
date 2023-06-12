@@ -79,7 +79,10 @@ module ParserFSM(
                 curElementType = root;
                 writeStructure = 1'b1;
             end
-            StartKey, StartString   : writeStructure = 1'b1;
+            StartKey, StartString   : begin 
+                writeStructure = 1'b1;
+                writingString = '1;
+            end
             ReadKey, ReadString     : writingString  = 1'b1;
             default: 
             // some states have no output besides default
