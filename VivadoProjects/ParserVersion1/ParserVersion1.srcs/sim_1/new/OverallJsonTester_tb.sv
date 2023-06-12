@@ -39,7 +39,7 @@ module OverallJsonTester_tb();
         .enable(enable), .GCLK(clk), .rst(rst));
     
     task static evaluateJsonFile(input string basename);
-        int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,".json"});
+        int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,".json"},"r");
         
         // zero the memories
         foreach(expectedStringTape[i]) expectedStringTape[i] = '0;
@@ -78,15 +78,25 @@ module OverallJsonTester_tb();
 
 
     endtask
-    
+    string tmp;
     task static loadBasenames();
-        int fileHandle = $fopen({JsonTestFilesDir,"basenames.txt"});
+        int fileHandle = $fopen({JsonTestFilesDir,"basenames.txt"}, "r");
         foreach(basenames[i]) begin
-            if ($feof(fileHandle) > 0) break;
-            errorCode = $fgets(basenames[i], fileHandle);
+            // init to canary value b/c $fgets wants preinitialized strings for some reason
+            basenames[i] = {5{"badBADbadBAD"}};
+            
+            tmp = basenames[i];
+            errorCode = $fgets(tmp, fileHandle);
+            $display("Read %d chars: %s", errorCode, tmp);
+            basenames[i] = tmp.substr(0, tmp.len()-2);
+            
             if(errorCode ==0) begin
                 // vivado doesn't support $ferror , which would let me be more specific
                 $display("ERROR ON BASENAME FILE READ" );
+            end
+            // ensure we don't try to read BAD BAD BAD files
+            if ($feof(fileHandle) > 0) begin
+                basenames[i] = "";
             end
         end
     endtask
