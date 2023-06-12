@@ -38,7 +38,7 @@ module OverallJsonTester_tb();
         .stringTape(stringTape), .structTape(structTape),
         .enable(enable), .GCLK(clk), .rst(rst));
     
-    task static evaluateJsonFile(input string basename);
+    task static evaluateJsonFile(string basename);
         int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,".json"},"r");
         
         // zero the memories
@@ -46,8 +46,10 @@ module OverallJsonTester_tb();
         foreach(expectedStructTape[i]) expectedStructTape[i] = '0;
 
         // read the out files: should ignore whitespace
-        $readmemh({JsonTestFilesDir,basename,".string.hex"}, expectedStringTape);
-        $readmemh({JsonTestFilesDir,basename,".struct.hex"}, expectedStructTape);
+        tmp = {JsonTestFilesDir,basename,".string.hex"};
+        $readmemh(tmp, expectedStringTape);
+        tmp = {JsonTestFilesDir,basename,".struct.hex"};
+        $readmemh(tmp, expectedStructTape);
 
         // read the in file
         while(! $feof(jsonInFileHandle)) begin
