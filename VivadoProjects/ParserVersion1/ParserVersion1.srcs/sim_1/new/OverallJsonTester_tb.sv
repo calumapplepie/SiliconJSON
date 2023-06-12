@@ -22,6 +22,8 @@
 
 module OverallJsonTester_tb();
     logic clk, rst, enable;
+    int errorsSoFar = '0;
+
     string basenames [32];
     string VivadoProjectDir = "";    
     integer errorCode;
@@ -35,18 +37,44 @@ module OverallJsonTester_tb();
         .stringTape(stringTape), .structTape(structTape),
         .enable(enable), .GCLK(clk), .rst(rst));
     
-    task static evaluateJsonFile(string basename);
+    task static evaluateJsonFile(input string basename);
         int jsonInFileHandle = $fopen({VivadoProjectDir,basename,".json"});
-        int stringFileHandle = $fopen({VivadoProjectDir,basename,".string.hex"});
-        int structFileHandle = $fopen({VivadoProjectDir,basename,".struct.hex"});
 
         // read the in file
         while(! $feof(jsonInFileHandle)) begin
             nextChar = $fgetc(jsonInFileHandle);
             #10;
         end
+        
+        // zero the memories
+        foreach(expectedStringTape[i]) expectedStringTape[i] = '0;
+        foreach(expectedStructTape[i]) expectedStructTape[i] = '0;
 
-        // read the out files
+        // read the out files: should ignore whitespace
+        $readmemh({VivadoProjectDir,basename,".string.hex"}, expectedStringTape);
+        $readmemh({VivadoProjectDir,basename,".struct.hex"}, expectedStructTape);
+
+        // compare
+        foreach(expectedStringTape[i]) begin
+            if (expectedStringTape[i] != stringTape[i]) begin
+                errorsSoFar++;
+                if(errorsSoFar <= 5) begin
+                    $display("Error at string tape index %d when reading file %s",  i, basename);
+                    $display("Expected %h, got %h", expectedStringTape[i], stringTape[i]);
+                end
+            end
+        end
+
+        foreach(expectedStructTape[i]) begin
+            if (expectedStructTape[i] != structTape[i]) begin
+                errorsSoFar++;
+                if(errorsSoFar <= 5) begin
+                    $display("Error at struct tape index %d when reading file %s",  i, basename);
+                    $display("Expected %h, got %h", expectedStructTape[i], structTape[i]);
+                end
+            end
+        end
+
 
     endtask
     
@@ -67,6 +95,7 @@ module OverallJsonTester_tb();
             // all basenames are at least three characters
             if (basenames[i].len() < 3) break;
             evaluateJsonFile(basenames[i]);
+            $display("Read %s, encountered %d errors", basename, errorsSoFar)
         end
         
     endtask
