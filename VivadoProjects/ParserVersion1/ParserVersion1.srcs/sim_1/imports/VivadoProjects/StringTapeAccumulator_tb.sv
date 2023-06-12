@@ -2,7 +2,7 @@
 // but my SV skill aren't there yet
 
 module StringTapeAccumulator_tb ();
-    // idk why tf vivado wants this line
+    // idk why vivado wants this line
     typedef logic [55:0] TapeIndex;
     
     logic rst, clk, enable;

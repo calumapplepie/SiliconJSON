@@ -25,7 +25,8 @@ module OverallJsonTester_tb();
     int errorsSoFar = '0;
 
     string basenames [32];
-    string VivadoProjectDir = "";    
+    // let the record state that I do not like windows
+    string JsonTestFilesDir = "C:/Users/mcconncm/Documents/SummerResearch2023/JsonTestFiles/";    
     integer errorCode;
     UTF8_Char nextChar;
 
@@ -38,15 +39,15 @@ module OverallJsonTester_tb();
         .enable(enable), .GCLK(clk), .rst(rst));
     
     task static evaluateJsonFile(input string basename);
-        int jsonInFileHandle = $fopen({VivadoProjectDir,basename,".json"});
+        int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,".json"});
         
         // zero the memories
         foreach(expectedStringTape[i]) expectedStringTape[i] = '0;
         foreach(expectedStructTape[i]) expectedStructTape[i] = '0;
 
         // read the out files: should ignore whitespace
-        $readmemh({VivadoProjectDir,basename,".string.hex"}, expectedStringTape);
-        $readmemh({VivadoProjectDir,basename,".struct.hex"}, expectedStructTape);
+        $readmemh({JsonTestFilesDir,basename,".string.hex"}, expectedStringTape);
+        $readmemh({JsonTestFilesDir,basename,".struct.hex"}, expectedStructTape);
 
         // read the in file
         while(! $feof(jsonInFileHandle)) begin
@@ -79,12 +80,14 @@ module OverallJsonTester_tb();
     endtask
     
     task static loadBasenames();
-        int fileHandle = $fopen({VivadoProjectDir,"basenames.txt"});
+        int fileHandle = $fopen({JsonTestFilesDir,"basenames.txt"});
         foreach(basenames[i]) begin
             if ($feof(fileHandle) > 0) break;
             errorCode = $fgets(basenames[i], fileHandle);
-            if(errorCode ==0) $display("ERROR ON BASENAME FILE READ");
-            
+            if(errorCode ==0) begin
+                // vivado doesn't support $ferror , which would let me be more specific
+                $display("ERROR ON BASENAME FILE READ" );
+            end
         end
     endtask
     
@@ -95,7 +98,7 @@ module OverallJsonTester_tb();
             // all basenames are at least three characters
             if (basenames[i].len() < 3) break;
             evaluateJsonFile(basenames[i]);
-            $display("Read %s, encountered %d errors", basename, errorsSoFar)
+            $display("Read %s, encountered %d errors", basenames[i], errorsSoFar);
         end
         
     endtask
