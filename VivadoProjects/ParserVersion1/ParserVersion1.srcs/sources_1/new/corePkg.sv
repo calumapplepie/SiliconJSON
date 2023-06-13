@@ -27,43 +27,58 @@ typedef logic [55:0] TapeIndex;
 
 parameter int StringTapeLength = 32;
 parameter int StructTapeLength = 32;
-class JsonCharType;
+
+package CharClassification;
     typedef enum logic [3:0] {braceOpen, braceClose, bracketOpen, bracketClose, 
                                 quote, colon, comma, minusSign,
                                 whitespace, numeric, controlChar, asciiAlphabetical, 
                                 UTF_8, noType} CharType;
-    CharType typeID;
-    function new (UTF8_Char in);
+    
+    function CharType classifyChar (UTF8_Char in);
         case(in)
-            "{" : typeID = braceOpen;
-            "}" : typeID = braceClose;
-            "[" : typeID = bracketOpen;
-            "]" : typeID = bracketClose;
-            "\"": typeID = quote;
-            ":" : typeID = colon;
-            "," : typeID = comma;
-            "\\": typeID = backslash;
-            "-" : typeID = minusSign;
+            "{" : return braceOpen;
+            "}" : return braceClose;
+            "[" : return bracketOpen;
+            "]" : return bracketClose;
+            "\"": return quote;
+            ":" : return colon;
+            "," : return comma;
+            "\\": return backslash;
+            "-" : return minusSign;
 
-            " ","\t", 8'0A, 8'0D : typeID = whitespace;
+            " ","\t", 8'0A, 8'0D : return whitespace;
             // using do-not-care values to make matching easier
-            8'b00110???, 8'b0011100? : typeID = numeric;
+            8'b00110???, 8'b0011100? : return numeric;
             // permitted whitespace already grabbed
-            8'b000?????, 8'h7F: typeID = controlChar;
-            8'b0??????? : typeID = asciiAlphabetical;
+            8'b000?????, 8'h7F: return controlChar;
+            8'b0??????? : return asciiAlphabetical;
 
             // do not yet play with unicode
-            default: typeID = notype;
+            default: return notype;
         endcase
 
     endfunction
 
-endclass
+endpackage
+typedef CharClassification::CharType JsonCharType;
 
+package ElementClassification;
+    typedef enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose, 
+                                str, number, true, false, null, noType
+                                } ElementType;
+    function ElementType charToElementType(JsonCharType charType)
+        case (charType)
+            braceOpen   : return objOpen;
+            braceClose  : return objClose;
+            bracketOpen : return arrayOpen;
+            bracketClose: return arrayClose;
+            quote       : return str;
+            // others are special
+            default     : return noType;
+        endcase
+    endfunction
+    
 
-class JsonElementType;
-    typedef enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose, str, number, true, false, null, noType} ElementType;
-    ElementType typeID;
+endpackage
 
-
-endclass
+typedef ElementClassification::ElementType JsonElementType;
