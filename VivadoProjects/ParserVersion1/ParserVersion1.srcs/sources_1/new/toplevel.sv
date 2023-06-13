@@ -27,14 +27,15 @@ module TopLevel(
     output logic [7:0] stringTape[StringTapeLength]
     );
     JsonElementType curElementType;
-    logic writingString, writeStructure, clk;
+    wire writingString, writeStructure, clk;
+    wire [23:0] keyValuePairs;
     
     assign clk = (enable || rst) ? GCLK : '0;
     
     // our modules!
     
     ParserFSM parser (
-        .curChar (curChar), .curElementType(curElementType),
+        .curChar (curChar), .curElementType(curElementType), .keyValuePairsSoFar(keyValuePairs),
         .writingString(writingString), .writeStructure(writeStructure),
         .clk(clk), .rst(rst)
     );
@@ -42,15 +43,17 @@ module TopLevel(
     // this needs to be a pipeline for proper functionality
     // FSM's current state describes what should be done with previous character
     UTF8_Char lastChar;
+    JsonElementType lastElementType;
     always @(posedge clk) begin
         lastChar <= curChar;
+        lastElementType <= curElementType;
     end
     
     
     TapeWriter writer (
         .curChar(lastChar), .curElementType(curElementType),
         .writingString(writingString), .writeStructure(writeStructure),
-        .stringTape(stringTape), .structTape(structTape),
+        .stringTape(stringTape), .structTape(structTape), .keyValuePairs(keyValuePairs),
         .clk(clk),.rst(rst)
     );
 

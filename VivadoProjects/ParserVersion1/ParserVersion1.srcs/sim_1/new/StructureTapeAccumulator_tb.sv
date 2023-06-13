@@ -39,7 +39,7 @@ module StructureTapeAccumulator_tb( );
     );
     
     StructureTapeAccumulator accumulate (
-        .nextTapeEntry(nextElement), .tape(tape),
+        .nextTapeEntry(nextElement), .tape(tape), .keyValuePairs(24'hF00D),
         .clk(clk), .rst(rst), .enable(enable)
     );
     
@@ -89,7 +89,7 @@ module StructureTapeAccumulator_tb( );
         expected[6] = {"}", 56'd1};
         expected[7] = {"r", 56'd0};
         expected[0] = {"r", 56'd7};
-        expected[1] = {"{", 56'd6};
+        expected[1] = {"{", 24'hF00D, 32'd6};
         #10;
         doCompare();
         enable = '0;

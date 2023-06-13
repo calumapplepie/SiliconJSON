@@ -56,6 +56,9 @@ module OverallJsonTester_tb();
             nextChar = $fgetc(jsonInFileHandle);
             #10;
         end
+        
+        // bonus clock for pipeline
+        #10;
 
         // compare
         foreach(expectedStringTape[i]) begin

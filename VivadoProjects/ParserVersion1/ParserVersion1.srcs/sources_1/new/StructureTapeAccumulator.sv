@@ -22,6 +22,7 @@
 
 module StructureTapeAccumulator (
         input JsonTapeElement nextTapeEntry,
+        input logic [23:0] keyValuePairs,
         output JsonTapeElement tape[StructTapeLength],
         input clk, rst, enable
     );
@@ -39,7 +40,8 @@ module StructureTapeAccumulator (
             
             // close brace handler
             else if(nextTapeEntry[63:56] == "}" ) begin
-                tape[lastBraceIndex][55:0] <= curIndex;
+                tape[lastBraceIndex][31:0] <= curIndex;
+                tape[lastBraceIndex][55:32] <= keyValuePairs;
                 tape[curIndex][55:0] <= lastBraceIndex;
                 
                 // root handler

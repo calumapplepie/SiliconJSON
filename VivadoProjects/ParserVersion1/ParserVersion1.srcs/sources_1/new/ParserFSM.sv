@@ -24,7 +24,8 @@ module ParserFSM(
     input UTF8_Char curChar,
     input clk, rst,
     output JsonElementType curElementType,
-    output logic writingString, writeStructure
+    output logic writingString, writeStructure,
+    output logic [23:0] keyValuePairsSoFar
     );
 
     typedef enum logic[3:0] {
@@ -40,7 +41,7 @@ module ParserFSM(
     state_t curState;
     state_t nextState;
 
-    logic [8:0] bracketDepth;
+    
     JsonCharType curCharType;
 
     CharTypeFinder charReader (
@@ -50,6 +51,9 @@ module ParserFSM(
     always @(posedge clk ) begin
         if(rst) curState <= StartObject;
         else curState <= nextState;
+        
+        // we assume nobody goes over 2^24 key value pairs with our parser
+        if (curState == StartKey) keyValuePairsSoFar <= keyValuePairsSoFar+1;
     end
 
     // next state determiner

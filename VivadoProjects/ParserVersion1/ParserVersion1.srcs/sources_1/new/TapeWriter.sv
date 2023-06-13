@@ -24,6 +24,7 @@ module TapeWriter(
         input UTF8_Char curChar,
         input JsonElementType curElementType,
         input writingString, writeStructure,
+        input logic [23:0] keyValuePairsSoFar,
         input clk, rst,
         output logic [7:0] stringTape [StringTapeLength],
         output JsonTapeElement structTape [StructTapeLength]
@@ -48,6 +49,7 @@ module TapeWriter(
 
     StructureTapeAccumulator structGoHere(
         .nextTapeEntry(nextElement), .enable(writeStructure), .tape(structTape),
+        .keyt
         .clk(clk), .rst(rst)
     );
 endmodule
