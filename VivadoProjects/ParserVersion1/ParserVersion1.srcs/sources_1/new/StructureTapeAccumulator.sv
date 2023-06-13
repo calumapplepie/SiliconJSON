@@ -46,7 +46,7 @@ module StructureTapeAccumulator (
                 
                 // root handler
                 if(1==1)begin
-                    // always true for now
+                    // it's always the root for now
                     tape[curIndex+1] <= {"r", 56'b0};
                     tape[0]          <= {"r", curIndex+1};
                 end

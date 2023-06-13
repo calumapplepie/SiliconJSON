@@ -53,6 +53,7 @@ module ParserFSM(
         else curState <= nextState;
         
         // we assume nobody goes over 2^24 key value pairs with our parser
+        // that saves us saturating logic
         if (curState == StartKey) keyValuePairsSoFar <= keyValuePairsSoFar+1;
     end
 
