@@ -29,9 +29,9 @@ parameter int StringTapeLength = 32;
 parameter int StructTapeLength = 32;
 class JsonCharType;
     typedef enum logic [3:0] {braceOpen, braceClose, bracketOpen, bracketClose, 
-                                quote, colon, comma, 
-                                whitespace, numeric, exponent, 
-                                controlChar, asciiAlphabetical, UTF_8, noType} CharType;
+                                quote, colon, comma, minusSign,
+                                whitespace, numeric, controlChar, asciiAlphabetical, 
+                                UTF_8, noType} CharType;
     CharType typeID;
     function new (UTF8_Char in);
         case(in)
@@ -43,18 +43,27 @@ class JsonCharType;
             ":" : typeID = colon;
             "," : typeID = comma;
             "\\": typeID = backslash;
-            "E","e": typeID = exponent;
-            
+            "-" : typeID = minusSign;
 
-            default: return noType;
+            " ","\t", 8'0A, 8'0D : typeID = whitespace;
+            // using do-not-care values to make matching easier
+            8'b00110???, 8'b0011100? : typeID = numeric;
+            // permitted whitespace already grabbed
+            8'b000?????, 8'h7F: typeID = controlChar;
+            8'b0??????? : typeID = asciiAlphabetical;
+
+            // do not yet play with unicode
+            default: typeID = notype;
         endcase
+
     endfunction
 
 endclass
 
 
 class JsonElementType;
-    enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose, str, number, true, false, null, noType} typeID;
-    
+    typedef enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose, str, number, true, false, null, noType} ElementType;
+    ElementType typeID;
+
 
 endclass
