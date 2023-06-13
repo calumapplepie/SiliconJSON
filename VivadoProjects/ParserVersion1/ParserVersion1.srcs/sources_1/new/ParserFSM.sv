@@ -60,6 +60,7 @@ module ParserFSM(
     // next state determiner
     always_comb begin
         case(curState) 
+            // the original intention was for this to read from the char type finder...
             StartObject : nextState = FindKey;
             FindKey     : nextState = (curChar == "\"") ? StartKey  : FindKey;
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
