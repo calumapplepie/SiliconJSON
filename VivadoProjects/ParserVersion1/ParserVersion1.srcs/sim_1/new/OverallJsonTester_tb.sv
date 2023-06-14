@@ -150,7 +150,9 @@ module OverallJsonTester_tb();
         rst <= 0;
         #50;
         // run test twice to ensure reset doesn't leave residue
+        enable <= '1;
         runTest();
+        enable <= '0;
         #60;
         $finish;
     end
