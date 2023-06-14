@@ -20,7 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module StringTapeAccumulator(
+module StringTapeAccumulator
+    import Core::UTF8_Char, Core::TapeIndex, Core::StringTapeLength;
+    (
         input UTF8_Char nextStringByte,
         output TapeIndex startIndex,
         output logic [7:0] tape [StringTapeLength],

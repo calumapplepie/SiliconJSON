@@ -20,13 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TopLevel(
+module TopLevel
+    import Core::UTF8_Char, Core::StructTapeLength, Core::StringTapeLength, Core::JsonTapeElement, Core::ElementType;
+    (
     input UTF8_Char curChar,
     input GCLK, rst, enable,
     output JsonTapeElement structTape[StructTapeLength],
     output logic [7:0] stringTape[StringTapeLength]
     );
-    JsonElementType curElementType;
+    ElementType curElementType;
     wire writingString, writeStructure, clk;
     wire [23:0] keyValuePairs;
     
@@ -43,7 +45,7 @@ module TopLevel(
     // this needs to be a pipeline for proper functionality
     // FSM's current state describes what should be done with previous character
     UTF8_Char lastChar;
-    JsonElementType lastElementType;
+    ElementType lastElementType;
     always @(posedge clk) begin
         lastChar <= curChar;
         lastElementType <= curElementType;

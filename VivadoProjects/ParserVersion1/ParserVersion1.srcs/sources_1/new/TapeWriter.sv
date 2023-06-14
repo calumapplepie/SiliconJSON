@@ -20,9 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TapeWriter(
-        input Core::UTF8_Char curChar,
-        input Core::ElementType curElementType,
+module TapeWriter
+    import Core::UTF8_Char, Core::ElementType, Core::TapeIndex, Core::JsonTapeElement;
+    (
+        input UTF8_Char curChar,
+        input ElementType curElementType,
         input writingString, writeStructure,
         input logic [23:0] keyValuePairs,
         input clk, rst,

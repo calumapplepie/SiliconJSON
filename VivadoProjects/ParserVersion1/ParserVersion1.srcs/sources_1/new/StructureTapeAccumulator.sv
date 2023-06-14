@@ -21,7 +21,7 @@
 
 
 module StructureTapeAccumulator 
-    import Core::JsonTapeElement, Core::StructTapeLength; (
+    import Core::JsonTapeElement, Core::StructTapeLength, Core::TapeIndex; (
         input JsonTapeElement nextTapeEntry,
         input logic [23:0] keyValuePairs,
         output JsonTapeElement tape[StructTapeLength],

@@ -24,7 +24,7 @@ module OverallJsonTester_tb();
     logic clk, rst, enable;
     int errorsSoFar = '0;
 
-    import Core::JsonTapeElement, Core::StructTapeLength, Core::StringTapeLength;
+    import Core::JsonTapeElement, Core::StructTapeLength, Core::StringTapeLength, Core::UTF8_Char;
 
     string basenames [32];
     // let the record state that I do not like windows

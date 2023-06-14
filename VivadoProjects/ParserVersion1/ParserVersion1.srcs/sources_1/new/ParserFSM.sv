@@ -42,9 +42,9 @@ module ParserFSM(
     state_t nextState;
 
     
-    JsonCharType curCharType;
+    Core::CharType curCharType;
 
-    assign curCharType = classifyChar(curChar);
+    assign curCharType = Core::classifyChar(curChar);
     
     always @(posedge clk ) begin
         if(rst) curState <= StartObject;
@@ -75,7 +75,7 @@ module ParserFSM(
     always_comb begin
         writingString  = 1'b0;
         writeStructure = 1'b0;
-        curElementType = curCharType;
+        curElementType = Core::charToElementType(curCharType);
         case(curState)
             StartObject, EndObject  : writeStructure = 1'b1;
             StartKey, StartString   : writeStructure = 1'b1;
