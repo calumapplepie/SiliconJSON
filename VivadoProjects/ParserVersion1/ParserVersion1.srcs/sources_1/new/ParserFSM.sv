@@ -46,8 +46,11 @@ module ParserFSM import Core::*; (
 
     assign curCharType = classifyChar(curChar);
     
-    always @(posedge clk ) begin
-        if(rst) curState <= StartObject;
+    always_ff @(posedge clk ) begin
+        if(rst) begin
+            curState <= StartObject;
+            keyValuePairsSoFar <= '0;
+        end
         else curState <= nextState;
         
         // we assume nobody goes over 2^24 key value pairs with our parser
