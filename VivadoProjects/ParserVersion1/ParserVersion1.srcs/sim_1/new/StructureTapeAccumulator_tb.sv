@@ -22,6 +22,8 @@
 
 module StructureTapeAccumulator_tb( );
     
+    import Core::*;
+    
     logic rst, clk, enable;
     logic hadErrors = '0;
     

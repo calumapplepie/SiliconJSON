@@ -24,6 +24,8 @@ module OverallJsonTester_tb();
     logic clk, rst, enable;
     int errorsSoFar = '0;
 
+    import Core::JsonTapeElement, Core::StructTapeLength, Core::StringTapeLength;
+
     string basenames [32];
     // let the record state that I do not like windows
     string JsonTestFilesDir = "C:/Users/mcconncm/Documents/SummerResearch2023/JsonTestFiles/";    

@@ -5,6 +5,8 @@ module StringTapeAccumulator_tb ();
     // idk why vivado wants this line
     typedef logic [55:0] TapeIndex;
     
+    import Core::StringTapeLength;
+    
     logic rst, clk, enable;
     logic [7:0] tape [StringTapeLength];
     logic [7:0] expected [StringTapeLength];

@@ -21,13 +21,13 @@
 
 
 module TapeWriter(
-        input UTF8_Char curChar,
-        input JsonElementType curElementType,
+        input Core::UTF8_Char curChar,
+        input Core::ElementType curElementType,
         input writingString, writeStructure,
         input logic [23:0] keyValuePairs,
         input clk, rst,
-        output logic [7:0] stringTape [StringTapeLength],
-        output JsonTapeElement structTape [StructTapeLength]
+        output logic [7:0] stringTape [Core::StringTapeLength],
+        output Core::JsonTapeElement structTape [Core::StructTapeLength]
     );
     
     

@@ -21,9 +21,9 @@
 
 
 module ParserFSM(
-    input UTF8_Char curChar,
+    input Core::UTF8_Char curChar,
     input clk, rst,
-    output JsonElementType curElementType,
+    output Core::ElementType curElementType,
     output logic writingString, writeStructure,
     output logic [23:0] keyValuePairsSoFar
     );
@@ -44,9 +44,7 @@ module ParserFSM(
     
     JsonCharType curCharType;
 
-    CharTypeFinder charReader (
-        .curChar (curChar), .charType(curCharType) 
-    );
+    assign curCharType = classifyChar(curChar);
     
     always @(posedge clk ) begin
         if(rst) curState <= StartObject;

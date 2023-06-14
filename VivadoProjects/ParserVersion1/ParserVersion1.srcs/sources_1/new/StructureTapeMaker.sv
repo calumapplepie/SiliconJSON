@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module StructureTapeMaker(
-        input JsonElementType elementType, input TapeIndex stringTapeIndex, input TapeIndex structTapeIndex,
+module StructureTapeMaker import Core::*;(
+        input ElementType elementType, input TapeIndex stringTapeIndex, input TapeIndex structTapeIndex,
         // currently unused
         input clk, rst,
         output JsonTapeElement nextElement
@@ -32,11 +32,11 @@ module StructureTapeMaker(
     assign nextElement = {prefix, payload};
     
     // we literally only handle strings right now
-    ElementTypeToTapeType transformer (.target(elementType), .out(prefix));
+    assign out = Core::elementTypeToTapeChar(elementType);
     always_comb begin
         case (elementType)
-            str :    payload <= stringTapeIndex;
-            root, objOpen:    payload <= '0;
+            str :                 payload <= stringTapeIndex;
+            objOpen, objClose:    payload <= '0;
             default: payload <= 56'hBADBADBADBADD;
         endcase
     end
