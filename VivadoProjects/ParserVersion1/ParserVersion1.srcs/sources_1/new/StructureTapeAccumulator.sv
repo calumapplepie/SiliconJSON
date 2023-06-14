@@ -42,7 +42,7 @@ module StructureTapeAccumulator
             
             // close brace handler
             else if(nextTapeEntry[63:56] == "}" ) begin
-                tape[lastBraceIndex][31:0] <= curIndex;
+                tape[lastBraceIndex][31:0] <= curIndex+1;
                 tape[lastBraceIndex][55:32] <= keyValuePairs;
                 tape[curIndex][55:0] <= lastBraceIndex;
                 
@@ -50,7 +50,7 @@ module StructureTapeAccumulator
                 if(1==1)begin
                     // it's always the root for now
                     tape[curIndex+1] <= {"r", 56'b0};
-                    tape[0]          <= {"r", curIndex+1};
+                    tape[0]          <= {"r", curIndex+2};
                 end
             end
             curIndex++;
