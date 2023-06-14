@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ParserFSM(
+module ParserFSM import Core::*; (
     input Core::UTF8_Char curChar,
     input clk, rst,
     output Core::ElementType curElementType,
@@ -42,9 +42,9 @@ module ParserFSM(
     state_t nextState;
 
     
-    Core::CharType curCharType;
+    CharType curCharType;
 
-    assign curCharType = Core::classifyChar(curChar);
+    assign curCharType = classifyChar(curChar);
     
     always @(posedge clk ) begin
         if(rst) curState <= StartObject;
@@ -57,15 +57,15 @@ module ParserFSM(
 
     // next state determiner
     always_comb begin
-        case(curState) 
-            // the original intention was for this to read from the char type finder...
+        logic isQuote = curCharType == quote;
+        case(curState)    
             StartObject : nextState = FindKey;
-            FindKey     : nextState = (curChar == "\"") ? StartKey  : FindKey;
+            FindKey     : nextState = isQuote ? StartKey  : FindKey;
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
-            ReadKey     : nextState = (curChar == "\"") ? FindValue : ReadKey; // todo: escaped quotes
-            FindValue   : nextState = (curChar == "\"") ? StartString : FindValue; // todo: check for colon
+            ReadKey     : nextState = isQuote ? FindValue : ReadKey; // todo: escaped quotes
+            FindValue   : nextState = isQuote ? StartString : FindValue; // todo: check for colon
             StartString : nextState = ReadString; // NOTE: breaks on empty value
-            ReadString  : nextState = (curChar == "\"") ? FindKey: ReadString;
+            ReadString  : nextState = isQuote ? FindKey: ReadString;
             default     : nextState = Error;
         endcase
     end
@@ -75,7 +75,7 @@ module ParserFSM(
     always_comb begin
         writingString  = 1'b0;
         writeStructure = 1'b0;
-        curElementType = Core::charToElementType(curCharType);
+        curElementType = charToElementType(curCharType);
         case(curState)
             StartObject, EndObject  : writeStructure = 1'b1;
             StartKey, StartString   : writeStructure = 1'b1;

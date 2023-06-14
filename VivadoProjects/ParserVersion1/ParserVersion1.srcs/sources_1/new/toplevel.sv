@@ -53,7 +53,7 @@ module TopLevel
     
     
     TapeWriter writer (
-        .curChar(lastChar), .curElementType(curElementType),
+        .curChar(lastChar), .curElementType(lastElementType),
         .writingString(writingString), .writeStructure(writeStructure),
         .stringTape(stringTape), .structTape(structTape), .keyValuePairs(keyValuePairs),
         .clk(clk),.rst(rst)
