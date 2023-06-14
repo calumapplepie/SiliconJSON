@@ -34,9 +34,10 @@ module StructureTapeMaker import Core::*;(
     
     always_comb begin
         case (elementType)
-            str :                 payload <= stringTapeIndex;
-            objOpen, objClose:    payload <= '0;
-            default: payload <= 56'hBADBADBADBADD;
+            str :                 payload = stringTapeIndex;
+            objOpen, objClose:    payload = '0;
+            trueVal, falseVal, nullVal: payload = '0;
+            default: payload = 56'hBADBADBADBADD;
         endcase
     end
 endmodule

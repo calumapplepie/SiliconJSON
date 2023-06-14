@@ -74,9 +74,8 @@ module ParserFSM import Core::*; (
             StartObject : nextState = FindKey;
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
             StartString : nextState = ReadString; // NOTE: breaks on empty value
-            EndSimple   : nextState = FindKey;
 
-            FindKey     : case(curCharType)
+            FindKey, EndSimple     : case(curCharType)
                 quote     : nextState = StartKey;
                 braceClose: nextState = EndObject;
                 default   : nextState = FindKey;

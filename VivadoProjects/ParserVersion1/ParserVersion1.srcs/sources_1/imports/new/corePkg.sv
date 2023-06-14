@@ -77,6 +77,9 @@ package Core;
             arrayOpen  : return "[";
             arrayClose : return "]";
             str        : return "\"";
+            trueVal    : return "t";
+            falseVal   : return "f";
+            nullVal    : return "n";
             default    : return "\0";
         endcase
     endfunction

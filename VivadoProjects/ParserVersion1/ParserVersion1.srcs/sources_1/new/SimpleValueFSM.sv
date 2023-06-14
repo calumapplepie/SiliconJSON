@@ -32,9 +32,9 @@ module SimpleValueFSM import Core::UTF8_Char, Core::ElementType, Core::trueVal, 
     assign scanComplete = scannedElement != noType || bytesRead > 5;
     
     always_comb case(charsSoFar)
-           "true" : scannedElement = trueVal;
-           "false": scannedElement = falseVal;
-           "null" : scannedElement = nullVal;
+           {"true",8'd0} : scannedElement = trueVal;
+           "false"    : scannedElement = falseVal;
+           {"null",8'd0} : scannedElement = nullVal;
            default: scannedElement = noType;
     endcase
     
