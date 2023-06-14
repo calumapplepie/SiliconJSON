@@ -34,17 +34,26 @@ module ParserFSM import Core::*; (
         StartKey,    // Found the key's start
         ReadKey,     // Read the key
         FindValue,   // Find the value
+        ReadSimple,  // read one of the simple JSON values
+        EndSimple,   // write out read JSON value
         StartString, // Found the first quote of a string
         ReadString,  // Read the string
         EndObject,   // finish off the object we just found
         Error} state_t;
     state_t curState;
     state_t nextState;
-
+    
+    logic simpleValScanComplete;
+    ElementType simpleValElement;
+    SimpleValueFSM simpleValue (.curChar(curChar), .scanComplete(simpleValScanComplete),
+                                    .scannedElement(simpleValElement), .enb(curState==ReadSimple),
+                                    .clk(clk),.rst(rst));
     
     CharType curCharType;
 
     assign curCharType = classifyChar(curChar);
+    
+    
     
     always_ff @(posedge clk ) begin
         if(rst) begin
@@ -63,16 +72,27 @@ module ParserFSM import Core::*; (
         logic isQuote = curCharType == quote;
         case(curState)    
             StartObject : nextState = FindKey;
+            StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
+            StartString : nextState = ReadString; // NOTE: breaks on empty value
+            EndSimple   : nextState = FindKey;
+
             FindKey     : case(curCharType)
                 quote     : nextState = StartKey;
                 braceClose: nextState = EndObject;
                 default   : nextState = FindKey;
             endcase
-            StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
+            FindValue   : case(curCharType) // todo: check for colon
+                quote:             nextState = StartString;
+                asciiAlphabetical: nextState = ReadSimple; 
+                default:           nextState = FindValue;
+            endcase
+
+
             ReadKey     : nextState = isQuote ? FindValue : ReadKey; // todo: escaped quotes
-            FindValue   : nextState = isQuote ? StartString : FindValue; // todo: check for colon
-            StartString : nextState = ReadString; // NOTE: breaks on empty value
             ReadString  : nextState = isQuote ? FindKey: ReadString;
+            
+            ReadSimple  : nextState = simpleValScanComplete ? EndSimple : ReadSimple; 
+            
             default     : nextState = Error;
         endcase
     end
@@ -85,14 +105,10 @@ module ParserFSM import Core::*; (
         curElementType = charToElementType(curCharType);
         case(curState)
             StartObject, EndObject  : writeStructure = 1'b1;
-            StartKey, StartString   : begin 
-                writeStructure = 1'b1;
-                curElementType = str; 
-            end
-            ReadKey, ReadString     : begin
-                writingString  = 1'b1;
-                curElementType = str;
-            end
+            StartKey, StartString   : writeStructure = 1'b1;
+            ReadKey, ReadString     : writingString  = 1'b1;
+            ReadSimple: curElementType = simpleValElement;
+            EndSimple: writeStructure = 1'b1;
             default: 
             // some states have no output besides those default ones
             ;

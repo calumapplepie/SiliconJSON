@@ -32,7 +32,7 @@ package Core;
                                 UTF_8, unknown} CharType;
     
     function CharType classifyChar (UTF8_Char in);
-        case(in)
+        casez(in)
             "{" : return braceOpen;
             "}" : return braceClose;
             "[" : return bracketOpen;
@@ -53,11 +53,10 @@ package Core;
             // do not yet play with unicode
             default: return unknown;
         endcase
-
     endfunction
 
     typedef enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose, 
-                                str, number, true, false, nullByte, noType
+                                str, number, trueVal, falseVal, nullVal, noType
                                 } ElementType;
     function ElementType charToElementType(CharType charType);
         case (charType)
