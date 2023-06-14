@@ -60,7 +60,11 @@ module ParserFSM import Core::*; (
         logic isQuote = curCharType == quote;
         case(curState)    
             StartObject : nextState = FindKey;
-            FindKey     : nextState = isQuote ? StartKey  : FindKey;
+            FindKey     : case(curCharType)
+                quote     : nextState = StartKey;
+                braceClose: nextState = EndObject;
+                default   : nextState = FindKey;
+            endcase
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
             ReadKey     : nextState = isQuote ? FindValue : ReadKey; // todo: escaped quotes
             FindValue   : nextState = isQuote ? StartString : FindValue; // todo: check for colon
@@ -78,8 +82,14 @@ module ParserFSM import Core::*; (
         curElementType = charToElementType(curCharType);
         case(curState)
             StartObject, EndObject  : writeStructure = 1'b1;
-            StartKey, StartString   : writeStructure = 1'b1;
-            ReadKey, ReadString     : writingString  = 1'b1;
+            StartKey, StartString   : begin 
+                writeStructure = 1'b1;
+                curElementType = str; 
+            end
+            ReadKey, ReadString     : begin
+                writingString  = 1'b1;
+                curElementType = str;
+            end
             default: 
             // some states have no output besides those default ones
             ;

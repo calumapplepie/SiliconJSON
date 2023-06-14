@@ -46,9 +46,15 @@ module TopLevel
     // FSM's current state describes what should be done with previous character
     UTF8_Char lastChar;
     ElementType lastElementType;
-    always @(posedge clk) begin
-        lastChar <= curChar;
-        lastElementType <= curElementType;
+    always_ff @(posedge clk) begin
+        if(rst) begin
+            lastChar        <= "{";
+            lastElementType <= Core::objOpen;
+        end
+        else begin
+            lastChar        <= curChar;
+            lastElementType <= curElementType;
+        end 
     end
     
     
