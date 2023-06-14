@@ -21,9 +21,7 @@
 
 
 module StructureTapeMaker import Core::*;(
-        input ElementType elementType, input TapeIndex stringTapeIndex, input TapeIndex structTapeIndex,
-        // currently unused
-        input clk, rst,
+        input ElementType elementType, input TapeIndex stringTapeIndex,
         output JsonTapeElement nextElement
     );
     logic [55:0] payload;
@@ -32,7 +30,8 @@ module StructureTapeMaker import Core::*;(
     assign nextElement = {prefix, payload};
     
     // we literally only handle strings right now
-    assign out = Core::elementTypeToTapeChar(elementType);
+    assign prefix = Core::elementTypeToTapeChar(elementType);
+    
     always_comb begin
         case (elementType)
             str :                 payload <= stringTapeIndex;

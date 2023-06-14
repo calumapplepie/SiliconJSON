@@ -32,6 +32,7 @@ module TapeWriter
         output Core::JsonTapeElement structTape [Core::StructTapeLength]
     );
     
+    TapeIndex curStringIndex;
     
     StringTapeAccumulator stringGoHere (
         .nextStringByte(curChar), .enable(writingString),
@@ -40,13 +41,10 @@ module TapeWriter
     );
     
     JsonTapeElement nextElement;
-    TapeIndex curStringIndex;
-
+   
     // root handling currently elsewhere
     StructureTapeMaker elementBuilder (
-        .elementType(curElementType), .nextElement(nextElement), .stringTapeIndex(curStringIndex),
-        // not currently sequencial, may never be... we'll see
-        .clk(clk), .rst(rst)
+        .elementType(curElementType), .nextElement(nextElement), .stringTapeIndex(curStringIndex)
     );
 
     StructureTapeAccumulator structGoHere(

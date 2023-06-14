@@ -34,6 +34,7 @@ module StructureTapeAccumulator
         if (rst) begin
             foreach(tape[i]) tape[i] <= '0;
             curIndex = 56'd1;
+            lastBraceIndex = 56'd1;
         end else if(enable) begin
             tape[curIndex] <= nextTapeEntry;
             
