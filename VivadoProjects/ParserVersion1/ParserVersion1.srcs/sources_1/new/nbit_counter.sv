@@ -3,7 +3,7 @@
 // I didn't, but here it is anyways
 
 module moduleName #(
-    bitWidth
+    parameter bitWidth=4
 ) (
     input clk, rst, enable,
     output [bitWidth-1:0] count
@@ -11,7 +11,7 @@ module moduleName #(
 
     always @(posedge clk ) begin
         if (rst) begin
-            count = 0;
+            count <= 0;
         end else if (enable) begin
             count++; //assume no overflow
         end

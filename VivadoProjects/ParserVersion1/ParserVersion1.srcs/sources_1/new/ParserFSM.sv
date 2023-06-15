@@ -99,6 +99,7 @@ module ParserFSM import Core::*; (
 
     // our outputs
     always_comb begin
+        import ElementClassification::*;
         writingString  = 1'b0;
         writeStructure = 1'b0;
         curElementType = charToElementType(curCharType);
