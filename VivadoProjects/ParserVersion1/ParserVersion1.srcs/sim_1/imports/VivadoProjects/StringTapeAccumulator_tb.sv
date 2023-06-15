@@ -8,24 +8,22 @@ module StringTapeAccumulator_tb ();
     import Core::StringTapeLength;
     
     logic rst, clk, enable;
-    logic [7:0] tape [StringTapeLength];
     logic [7:0] expected [StringTapeLength];
     TapeIndex curIndex, expectedIndex;
-    UTF8_Char curChar;
+    Core::UTF8_Char curChar;
     
     string testStringOne = "apple";
     string testStringTwo = "pie";
 
     StringTapeAccumulator testMe (
-        .curIndex(curIndex), .nextStringByte(curChar),
-        .tape(tape),
+        .startIndex(curIndex), .nextStringByte(curChar),
         .rst(rst),.clk(clk),.enable(enable)
     );
     task doCompare();
-        foreach(tape[i]) begin
-            if(tape[i] != expected[i])begin
-                $display ("ERROR Does not matach at index %0d", i);
-                $display ("Expected %d, got %d", expected[i], tape[i]);
+        foreach(expected[i]) begin
+            if(testMe.ram.ram[i] != expected[i])begin
+                $display ("ERROR Does not mtach at index %0d", i);
+                $display ("Expected %d, got %d", expected[i], testMe.ram.ram[i]);
             end
             if (expectedIndex != curIndex)begin
                 $display ("ERROR Tape Indicies Do Not Match!!");
@@ -35,7 +33,7 @@ module StringTapeAccumulator_tb ();
     endtask
 
     task runTest ();
-        foreach (expected[i]) expected[i] = '0;
+        foreach (expected[i]) expected[i] = 'x;
         expectedIndex = 56'd0;
         doCompare();
         
@@ -44,10 +42,10 @@ module StringTapeAccumulator_tb ();
         foreach (testStringOne[i]) begin
             curChar <= testStringOne[i]; #10;
         end
-        enable = 1'b0; #10;
+        enable = 1'b0; #30;
         
         expectedIndex = 56'd10; 
-        expected[0:10] = '{5, 0, 0, 0, "a","p","p","l","e",0,0};
+        expected[0:9] = '{5, 0, 0, 0, "a","p","p","l","e",0};
         doCompare();
 
         // now for the next string
@@ -56,8 +54,8 @@ module StringTapeAccumulator_tb ();
             curChar <= testStringTwo[i]; #10;
         end
 
-        enable = 1'b0; #10;
-        expected[0:20] = '{5, 0, 0, 0, "a","p","p","l","e",0,3,0,0,0,"p","i","e",0,0,0,0};
+        enable = 1'b0; #30;
+        expected[0:17] = '{5, 0, 0, 0, "a","p","p","l","e",0,3,0,0,0,"p","i","e",0};
         expectedIndex = 56'd18;
         doCompare();
     
