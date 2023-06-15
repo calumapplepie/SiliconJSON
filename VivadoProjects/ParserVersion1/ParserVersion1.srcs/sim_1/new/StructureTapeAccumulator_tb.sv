@@ -31,7 +31,7 @@ module StructureTapeAccumulator_tb( );
     JsonTapeElement expected [StructTapeLength];
     
     JsonTapeElement nextElement;
-    JsonElementType curElementType;
+    ElementType curElementType;
     
     TapeIndex stringTapeIndex;
     
@@ -41,16 +41,16 @@ module StructureTapeAccumulator_tb( );
     );
     
     StructureTapeAccumulator accumulate (
-        .nextTapeEntry(nextElement), .tape(tape), .keyValuePairs(24'hF00D),
+        .nextTapeEntry(nextElement), .keyValuePairs(24'hF00D),
         .clk(clk), .rst(rst), .enable(enable)
     );
     
     
     task doCompare();
-        foreach(tape[i]) begin
-            if(tape[i] != expected[i])begin
+        foreach(expected[i]) begin
+            if(accumulate.blockRam.ram[i] != expected[i])begin
                 $display ("ERROR Does not match at index %0d", i);
-                $display ("Expected %h, got %h", expected[i], tape[i]);
+                $display ("Expected %h, got %h", expected[i], accumulate.blockRam.ram[i]);
                 hadErrors++;
             end
         end
@@ -59,10 +59,9 @@ module StructureTapeAccumulator_tb( );
     task  runTest();
         enable = '1;
         stringTapeIndex = '0;
-        foreach(expected[i]) expected[i] = '0;
+        foreach(expected[i]) expected[i] = 'x;
         doCompare();
         curElementType = objOpen;
-        expected[0] = {"\0", 56'd0};
         expected[1] = {"{", 56'd0};
         #10;
         curElementType = str;
@@ -89,9 +88,11 @@ module StructureTapeAccumulator_tb( );
         curElementType = objClose;
         stringTapeIndex = 152;
         expected[6] = {"}", 56'd1};
+        expected[1] = {"{", 24'hF00D, 32'd7};
+        #10
+        doCompare();
+        expected[0] = {"r", 56'd8};
         expected[7] = {"r", 56'd0};
-        expected[0] = {"r", 56'd7};
-        expected[1] = {"{", 24'hF00D, 32'd6};
         #10;
         doCompare();
         enable = '0;

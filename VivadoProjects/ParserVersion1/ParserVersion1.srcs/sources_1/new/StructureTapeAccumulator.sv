@@ -35,7 +35,7 @@ module StructureTapeAccumulator
     
     
     
-    TapeBlockRam blockRam (
+    TapeBlockRam #(.WORDSIZE(64), .NUMWORDS(StructTapeLength)) blockRam  (
             .clk(clk), .ena('1), .enb('1), //always enable
             .wea(enable), .web(doCloseBraceWrite),  
             .addra(curIndex), .addrb(lastBraceIndex),
@@ -47,7 +47,10 @@ module StructureTapeAccumulator
     
     always_comb begin
         curIndexTapeEntry = nextTapeEntry; 
-        curIndexTapeEntry[55:0] = lastBraceIndex;
+        
+        if(doCloseBraceWrite) begin
+            curIndexTapeEntry[55:0] = lastBraceIndex;
+        end 
         
         // generate the last brace entry
         lastBraceTapeEntry = '0;
@@ -59,6 +62,7 @@ module StructureTapeAccumulator
         if (lastBraceIndex == 0) begin
             lastBraceTapeEntry[63:56] = "r";
             lastBraceTapeEntry[55:32] = '0;
+            curIndexTapeEntry[63:56] = "r";
         end 
     end
     
