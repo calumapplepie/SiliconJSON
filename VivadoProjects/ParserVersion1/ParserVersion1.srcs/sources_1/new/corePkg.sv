@@ -19,22 +19,19 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// global include: added to all files
-// reconsider that.  also, lets look at making these classes
-typedef logic [7:0] UTF8_Char;
-typedef logic [63:0] JsonTapeElement;
-typedef logic [55:0] TapeIndex;
-
-parameter int StringTapeLength = 32;
-parameter int StructTapeLength = 32;
-
-package CharClassification;
+package Core;
+    typedef logic [7:0] UTF8_Char;
+    typedef logic [63:0] JsonTapeElement;
+    typedef logic [55:0] TapeIndex;
+    
+    parameter int StringTapeLength = 256;
+    parameter int StructTapeLength = 32;
     typedef enum logic [3:0] {braceOpen, braceClose, bracketOpen, bracketClose, 
                                 quote, colon, comma, minusSign, backslash,
                                 whitespace, numeric, controlChar, asciiAlphabetical, 
-                                UTF_8, noType} JsonCharType;
+                                UTF_8, unknown} CharType;
     
-    function JsonCharType classifyChar (UTF8_Char in);
+    function CharType classifyChar (UTF8_Char in);
         casez(in)
             "{" : return braceOpen;
             "}" : return braceClose;
@@ -54,20 +51,14 @@ package CharClassification;
             8'b0??????? : return asciiAlphabetical;
 
             // do not yet play with unicode
-            default: return noType;
+            default: return unknown;
         endcase
-
     endfunction
 
-endpackage
-import CharClassification::JsonCharType;
-
-package ElementClassification;
-    typedef enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose,
-                                str, number, jsonTrue, jsonFalse, jsonNull, noType} JsonElementType;
-
-    function JsonElementType charToElementType(JsonCharType charType);
-        import CharClassification::*;
+    typedef enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose, 
+                                str, number, trueVal, falseVal, nullVal, noType
+                                } ElementType;
+    function ElementType charToElementType(CharType charType);
         case (charType)
             braceOpen   : return objOpen;
             braceClose  : return objClose;
@@ -75,11 +66,23 @@ package ElementClassification;
             bracketClose: return arrayClose;
             quote       : return str;
             // others are special
-            default     : return ElementClassification::noType;
+            default     : return noType;
+        endcase
+    endfunction
+    
+    function UTF8_Char elementTypeToTapeChar(ElementType elementType);
+        case (elementType)
+            objOpen    : return "{";
+            objClose   : return "}";
+            arrayOpen  : return "[";
+            arrayClose : return "]";
+            str        : return "\"";
+            trueVal    : return "t";
+            falseVal   : return "f";
+            nullVal    : return "n";
+            default    : return "\0";
         endcase
     endfunction
     
 
 endpackage
-
-import ElementClassification::JsonElementType;
