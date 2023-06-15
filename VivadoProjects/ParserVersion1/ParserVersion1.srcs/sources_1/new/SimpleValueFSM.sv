@@ -46,8 +46,8 @@ module SimpleValueFSM import Core::UTF8_Char, Core::ElementType, Core::trueVal, 
             // fsm won't tell us untill one clock cycle later
             charsSoFar[0] <= curChar;
         end else begin
-            charsSoFar[bytesRead] = curChar;
-            bytesRead++;
+            charsSoFar[bytesRead] <= curChar;
+            bytesRead <= bytesRead +1;
         end 
     end
     
