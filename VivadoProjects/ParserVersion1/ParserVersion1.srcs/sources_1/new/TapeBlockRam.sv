@@ -1,33 +1,27 @@
 // Dual-Port Block RAM with Two Write Ports
 // File: rams_tdp_rf_rf.v
 
-module rams_tdp_rf_rf (clka,clkb,ena,enb,wea,web,addra,addrb,dia,dib,doa,dob);
+module TapeBlockRam #(parameter WORDSIZE=8, parameter NUMWORDS=64) (
+    input logic clk, ena, enb, wea,web, 
+    input [9:0] addra,addrb, 
+    input [WORDSIZE-1:0] dia,dib,
+    output logic [WORDSIZE-1:0] doa,dob
+);
 
-input clka,clkb,ena,enb,wea,web;
-input [9:0] addra,addrb;
-input [15:0] dia,dib;
-output [15:0] doa,dob;
-reg [15:0] ram [1023:0];
-reg [15:0] doa,dob;
+logic [WORDSIZE-1:0] ram [1023:0];
 
-always @(posedge clka)
-begin
-if (ena)
-begin
-if (wea)
-ram[addra] <= dia;
-doa <= ram[addra];
-end
+always_ff @(posedge clk) begin
+    if (ena) begin
+        if (wea) ram[addra] <= dia;
+        doa <= ram[addra];
+    end
 end
 
-always @(posedge clkb)
-begin
-if (enb)
-begin
-if (web)
-ram[addrb] <= dib;
-dob <= ram[addrb];
-end
+always_ff @(posedge clk) begin
+    if (enb) begin
+        if (web) ram[addrb] <= dib;
+        dob <= ram[addrb];
+    end
 end
 
 endmodule
