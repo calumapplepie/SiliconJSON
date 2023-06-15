@@ -8,7 +8,7 @@ module TapeBlockRam #(parameter WORDSIZE=8, parameter NUMWORDS=64) (
     output logic [WORDSIZE-1:0] doa,dob
 );
 
-logic [WORDSIZE-1:0] ram [1023:0];
+(* keep = "true" *) logic [WORDSIZE-1:0] ram [1023:0];
 
 always_ff @(posedge clk) begin
     if (ena) begin
