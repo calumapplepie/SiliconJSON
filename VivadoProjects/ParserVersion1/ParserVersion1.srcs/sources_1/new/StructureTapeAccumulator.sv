@@ -24,36 +24,59 @@ module StructureTapeAccumulator
     import Core::JsonTapeElement, Core::StructTapeLength, Core::TapeIndex; (
         input JsonTapeElement nextTapeEntry,
         input logic [23:0] keyValuePairs,
-        output JsonTapeElement tape[StructTapeLength],
         input clk, rst, enable
     );
+    
     TapeIndex curIndex;
     TapeIndex lastBraceIndex;
+    
+    JsonTapeElement curIndexTapeEntry;
+    JsonTapeElement lastBraceTapeEntry;
+    
+    
+    
+    TapeBlockRam blockRam (
+            .clk(clk), .ena('1), .enb('1), //always enable
+            .wea(enable), .web(doCloseBraceWrite),  
+            .addra(curIndex), .addrb(lastBraceIndex),
+            .dia(curIndexTapeEntry), .dib(lastBraceTapeEntry));
+    
+    logic doCloseBraceWrite;
+    assign doCloseBraceWrite = (nextTapeEntry[63:56] == "}") && enable;
 
+    
+    always_comb begin
+        curIndexTapeEntry = nextTapeEntry; 
+        curIndexTapeEntry[55:0] = lastBraceIndex;
+        
+        // generate the last brace entry
+        lastBraceTapeEntry = '0;
+        lastBraceTapeEntry[31:0] = curIndex+1;
+        lastBraceTapeEntry[55:32] = keyValuePairs;
+        lastBraceTapeEntry[63:56] = "{";
+        
+        // root handler
+        if (lastBraceIndex == 0) begin
+            lastBraceTapeEntry[63:56] = "r";
+            lastBraceTapeEntry[55:32] = '0;
+        end 
+    end
+    
     always_ff @(posedge clk ) begin
         if (rst) begin
-            foreach(tape[i]) tape[i] <= '0;
-            curIndex = 56'd1;
-            lastBraceIndex = 56'd1;
-        end else if(enable) begin
-            tape[curIndex] <= nextTapeEntry;
-            
+            //foreach(tape[i]) tape[i] <= '0;
+            curIndex <= 56'd1;
+            lastBraceIndex <= 56'd1;
+        end else if(enable) begin            
             if(nextTapeEntry[63:56] == "{") lastBraceIndex <= curIndex;
             
             // close brace handler
-            else if(nextTapeEntry[63:56] == "}" ) begin
-                tape[lastBraceIndex][31:0] <= curIndex+1;
-                tape[lastBraceIndex][55:32] <= keyValuePairs;
-                tape[curIndex][55:0] <= lastBraceIndex;
+            else if(nextTapeEntry[63:56] == "}") begin
+                // unconditionally considers this close to be the last close brace
+                lastBraceIndex <= 0; // stores after we've already stored the next tape entry
                 
-                // root handler
-                if(1==1)begin
-                    // it's always the root for now
-                    tape[curIndex+1] <= {"r", 56'b0};
-                    tape[0]          <= {"r", curIndex+2};
-                end
             end
-            curIndex++;
+            curIndex <= curIndex + 1;
             
         end
     end
