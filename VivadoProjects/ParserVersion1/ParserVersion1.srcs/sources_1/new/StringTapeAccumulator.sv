@@ -66,7 +66,7 @@ always_comb begin
                 byteB = {strLen[23:16]};
             end
             2 : begin
-                addressA = startIndex + 1;
+                addressA = startIndex + 1; //repeat to avoid problems
                 byteA = {strLen[15: 8]};
                 addressB = startIndex + 3;
                 byteB =  {strLen[31:24]};
@@ -79,10 +79,11 @@ always_ff @(posedge clk ) begin
     if(rst) begin
         //foreach(tape[i]) tape[i] = '0;
         curIndex <= 4'd4;
-        cyclesDisabled <= '0;
+        cyclesDisabled <= '1;
         startIndex <= '0;
         strLen <= 0;
     end else if (enable) begin
+        cyclesDisabled <= '0;
         curIndex <= curIndex + 1;
         strLen <= strLen +1;
     end else begin

@@ -22,14 +22,14 @@ module StringTapeAccumulator_tb ();
     task doCompare();
         foreach(expected[i]) begin
             if(testMe.ram.ram[i] != expected[i])begin
-                $display ("ERROR Does not mtach at index %0d", i);
+                $display ("ERROR Does not match at index %0d", i);
                 $display ("Expected %d, got %d", expected[i], testMe.ram.ram[i]);
             end
-            if (expectedIndex != curIndex)begin
+        end
+        if (expectedIndex != curIndex)begin
                 $display ("ERROR Tape Indicies Do Not Match!!");
                 $display ("Expected %d, got %d", expectedIndex, curIndex);
             end
-        end
     endtask
 
     task runTest ();
