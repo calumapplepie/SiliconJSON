@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// not actually an FSM
+// not actually an FSM!!!
 module SimpleValueFSM import Core::UTF8_Char, Core::ElementType, Core::trueVal, Core::falseVal, Core::nullVal, Core::noType; (
         input UTF8_Char curChar,
         output scanComplete,
