@@ -9,9 +9,15 @@ module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64) (
     output hash
 );
 
+// crude hack to force vivado to generate this module
 assign hash = (^doa)^ (^dob);
 
-(* dont_touch = "true" *) logic [WORDSIZE-1:0] ram [NUMWORDS-1:0];
+logic [WORDSIZE-1:0] ram [NUMWORDS-1:0];
+
+// docs say accesses ports can have different bitwidths.  todo: determine if they also support 
+// unaligned access.
+// would make block processing easier (read JSON into block ram -> process blocks -> send sub-blocks through
+// purpose-built FPGA circuits)
 
 always_ff @(posedge clk) begin
     if (ena) begin

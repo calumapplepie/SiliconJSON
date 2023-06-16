@@ -35,10 +35,11 @@ module BcdAccumulator import Bcd::*; (
         .clk(clk), .rst(rst), .enb(selectedArray), .arrayOut(buffers), .nextIn(nextDigit)
     );
     
+    // note: may be more optimal to multiply-add as we go, rather than converting an array
+    // in fact it most definitely will be
+    // ... oops, guess that wasted a chunk of time
     assign accumulatedBufferData[0] = BcdArrayToBinary(buffers[0]);
     assign accumulatedBufferData[1] = BcdArrayToBinary(buffers[1]);
     assign accumulatedBufferData[2] = BcdArrayToBinary(buffers[2]);
-    
-    
-    
+        
 endmodule

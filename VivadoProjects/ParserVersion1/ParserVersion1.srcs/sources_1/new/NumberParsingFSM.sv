@@ -28,9 +28,14 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     );
 
     logic numSign, exponentSign;
-    logic [3:0] integralSegment    [20:0];
-    logic [3:0] decimalSegment     [20:0];
-    logic [3:0] exponentialSegment [5:0];
+    logic [63:0] parsedNumSegments [2:0];
+    wire [2:0] selectedArray;    
+    
+    BcdAccumulator accum(
+        .accumulatedBufferData(parsedNumSegmeents), 
+        .selectedArray, .curChar,
+        .clk, .enb, .rst 
+    );
     
     typedef enum logic[5:0] {
         StartNum,
