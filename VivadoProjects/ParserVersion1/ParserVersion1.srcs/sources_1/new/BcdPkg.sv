@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-package BcdPkg;
+package Bcd;
     // specifying all possible numeric values in here
     // should make block processing easier in future (?)
     typedef enum logic[3:0] {zero=4'd0, one=4'd1, 
@@ -44,7 +44,13 @@ package BcdPkg;
         endcase
     endfunction
     
-    function logic[63:0] bcdArrayToBinary
+    function logic[63:0] bcdArrayToBinary(BcdDigit [20:0] array);
+        // this is a good candidate for optimization!!!
+        logic [63:0] retval;
+        for (int i = 0; i <= 20; i++) begin
+            retval += array[i] * (10**i);
+        end
+        return retval;
         
     endfunction
 endpackage
