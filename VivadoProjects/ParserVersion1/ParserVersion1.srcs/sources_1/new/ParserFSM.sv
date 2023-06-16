@@ -21,9 +21,9 @@
 
 
 module ParserFSM import Core::*; (
-    input Core::UTF8_Char curChar,
+    input UTF8_Char curChar,
     input clk, rst,
-    output Core::ElementType curElementType,
+    output ElementType curElementType,
     output logic writingString, writeStructure,
     output logic [23:0] keyValuePairsSoFar
     );
@@ -39,6 +39,7 @@ module ParserFSM import Core::*; (
         StartString, // Found the first quote of a string
         ReadString,  // Read the string
         EndObject,   // finish off the object we just found
+        EndDocument, // close the document up
         Error} state_t;
     state_t curState;
     state_t nextState;
@@ -97,6 +98,9 @@ module ParserFSM import Core::*; (
             
             ReadSimple  : nextState = simpleValScanComplete ? EndSimple : ReadSimple; 
             
+            // no sub-objects supported yet
+            EndObject   : nextState = EndDocument;
+            
             default     : nextState = Error;
         endcase
     end
@@ -108,11 +112,15 @@ module ParserFSM import Core::*; (
         writeStructure = 1'b0;
         curElementType = charToElementType(curCharType);
         case(curState)
-            StartObject, EndObject  : writeStructure = 1'b1;
+            StartObject  : writeStructure = 1'b1;
             StartKey, StartString   : writeStructure = 1'b1;
             ReadKey, ReadString     : writingString  = 1'b1;
             ReadSimple: curElementType = simpleValElement;
             EndSimple: writeStructure = 1'b1;
+            EndObject, EndDocument: begin
+                writeStructure = 1'b1;
+                curElementType = objClose;// root handling is automated
+            end 
             default: 
             // some states have no output besides those default ones
             ;
