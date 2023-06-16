@@ -24,7 +24,8 @@
     import Core::UTF8_Char, Core::StructTapeLength, Core::StringTapeLength, Core::JsonTapeElement, Core::ElementType;
     (
     input UTF8_Char curChar,
-    input GCLK, rst, enable
+    input GCLK, rst, enable,
+    output logic LD0, LD1
     );
     ElementType curElementType;
     wire writingString, writeStructure, clk;
@@ -62,6 +63,13 @@
         .keyValuePairs(keyValuePairs),
         .clk(clk),.rst(rst)
     );
-
     
+    // crude hack to get Vivado to show me my design
+    logic[63:0] displayIndex; 
+    always_ff @(posedge clk) begin
+        if(rst) displayIndex <= 0;
+        LD0 <= writer.stringGoHere.ram.ram[displayIndex[63:3]] [displayIndex[2:0]];
+        LD1 <= writer.stringGoHere.ram.ram[displayIndex[63:7]] [displayIndex[6:0]];
+        displayIndex <= displayIndex + 1;
+    end
 endmodule

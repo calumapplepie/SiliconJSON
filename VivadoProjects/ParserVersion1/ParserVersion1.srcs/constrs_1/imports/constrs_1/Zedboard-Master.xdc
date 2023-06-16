@@ -202,8 +202,8 @@ set_property PACKAGE_PIN T21 [get_ports {LD1}];  # "LD1"
 # ----------------------------------------------------------------------------
 # User Push Buttons - Bank 34
 # ---------------------------------------------------------------------------- 
-set_property PACKAGE_PIN P16 [get_ports {BTNC}];  # "BTNC"
-#set_property PACKAGE_PIN R16 [get_ports {BTND}];  # "BTND"
+set_property PACKAGE_PIN P16 [get_ports {rst}];  # "BTNC"
+set_property PACKAGE_PIN R16 [get_ports {enable}];  # "BTND"
 #set_property PACKAGE_PIN N15 [get_ports {BTNL}];  # "BTNL"
 #set_property PACKAGE_PIN R18 [get_ports {BTNR}];  # "BTNR"
 #set_property PACKAGE_PIN T18 [get_ports {BTNU}];  # "BTNU"
@@ -242,6 +242,15 @@ set_property PACKAGE_PIN P16 [get_ports {BTNC}];  # "BTNC"
 #set_property PACKAGE_PIN H18 [get_ports {SW5}];  # "SW5"
 #set_property PACKAGE_PIN H17 [get_ports {SW6}];  # "SW6"
 #set_property PACKAGE_PIN M15 [get_ports {SW7}];  # "SW7"
+
+set_property PACKAGE_PIN F22 [get_ports {curChar[0]}];  # "SW0"
+set_property PACKAGE_PIN G22 [get_ports {curChar[1]}];  # "SW1"
+set_property PACKAGE_PIN H22 [get_ports {curChar[2]}];  # "SW2"
+set_property PACKAGE_PIN F21 [get_ports {curChar[3]}];  # "SW3"
+set_property PACKAGE_PIN H19 [get_ports {curChar[4]}];  # "SW4"
+set_property PACKAGE_PIN H18 [get_ports {curChar[5]}];  # "SW5"
+set_property PACKAGE_PIN H17 [get_ports {curChar[6]}];  # "SW6"
+set_property PACKAGE_PIN M15 [get_ports {curChar[7]}];  # "SW7"
 
 ## ----------------------------------------------------------------------------
 ## XADC AD Channels - Bank 35

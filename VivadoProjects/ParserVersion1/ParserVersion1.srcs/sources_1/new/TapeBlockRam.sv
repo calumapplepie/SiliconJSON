@@ -8,7 +8,7 @@ module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64) (
     output logic [WORDSIZE-1:0] doa,dob
 );
 
-(* keep = "true" *) logic [WORDSIZE-1:0] ram [NUMWORDS-1:0];
+(* dont_touch = "true" *) logic [WORDSIZE-1:0] ram [NUMWORDS-1:0];
 
 always_ff @(posedge clk) begin
     if (ena) begin
