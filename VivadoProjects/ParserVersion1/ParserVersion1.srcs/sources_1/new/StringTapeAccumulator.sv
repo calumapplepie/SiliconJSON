@@ -25,7 +25,8 @@ module StringTapeAccumulator
     (
         input UTF8_Char nextStringByte,
         output TapeIndex startIndex,
-        input clk, rst, enable
+        input clk, rst, enable,
+        output hash
     );
 
 typedef logic [31:0] StringLength;
@@ -40,7 +41,7 @@ TapeBlockRam #(.WORDSIZE(8),.NUMWORDS(StringTapeLength)) ram (
     .clk(clk), .ena('1), .enb('1), 
     .wea(enable || cyclesDisabled != 3), .web(!enable && cyclesDisabled != 3), // we gotta write 5 bytes after string ends
     .addra(addressA), .addrb(addressB),
-    .dia(byteA), .dib(byteB)
+    .dia(byteA), .dib(byteB), .hash(hash)
 );
 
 always_comb begin

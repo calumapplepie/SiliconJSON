@@ -44,6 +44,7 @@ package BcdPkg;
         endcase
     endfunction
     
-    
-     
+    function logic[63:0] bcdArrayToBinary
+        
+    endfunction
 endpackage

@@ -5,8 +5,11 @@ module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64) (
     input logic clk, ena, enb, wea,web, 
     input [9:0] addra,addrb, 
     input [WORDSIZE-1:0] dia,dib,
-    output logic [WORDSIZE-1:0] doa,dob
+    output logic [WORDSIZE-1:0] doa,dob,
+    output hash
 );
+
+assign hash = (^doa)^ (^dob);
 
 (* dont_touch = "true" *) logic [WORDSIZE-1:0] ram [NUMWORDS-1:0];
 

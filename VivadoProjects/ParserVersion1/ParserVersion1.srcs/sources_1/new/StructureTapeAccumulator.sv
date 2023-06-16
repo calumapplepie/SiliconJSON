@@ -24,7 +24,8 @@ module StructureTapeAccumulator
     import Core::JsonTapeElement, Core::StructTapeLength, Core::TapeIndex; (
         input JsonTapeElement nextTapeEntry,
         input logic [23:0] keyValuePairs,
-        input clk, rst, enable
+        input clk, rst, enable,
+        output hash
     );
     
     TapeIndex curIndex;
@@ -39,7 +40,7 @@ module StructureTapeAccumulator
             .clk(clk), .ena('1), .enb('1), //always enable
             .wea(enable), .web(doCloseBraceWrite),  
             .addra(curIndex), .addrb(lastBraceIndex),
-            .dia(curIndexTapeEntry), .dib(lastBraceTapeEntry));
+            .dia(curIndexTapeEntry), .dib(lastBraceTapeEntry), .hash(hash));
     
     logic doCloseBraceWrite;
     assign doCloseBraceWrite = (nextTapeEntry[63:56] == "}") && enable;

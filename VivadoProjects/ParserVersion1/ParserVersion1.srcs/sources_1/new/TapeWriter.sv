@@ -27,15 +27,18 @@ module TapeWriter
         input ElementType curElementType,
         input writingString, writeStructure,
         input logic [23:0] keyValuePairs,
-        input clk, rst
+        input clk, rst,
+        output hash
     );
+    wire hashStr, hashStruct;
     
     TapeIndex curStringIndex;
+    assign hash = hashStr ^ hashStruct;
     
     StringTapeAccumulator stringGoHere (
         .nextStringByte(curChar), .enable(writingString),
         .startIndex(curStringIndex),
-        .clk(clk), .rst(rst)
+        .clk(clk), .rst(rst), .hash(hashStr)
     );
     
     JsonTapeElement nextElement;
@@ -48,6 +51,6 @@ module TapeWriter
     StructureTapeAccumulator structGoHere(
         .nextTapeEntry(nextElement), .enable(writeStructure), 
         .keyValuePairs(keyValuePairs),
-        .clk(clk), .rst(rst)
+        .clk(clk), .rst(rst), .hash(hashStruct)
     );
 endmodule

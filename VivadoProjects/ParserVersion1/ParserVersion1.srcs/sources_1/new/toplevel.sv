@@ -61,15 +61,6 @@
         .curChar(lastChar), .curElementType(lastElementType),
         .writingString(writingString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs),
-        .clk(clk),.rst(rst)
+        .clk(clk),.rst(rst), .hash(LD0)
     );
-    
-    // crude hack to get Vivado to show me my design
-    logic[63:0] displayIndex; 
-    always_ff @(posedge clk) begin
-        if(rst) displayIndex <= 0;
-        LD0 <= writer.stringGoHere.ram.doa [displayIndex[2:0]];
-        LD1 <= writer.structGoHere.ram.doa [displayIndex[6:0]];
-        displayIndex <= displayIndex + 1;
-    end
 endmodule
