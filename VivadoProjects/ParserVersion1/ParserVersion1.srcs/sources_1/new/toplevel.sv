@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TopLevel
+(* keep_hierarchy = "yes" *) module TopLevel
     import Core::UTF8_Char, Core::StructTapeLength, Core::StringTapeLength, Core::JsonTapeElement, Core::ElementType;
     (
     input UTF8_Char curChar,
