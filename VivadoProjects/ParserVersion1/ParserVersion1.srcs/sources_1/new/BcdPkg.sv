@@ -44,7 +44,7 @@ package Bcd;
         endcase
     endfunction
     
-    function logic[63:0] bcdArrayToBinary(BcdDigit [20:0] array);
+    function logic[63:0] bcdArrayToBinary(BcdDigit array [20:0]);
         // this is a good candidate for optimization!!!
         logic [63:0] retval;
         for (int i = 0; i <= 20; i++) begin

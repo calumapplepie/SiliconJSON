@@ -32,7 +32,7 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     wire [2:0] selectedArray;    
     
     BcdAccumulator accum(
-        .accumulatedBufferData(parsedNumSegmeents), 
+        .accumulatedBufferData(parsedNumSegments), 
         .selectedArray, .curChar,
         .clk, .enb, .rst 
     );
@@ -58,10 +58,8 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     always_ff @( clk ) begin
         if(rst) begin
             curState <= StartNum;
-            integralSegment <= '0;
-            decimalSegment <= '0;
-            exponentialSegment <= '0;
-            sign <= '0;
+            numSign <= '0;
+            exponentSign <= '0;
         end
     end
     

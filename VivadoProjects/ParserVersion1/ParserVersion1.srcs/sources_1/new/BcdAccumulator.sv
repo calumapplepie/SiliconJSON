@@ -26,20 +26,20 @@ module BcdAccumulator import Bcd::*; (
         input clk, rst, enb,
         output logic[63:0] accumulatedBufferData [2:0]
     );
-    BcdDigit[20:0] buffers [2:0];
+    BcdDigit buffers [2:0] [20:0];
     BcdDigit nextDigit;
-    assign nextDigit = CharToBcd(curChar);
+    assign nextDigit = charToBcd(curChar);
     
     // fancy schmany instance array
-    ShiftRegister #(.WORDSIZE(4), .NUMWORDS(20))  bufferHandler[2:0](
+    ShiftRegister #(.WORDSIZE(4), .NUMWORDS(21))  bufferHandler[2:0](
         .clk(clk), .rst(rst), .enb(selectedArray), .arrayOut(buffers), .nextIn(nextDigit)
     );
     
     // note: may be more optimal to multiply-add as we go, rather than converting an array
     // in fact it most definitely will be
     // ... oops, guess that wasted a chunk of time
-    assign accumulatedBufferData[0] = BcdArrayToBinary(buffers[0]);
-    assign accumulatedBufferData[1] = BcdArrayToBinary(buffers[1]);
-    assign accumulatedBufferData[2] = BcdArrayToBinary(buffers[2]);
+    assign accumulatedBufferData[0] = bcdArrayToBinary(buffers[0]);
+    assign accumulatedBufferData[1] = bcdArrayToBinary(buffers[1]);
+    assign accumulatedBufferData[2] = bcdArrayToBinary(buffers[2]);
         
 endmodule
