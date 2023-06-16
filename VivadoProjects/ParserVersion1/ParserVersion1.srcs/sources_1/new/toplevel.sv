@@ -24,9 +24,7 @@ module TopLevel
     import Core::UTF8_Char, Core::StructTapeLength, Core::StringTapeLength, Core::JsonTapeElement, Core::ElementType;
     (
     input UTF8_Char curChar,
-    input GCLK, rst, enable,
-    output JsonTapeElement structTape[StructTapeLength],
-    output logic [7:0] stringTape[StringTapeLength]
+    input GCLK, rst, enable
     );
     ElementType curElementType;
     wire writingString, writeStructure, clk;
@@ -60,8 +58,8 @@ module TopLevel
     
     TapeWriter writer (
         .curChar(lastChar), .curElementType(lastElementType),
-        .writingString(writingString), .writeStructure(writeStructure),
-        .stringTape(stringTape), .structTape(structTape), .keyValuePairs(keyValuePairs),
+        .writingString(writingString), .writeStructure(writeStructure), 
+        .keyValuePairs(keyValuePairs),
         .clk(clk),.rst(rst)
     );
 

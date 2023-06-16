@@ -27,9 +27,10 @@ module StringTapeAccumulator
         output TapeIndex startIndex,
         input clk, rst, enable
     );
+
 typedef logic [31:0] StringLength;
 StringLength strLen;
-TapeIndex curIndex, addressA, addressB;
+TapeIndex curIndex, editIndex, addressA, addressB;
 logic [1:0] cyclesDisabled;
 UTF8_Char byteA, byteB;
 
@@ -57,24 +58,26 @@ always_comb begin
             0 : begin
                 addressA = curIndex;
                 byteA = '0;
-                addressB = startIndex;
+                addressB = editIndex;
                 byteB = {strLen[ 7: 0]}; end
             1 : begin
-                addressA = startIndex + 1;
+                addressA = editIndex + 1;
                 byteA = {strLen[15: 8]};
-                addressB = startIndex + 2;
+                addressB = editIndex + 2;
                 byteB = {strLen[23:16]};
             end
             2 : begin
-                addressA = startIndex + 1; //repeat to avoid problems
+                addressA = editIndex + 1; //repeat to avoid problems
                 byteA = {strLen[15: 8]};
-                addressB = startIndex + 3;
+                addressB = editIndex + 3;
                 byteB =  {strLen[31:24]};
             end
         endcase;
     end
 end
 
+
+// could use optimization i'm sure
 always_ff @(posedge clk ) begin
     if(rst) begin
         //foreach(tape[i]) tape[i] = '0;
@@ -84,19 +87,22 @@ always_ff @(posedge clk ) begin
         strLen <= 0;
     end else if (enable) begin
         cyclesDisabled <= '0;
+        editIndex <= startIndex;
         curIndex <= curIndex + 1;
         strLen <= strLen +1;
     end else begin
         if(cyclesDisabled < 3)begin
             cyclesDisabled <= cyclesDisabled +1;
         end
-        if (cyclesDisabled == 1) begin
-            curIndex <= curIndex +1;
-        end else if (cyclesDisabled == 2) begin
-            startIndex <= curIndex;
-            strLen <=0;
-            curIndex <= curIndex + 4;
-        end
+        case (cyclesDisabled)
+            0: curIndex <= curIndex +1;
+            1: startIndex <= curIndex;
+            2: begin
+                curIndex <= curIndex + 4;
+                strLen <= 0;
+            end
+        endcase
+        
         
     end
 end

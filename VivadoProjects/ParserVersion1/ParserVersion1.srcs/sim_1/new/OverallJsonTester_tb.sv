@@ -32,20 +32,19 @@ module OverallJsonTester_tb();
     integer errorCode;
     UTF8_Char nextChar;
 
-    JsonTapeElement structTape[StructTapeLength], expectedStructTape [StructTapeLength];
-    logic [7:0] stringTape[StringTapeLength], expectedStringTape [StringTapeLength];
-
+    JsonTapeElement expectedStructTape [StructTapeLength];
+    logic [7:0] expectedStringTape [StringTapeLength];
+    
     TopLevel DUV (
         .curChar(nextChar), 
-        .stringTape(stringTape), .structTape(structTape),
         .enable(enable), .GCLK(clk), .rst(rst));
     
     task static evaluateJsonFile(string basename);
         int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,".json"},"r");
         
         // zero the memories
-        foreach(expectedStringTape[i]) expectedStringTape[i] = '0;
-        foreach(expectedStructTape[i]) expectedStructTape[i] = '0;
+        foreach(expectedStringTape[i]) expectedStringTape[i] = 'x;
+        foreach(expectedStructTape[i]) expectedStructTape[i] = 'x;
 
         // read the out files: should ignore whitespace
         tmp = {JsonTestFilesDir,basename,".string.hex"};
@@ -64,21 +63,21 @@ module OverallJsonTester_tb();
 
         // compare
         foreach(expectedStringTape[i]) begin
-            if (expectedStringTape[i] != stringTape[i]) begin
+            if (expectedStringTape[i] !=  DUV.writer.stringGoHere.ram.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 5) begin
                     $display("Error at string tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStringTape[i], stringTape[i]);
+                    $display("Expected %h, got %h", expectedStringTape[i], DUV.writer.stringGoHere.ram.ram[i]);
                 end
             end
         end
 
         foreach(expectedStructTape[i]) begin
-            if (expectedStructTape[i] != structTape[i]) begin
+            if (expectedStructTape[i] != DUV.writer.structGoHere.blockRam.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 5) begin
                     $display("Error at struct tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStructTape[i], structTape[i]);
+                    $display("Expected %h, got %h", expectedStructTape[i], DUV.writer.structGoHere.blockRam.ram[i]);
                 end
             end
         end
