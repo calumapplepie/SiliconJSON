@@ -68,8 +68,8 @@
     logic[63:0] displayIndex; 
     always_ff @(posedge clk) begin
         if(rst) displayIndex <= 0;
-        LD0 <= writer.stringGoHere.ram.ram[displayIndex[63:3]] [displayIndex[2:0]];
-        LD1 <= writer.stringGoHere.ram.ram[displayIndex[63:7]] [displayIndex[6:0]];
+        LD0 <= writer.stringGoHere.ram.doa [displayIndex[2:0]];
+        LD1 <= writer.structGoHere.ram.doa [displayIndex[6:0]];
         displayIndex <= displayIndex + 1;
     end
 endmodule
