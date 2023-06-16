@@ -26,6 +26,11 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         output complete,
         output [63:0] number, output ElementType numberType
     );
+
+    logic numSign, exponentSign;
+    logic [3:0] integralSegment    [20:0];
+    logic [3:0] decimalSegment     [20:0];
+    logic [3:0] exponentialSegment [5:0];
     
     typedef enum logic[5:0] {
         StartNum,
@@ -40,8 +45,19 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     //next state logic!
     always_comb begin
         case(curState)
+
             default: nextState = Error;
         endcase
+    end
+
+    always_ff @( clk ) begin
+        if(rst) begin
+            curState <= StartNum;
+            integralSegment <= '0;
+            decimalSegment <= '0;
+            exponentialSegment <= '0;
+            sign <= '0;
+        end
     end
     
     
