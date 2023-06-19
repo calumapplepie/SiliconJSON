@@ -30,12 +30,12 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     Bcd::BcdDigit curDigit;
     logic enableAccumulator;
 
-    assign curDigit = charToBcd(curChar);
+    assign curDigit = Bcd::charToBcd(curChar);
     assign enableAccumulator = curDigit <= 4'd9;
 
     logic numSign, exponentSign;
     logic [63:0] parsedNumSegments [2:0];
-    wire [2:0] selectedArray;    
+    logic [2:0] selectedArray;    
     
     BcdAccumulator accum(
         .accumulatedBufferData(parsedNumSegments), 
@@ -68,7 +68,7 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
             
             IntParse: case(curDigit)
                 period:             nextState = DecimalParse;
-                exp:                nextState = startExponent;
+                exp:                nextState = StartExponent;
                 plus, minus, error: nextState = Error;
                 default:            nextState = IntParse;
             endcase
@@ -76,10 +76,10 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
             // special state for when we go straight here from StartNum
             StartDecimal: nextState = (curDigit == period) ? DecimalParse : Error;
 
-            ParseDecimal: case(curDigit)
+            DecimalParse: case(curDigit)
                 plus, minus, period, error: nextState = Error;
                 exp:                        nextState = StartExponent;
-                default:                    nextState = parseDecimal;
+                default:                    nextState = DecimalParse;
             endcase
 
             StartExponent: nextState = (curDigit == error || curDigit == period || curDigit == exp) ? Error : ExponentParse;
@@ -91,6 +91,16 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
             default: nextState = Error;
         endcase
     end
+    
+    always_comb begin
+        case(curState)
+            StartNum, IntParse          : selectedArray = 3'b001;
+            StartDecimal, DecimalParse  : selectedArray = 3'b010;
+            StartExponent, ExponentParse: selectedArray = 3'b100;
+            default                     : selectedArray = 3'b000;         
+        endcase
+    end
+    
 
     always_ff @( clk ) begin
         if(rst) begin
@@ -98,8 +108,12 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
             numSign <= '1;
             exponentSign <= '1;
         end
-        if (curState == StartNum && curDigit == minus) numSign = '0;
-        if (curState == StartExp && curDigit == minus) numSign = '0;
+        if (enb) begin
+            curState <= nextState;
+            if (curState == StartNum      && curDigit == Bcd::minus) numSign = '0;
+            if (curState == StartExponent && curDigit == Bcd::minus) numSign = '0;        
+        end
+        
 
     end
     

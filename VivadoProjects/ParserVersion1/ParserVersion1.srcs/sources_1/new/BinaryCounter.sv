@@ -13,7 +13,7 @@ module moduleName #(
         if (rst) begin
             count <= 0;
         end else if (enable) begin
-            count++; //assume no overflow
+            count <= count + 1; //assume no overflow
         end
         
     end
