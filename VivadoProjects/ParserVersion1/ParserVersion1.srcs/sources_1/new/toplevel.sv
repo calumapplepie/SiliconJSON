@@ -28,6 +28,7 @@
     output logic LD0, LD1
     );
     ElementType curElementType;
+    JsonTapeElement numberSecondElement;
     wire writingString, writeStructure, clk;
     wire [23:0] keyValuePairs;
     
@@ -42,21 +43,21 @@
         .clk(clk), .rst(rst)
     );
     
-    // bypasses pipeline..
-    JsonTapeElement numberSecondElement;
-    
     // this needs to be a pipeline for proper functionality
     // FSM's current state describes what should be done with previous character
     UTF8_Char lastChar;
     ElementType lastElementType;
+    JsonTapeElement lastSecondElement;
     always_ff @(posedge clk) begin
         if(rst) begin
-            lastChar        <= "{";
-            lastElementType <= Core::objOpen;
+            lastChar          <= "{";
+            lastElementType   <= Core::objOpen;
+            lastSecondElement <= '0;
         end
         else begin
-            lastChar        <= curChar;
-            lastElementType <= curElementType;
+            lastChar          <= curChar;
+            lastElementType   <= curElementType;
+            lastSecondElement <= numberSecondElement;
         end 
     end
     
@@ -64,7 +65,7 @@
     TapeWriter writer (
         .curChar(lastChar), .curElementType(lastElementType),
         .writingString(writingString), .writeStructure(writeStructure), 
-        .keyValuePairs(keyValuePairs), .numberSecondElement,
+        .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
         .clk(clk),.rst(rst), .hash(LD0)
     );
 endmodule

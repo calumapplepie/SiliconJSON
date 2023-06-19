@@ -49,7 +49,8 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         .tapeEntry(number)
     );
     
-    assign numberType = numSign ? Core::unsignedInt : (isFloat ? Core::double : Core::signedInt);
+    // we never generate unsigned ints at this stage: simdjson only uses them if the value is over 2^63 
+    assign numberType = numSign ? Core::signedInt : (isFloat ? Core::double : Core::signedInt);
     
     typedef enum logic[5:0] {
         StartNum, 
@@ -118,7 +119,7 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         endcase
     end
     
-    always_ff @( clk ) begin
+    always_ff @(posedge clk ) begin
         if(rst) begin
             curState <= StartNum;
             numSign <= '1;
@@ -126,8 +127,8 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         end
         if (enb) begin
             curState <= nextState;
-            if (curState == StartNum      && curDigit == Bcd::minus) numSign = '0;
-            if (curState == StartExponent && curDigit == Bcd::minus) numSign = '0;        
+            if (curState  == StartNum      && curDigit == Bcd::minus) numSign <= '0;
+            if (nextState == StartExponent && curDigit == Bcd::minus) exponentSign <= '0;        
         end
         
 

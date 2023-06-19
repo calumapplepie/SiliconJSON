@@ -58,11 +58,11 @@ module ParserFSM import Core::*; (
     
     logic numberParserReset;
     ElementType numberFirstElement; 
-    assign numberParserReset = rst || (curState != ReadNumber);
+    assign numberParserReset = rst || nextState != ReadNumber;
                                        
     NumberParsingFSM numberParser (
         //note: see commit that introduced the enable logic for a long commit-message reflection
-        .clk, .rst(numberParserReset), .curChar, .enb(nextState == readNumber), 
+        .clk, .rst(numberParserReset), .curChar, .enb(nextState == ReadNumber), 
         .number(numberSecondElement), .numberType(numberFirstElement)
     );
     

@@ -34,7 +34,7 @@ package Bcd;
         case(in)
             // ascii numerals are contigous, handle them all at once
             // hopefully synthesis is smart enough not to stick an adder in here when LUTs would do.
-            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9": return BcdDigit'(in - 8'd60);
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9": return BcdDigit'(in - 8'd48);
             "e", "E" : return exp;
             "," : return comma; // should never occur
             "." : return period;
