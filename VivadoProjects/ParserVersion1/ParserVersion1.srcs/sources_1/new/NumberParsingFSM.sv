@@ -23,7 +23,6 @@
 module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         input UTF8_Char curChar,
         input clk, rst, enb,
-        output complete,
         output [63:0] number, output ElementType numberType
     );
 

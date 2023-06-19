@@ -51,8 +51,11 @@ module ParserFSM import Core::*; (
     SimpleValueFSM simpleValue (.curChar(curChar), .scanComplete(simpleValScanComplete),
                                     .scannedElement(simpleValElement), .enb(curState==ReadSimple),
                                     .clk(clk),.rst(rst));
+    
+    ElementType numberFirstElement;                                
     NumberParsingFSM numberParser (
-        .clk, .rst, .curChar
+        .clk, .rst, .curChar, .enb(MYSTERY LOGIC), 
+        .number(numberSecondElement), .numberType(numberFirstElement), 
     );
     
     
