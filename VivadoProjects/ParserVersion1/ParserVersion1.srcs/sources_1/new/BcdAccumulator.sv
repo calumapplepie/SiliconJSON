@@ -28,23 +28,13 @@ module BcdAccumulator import Bcd::*; (
         output [4:0] digitsAccumulated [2:0]
         
     );
-    BcdDigit buffers [2:0] [20:0];
-    
-    
     
     // fancy schmany instance array
-    ShiftRegister #(.WORDSIZE(4), .NUMWORDS(21))  bufferHandler[2:0](
-        .clk(clk), .rst(rst), .enb(selectedArray &  {3{enb}}), .arrayOut(buffers), .nextIn(curDigit)
+    BaseTenBinaryAccumulator  bufferHandler[2:0](
+        .clk(clk), .rst(rst), .enb(selectedArray &  {3{enb}}), .numberOut(accumulatedBufferData), .nextIn(curDigit)
     );
     BinaryCounter #(.BITWIDTH(5)) numberOfDigits[2:0](
         .clk, .rst, .enable(selectedArray & {3{enb}}), .count(digitsAccumulated) 
     );
-    
-    // note: may be more optimal to multiply-add as we go, rather than converting an array
-    // in fact it most definitely will be
-    // ... oops, guess that wasted a chunk of time
-    assign accumulatedBufferData[0] = bcdArrayToBinary(buffers[0]);
-    assign accumulatedBufferData[1] = bcdArrayToBinary(buffers[1]);
-    assign accumulatedBufferData[2] = bcdArrayToBinary(buffers[2]);
-        
+            
 endmodule
