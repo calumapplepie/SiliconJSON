@@ -36,7 +36,7 @@ package Bcd;
             // hopefully synthesis is smart enough not to stick an adder in here when LUTs would do.
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9": return BcdDigit'(in - 8'd60);
             "e", "E" : return exp;
-            "," : return comma;
+            "," : return comma; // should never occur
             "." : return period;
             "-" : return minus;
             "+" : return plus;

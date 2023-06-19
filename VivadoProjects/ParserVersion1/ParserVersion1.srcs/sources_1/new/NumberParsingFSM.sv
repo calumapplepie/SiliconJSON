@@ -27,7 +27,11 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         output [63:0] number, output ElementType numberType
     );
 
-    assign Bcd::BcdDigit curDigit = charToBcd(curChar);
+    Bcd::BcdDigit curDigit;
+    logic enableAccumulator;
+
+
+    assign curDigit = charToBcd(curChar);
 
     logic numSign, exponentSign;
     logic [63:0] parsedNumSegments [2:0];
@@ -36,13 +40,15 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     BcdAccumulator accum(
         .accumulatedBufferData(parsedNumSegments), 
         .selectedArray, .curDigit,
-        .clk, .enb, .rst 
+        .clk, .enb(enableAccumulator), .rst 
     );
     
     typedef enum logic[5:0] {
-        //StartNum, // needed to make verification work, since a 0 is only permitted if next char is .
+        StartNum, 
         IntParse,
+        StartDecimal, // only for validation
         DecimalParse,
+        StartExponent,
         ExponentParse,
         Error
     } state_t;
@@ -53,10 +59,20 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     always_comb begin
         import Bcd::*;
         case(curState)
-            IntParse: case(curDigit)
-                
-                default: curDigit;
+            StartNum: case(curDigit)
+                zero:    nextState = StartDecimal; //technically 0e6 is a valid JSON number.  0.1e6 isn't
+                exp, period, plus, error: nextState = Error;
+                default: 
             endcase
+            
+            IntParse: case(curDigit)
+                period:  nextState = DecimalParse;
+                exp:     nextState = startExponent;
+                plus, minus, error: nextState = Error;
+                default: nextState = IntParse;
+            endcase
+
+            StartDecimal: nextState = (curDigit == period) ? DecimalParse : Error;
             default: nextState = Error;
         endcase
     end
@@ -64,9 +80,12 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     always_ff @( clk ) begin
         if(rst) begin
             curState <= StartNum;
-            numSign <= '0;
-            exponentSign <= '0;
+            numSign <= '1;
+            exponentSign <= '1;
         end
+        if (curState == StartNum && curDigit == minus) numSign = '0;
+        if (curState == StartExp && curDigit == minus) numSign = '0;
+
     end
     
     
