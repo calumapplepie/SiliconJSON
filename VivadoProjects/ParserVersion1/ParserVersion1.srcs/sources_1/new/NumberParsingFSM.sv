@@ -92,6 +92,7 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         endcase
     end
     
+    // selected array output
     always_comb begin
         case(curState)
             StartNum, IntParse          : selectedArray = 3'b001;
@@ -101,7 +102,6 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         endcase
     end
     
-
     always_ff @( clk ) begin
         if(rst) begin
             curState <= StartNum;

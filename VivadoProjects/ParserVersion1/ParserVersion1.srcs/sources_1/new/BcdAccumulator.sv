@@ -25,7 +25,7 @@ module BcdAccumulator import Bcd::*; (
         input logic[2:0] selectedArray,// one-hot encoding plz
         input clk, rst, enb,
         output logic[63:0] accumulatedBufferData [2:0],
-        output [4:0] digitsAccumulated [2:0]
+        output [4:0] numDigits [2:0]
         
     );
     
