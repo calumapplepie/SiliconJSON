@@ -25,7 +25,8 @@ module ParserFSM import Core::*; (
     input clk, rst,
     output ElementType curElementType,
     output logic writingString, writeStructure,
-    output logic [23:0] keyValuePairsSoFar
+    output logic [23:0] keyValuePairsSoFar,
+    output JsonTapeElement numberSecondElement
     );
 
     typedef enum logic[3:0] {

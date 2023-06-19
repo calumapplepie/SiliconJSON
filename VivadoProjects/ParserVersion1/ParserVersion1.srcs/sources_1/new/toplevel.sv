@@ -37,9 +37,12 @@
     
     ParserFSM parser (
         .curChar (curChar), .curElementType(curElementType), .keyValuePairsSoFar(keyValuePairs),
-        .writingString(writingString), .writeStructure(writeStructure),
+        .writingString(writingString), .writeStructure(writeStructure), .numberSecondElement,
         .clk(clk), .rst(rst)
     );
+    
+    // bypasses pipeline..
+    JsonTapeElement numberSecondElement;
     
     // this needs to be a pipeline for proper functionality
     // FSM's current state describes what should be done with previous character
@@ -60,7 +63,7 @@
     TapeWriter writer (
         .curChar(lastChar), .curElementType(lastElementType),
         .writingString(writingString), .writeStructure(writeStructure), 
-        .keyValuePairs(keyValuePairs),
+        .keyValuePairs(keyValuePairs), .numberSecondElement,
         .clk(clk),.rst(rst), .hash(LD0)
     );
 endmodule
