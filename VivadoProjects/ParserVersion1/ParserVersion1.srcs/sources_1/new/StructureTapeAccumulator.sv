@@ -22,7 +22,7 @@
 
 module StructureTapeAccumulator 
     import Core::JsonTapeElement, Core::StructTapeLength, Core::TapeIndex; (
-        input JsonTapeElement nextTapeEntry, numberSecondEntry,
+        input JsonTapeElement nextTapeEntry, numberSecondElement,
         input logic [23:0] keyValuePairs,
         input clk, rst, enable,
         output hash
@@ -36,7 +36,7 @@ module StructureTapeAccumulator
     JsonTapeElement lastBraceTapeEntry;
     JsonTapeElement dualWriteTapeEntry;
     
-    
+    logic doCloseBraceWrite, doNumberWrite, doDualWrite;
     
     TapeBlockRam #(.WORDSIZE(64), .NUMWORDS(StructTapeLength)) blockRam  (
             .clk(clk), .ena('1), .enb('1), //always enable
@@ -44,13 +44,12 @@ module StructureTapeAccumulator
             .addra(curIndex),        .addrb(dualWriteIndex),
             .dia(curIndexTapeEntry), .dib(dualWriteTapeEntry), .hash(hash));
     
-    logic doCloseBraceWrite, doNumberWrite, doDualWrite;
     assign doCloseBraceWrite = nextTapeEntry[63:56] == "}";
     assign doNumberWrite     = nextTapeEntry[63:56] inside {"l", "d", "u"}; //fancy set membership op i saw in the spec 
     assign doDualWrite       = (doCloseBraceWrite || doNumberWrite) && enable;
     
     assign dualWriteIndex    = doCloseBraceWrite ? lastBraceIndex    : curIndex + 1; 
-    assign dualWriteTapeEntry= doCloseBraceWrite ? numberSecondEntry : lastBraceTapeEntry;
+    assign dualWriteTapeEntry= doCloseBraceWrite ? numberSecondElement : lastBraceTapeEntry;
     
     always_comb begin
         curIndexTapeEntry = nextTapeEntry; 

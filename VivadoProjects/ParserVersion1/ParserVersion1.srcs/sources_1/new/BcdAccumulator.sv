@@ -34,7 +34,7 @@ module BcdAccumulator import Bcd::*; (
         .clk(clk), .rst(rst), .enb(selectedArray &  {3{enb}}), .numberOut(accumulatedBufferData), .nextIn(curDigit)
     );
     BinaryCounter #(.BITWIDTH(5)) numberOfDigits[2:0](
-        .clk, .rst, .enable(selectedArray & {3{enb}}), .count(digitsAccumulated) 
+        .clk, .rst, .enable(selectedArray & {3{enb}}), .count(numDigits) 
     );
             
 endmodule
