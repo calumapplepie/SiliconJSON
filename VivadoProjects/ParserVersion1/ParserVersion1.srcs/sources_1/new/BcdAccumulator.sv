@@ -21,18 +21,16 @@
 
 
 module BcdAccumulator import Bcd::*; (
-        input Core::UTF8_Char curChar, 
+        input Bcd::Bcd_Digit curDigit, 
         input logic[2:0] selectedArray,// one-hot encoding plz
         input clk, rst, enb,
         output logic[63:0] accumulatedBufferData [2:0]
     );
     BcdDigit buffers [2:0] [20:0];
-    BcdDigit nextDigit;
-    assign nextDigit = charToBcd(curChar);
     
     // fancy schmany instance array
     ShiftRegister #(.WORDSIZE(4), .NUMWORDS(21))  bufferHandler[2:0](
-        .clk(clk), .rst(rst), .enb(selectedArray), .arrayOut(buffers), .nextIn(nextDigit)
+        .clk(clk), .rst(rst), .enb(selectedArray), .arrayOut(buffers), .nextIn(curDigit)
     );
     
     // note: may be more optimal to multiply-add as we go, rather than converting an array

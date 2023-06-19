@@ -27,18 +27,20 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
         output [63:0] number, output ElementType numberType
     );
 
+    assign Bcd::BcdDigit curDigit = charToBcd(curChar);
+
     logic numSign, exponentSign;
     logic [63:0] parsedNumSegments [2:0];
     wire [2:0] selectedArray;    
     
     BcdAccumulator accum(
         .accumulatedBufferData(parsedNumSegments), 
-        .selectedArray, .curChar,
+        .selectedArray, .curDigit,
         .clk, .enb, .rst 
     );
     
     typedef enum logic[5:0] {
-        StartNum,
+        //StartNum, // needed to make verification work, since a 0 is only permitted if next char is .
         IntParse,
         DecimalParse,
         ExponentParse,
@@ -49,8 +51,12 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     
     //next state logic!
     always_comb begin
+        import Bcd::*;
         case(curState)
-
+            IntParse: case(curDigit)
+                
+                default: curDigit;
+            endcase
             default: nextState = Error;
         endcase
     end
