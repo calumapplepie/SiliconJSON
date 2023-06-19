@@ -24,7 +24,8 @@ module BcdAccumulator import Bcd::*; (
         input Bcd::BcdDigit curDigit, 
         input logic[2:0] selectedArray,// one-hot encoding plz
         input clk, rst, enb,
-        output logic[63:0] accumulatedBufferData [2:0]
+        output logic[63:0] accumulatedBufferData [2:0],
+        output [4:0] digitsAccumulated [2:0]
         
     );
     BcdDigit buffers [2:0] [20:0];
@@ -34,6 +35,9 @@ module BcdAccumulator import Bcd::*; (
     // fancy schmany instance array
     ShiftRegister #(.WORDSIZE(4), .NUMWORDS(21))  bufferHandler[2:0](
         .clk(clk), .rst(rst), .enb(selectedArray &  {3{enb}}), .arrayOut(buffers), .nextIn(curDigit)
+    );
+    BinaryCounter #(.BITWIDTH(5)) numberOfDigits[2:0](
+        .clk, .rst, .enable(selectedArray & {3{enb}}), .count(digitsAccumulated) 
     );
     
     // note: may be more optimal to multiply-add as we go, rather than converting an array

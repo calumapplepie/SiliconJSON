@@ -2,11 +2,11 @@
 // This module was written because I thought I might want it for the accumulators.
 // I didn't, but here it is anyways
 
-module moduleName #(
-    parameter bitWidth=4
+module BinaryCounter #(
+    parameter BITWIDTH=4
 ) (
     input clk, rst, enable,
-    output logic [bitWidth-1:0] count
+    output logic [BITWIDTH-1:0] count
 );
 
     always @(posedge clk ) begin
