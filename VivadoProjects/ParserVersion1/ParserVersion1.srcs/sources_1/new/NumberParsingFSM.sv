@@ -30,8 +30,8 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     Bcd::BcdDigit curDigit;
     logic enableAccumulator;
 
-
     assign curDigit = charToBcd(curChar);
+    assign enableAccumulator = curDigit <= 4'd9;
 
     logic numSign, exponentSign;
     logic [63:0] parsedNumSegments [2:0];
@@ -58,21 +58,36 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     //next state logic!
     always_comb begin
         import Bcd::*;
+        // note: comma and whitespace handling in main FSM
         case(curState)
             StartNum: case(curDigit)
                 zero:    nextState = StartDecimal; //technically 0e6 is a valid JSON number.  0.1e6 isn't
                 exp, period, plus, error: nextState = Error;
-                default: 
+                default: nextState = IntParse;
             endcase
             
             IntParse: case(curDigit)
-                period:  nextState = DecimalParse;
-                exp:     nextState = startExponent;
+                period:             nextState = DecimalParse;
+                exp:                nextState = startExponent;
                 plus, minus, error: nextState = Error;
-                default: nextState = IntParse;
+                default:            nextState = IntParse;
             endcase
 
+            // special state for when we go straight here from StartNum
             StartDecimal: nextState = (curDigit == period) ? DecimalParse : Error;
+
+            ParseDecimal: case(curDigit)
+                plus, minus, period, error: nextState = Error;
+                exp:                        nextState = StartExponent;
+                default:                    nextState = parseDecimal;
+            endcase
+
+            StartExponent: nextState = (curDigit == error || curDigit == period || curDigit == exp) ? Error : ExponentParse;
+            ExponentParse: case(curDigit)
+                plus, minus, period, error, exp: nextState = Error;
+                default: nextState = ExponentParse;
+            endcase
+
             default: nextState = Error;
         endcase
     end
