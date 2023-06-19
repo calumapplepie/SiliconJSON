@@ -54,7 +54,7 @@ module ParserFSM import Core::*; (
     
     ElementType numberFirstElement;                                
     NumberParsingFSM numberParser (
-        .clk, .rst, .curChar, .enb(MYSTERY LOGIC), 
+        .clk, .rst, .curChar, .enb(nextState == readNumber), 
         .number(numberSecondElement), .numberType(numberFirstElement), 
     );
     
