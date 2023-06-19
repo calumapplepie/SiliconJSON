@@ -33,15 +33,24 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     assign curDigit = Bcd::charToBcd(curChar);
     assign enableAccumulator = curDigit <= 4'd9;
 
-    logic numSign, exponentSign;
+    logic numSign, exponentSign, isFloat;
     logic [63:0] parsedNumSegments [2:0];
     logic [2:0] selectedArray;    
+    logic [4:0] numDigits [2:0];
     
     BcdAccumulator accum(
         .accumulatedBufferData(parsedNumSegments), 
-        .selectedArray, .curDigit,
+        .selectedArray, .curDigit, .numDigits,
         .clk, .enb(enableAccumulator), .rst 
     );
+    
+    NumberBuilder build(
+        .numberSegments(parsedNumSegments), .numDigits,
+        .numSign, .exponentSign, .isFloat,
+        .tapeEntry(number)
+    );
+    
+    assign numberType = numSign ? Core::unsignedInt : (isFloat ? Core::double : Core::signedInt);
     
     typedef enum logic[5:0] {
         StartNum, 
@@ -99,6 +108,14 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
             StartDecimal, DecimalParse  : selectedArray = 3'b010;
             StartExponent, ExponentParse: selectedArray = 3'b100;
             default                     : selectedArray = 3'b000;         
+        endcase
+    end
+    
+    // is floating point output
+    always_comb begin
+        case(curState)
+            StartDecimal, DecimalParse, StartExponent, ExponentParse : isFloat = '1;
+            default : isFloat = '0;
         endcase
     end
     

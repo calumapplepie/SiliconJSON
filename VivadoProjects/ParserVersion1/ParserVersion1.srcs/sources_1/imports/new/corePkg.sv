@@ -56,7 +56,8 @@ package Core;
     endfunction
 
     typedef enum logic [3:0] {objOpen, objClose, arrayOpen, arrayClose, 
-                                str, number, trueVal, falseVal, nullVal, noType
+                                str, number, trueVal, falseVal, nullVal, 
+                                unsignedInt, signedInt, double, noType
                                 } ElementType;
     function ElementType charToElementType(CharType charType);
         case (charType)
@@ -80,6 +81,9 @@ package Core;
             trueVal    : return "t";
             falseVal   : return "f";
             nullVal    : return "n";
+            unsignedInt: return "u";
+            signedInt  : return "l";
+            double     : return "d";
             default    : return "\0";
         endcase
     endfunction
