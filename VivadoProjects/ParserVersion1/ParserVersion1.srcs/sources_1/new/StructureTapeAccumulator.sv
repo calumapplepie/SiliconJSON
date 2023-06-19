@@ -49,7 +49,7 @@ module StructureTapeAccumulator
     assign doDualWrite       = (doCloseBraceWrite || doNumberWrite) && enable;
     
     assign dualWriteIndex    = doCloseBraceWrite ? lastBraceIndex    : curIndex + 1; 
-    assign dualWriteTapeEntry= doCloseBraceWrite ? numberSecondElement : lastBraceTapeEntry;
+    assign dualWriteTapeEntry= doCloseBraceWrite ? lastBraceTapeEntry: numberSecondElement;
     
     always_comb begin
         curIndexTapeEntry = nextTapeEntry; 
