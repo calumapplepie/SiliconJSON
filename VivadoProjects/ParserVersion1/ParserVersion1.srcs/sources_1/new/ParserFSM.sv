@@ -39,11 +39,15 @@ module ParserFSM import Core::*; (
         EndSimple,   // write out read JSON value
         StartString, // Found the first quote of a string
         ReadString,  // Read the string
+        ReadNumber,  // read the number
+        EndNumber,   // end the number
         EndObject,   // finish off the object we just found
         EndDocument, // close the document up
         Error} state_t;
     state_t curState;
     state_t nextState;
+    
+    // TODO: Sub parsers won't work properly with disabled main parser!!!!
     
     logic simpleValScanComplete;
     ElementType simpleValElement;
@@ -52,10 +56,14 @@ module ParserFSM import Core::*; (
                                     .scannedElement(simpleValElement), .enb(curState==ReadSimple),
                                     .clk(clk),.rst(rst));
     
-    ElementType numberFirstElement;                                
+    logic numberParserReset;
+    ElementType numberFirstElement; 
+    assign numberParserReset = rst || (curState != ReadNumber);
+                                       
     NumberParsingFSM numberParser (
-        .clk, .rst, .curChar, .enb(nextState == readNumber), 
-        .number(numberSecondElement), .numberType(numberFirstElement), 
+        //note: see commit that introduced the enable logic for a long commit-message reflection
+        .clk, .rst(numberParserReset), .curChar, .enb(nextState == readNumber), 
+        .number(numberSecondElement), .numberType(numberFirstElement)
     );
     
     
@@ -85,7 +93,7 @@ module ParserFSM import Core::*; (
             StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
             StartString : nextState = ReadString; // NOTE: breaks on empty value
 
-            FindKey, EndSimple     : case(curCharType)
+            FindKey, EndSimple, EndNumber : case(curCharType)
                 quote     : nextState = StartKey;
                 braceClose: nextState = EndObject;
                 default   : nextState = FindKey;
@@ -93,6 +101,7 @@ module ParserFSM import Core::*; (
             FindValue   : case(curCharType) // todo: check for colon
                 quote:             nextState = StartString;
                 asciiAlphabetical: nextState = ReadSimple; 
+                numeric, minusSign:nextState = ReadNumber;
                 default:           nextState = FindValue;
             endcase
 
@@ -101,6 +110,11 @@ module ParserFSM import Core::*; (
             ReadString  : nextState = isQuote ? FindKey: ReadString;
             
             ReadSimple  : nextState = simpleValScanComplete ? EndSimple : ReadSimple; 
+            
+            ReadNumber  : case(curCharType)
+                whitespace, comma, braceClose, bracketClose : nextState = EndNumber;
+                default : nextState = ReadNumber;
+            endcase 
             
             // no sub-objects supported yet
             EndObject   : nextState = EndDocument;
@@ -120,7 +134,8 @@ module ParserFSM import Core::*; (
             StartKey, StartString   : writeStructure = 1'b1;
             ReadKey, ReadString     : writingString  = 1'b1;
             ReadSimple: curElementType = simpleValElement;
-            EndSimple: writeStructure = 1'b1;
+            ReadNumber: curElementType = numberFirstElement;
+            EndSimple, EndNumber: writeStructure = 1'b1;
             EndObject, EndDocument: begin
                 writeStructure = 1'b1;
                 curElementType = objClose;// root handling is automated

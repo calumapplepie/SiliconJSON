@@ -31,6 +31,7 @@
     wire writingString, writeStructure, clk;
     wire [23:0] keyValuePairs;
     
+    // clock gating removal dependent upon ParserFSM improvements: subparser changes needed!
     assign clk = (enable || rst) ? GCLK : '0;
     
     // our modules!
