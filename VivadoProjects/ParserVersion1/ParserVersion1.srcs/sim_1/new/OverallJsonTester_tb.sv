@@ -105,6 +105,7 @@ module OverallJsonTester_tb();
                 basenames[i] = "";
             end
         end
+        $fclose(fileHandle);
     endtask
     
     
