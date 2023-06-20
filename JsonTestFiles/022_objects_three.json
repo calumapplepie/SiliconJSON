@@ -1,0 +1,20 @@
+{
+    "World Population":{
+        "Cool Person":{
+            "Name":"Greta Thumberg"
+        },
+        "Uncool Person": {
+            "Name":"Andrew Tate",
+            "Number of Bugatti's": 4,
+            "Does anyone care?": false
+        },
+        "Third Person": {
+            "Another sub-object?":{
+                "Silliness? (1-10)": 15,
+                "Really?": "yes"
+            },
+            "Added for testing?": true
+        },
+        "Not listed": 9000000000
+    }
+}
