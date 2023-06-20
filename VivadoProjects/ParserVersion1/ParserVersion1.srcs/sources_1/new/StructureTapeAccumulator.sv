@@ -50,7 +50,7 @@ module StructureTapeAccumulator
         .popData(lastBraceIndex[17:0]), .pushData(curIndex)
     );
     
-    assign lastBraceIndex[56:18] = '0;
+    assign lastBraceIndex[55:18] = '0;
     
     assign doCloseBraceWrite = nextTapeEntry[63:56] == "}";
     assign doNumberWrite     = nextTapeEntry[63:56] inside {"l", "d", "u"}; //fancy set membership op i saw in the spec 

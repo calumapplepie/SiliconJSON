@@ -46,9 +46,7 @@ module ParserFSM import Core::*; (
         Error} state_t;
     state_t curState;
     state_t nextState;
-    
-    // TODO: Sub parsers won't work properly with disabled main parser!!!!
-    
+        
     logic simpleValScanComplete;
     ElementType simpleValElement;
     assign simpleValueRst = rst || curState!=ReadSimple;
@@ -72,20 +70,35 @@ module ParserFSM import Core::*; (
 
     assign curCharType = classifyChar(curChar);
     
+    // a bit more logic can be stuffed into this module!
+    logic [17:0] nextKeyValuePairs, lastObjKeyValuePairs;
+    BlockRamStack stack (
+        .clk, .enb(enable), .rst, 
+        .pushEnable(curState == StartObject), .popTrigger(curState == EndObject), 
+        .popData(lastObjKeyValuePairs), .pushData(keyValuePairsSoFar)
+    );
     
-    
+    assign keyValuePairsSoFar[23:18] = '0;
     always_ff @(posedge clk ) begin
         if(rst) begin
             curState <= StartObject;
-            keyValuePairsSoFar <= '0;
+            keyValuePairsSoFar[17:0] <= '0;
         end
         else if (enb) begin
             curState <= nextState;
-        
-            // we assume nobody goes over 2^24 key value pairs with our parser
-            // that saves us saturating logic
-            if (curState == StartKey) keyValuePairsSoFar <= keyValuePairsSoFar+1;
+            keyValuePairsSoFar[17:0] <= nextKeyValuePairs; 
         end
+    end
+
+    // key-value pair logic
+    always_comb begin
+        // we assume nobody goes over 2^24 key value pairs with our parser
+        // that saves us saturating logic
+        case(curState)
+            StartKey    : nextKeyValuePairs = keyValuePairsSoFar+1;
+            StartObject : nextKeyValuePairs = '0;
+            EndObject   : nextKeyValuePairs = lastObjKeyValuePairs;
+        endcase
     end
 
     // next state determiner
