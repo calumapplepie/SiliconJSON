@@ -22,7 +22,7 @@
 
 module ParserFSM import Core::*; (
     input UTF8_Char curChar,
-    input clk, rst,
+    input clk, rst, enb,
     output ElementType curElementType,
     output logic writingString, writeStructure,
     output logic [23:0] keyValuePairsSoFar,
@@ -51,10 +51,11 @@ module ParserFSM import Core::*; (
     
     logic simpleValScanComplete;
     ElementType simpleValElement;
+    assign simpleValueRst = rst || curState!=ReadSimple;
     
     SimpleValueFSM simpleValue (.curChar(curChar), .scanComplete(simpleValScanComplete),
-                                    .scannedElement(simpleValElement), .enb(curState==ReadSimple),
-                                    .clk(clk),.rst(rst));
+                                    .scannedElement(simpleValElement), .enb(curState==ReadSimple&& enb),
+                                    .clk(clk),.rst(simpleValueRst));
     
     logic numberParserReset;
     ElementType numberFirstElement; 
@@ -62,7 +63,7 @@ module ParserFSM import Core::*; (
                                        
     NumberParsingFSM numberParser (
         //note: see commit that introduced the enable logic for a long commit-message reflection
-        .clk, .rst(numberParserReset), .curChar, .enb(nextState == ReadNumber), 
+        .clk, .rst(numberParserReset), .curChar, .enb(nextState == ReadNumber && enb), 
         .number(numberSecondElement), .numberType(numberFirstElement)
     );
     
@@ -78,11 +79,13 @@ module ParserFSM import Core::*; (
             curState <= StartObject;
             keyValuePairsSoFar <= '0;
         end
-        else curState <= nextState;
+        else if (enb) begin
+            curState <= nextState;
         
-        // we assume nobody goes over 2^24 key value pairs with our parser
-        // that saves us saturating logic
-        if (curState == StartKey) keyValuePairsSoFar <= keyValuePairsSoFar+1;
+            // we assume nobody goes over 2^24 key value pairs with our parser
+            // that saves us saturating logic
+            if (curState == StartKey) keyValuePairsSoFar <= keyValuePairsSoFar+1;
+        end
     end
 
     // next state determiner

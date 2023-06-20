@@ -39,7 +39,7 @@ module SimpleValueFSM import Core::UTF8_Char, Core::ElementType, Core::trueVal, 
     endcase
     
     always_ff @(posedge clk) begin
-        if(rst || !enb) begin
+        if(rst ) begin
             bytesRead <= 3'd1;
             charsSoFar <= '0;
             // ensure we have the first byte prepped, in case it starts a simple value
