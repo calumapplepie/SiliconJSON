@@ -32,21 +32,23 @@ module BlockRamStack #(WIDTH=18, DEPTH=512)(
     
     // note: we never write to the lowest index of the stack.  
     logic[9:0] curTop = 0;
-    logic[9:0] nextTop;
-    assign nextTop = curTop + 1'd1;
+    logic[9:0] nextAddress;
     assign curDepth = curTop;
+    
+    always_comb begin
+        nextAddress = curTop;
+        if(pushEnable) nextAddress = curTop+1;
+        if(popTrigger) nextAddress = curTop-1;
+    end
     
     // Sadly, the internal FIFO logic controlers do not allow for FILO logic.  I checked :(
     TapeBlockRam #(.WORDSIZE(WIDTH), .NUMWORDS(DEPTH)) ram (
-        .clk, .enb(enb), .ena(enb), .wea(pushEnable), .web('0),
-        .dia(pushData), .dob(popData), .addra(nextTop), .addrb(curTop)
+        .clk, .enb('0), .ena(enb), .wea(pushEnable),
+        .dia(pushData), .doa(popData), .addra(nextAddress)
     );
     
     always_ff @(posedge clk) begin
-        if(rst)              curTop <= '0;
-        else if(!enb)        ; //only run below statements if enabled
-        else if(pushEnable)  curTop <= nextTop;
-        else if(popTrigger)  curTop <= curTop -1;
+        if(rst)      curTop <= '0;
+        else if(enb) curTop <= nextAddress;
     end
-    
 endmodule

@@ -13,15 +13,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="8174625fs"></ZoomStartTime>
-      <ZoomEndTime time="8205076fs"></ZoomEndTime>
-      <Cursor1Time time="8200000fs"></Cursor1Time>
+      <ZoomStartTime time="212533fs"></ZoomStartTime>
+      <ZoomEndTime time="248434fs"></ZoomEndTime>
+      <Cursor1Time time="225000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="206"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="20" />
+   <WVObjectSize size="13" />
    <wvobject fp_name="/OverallJsonTester_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -54,6 +54,10 @@
    <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/doCloseBraceWrite" type="logic">
       <obj_property name="ElementShortName">doCloseBraceWrite</obj_property>
       <obj_property name="ObjectShortName">doCloseBraceWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/lastBraceIndex" type="array">
+      <obj_property name="ElementShortName">lastBraceIndex[55:0]</obj_property>
+      <obj_property name="ObjectShortName">lastBraceIndex[55:0]</obj_property>
    </wvobject>
    <wvobject fp_name="group18" type="group">
       <obj_property name="label">ExpectedStruct</obj_property>
@@ -159,44 +163,12 @@
          <obj_property name="ObjectShortName">[15][63:0]</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/elementBuilder/elementType" type="array">
-      <obj_property name="ElementShortName">elementType[3:0]</obj_property>
-      <obj_property name="ObjectShortName">elementType[3:0]</obj_property>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/stack/curTop" type="array">
+      <obj_property name="ElementShortName">curTop[9:0]</obj_property>
+      <obj_property name="ObjectShortName">curTop[9:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/accumulatedBufferData" type="array">
-      <obj_property name="ElementShortName">accumulatedBufferData[2:0][63:0]</obj_property>
-      <obj_property name="ObjectShortName">accumulatedBufferData[2:0][63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/numDigits" type="array">
-      <obj_property name="ElementShortName">numDigits[2:0][4:0]</obj_property>
-      <obj_property name="ObjectShortName">numDigits[2:0][4:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/enb" type="logic">
-      <obj_property name="ElementShortName">enb</obj_property>
-      <obj_property name="ObjectShortName">enb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/rst" type="logic">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/numberSecondElement" type="array">
-      <obj_property name="ElementShortName">numberSecondElement[63:0]</obj_property>
-      <obj_property name="ObjectShortName">numberSecondElement[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/enb" type="logic">
-      <obj_property name="ElementShortName">enb</obj_property>
-      <obj_property name="ObjectShortName">enb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/curDigit" type="array">
-      <obj_property name="ElementShortName">curDigit[3:0]</obj_property>
-      <obj_property name="ObjectShortName">curDigit[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/selectedArray" type="array">
-      <obj_property name="ElementShortName">selectedArray[2:0]</obj_property>
-      <obj_property name="ObjectShortName">selectedArray[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/curState" type="array">
-      <obj_property name="ElementShortName">curState[5:0]</obj_property>
-      <obj_property name="ObjectShortName">curState[5:0]</obj_property>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/stack/popData" type="array">
+      <obj_property name="ElementShortName">popData[17:0]</obj_property>
+      <obj_property name="ObjectShortName">popData[17:0]</obj_property>
    </wvobject>
 </wave_config>
