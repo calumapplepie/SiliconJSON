@@ -32,15 +32,14 @@
     wire writingString, writeStructure, clk;
     wire [23:0] keyValuePairs;
     
-    // clock gating removal dependent upon ParserFSM improvements: subparser changes needed!
-    assign clk = (enable || rst) ? GCLK : '0;
+    assign clk = GCLK;
     
     // our modules!
     
     ParserFSM parser (
         .curChar (curChar), .curElementType(curElementType), .keyValuePairsSoFar(keyValuePairs),
         .writingString(writingString), .writeStructure(writeStructure), .numberSecondElement,
-        .clk(clk), .rst(rst)
+        .clk(clk), .rst(rst), .enb(enable)
     );
     
     // this needs to be a pipeline for proper functionality
@@ -48,13 +47,13 @@
     UTF8_Char lastChar;
     ElementType lastElementType;
     JsonTapeElement lastSecondElement;
-    always_ff @(posedge clk) begin
+    always_ff @(posedge clk ) begin
         if(rst) begin
             lastChar          <= "{";
             lastElementType   <= Core::objOpen;
             lastSecondElement <= '0;
         end
-        else begin
+        else if(enable) begin
             lastChar          <= curChar;
             lastElementType   <= curElementType;
             lastSecondElement <= numberSecondElement;

@@ -47,8 +47,10 @@ module StructureTapeAccumulator
     BlockRamStack stack (
         .clk, .enb(enable), .rst, 
         .pushEnable(nextTapeEntry[63:56] == "{"), .popTrigger(doCloseBraceWrite), 
-        .popData(lastBraceIndex), .pushData(curIndex)
+        .popData(lastBraceIndex[17:0]), .pushData(curIndex)
     );
+    
+    assign lastBraceIndex[56:18] = '0;
     
     assign doCloseBraceWrite = nextTapeEntry[63:56] == "}";
     assign doNumberWrite     = nextTapeEntry[63:56] inside {"l", "d", "u"}; //fancy set membership op i saw in the spec 
@@ -80,9 +82,7 @@ module StructureTapeAccumulator
     
     always_ff @(posedge clk ) begin
         if (rst) begin
-            //foreach(tape[i]) tape[i] <= '0;
             curIndex <= 56'd1;
-            lastBraceIndex <= 56'd1;
         end else if(enable) begin            
             if(doNumberWrite) curIndex <= curIndex + 2;
             else              curIndex <= curIndex + 1;  

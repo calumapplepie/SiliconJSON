@@ -13,15 +13,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="31470750fs"></ZoomStartTime>
-      <ZoomEndTime time="31564851fs"></ZoomEndTime>
-      <Cursor1Time time="31530000fs"></Cursor1Time>
+      <ZoomStartTime time="8174625fs"></ZoomStartTime>
+      <ZoomEndTime time="8205076fs"></ZoomEndTime>
+      <Cursor1Time time="8200000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="206"></NameColumnWidth>
-      <ValueColumnWidth column_width="112"></ValueColumnWidth>
+      <ValueColumnWidth column_width="108"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="20" />
    <wvobject fp_name="/OverallJsonTester_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -33,6 +33,11 @@
    <wvobject fp_name="/OverallJsonTester_tb/enable" type="logic">
       <obj_property name="ElementShortName">enable</obj_property>
       <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/curChar" type="array">
+      <obj_property name="ElementShortName">curChar[7:0]</obj_property>
+      <obj_property name="ObjectShortName">curChar[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/OverallJsonTester_tb/errorsSoFar" type="array">
       <obj_property name="ElementShortName">errorsSoFar[31:0]</obj_property>
@@ -157,5 +162,41 @@
    <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/elementBuilder/elementType" type="array">
       <obj_property name="ElementShortName">elementType[3:0]</obj_property>
       <obj_property name="ObjectShortName">elementType[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/accumulatedBufferData" type="array">
+      <obj_property name="ElementShortName">accumulatedBufferData[2:0][63:0]</obj_property>
+      <obj_property name="ObjectShortName">accumulatedBufferData[2:0][63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/numDigits" type="array">
+      <obj_property name="ElementShortName">numDigits[2:0][4:0]</obj_property>
+      <obj_property name="ObjectShortName">numDigits[2:0][4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/enb" type="logic">
+      <obj_property name="ElementShortName">enb</obj_property>
+      <obj_property name="ObjectShortName">enb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/numberSecondElement" type="array">
+      <obj_property name="ElementShortName">numberSecondElement[63:0]</obj_property>
+      <obj_property name="ObjectShortName">numberSecondElement[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/enb" type="logic">
+      <obj_property name="ElementShortName">enb</obj_property>
+      <obj_property name="ObjectShortName">enb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/curDigit" type="array">
+      <obj_property name="ElementShortName">curDigit[3:0]</obj_property>
+      <obj_property name="ObjectShortName">curDigit[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/accum/selectedArray" type="array">
+      <obj_property name="ElementShortName">selectedArray[2:0]</obj_property>
+      <obj_property name="ObjectShortName">selectedArray[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberParser/curState" type="array">
+      <obj_property name="ElementShortName">curState[5:0]</obj_property>
+      <obj_property name="ObjectShortName">curState[5:0]</obj_property>
    </wvobject>
 </wave_config>
