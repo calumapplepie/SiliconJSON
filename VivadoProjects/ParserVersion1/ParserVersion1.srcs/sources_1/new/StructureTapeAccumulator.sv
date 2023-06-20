@@ -43,6 +43,12 @@ module StructureTapeAccumulator
             .wea(enable),            .web(doDualWrite),  
             .addra(curIndex),        .addrb(dualWriteIndex),
             .dia(curIndexTapeEntry), .dib(dualWriteTapeEntry), .hash(hash));
+            
+    BlockRamStack stack (
+        .clk, .enb(enable), .rst, 
+        .pushEnable(nextTapeEntry[63:56] == "{"), .popTrigger(doCloseBraceWrite), 
+        .popData(lastBraceIndex), .pushData(curIndex)
+    );
     
     assign doCloseBraceWrite = nextTapeEntry[63:56] == "}";
     assign doNumberWrite     = nextTapeEntry[63:56] inside {"l", "d", "u"}; //fancy set membership op i saw in the spec 
@@ -78,14 +84,6 @@ module StructureTapeAccumulator
             curIndex <= 56'd1;
             lastBraceIndex <= 56'd1;
         end else if(enable) begin            
-            if(nextTapeEntry[63:56] == "{") lastBraceIndex <= curIndex;
-            
-            // close brace handler
-            else if(nextTapeEntry[63:56] == "}") begin
-                // unconditionally considers this close to be the last close brace
-                lastBraceIndex <= 0; // stores after we've already stored the next tape entry
-                
-            end
             if(doNumberWrite) curIndex <= curIndex + 2;
             else              curIndex <= curIndex + 1;  
 

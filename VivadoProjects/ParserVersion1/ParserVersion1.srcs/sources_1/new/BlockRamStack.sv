@@ -38,12 +38,13 @@ module BlockRamStack #(WIDTH=18, DEPTH=512)(
     
     // Sadly, the internal FIFO logic controlers do not allow for FILO logic.  I checked :(
     TapeBlockRam #(.WORDSIZE(WIDTH), .NUMWORDS(DEPTH)) ram (
-        .clk, .rst, .enb('1), .ena('1), .wea(pushEnable), .web('0),
-        .dia(pushData), .dob(popData), .addra(nextTop), .addrB(curTop)
+        .clk, .enb(enb), .ena(enb), .wea(pushEnable), .web('0),
+        .dia(pushData), .dob(popData), .addra(nextTop), .addrb(curTop)
     );
     
     always_ff @(posedge clk) begin
         if(rst)              curTop <= '0;
+        else if(!enb)        ; //only run below statements if enabled
         else if(pushEnable)  curTop <= nextTop;
         else if(popTrigger)  curTop <= curTop -1;
     end
