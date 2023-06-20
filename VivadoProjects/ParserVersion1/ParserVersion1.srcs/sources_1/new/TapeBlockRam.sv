@@ -10,9 +10,12 @@ module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64) (
 );
 
 // crude hack to force vivado to generate this module
-assign hash = (^doa)^ (^dob);
+assign hash = (^doa) ^ (^dob);
 
 logic [WORDSIZE-1:0] ram [NUMWORDS-1:0];
+
+// explicitly zero ram on initialization
+initial foreach(ram[i]) ram[i] = 0;
 
 // docs say accesses ports can have different bitwidths.  todo: determine if they also support 
 // unaligned access.
