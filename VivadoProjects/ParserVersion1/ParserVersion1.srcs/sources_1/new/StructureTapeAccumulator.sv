@@ -46,13 +46,14 @@ module StructureTapeAccumulator
             
     BlockRamStack stack (
         .clk, .enb(enable), .rst, 
-        .pushEnable(nextTapeEntry[63:56] == "{"), .popTrigger(doCloseBraceWrite), 
+        .pushEnable(doOpenBraceWrite), .popTrigger(doCloseBraceWrite), 
         .popData(lastBraceIndex[17:0]), .pushData(curIndex)
     );
     
     assign lastBraceIndex[55:18] = '0;
-    
-    assign doCloseBraceWrite = nextTapeEntry[63:56] == "}";
+   
+    assign doOpenBraceWrite  = (nextTapeEntry[63:56] == "{" || nextTapeEntry[63:56] == "[");
+    assign doCloseBraceWrite = (nextTapeEntry[63:56] == "}" || nextTapeEntry[63:56] == "]");
     assign doNumberWrite     = nextTapeEntry[63:56] inside {"l", "d", "u"}; //fancy set membership op i saw in the spec 
     assign doDualWrite       = (doCloseBraceWrite || doNumberWrite);
     

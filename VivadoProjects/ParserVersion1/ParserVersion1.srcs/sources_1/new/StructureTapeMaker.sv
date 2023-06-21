@@ -34,9 +34,10 @@ module StructureTapeMaker import Core::*;(
     
     always_comb begin
         case (elementType)
-            str :                 payload = stringTapeIndex;
-            objOpen, objClose:    payload = '0;
-            trueVal, falseVal, nullVal: payload = '0;
+            str :                           payload = stringTapeIndex;
+            objOpen, objClose:              payload = '0;
+            arrayOpen, arrayClose:          payload = '0;
+            trueVal, falseVal, nullVal:     payload = '0;
             unsignedInt, signedInt, double: payload = '0;
             default: payload = 56'hBADBADBADBADD;
         endcase

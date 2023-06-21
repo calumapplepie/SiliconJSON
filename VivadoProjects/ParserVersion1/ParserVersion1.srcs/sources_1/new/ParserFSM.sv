@@ -105,13 +105,18 @@ module ParserFSM import Core::*; (
 
     // key-value pair logic
     always_comb begin
+        // default to not changing
+        nextKeyValuePairs = keyValuePairsSoFar;
         // we assume nobody goes over 2^16 key value pairs with our parser
         // that saves us a lot of energy
         case(curState)
             StartKey    : nextKeyValuePairs = keyValuePairsSoFar+1;
-            StartObject : nextKeyValuePairs = '0;
-            EndObject   : nextKeyValuePairs[16:0] = lastObjKeyValuePairs[16:0];
+            StartObject, StartArray : nextKeyValuePairs = '0;
+            EndObject, EndArray   : nextKeyValuePairs[16:0] = lastObjKeyValuePairs[16:0];
         endcase
+        // handle the array member counting
+        if(curCharType == comma && !(curState == ReadString || curState == StartString) && inArray)
+            nextKeyValuePairs += 1;
     end
     
     // inArray logic
@@ -164,8 +169,8 @@ module ParserFSM import Core::*; (
             FindKey, StartObject    : findKeyNextState();
             FindValue, StartArray   : findValueNextState();
 
-            StartKey, ReadKey       : nextState = isQuote ? FindValue : ReadKey; 
-            StartString,ReadString  : nextState = isQuote ? FindKey: ReadString;
+            StartKey, ReadKey       : nextState = isQuote ? FindValue : ReadKey;    
+            StartString,ReadString  : nextState = isQuote ? (inArray ? FindValue : FindKey): ReadString;
             
             ReadSimple  : nextState = simpleValScanComplete ? EndSimple : ReadSimple; 
             
