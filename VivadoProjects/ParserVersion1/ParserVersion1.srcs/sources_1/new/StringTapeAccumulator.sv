@@ -24,6 +24,7 @@ module StringTapeAccumulator
     import Core::UTF8_Char, Core::TapeIndex, Core::StringTapeLength;
     (
         input UTF8_Char nextStringByte,
+        input characterEscaped,
         output TapeIndex startIndex,
         input clk, rst, enable,
         output hash
@@ -87,10 +88,12 @@ always_ff @(posedge clk ) begin
         startIndex <= '0;
         strLen <= 0;
     end else if (enable) begin
-        cyclesDisabled <= '0;
-        editIndex <= startIndex;
-        curIndex <= curIndex + 1;
-        strLen <= strLen +1;
+        // don't actually write the escaping character
+        if(!(characterEscaped ^ (nextStringByte=="\"")))
+            cyclesDisabled <= '0;
+            editIndex <= startIndex;
+            curIndex <= curIndex + 1;
+            strLen <= strLen +1;
     end else begin
         if(cyclesDisabled < 3)begin
             cyclesDisabled <= cyclesDisabled +1;

@@ -29,7 +29,7 @@
     );
     ElementType curElementType;
     JsonTapeElement numberSecondElement;
-    wire writeString, writeStructure, clk;
+    wire writeString, writeStructure, clk, characterEscaped;
     wire [23:0] keyValuePairs;
     
     assign clk = GCLK;
@@ -38,7 +38,7 @@
     
     ParserFSM parser (
         .curChar (curChar), .curElementType(curElementType), .keyValuePairsSoFar(keyValuePairs),
-        .writeString(writeString), .writeStructure(writeStructure), .numberSecondElement,
+        .writeString, .writeStructure, .numberSecondElement, .characterEscaped,
         .clk(clk), .rst(rst), .enb(enable)
     );
     
