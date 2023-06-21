@@ -42,7 +42,7 @@ module ParserFSM import Core::*; (
         ReadNumber,  // read the number
         EndNumber,   // end the number
         EndObject,   // finish off the object we just found
-        EndDocument, // close the document up
+        EndDocument, // close the document up: not currently used
         Error} state_t;
     state_t curState;
     state_t nextState;
@@ -119,7 +119,7 @@ module ParserFSM import Core::*; (
             StartKey    : nextState = isQuote ? FindValue : ReadKey; 
             StartString : nextState = isQuote ? FindKey : ReadString; 
 
-            FindKey, EndSimple, EndNumber : case(curCharType)
+            FindKey, EndSimple, EndNumber, EndObject : case(curCharType)
                 quote     : nextState = StartKey;
                 braceClose: nextState = EndObject;
                 default   : nextState = FindKey;
@@ -142,9 +142,6 @@ module ParserFSM import Core::*; (
                 whitespace, comma, braceClose, bracketClose : nextState = EndNumber;
                 default : nextState = ReadNumber;
             endcase 
-            
-            // no sub-objects supported yet
-            EndObject   : nextState = EndDocument;
             
             default     : nextState = Error;
         endcase
