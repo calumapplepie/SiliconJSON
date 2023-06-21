@@ -88,12 +88,13 @@ always_ff @(posedge clk ) begin
         startIndex <= '0;
         strLen <= 0;
     end else if (enable) begin
-        // don't actually write the escaping character
-        if(!(characterEscaped ^ (nextStringByte=="\"")))
-            cyclesDisabled <= '0;
-            editIndex <= startIndex;
+        cyclesDisabled <= '0;
+        editIndex <= startIndex;
+        // only write quotes or backslashes if theyre escaped
+        if(!((nextStringByte=="\"") || (nextStringByte=="\\")) || characterEscaped ) begin
             curIndex <= curIndex + 1;
             strLen <= strLen +1;
+        end
     end else begin
         if(cyclesDisabled < 3)begin
             cyclesDisabled <= cyclesDisabled +1;

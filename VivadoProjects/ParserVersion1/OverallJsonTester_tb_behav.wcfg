@@ -13,15 +13,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="212533fs"></ZoomStartTime>
-      <ZoomEndTime time="248434fs"></ZoomEndTime>
-      <Cursor1Time time="225000fs"></Cursor1Time>
+      <ZoomStartTime time="8185000fs"></ZoomStartTime>
+      <ZoomEndTime time="8254001fs"></ZoomEndTime>
+      <Cursor1Time time="8340000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="206"></NameColumnWidth>
-      <ValueColumnWidth column_width="104"></ValueColumnWidth>
+      <ValueColumnWidth column_width="100"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
+   <WVObjectSize size="18" />
    <wvobject fp_name="/OverallJsonTester_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -163,12 +163,163 @@
          <obj_property name="ObjectShortName">[15][63:0]</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/stack/curTop" type="array">
-      <obj_property name="ElementShortName">curTop[9:0]</obj_property>
-      <obj_property name="ObjectShortName">curTop[9:0]</obj_property>
+   <wvobject fp_name="vbus315" type="vbus">
+      <obj_property name="label">Actual String</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[13]" type="array">
+         <obj_property name="ElementShortName">[13][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[12]" type="array">
+         <obj_property name="ElementShortName">[12][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[11]" type="array">
+         <obj_property name="ElementShortName">[11][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[10]" type="array">
+         <obj_property name="ElementShortName">[10][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[9]" type="array">
+         <obj_property name="ElementShortName">[9][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[8]" type="array">
+         <obj_property name="ElementShortName">[8][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[7]" type="array">
+         <obj_property name="ElementShortName">[7][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[6]" type="array">
+         <obj_property name="ElementShortName">[6][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[5]" type="array">
+         <obj_property name="ElementShortName">[5][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[4]" type="array">
+         <obj_property name="ElementShortName">[4][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[3]" type="array">
+         <obj_property name="ElementShortName">[3][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[2]" type="array">
+         <obj_property name="ElementShortName">[2][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[1]" type="array">
+         <obj_property name="ElementShortName">[1][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/ram/ram[0]" type="array">
+         <obj_property name="ElementShortName">[0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][7:0]</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/stack/popData" type="array">
-      <obj_property name="ElementShortName">popData[17:0]</obj_property>
-      <obj_property name="ObjectShortName">popData[17:0]</obj_property>
+   <wvobject fp_name="VirtualBus" type="vbus">
+      <obj_property name="label">Expected String</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Reversed">false</obj_property>
+      <obj_property name="ElementShortName">VirtualBus[]</obj_property>
+      <obj_property name="ObjectShortName">VirtualBus[]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[13]" type="array">
+         <obj_property name="ElementShortName">[13][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[12]" type="array">
+         <obj_property name="ElementShortName">[12][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[11]" type="array">
+         <obj_property name="ElementShortName">[11][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[10]" type="array">
+         <obj_property name="ElementShortName">[10][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[9]" type="array">
+         <obj_property name="ElementShortName">[9][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[8]" type="array">
+         <obj_property name="ElementShortName">[8][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[7]" type="array">
+         <obj_property name="ElementShortName">[7][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[6]" type="array">
+         <obj_property name="ElementShortName">[6][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[5]" type="array">
+         <obj_property name="ElementShortName">[5][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[4]" type="array">
+         <obj_property name="ElementShortName">[4][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[3]" type="array">
+         <obj_property name="ElementShortName">[3][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[2]" type="array">
+         <obj_property name="ElementShortName">[2][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[1]" type="array">
+         <obj_property name="ElementShortName">[1][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/OverallJsonTester_tb/expectedStringTape[0]" type="array">
+         <obj_property name="ElementShortName">[0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/nextStringByte" type="array">
+      <obj_property name="ElementShortName">nextStringByte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">nextStringByte[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/characterEscaped" type="logic">
+      <obj_property name="ElementShortName">characterEscaped</obj_property>
+      <obj_property name="ObjectShortName">characterEscaped</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/curIndex" type="array">
+      <obj_property name="ElementShortName">curIndex[55:0]</obj_property>
+      <obj_property name="ObjectShortName">curIndex[55:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/stringGoHere/cyclesDisabled" type="array">
+      <obj_property name="ElementShortName">cyclesDisabled[1:0]</obj_property>
+      <obj_property name="ObjectShortName">cyclesDisabled[1:0]</obj_property>
    </wvobject>
 </wave_config>
