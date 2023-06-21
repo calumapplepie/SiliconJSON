@@ -69,7 +69,7 @@ module OverallJsonTester_tb();
             if (expectedStringTape[i] !=  DUV.writer.stringGoHere.ram.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 5) begin
-                    $display("Error at string tape index %d when reading file %s",  i, basename);
+                     $display("Error at string tape index %d when reading file %s",  i, basename);
                     $display("Expected %h, got %h", expectedStringTape[i], DUV.writer.stringGoHere.ram.ram[i]);
                 end
             end

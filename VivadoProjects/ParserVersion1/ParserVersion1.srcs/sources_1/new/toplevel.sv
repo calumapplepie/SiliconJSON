@@ -45,18 +45,21 @@
     // this needs to be a pipeline for proper functionality
     // FSM's current state describes what should be done with previous character
     UTF8_Char lastChar;
+    logic lastCharacterEscaped;
     ElementType lastElementType;
     JsonTapeElement lastSecondElement;
     always_ff @(posedge clk ) begin
         if(rst) begin
-            lastChar          <= "{";
-            lastElementType   <= Core::objOpen;
-            lastSecondElement <= '0;
+            lastChar             <= "{";
+            lastCharacterEscaped <= '0;
+            lastElementType      <= Core::objOpen;
+            lastSecondElement    <= '0;
         end
         else if(enable) begin
-            lastChar          <= curChar;
-            lastElementType   <= curElementType;
-            lastSecondElement <= numberSecondElement;
+            lastChar             <= curChar;
+            lastCharacterEscaped <= characterEscaped;
+            lastElementType      <= curElementType;
+            lastSecondElement    <= numberSecondElement;
         end 
     end
     
@@ -65,6 +68,6 @@
         .curChar(lastChar), .curElementType(lastElementType),
         .writeString(writeString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
-        .clk(clk),.rst(rst), .hash(LD0), .characterEscaped
+        .clk(clk),.rst(rst), .hash(LD0), .characterEscaped(lastCharacterEscaped)
     );
 endmodule
