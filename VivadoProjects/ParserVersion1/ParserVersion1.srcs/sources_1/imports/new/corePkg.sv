@@ -90,16 +90,16 @@ package Core;
 
     function UTF8_Char unescapeCharacter(UTF8_Char escapedChar);
         case(escapedChar) 
-            "0" : "\0"; // dunno if this is actually standard
-            "\\": "\\";
-            "\"": "\"";
-            "/" : "/" ;
-            "b" : 8'h8;
-            "f" : 8'hC;
-            "n" : 8'hA;
-            "t" : 8'h9;
-            "r" : 8'hD;
-            default: 8'h0;
+            "0" : return "\0"; // dunno if this is actually standard
+            "\\": return "\\";
+            "\"": return "\"";
+            "/" : return "/" ;
+            "b" : return 8'h8;
+            "f" : return 8'hC;
+            "n" : return 8'hA;
+            "t" : return 8'h9;
+            "r" : return 8'hD;
+            default: return 8'h0;
         endcase
     endfunction
     
