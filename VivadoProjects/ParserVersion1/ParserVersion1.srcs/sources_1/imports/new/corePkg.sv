@@ -87,6 +87,21 @@ package Core;
             default    : return "\0";
         endcase
     endfunction
+
+    function UTF8_Char unescapeCharacter(UTF8_Char escapedChar);
+        case(escapedChar) 
+            "0" : "\0"; // dunno if this is actually standard
+            "\\": "\\";
+            "\"": "\"";
+            "/" : "/" ;
+            "b" : 8'h8;
+            "f" : 8'hC;
+            "n" : 8'hA;
+            "t" : 8'h9;
+            "r" : 8'hD;
+            default: 8'h0;
+        endcase
+    endfunction
     
 
 endpackage

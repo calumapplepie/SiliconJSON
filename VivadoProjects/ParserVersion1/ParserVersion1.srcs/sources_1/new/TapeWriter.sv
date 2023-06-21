@@ -34,10 +34,13 @@ module TapeWriter
     wire hashStr, hashStruct;
     
     TapeIndex curStringIndex;
+    UTF8_Char nextStringByte;
     assign hash = hashStr ^ hashStruct;
     
+    assign nextStringByte = characterEscaped ? Core::unescapeCharacter(curChar) : curChar;
+
     StringTapeAccumulator stringGoHere (
-        .nextStringByte(curChar), .enable(writeString),
+        .nextStringByte, .enable(writeString),
         .startIndex(curStringIndex), .characterEscaped
         .clk(clk), .rst(rst), .hash(hashStr)
     );
