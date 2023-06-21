@@ -36,6 +36,8 @@ module StructureTapeAccumulator
     JsonTapeElement lastBraceTapeEntry;
     JsonTapeElement dualWriteTapeEntry;
     
+    logic [9:0] curDepth;
+    
     logic doCloseBraceWrite, doNumberWrite, doDualWrite;
     
     TapeBlockRam #(.WORDSIZE(64), .NUMWORDS(StructTapeLength)) blockRam  (
@@ -47,7 +49,7 @@ module StructureTapeAccumulator
     BlockRamStack stack (
         .clk, .enb(enable), .rst, 
         .pushEnable(doOpenBraceWrite), .popTrigger(doCloseBraceWrite), 
-        .popData(lastBraceIndex[17:0]), .pushData(curIndex)
+        .popData(lastBraceIndex[17:0]), .pushData(curIndex), .curDepth
     );
     
     assign lastBraceIndex[55:18] = '0;
@@ -74,7 +76,7 @@ module StructureTapeAccumulator
         lastBraceTapeEntry[63:56] = "{";
         
         // root handler
-        if (lastBraceIndex == 0) begin
+        if (curDepth == 0) begin
             lastBraceTapeEntry[63:56] = "r";
             lastBraceTapeEntry[55:32] = '0;
             curIndexTapeEntry[63:56] = "r";

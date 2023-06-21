@@ -38,7 +38,7 @@ module StructureTapeMaker import Core::*;(
             objOpen, objClose:              payload = '0;
             arrayOpen, arrayClose:          payload = '0;
             trueVal, falseVal, nullVal:     payload = '0;
-            unsignedInt, signedInt, double: payload = '0;
+            unsignedInt, signedInt, double: payload = '0; 
             default: payload = 56'hBADBADBADBADD;
         endcase
     end
