@@ -25,7 +25,7 @@ module TapeWriter
     (
         input UTF8_Char curChar,
         input ElementType curElementType,
-        input writingString, writeStructure,
+        input writeString, writeStructure, characterEscaped,
         input logic [23:0] keyValuePairs,
         input JsonTapeElement numberSecondElement,
         input clk, rst,
@@ -34,11 +34,14 @@ module TapeWriter
     wire hashStr, hashStruct;
     
     TapeIndex curStringIndex;
+    UTF8_Char nextStringByte;
     assign hash = hashStr ^ hashStruct;
     
+    assign nextStringByte = characterEscaped ? Core::unescapeCharacter(curChar) : curChar;
+
     StringTapeAccumulator stringGoHere (
-        .nextStringByte(curChar), .enable(writingString),
-        .startIndex(curStringIndex),
+        .nextStringByte, .enable(writeString),
+        .startIndex(curStringIndex), .characterEscaped,
         .clk(clk), .rst(rst), .hash(hashStr)
     );
     
