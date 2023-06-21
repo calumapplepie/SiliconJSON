@@ -121,12 +121,11 @@ module ParserFSM import Core::*; (
 
             FindKey, EndSimple, EndNumber : case(curCharType)
                 quote     : nextState = StartKey;
-                braceOpen : nextState = StartObject;
                 braceClose: nextState = EndObject;
-                braceOpen : nextState = StartObject;
                 default   : nextState = FindKey;
             endcase
             FindValue   : case(curCharType) // todo: check for colon
+                braceOpen :        nextState = StartObject;
                 quote:             nextState = StartString;
                 asciiAlphabetical: nextState = ReadSimple; 
                 numeric, minusSign:nextState = ReadNumber;

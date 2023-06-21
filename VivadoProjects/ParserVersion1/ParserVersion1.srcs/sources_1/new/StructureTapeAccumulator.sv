@@ -40,7 +40,7 @@ module StructureTapeAccumulator
     
     TapeBlockRam #(.WORDSIZE(64), .NUMWORDS(StructTapeLength)) blockRam  (
             .clk(clk), .ena('1), .enb('1), //always enable
-            .wea(enable),            .web(doDualWrite),  
+            .wea(enable | doDualWrite),            .web(doDualWrite),  
             .addra(curIndex),        .addrb(dualWriteIndex),
             .dia(curIndexTapeEntry), .dib(dualWriteTapeEntry), .hash(hash));
             
@@ -54,7 +54,7 @@ module StructureTapeAccumulator
     
     assign doCloseBraceWrite = nextTapeEntry[63:56] == "}";
     assign doNumberWrite     = nextTapeEntry[63:56] inside {"l", "d", "u"}; //fancy set membership op i saw in the spec 
-    assign doDualWrite       = (doCloseBraceWrite || doNumberWrite) && enable;
+    assign doDualWrite       = (doCloseBraceWrite || doNumberWrite);
     
     assign dualWriteIndex    = doCloseBraceWrite ? lastBraceIndex    : curIndex + 1; 
     assign dualWriteTapeEntry= doCloseBraceWrite ? lastBraceTapeEntry: numberSecondElement;
