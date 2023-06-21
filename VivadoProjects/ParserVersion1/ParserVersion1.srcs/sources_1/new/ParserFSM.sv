@@ -112,6 +112,7 @@ module ParserFSM import Core::*; (
             FindKey, EndSimple, EndNumber : case(curCharType)
                 quote     : nextState = StartKey;
                 braceClose: nextState = EndObject;
+                braceOpen : nextState = StartObject;
                 default   : nextState = FindKey;
             endcase
             FindValue   : case(curCharType) // todo: check for colon
@@ -147,7 +148,10 @@ module ParserFSM import Core::*; (
         curElementType = charToElementType(curCharType);
         case(curState)
             StartObject  : writeStructure = 1'b1;
-            StartKey, StartString   : writeStructure = 1'b1;
+            StartKey, StartString   : begin 
+                writeStructure = 1'b1;
+                writingString =  curCharType == Core::quote;
+            end
             ReadKey, ReadString     : writingString  = 1'b1;
             ReadSimple: curElementType = simpleValElement;
             ReadNumber: curElementType = numberFirstElement;
