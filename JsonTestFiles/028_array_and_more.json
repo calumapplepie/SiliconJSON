@@ -1,0 +1,6 @@
+{
+    "apple": "fruit",
+    "recipes" : ["pie","fritter", "donut", ["hard cider", "cider"]],
+    "more" : ["moar", "more", "mas"],
+    "done yet?": true    
+}
