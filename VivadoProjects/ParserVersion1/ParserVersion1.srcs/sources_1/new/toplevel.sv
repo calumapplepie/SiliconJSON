@@ -29,7 +29,7 @@
     );
     ElementType curElementType;
     JsonTapeElement numberSecondElement;
-    wire writingString, writeStructure, clk;
+    wire writeString, writeStructure, clk;
     wire [23:0] keyValuePairs;
     
     assign clk = GCLK;
@@ -38,7 +38,7 @@
     
     ParserFSM parser (
         .curChar (curChar), .curElementType(curElementType), .keyValuePairsSoFar(keyValuePairs),
-        .writingString(writingString), .writeStructure(writeStructure), .numberSecondElement,
+        .writeString(writeString), .writeStructure(writeStructure), .numberSecondElement,
         .clk(clk), .rst(rst), .enb(enable)
     );
     
@@ -63,7 +63,7 @@
     
     TapeWriter writer (
         .curChar(lastChar), .curElementType(lastElementType),
-        .writingString(writingString), .writeStructure(writeStructure), 
+        .writeString(writeString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
         .clk(clk),.rst(rst), .hash(LD0)
     );

@@ -25,7 +25,7 @@ module TapeWriter
     (
         input UTF8_Char curChar,
         input ElementType curElementType,
-        input writingString, writeStructure,
+        input writeString, writeStructure,
         input logic [23:0] keyValuePairs,
         input JsonTapeElement numberSecondElement,
         input clk, rst,
@@ -37,7 +37,7 @@ module TapeWriter
     assign hash = hashStr ^ hashStruct;
     
     StringTapeAccumulator stringGoHere (
-        .nextStringByte(curChar), .enable(writingString),
+        .nextStringByte(curChar), .enable(writeString),
         .startIndex(curStringIndex),
         .clk(clk), .rst(rst), .hash(hashStr)
     );
