@@ -58,6 +58,9 @@ module OverallJsonTester_tb();
             #10;
         end
         
+        // close in file
+        $fclose(jsonInFileHandle);
+        
         // bonus clock for pipeline
         #10;
 

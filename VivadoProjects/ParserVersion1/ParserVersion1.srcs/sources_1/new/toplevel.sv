@@ -65,6 +65,6 @@
         .curChar(lastChar), .curElementType(lastElementType),
         .writeString(writeString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
-        .clk(clk),.rst(rst), .hash(LD0)
+        .clk(clk),.rst(rst), .hash(LD0), .characterEscaped
     );
 endmodule
