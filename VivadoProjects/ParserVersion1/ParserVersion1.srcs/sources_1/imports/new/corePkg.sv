@@ -24,8 +24,8 @@ package Core;
     typedef logic [63:0] JsonTapeElement;
     typedef logic [55:0] TapeIndex;
     
-    parameter int StringTapeLength = 256;
-    parameter int StructTapeLength = 32;
+    parameter int StringTapeLength = 2048; //max value without expanding into a full block ram
+    parameter int StructTapeLength = 512;  // max value without expanding into 4 block rams
     typedef enum logic [3:0] {braceOpen, braceClose, bracketOpen, bracketClose, 
                                 quote, colon, comma, minusSign, backslash,
                                 whitespace, numeric, controlChar, asciiAlphabetical, 
