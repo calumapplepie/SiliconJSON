@@ -41,6 +41,8 @@ module ParserFSM import Core::*; (
         ReadString,  // Read the string
         ReadNumber,  // read the number
         EndNumber,   // end the number
+        StartArray,
+        EndArray,
         EndObject,   // finish off the object we just found
         EndDocument, // close the document up: not currently used
         Error} state_t;
@@ -72,23 +74,24 @@ module ParserFSM import Core::*; (
     
     // a bit more logic can be stuffed into this module!
     logic [17:0] nextKeyValuePairs, lastObjKeyValuePairs;
+    logic inArray;
     BlockRamStack stack (
         .clk, .enb(enable), .rst, 
         .pushEnable(curState == StartObject), .popTrigger(curState == EndObject), 
-        .popData(lastObjKeyValuePairs), .pushData(keyValuePairsSoFar)
+        .popData(lastObjKeyValuePairs), .pushData({inArray, keyValuePairsSoFar[16:0]})
     );
     
     // zero excess bits
-    assign keyValuePairsSoFar[23:18] = '0;
-
+    assign keyValuePairsSoFar[23:17] = '0;
+    
     // state machine sequencial code
     always_ff @(posedge clk ) begin
         if(rst) begin
             curState <= StartObject;
-            keyValuePairsSoFar[17:0] <= '0;
+            keyValuePairsSoFar[16:0] <= '0; 
         end else if (enb) begin
             curState <= nextState;
-            keyValuePairsSoFar[17:0] <= nextKeyValuePairs; 
+            keyValuePairsSoFar[16:0] <= nextKeyValuePairs; 
         end
     end
 
@@ -102,39 +105,67 @@ module ParserFSM import Core::*; (
 
     // key-value pair logic
     always_comb begin
-        // we assume nobody goes over 2^24 key value pairs with our parser
-        // that saves us saturating logic
+        // we assume nobody goes over 2^16 key value pairs with our parser
+        // that saves us a lot of energy
         case(curState)
             StartKey    : nextKeyValuePairs = keyValuePairsSoFar+1;
             StartObject : nextKeyValuePairs = '0;
-            EndObject   : nextKeyValuePairs = lastObjKeyValuePairs;
+            EndObject   : nextKeyValuePairs[16:0] = lastObjKeyValuePairs[16:0];
         endcase
     end
-
-    // next state determiner
-    always_comb begin
-        logic isQuote = curCharType == quote && !characterEscaped;
-        case(curState)    
-            StartObject : nextState = FindKey;
-            StartKey    : nextState = isQuote ? FindValue : ReadKey; 
-            StartString : nextState = isQuote ? FindKey : ReadString; 
-
-            FindKey, EndSimple, EndNumber, EndObject : case(curCharType)
+    
+    // inArray logic
+    always_ff @(posedge clk) begin
+        if(rst) inArray <= '0;
+        // we assume nobody goes over 2^16 key value pairs with our parser
+        // that saves us a lot of energy
+        else case(curState)
+            StartObject : inArray <= '0;
+            EndObject   : inArray <= lastObjKeyValuePairs[17];
+        endcase
+    end
+    
+    // whether we're finding a key or finding a value turns out to be kinda... tough to say.
+    // theres several states that need to find keys or values depending on whether we're in
+    // an array or not.  Factor out that logic into two functions
+    function findKeyNextState ();
+        case(curCharType)
                 quote     : nextState = StartKey;
                 braceClose: nextState = EndObject;
                 default   : nextState = FindKey;
             endcase
-            FindValue   : case(curCharType) // todo: check for colon
+    endfunction
+    
+    function findValueNextState();
+        case(curCharType) // todo: check for colon
                 braceOpen :        nextState = StartObject;
+                bracketOpen:       nextState = StartArray;
                 quote:             nextState = StartString;
                 asciiAlphabetical: nextState = ReadSimple; 
                 numeric, minusSign:nextState = ReadNumber;
                 default:           nextState = FindValue;
             endcase
+    endfunction
 
+    // next state determiner
+    always_comb begin
+        logic isQuote = curCharType == quote && !characterEscaped;
+        case(curState)    
+            EndObject, EndArray : begin
+                if(lastObjKeyValuePairs[17])    findValueNextState();
+                else                            findKeyNextState();
+            end             
+            
+            EndSimple, EndNumber : begin
+                if(inArray) findValueNextState();
+                else        findKeyNextState();
+            end 
 
-            ReadKey     : nextState = isQuote ? FindValue : ReadKey; // todo: escaped quotes
-            ReadString  : nextState = isQuote ? FindKey: ReadString;
+            FindKey, StartObject    : findKeyNextState();
+            FindValue, StartArray   : findValueNextState();
+
+            StartKey, ReadKey       : nextState = isQuote ? FindValue : ReadKey; 
+            StartString,ReadString  : nextState = isQuote ? FindKey: ReadString;
             
             ReadSimple  : nextState = simpleValScanComplete ? EndSimple : ReadSimple; 
             
@@ -159,12 +190,13 @@ module ParserFSM import Core::*; (
                 writeStructure = 1'b1;
             end
             ReadKey, ReadString     : writeString  = 1'b1;
-            ReadSimple: curElementType = simpleValElement;
-            ReadNumber: curElementType = numberFirstElement;
-            EndSimple, EndNumber: writeStructure = 1'b1;
-            EndObject, EndDocument: begin
+            ReadSimple              : curElementType = simpleValElement;
+            ReadNumber              : curElementType = numberFirstElement;
+            EndSimple, EndNumber    : writeStructure = 1'b1;
+            StartArray, EndArray    : writeStructure = 1'b1;
+            EndObject, EndDocument  : begin
                 writeStructure = 1'b1;
-                curElementType = objClose;// root handling is automated
+                curElementType = objClose;// root handling requires this
             end 
             default: 
             // some states have no output besides those default ones
