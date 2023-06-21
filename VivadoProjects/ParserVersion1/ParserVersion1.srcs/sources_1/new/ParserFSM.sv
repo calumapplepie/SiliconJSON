@@ -106,8 +106,8 @@ module ParserFSM import Core::*; (
         logic isQuote = curCharType == quote;
         case(curState)    
             StartObject : nextState = FindKey;
-            StartKey    : nextState = ReadKey; //NOTE: Breaks on empty key
-            StartString : nextState = ReadString; // NOTE: breaks on empty value
+            StartKey    : nextState = isQuote ? FindValue : ReadKey; 
+            StartString : nextState = isQuote ? FindKey : ReadString; 
 
             FindKey, EndSimple, EndNumber : case(curCharType)
                 quote     : nextState = StartKey;
@@ -147,7 +147,10 @@ module ParserFSM import Core::*; (
         curElementType = charToElementType(curCharType);
         case(curState)
             StartObject  : writeStructure = 1'b1;
-            StartKey, StartString   : writeStructure = 1'b1;
+            StartKey, StartString   : begin
+                if(curCharType == quote) writingString = 1'b1;
+                writeStructure = 1'b1;
+            end
             ReadKey, ReadString     : writingString  = 1'b1;
             ReadSimple: curElementType = simpleValElement;
             ReadNumber: curElementType = numberFirstElement;
