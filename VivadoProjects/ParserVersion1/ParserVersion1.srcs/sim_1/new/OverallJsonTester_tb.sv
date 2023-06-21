@@ -32,8 +32,8 @@ module OverallJsonTester_tb();
     integer errorCode;
     UTF8_Char nextChar;
 
-    JsonTapeElement expectedStructTape [StructTapeLength];
-    logic [7:0] expectedStringTape [StringTapeLength];
+    JsonTapeElement expectedStructTape [0:StructTapeLength];
+    logic [7:0]     expectedStringTape [0:StringTapeLength];
     
     TopLevel DUV (
         .curChar(nextChar), 

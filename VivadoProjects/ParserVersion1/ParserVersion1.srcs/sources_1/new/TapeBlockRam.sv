@@ -12,7 +12,7 @@ module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64) (
 // crude hack to force vivado to generate this module
 assign hash = (^doa) ^ (^dob);
 
-logic [WORDSIZE-1:0] ram [NUMWORDS-1:0];
+logic [WORDSIZE-1:0] ram [0:NUMWORDS-1];
 
 // explicitly zero ram on initialization
 initial foreach(ram[i]) ram[i] = 0;
