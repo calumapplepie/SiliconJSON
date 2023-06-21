@@ -24,7 +24,7 @@ module ParserFSM import Core::*; (
     input UTF8_Char curChar,
     input clk, rst, enb,
     output ElementType curElementType,
-    output logic writingString, writeStructure,
+    output logic writeString, writeStructure, characterEscaped,
     output logic [23:0] keyValuePairsSoFar,
     output JsonTapeElement numberSecondElement
     );
@@ -78,16 +78,26 @@ module ParserFSM import Core::*; (
         .popData(lastObjKeyValuePairs), .pushData(keyValuePairsSoFar)
     );
     
+    // zero excess bits
     assign keyValuePairsSoFar[23:18] = '0;
+
+    // state machine sequencial code
     always_ff @(posedge clk ) begin
         if(rst) begin
             curState <= StartObject;
             keyValuePairsSoFar[17:0] <= '0;
-        end
-        else if (enb) begin
+        end else if (enb) begin
             curState <= nextState;
             keyValuePairsSoFar[17:0] <= nextKeyValuePairs; 
         end
+    end
+
+    // backslash logic
+    always_ff @(posedge clk) begin
+        if(rst)                    characterEscaped <= '0;
+        else if(!enb) ;
+        else if (characterEscaped) characterEscaped <= '0;
+        else if (curCharType == backslash) characterEscaped <= '1;
     end
 
     // key-value pair logic
@@ -103,7 +113,7 @@ module ParserFSM import Core::*; (
 
     // next state determiner
     always_comb begin
-        logic isQuote = curCharType == quote;
+        logic isQuote = curCharType == quote && !characterEscaped;
         case(curState)    
             StartObject : nextState = FindKey;
             StartKey    : nextState = isQuote ? FindValue : ReadKey; 
@@ -111,6 +121,7 @@ module ParserFSM import Core::*; (
 
             FindKey, EndSimple, EndNumber : case(curCharType)
                 quote     : nextState = StartKey;
+                braceOpen : nextState = StartObject;
                 braceClose: nextState = EndObject;
                 default   : nextState = FindKey;
             endcase
@@ -139,19 +150,18 @@ module ParserFSM import Core::*; (
         endcase
     end
 
-
     // our outputs
     always_comb begin
-        writingString  = 1'b0;
+        writeString  = 1'b0;
         writeStructure = 1'b0;
         curElementType = charToElementType(curCharType);
         case(curState)
             StartObject  : writeStructure = 1'b1;
             StartKey, StartString   : begin
-                if(curCharType == quote) writingString = 1'b1;
+                if(curCharType == quote) writeString = 1'b1;
                 writeStructure = 1'b1;
             end
-            ReadKey, ReadString     : writingString  = 1'b1;
+            ReadKey, ReadString     : writeString  = 1'b1;
             ReadSimple: curElementType = simpleValElement;
             ReadNumber: curElementType = numberFirstElement;
             EndSimple, EndNumber: writeStructure = 1'b1;
