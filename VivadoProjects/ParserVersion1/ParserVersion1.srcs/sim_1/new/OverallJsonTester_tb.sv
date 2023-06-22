@@ -29,6 +29,7 @@ module OverallJsonTester_tb();
     string basenames [32];
     // let the record state that I do not like windows
     string JsonTestFilesDir = "C:/Users/mcconncm/Documents/SummerResearch2023/JsonTestFiles/";    
+    string JsonExt = ".json";
     integer errorCode;
     UTF8_Char nextChar;
 
@@ -40,7 +41,7 @@ module OverallJsonTester_tb();
         .enable(enable), .GCLK(clk), .rst(rst));
     
     task static evaluateJsonFile(string basename);
-        int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,".json"},"r");
+        int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,JsonExt},"r");
         
         // zero the memories
         foreach(expectedStringTape[i]) expectedStringTape[i] = 'x;
@@ -157,6 +158,15 @@ module OverallJsonTester_tb();
         runTest();
         enable <= '0;
         #60;
+        // run with tweaked extension to check minified version
+        rst <= 0;
+        #20;
+        $display("testing minified json");
+        JsonExt = ".minjson";
+        enable <= '1;
+        runTest();
+        enable <= '0;
+        #10;
         $finish;
     end
 
