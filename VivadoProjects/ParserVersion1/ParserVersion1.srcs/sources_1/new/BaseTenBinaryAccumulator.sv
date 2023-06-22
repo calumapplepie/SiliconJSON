@@ -26,10 +26,13 @@ module BaseTenBinaryAccumulator(
         output logic [63:0] numberOut
         );
         
+        logic [63:0] prevNumberOut;
+        assign numberOut = numberOut * 4'd10 + nextIn;
+        
         always_ff @(posedge clk)begin
-            if(rst) numberOut <= '0;
+            if(rst) prevNumberOut <= '0;
             if(enb) begin
-                numberOut <= numberOut * 4'd10 + nextIn;
+                prevNumberOut <= numberOut;
             end
         end
 endmodule

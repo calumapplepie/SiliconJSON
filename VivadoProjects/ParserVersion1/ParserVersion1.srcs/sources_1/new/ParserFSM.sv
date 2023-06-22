@@ -124,7 +124,7 @@ module ParserFSM import Core::*, ParserPkg::*; (
             ReadSimple  : nextState = simpleValScanComplete ? EndSimple : ReadSimple; 
             
             ReadNumber  : case(curCharType)
-                whitespace, comma, braceClose, bracketClose : nextState = EndNumber;
+                whitespace, comma, braceClose, bracketClose : nextState = (inArray ? FindValue : FindKey);
                 default : nextState = ReadNumber;
             endcase 
             
@@ -145,13 +145,20 @@ module ParserFSM import Core::*, ParserPkg::*; (
             end
             ReadKey, ReadString     : writeString  = 1'b1;
             ReadSimple              : curElementType = simpleValElement;
-            ReadNumber              : curElementType = numberFirstElement;
+            ReadNumber              : begin
+                writeStructure = curCharType inside {whitespace, comma, braceClose, bracketClose};
+                curElementType = numberFirstElement;
+            end
             EndSimple, EndNumber    : writeStructure = 1'b1;
             StartArray, EndArray    : writeStructure = 1'b1;
             EndObject, EndDocument  : begin
                 writeStructure = 1'b1;
                 curElementType = objClose;// root handling requires this
             end 
+            // some numbers are 1 char long; I think this is the best way to handle that
+            FindValue              : begin
+                if(nextState == ReadNumber) curElementType = numberFirstElement;
+            end
             default: 
             // some states have no output besides those default ones
             ;

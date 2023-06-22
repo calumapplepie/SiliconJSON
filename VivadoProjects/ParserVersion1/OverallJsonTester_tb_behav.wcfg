@@ -8,20 +8,21 @@
             <top_module name="Bcd" />
             <top_module name="Core" />
             <top_module name="OverallJsonTester_tb" />
+            <top_module name="ParserPkg" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="878333fs"></ZoomStartTime>
-      <ZoomEndTime time="1024334fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomStartTime time="20673833fs"></ZoomStartTime>
+      <ZoomEndTime time="20747234fs"></ZoomEndTime>
+      <Cursor1Time time="20735000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="206"></NameColumnWidth>
-      <ValueColumnWidth column_width="92"></ValueColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="21" />
+   <WVObjectSize size="20" />
    <wave_markers>
       <marker time="8035000" label="" />
    </wave_markers>
@@ -201,16 +202,12 @@
       <obj_property name="ElementShortName">inArray</obj_property>
       <obj_property name="ObjectShortName">inArray</obj_property>
    </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/lastObjKeyValuePairs" type="array">
-      <obj_property name="ElementShortName">lastObjKeyValuePairs[17:0]</obj_property>
-      <obj_property name="ObjectShortName">lastObjKeyValuePairs[17:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/keyValuePairsSoFar" type="array">
       <obj_property name="ElementShortName">keyValuePairsSoFar[23:0]</obj_property>
       <obj_property name="ObjectShortName">keyValuePairsSoFar[23:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/stack/curTop" type="array">
-      <obj_property name="ElementShortName">curTop[9:0]</obj_property>
-      <obj_property name="ObjectShortName">curTop[9:0]</obj_property>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberFirstElement" type="array">
+      <obj_property name="ElementShortName">numberFirstElement[3:0]</obj_property>
+      <obj_property name="ObjectShortName">numberFirstElement[3:0]</obj_property>
    </wvobject>
 </wave_config>
