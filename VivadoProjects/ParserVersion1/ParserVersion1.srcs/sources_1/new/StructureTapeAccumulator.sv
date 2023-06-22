@@ -73,7 +73,8 @@ module StructureTapeAccumulator
         lastBraceTapeEntry = '0;
         lastBraceTapeEntry[31:0] = curIndex+1;
         lastBraceTapeEntry[55:32] = keyValuePairs;
-        lastBraceTapeEntry[63:56] = "{";
+        lastBraceTapeEntry[63:56] = nextTapeEntry[63:56]-2; // 2 less than a close brace or bracket is an open
+        // thanks for the consistent layout ASCII inventors, this can be optimized with a 2 member LUT
         
         // root handler
         if (curDepth == 0) begin

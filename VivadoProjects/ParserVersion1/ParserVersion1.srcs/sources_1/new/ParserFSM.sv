@@ -111,7 +111,8 @@ module ParserFSM import Core::*; (
         // that saves us a lot of energy
         case(curState)
             StartKey    : nextKeyValuePairs = keyValuePairsSoFar+1;
-            StartObject, StartArray : nextKeyValuePairs = '0;
+            StartObject : nextKeyValuePairs = '0;
+            StartArray  : nextKeyValuePairs = 17'd1;
             EndObject, EndArray   : nextKeyValuePairs[16:0] = lastObjKeyValuePairs[16:0];
         endcase
         // handle the array member counting
@@ -145,6 +146,7 @@ module ParserFSM import Core::*; (
     function findValueNextState();
         case(curCharType) // todo: check for colon
                 braceOpen :        nextState = StartObject;
+                bracketClose :     nextState = EndArray;
                 bracketOpen:       nextState = StartArray;
                 quote:             nextState = StartString;
                 asciiAlphabetical: nextState = ReadSimple; 
