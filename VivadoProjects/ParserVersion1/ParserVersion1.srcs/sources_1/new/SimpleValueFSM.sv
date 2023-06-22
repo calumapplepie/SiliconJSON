@@ -27,14 +27,14 @@ module SimpleValueFSM import Core::UTF8_Char, Core::ElementType, Core::trueVal, 
         input clk, enb, rst
     );
     logic [2:0] bytesRead;
-    UTF8_Char [0:4] charsSoFar;
+    UTF8_Char [0:3] charsSoFar;
     
     assign scanComplete = scannedElement != noType || bytesRead > 5;
     
     always_comb case(charsSoFar)
-           {"true",8'd0} : scannedElement = trueVal;
-           "false"    : scannedElement = falseVal;
-           {"null",8'd0} : scannedElement = nullVal;
+           {"tru",8'd0} : scannedElement = (curChar == "e") ? trueVal : noType;
+           "fals"       : scannedElement = (curChar == "e") ? falseVal: noType;
+           {"nul",8'd0} : scannedElement = (curChar == "l") ? nullVal : noType;
            default: scannedElement = noType;
     endcase
     

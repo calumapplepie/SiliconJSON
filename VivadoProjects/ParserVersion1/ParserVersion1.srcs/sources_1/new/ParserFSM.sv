@@ -107,7 +107,7 @@ module ParserFSM import Core::*, ParserPkg::*; (
         case(curState)    
             EndObject, EndArray : begin
                 if(prevArrayStatus)    findValueNextState();
-                else                            findKeyNextState();
+                else                   findKeyNextState();
             end             
             
             EndSimple, EndNumber : begin
