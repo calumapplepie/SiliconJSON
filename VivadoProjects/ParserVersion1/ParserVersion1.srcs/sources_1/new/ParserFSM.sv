@@ -125,8 +125,9 @@ module ParserFSM import Core::*; (
         // we assume nobody goes over 2^16 key value pairs with our parser
         // that saves us a lot of energy
         else case(curState)
-            StartObject : inArray <= '0;
-            EndObject   : inArray <= lastObjKeyValuePairs[17];
+            StartObject           : inArray <= '0;
+            StartArray            : inArray <= '1;
+            EndObject, EndArray   : inArray <= lastObjKeyValuePairs[17];
         endcase
     end
     
