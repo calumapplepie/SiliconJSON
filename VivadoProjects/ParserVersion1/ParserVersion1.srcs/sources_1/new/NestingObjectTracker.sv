@@ -23,17 +23,19 @@
 module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
         input clk, rst, enb,
         input ParserState curState, input CharType curCharType,
-        output logic inArray, prevArrayStatus,
+        output logic inArray, prevArrayStatus, atDocRoot,
         output logic [23:0] keyValuePairsSoFar
     );
     
     logic [17:0] nextKeyValuePairs, lastObjKeyValuePairs;
+    logic [9:0] curDepth;
     
     BlockRamStack stack (
         .clk, .enb, .rst, 
         .pushEnable(curState == StartObject || curState == StartArray), 
         .popTrigger(curState == EndObject   || curState == EndArray),  
-        .popData(lastObjKeyValuePairs), .pushData({inArray, keyValuePairsSoFar[16:0]})
+        .popData(lastObjKeyValuePairs), .pushData({inArray, keyValuePairsSoFar[16:0]}),
+        .curDepth
     );
     
     // zero excess bits
@@ -41,6 +43,9 @@ module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
     
     // our previous array status (needed externally, sometimes)
     assign prevArrayStatus = lastObjKeyValuePairs[17];
+    
+    // if we're at the root of the documet
+    assign atDocRoot = (curDepth == 1) && (curState == EndObject);
         
      // key-value pair logic
     always_comb begin

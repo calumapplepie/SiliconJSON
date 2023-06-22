@@ -53,10 +53,10 @@ module ParserFSM import Core::*, ParserPkg::*; (
     CharType curCharType;
     assign curCharType = classifyChar(curChar);
     
-    logic inArray, prevArrayStatus;
+    logic inArray, atDocRoot, prevArrayStatus;
     
     NestingObjectTracker nestingObjects (
-        .clk, .rst, .enb, .curState, .curCharType,
+        .clk, .rst, .enb, .curState, .curCharType, .atDocRoot,
         .inArray, .prevArrayStatus, .keyValuePairsSoFar
     );
     
@@ -106,8 +106,9 @@ module ParserFSM import Core::*, ParserPkg::*; (
         logic isQuote = curCharType == quote && !characterEscaped;
         case(curState)    
             EndObject, EndArray : begin
-                if(prevArrayStatus)    findValueNextState();
-                else                   findKeyNextState();
+                if(atDocRoot)               nextState = EndDocument;
+                else if(prevArrayStatus)    findValueNextState();
+                else                        findKeyNextState();
             end             
             
             EndSimple, EndNumber : begin
@@ -158,9 +159,8 @@ module ParserFSM import Core::*, ParserPkg::*; (
             StartArray, EndArray    : writeStructure = 1'b1;
             EndObject, EndDocument  : begin
                 writeStructure = 1'b1;
-                curElementType = objClose;// root handling requires this
-            end 
-            // some numbers are 1 char long; I think this is the best way to handle that
+                if(atDocRoot) curElementType = objClose;
+            end
             default: 
             // some states have no output besides those default ones
             ;
