@@ -113,14 +113,20 @@ int main(void) {
 		hexPathStruct.replace_extension("struct.hex");
 		auto hexPathString = file.path();
 		hexPathString.replace_extension("string.hex");
+		auto minifiedPath  = file.path();
+		minifiedPath.replace_extension(".minjson");
 
 		std::ofstream hexOutStruct{hexPathStruct, std::ios_base::trunc} ;
 		std::ofstream hexOutString{hexPathString, std::ios_base::trunc} ;
+		std::ofstream minifiedOut {minifiedPath,  std::ios_base::trunc} ;
+
+		minifiedOut << minify(json) << std::endl;
 
     	dom::ScrewYouIWantTheTape(json, hexOutStruct, hexOutString);
 
 		hexOutString.close();
 		hexOutStruct.close();
+		minifiedOut.close();
 		
 	}
 	basenamesOut.close();
