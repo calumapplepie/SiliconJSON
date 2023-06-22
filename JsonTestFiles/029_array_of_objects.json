@@ -1,0 +1,25 @@
+{
+    "World Population":[
+        {
+            "Name":"Greta Thumberg"
+        },
+        {
+            "Name":"Andrew Tate",
+            "Number of Bugatti's": 4,
+            "Does anyone care?": false
+        },
+        {
+            "Another sub-object?":{
+                "Silliness? (1-10)": 15,
+                "Really?": "yes"
+            },
+            "Added for testing?": true
+        },
+        {
+            "Name:": "Calum McConnell",
+            "An object?": "Yes",
+            "An array": ["Here", "you", "go"]
+        }
+    ],
+    "Shamlessly based on test": 3
+}
