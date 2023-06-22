@@ -38,7 +38,7 @@ UTF8_Char byteA, byteB;
 
 
 
-TapeBlockRam #(.WORDSIZE(8),.NUMWORDS(StringTapeLength)) ram (
+TapeBlockRam #(.WORDSIZE(8),.NUMWORDS(StringTapeLength), .ADDRWIDTH(14)) ram (
     .clk(clk), .ena('1), .enb('1), 
     .wea(enable || ! cyclesDisabled[1]), .web(enable || !cyclesDisabled[1]), // we gotta write 5 bytes after string ends
     .addra(addressA), .addrb(addressB),
