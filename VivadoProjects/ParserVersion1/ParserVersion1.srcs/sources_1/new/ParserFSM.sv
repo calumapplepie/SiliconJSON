@@ -76,8 +76,9 @@ module ParserFSM import Core::*; (
     logic [17:0] nextKeyValuePairs, lastObjKeyValuePairs;
     logic inArray;
     BlockRamStack stack (
-        .clk, .enb(enable), .rst, 
-        .pushEnable(curState == StartObject), .popTrigger(curState == EndObject), 
+        .clk, .enb, .rst, 
+        .pushEnable(curState == StartObject || curState == StartArray), 
+        .popTrigger(curState == EndObject || curState == EndArray), 
         .popData(lastObjKeyValuePairs), .pushData({inArray, keyValuePairsSoFar[16:0]})
     );
     
