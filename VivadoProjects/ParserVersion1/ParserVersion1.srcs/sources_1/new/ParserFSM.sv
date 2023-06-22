@@ -137,6 +137,7 @@ module ParserFSM import Core::*, ParserPkg::*; (
         writeString  = 1'b0;
         writeStructure = 1'b0;
         curElementType = charToElementType(curCharType);
+        
         case(curState)
             StartObject  : writeStructure = 1'b1;
             StartKey, StartString   : begin
@@ -156,9 +157,6 @@ module ParserFSM import Core::*, ParserPkg::*; (
                 curElementType = objClose;// root handling requires this
             end 
             // some numbers are 1 char long; I think this is the best way to handle that
-            FindValue              : begin
-                if(nextState == ReadNumber) curElementType = numberFirstElement;
-            end
             default: 
             // some states have no output besides those default ones
             ;

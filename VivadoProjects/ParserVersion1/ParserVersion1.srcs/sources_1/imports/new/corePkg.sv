@@ -66,7 +66,7 @@ package Core;
             bracketOpen : return arrayOpen;
             bracketClose: return arrayClose;
             quote       : return str;
-            // others are special
+            numeric     : return signedInt;
             default     : return noType;
         endcase
     endfunction
