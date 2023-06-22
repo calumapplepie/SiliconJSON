@@ -78,7 +78,7 @@ module ParserFSM import Core::*; (
     BlockRamStack stack (
         .clk, .enb, .rst, 
         .pushEnable(curState == StartObject || curState == StartArray), 
-        .popTrigger(curState == EndObject || curState == EndArray), 
+        .popTrigger(curState == EndObject   || curState == EndArray),  
         .popData(lastObjKeyValuePairs), .pushData({inArray, keyValuePairsSoFar[16:0]})
     );
     
@@ -117,7 +117,11 @@ module ParserFSM import Core::*; (
             EndObject, EndArray   : nextKeyValuePairs[16:0] = lastObjKeyValuePairs[16:0];
         endcase
         // handle the array member counting
-        if(curCharType == comma && !(curState == ReadString || curState == StartString) && inArray)
+        if(curCharType == comma && !(curState inside {ReadString, StartString, EndArray}) && inArray)
+            nextKeyValuePairs += 1;
+        // On the cycle after array exit, inArray is true, and we'll likely run into a comma.
+        // if we're in an object now, we can't increment keyValuePairs; if we're in an array, we must
+        if(curCharType == comma && curState inside {EndArray, EndObject} && lastObjKeyValuePairs[17])
             nextKeyValuePairs += 1;
     end
     
