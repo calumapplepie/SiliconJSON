@@ -19,8 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module ParserFSM import Core::*; (
+module ParserFSM import Core::*, ParserPkg::*; (
     input UTF8_Char curChar,
     input clk, rst, enb,
     output ElementType curElementType,
@@ -29,25 +28,8 @@ module ParserFSM import Core::*; (
     output JsonTapeElement numberSecondElement
     );
 
-    typedef enum logic[3:0] {
-        StartObject, // the first, starting state: we just found the document root, or some other object
-        FindKey,     // waiting for the first quote of a key
-        StartKey,    // Found the key's start
-        ReadKey,     // Read the key
-        FindValue,   // Find the value
-        ReadSimple,  // read one of the simple JSON values
-        EndSimple,   // write out read JSON value
-        StartString, // Found the first quote of a string
-        ReadString,  // Read the string
-        ReadNumber,  // read the number
-        EndNumber,   // end the number
-        StartArray,
-        EndArray,
-        EndObject,   // finish off the object we just found
-        EndDocument, // close the document up: not currently used
-        Error} state_t;
-    state_t curState;
-    state_t nextState;
+    ParserState curState;
+    ParserState nextState;
         
     logic simpleValScanComplete;
     ElementType simpleValElement;
@@ -69,30 +51,21 @@ module ParserFSM import Core::*; (
     
     
     CharType curCharType;
-
     assign curCharType = classifyChar(curChar);
     
-    // a bit more logic can be stuffed into this module!
-    logic [17:0] nextKeyValuePairs, lastObjKeyValuePairs;
-    logic inArray;
-    BlockRamStack stack (
-        .clk, .enb, .rst, 
-        .pushEnable(curState == StartObject || curState == StartArray), 
-        .popTrigger(curState == EndObject   || curState == EndArray),  
-        .popData(lastObjKeyValuePairs), .pushData({inArray, keyValuePairsSoFar[16:0]})
-    );
+    logic inArray, prevArrayStatus;
     
-    // zero excess bits
-    assign keyValuePairsSoFar[23:17] = '0;
+    NestingObjectTracker nestingObjects (
+        .clk, .rst, .enb, .curState, .curCharType,
+        .inArray, .prevArrayStatus, .keyValuePairsSoFar
+    );
     
     // state machine sequencial code
     always_ff @(posedge clk ) begin
         if(rst) begin
             curState <= StartObject;
-            keyValuePairsSoFar[16:0] <= '0; 
         end else if (enb) begin
             curState <= nextState;
-            keyValuePairsSoFar[16:0] <= nextKeyValuePairs; 
         end
     end
 
@@ -104,38 +77,6 @@ module ParserFSM import Core::*; (
         else if (curCharType == backslash) characterEscaped <= '1;
     end
 
-    // key-value pair logic
-    always_comb begin
-        // default to not changing
-        nextKeyValuePairs = keyValuePairsSoFar;
-        // we assume nobody goes over 2^16 key value pairs with our parser
-        // that saves us a lot of energy
-        case(curState)
-            StartKey    : nextKeyValuePairs = keyValuePairsSoFar+1;
-            StartObject : nextKeyValuePairs = '0;
-            StartArray  : nextKeyValuePairs = 17'd1;
-            EndObject, EndArray   : nextKeyValuePairs[16:0] = lastObjKeyValuePairs[16:0];
-        endcase
-        // handle the array member counting
-        if(curCharType == comma && !(curState inside {ReadString, StartString, EndArray}) && inArray)
-            nextKeyValuePairs += 1;
-        // On the cycle after array exit, inArray is true, and we'll likely run into a comma.
-        // if we're in an object now, we can't increment keyValuePairs; if we're in an array, we must
-        if(curCharType == comma && curState inside {EndArray, EndObject} && lastObjKeyValuePairs[17])
-            nextKeyValuePairs += 1;
-    end
-    
-    // inArray logic
-    always_ff @(posedge clk) begin
-        if(rst) inArray <= '0;
-        // we assume nobody goes over 2^16 key value pairs with our parser
-        // that saves us a lot of energy
-        else case(curState)
-            StartObject           : inArray <= '0;
-            StartArray            : inArray <= '1;
-            EndObject, EndArray   : inArray <= lastObjKeyValuePairs[17];
-        endcase
-    end
     
     // whether we're finding a key or finding a value turns out to be kinda... tough to say.
     // theres several states that need to find keys or values depending on whether we're in
@@ -165,7 +106,7 @@ module ParserFSM import Core::*; (
         logic isQuote = curCharType == quote && !characterEscaped;
         case(curState)    
             EndObject, EndArray : begin
-                if(lastObjKeyValuePairs[17])    findValueNextState();
+                if(prevArrayStatus)    findValueNextState();
                 else                            findKeyNextState();
             end             
             
