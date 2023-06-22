@@ -26,7 +26,7 @@ module OverallJsonTester_tb();
 
     import Core::JsonTapeElement, Core::StructTapeLength, Core::StringTapeLength, Core::UTF8_Char;
 
-    string basenames [32];
+    string basenames [64];
     // let the record state that I do not like windows
     string JsonTestFilesDir = "C:/Users/mcconncm/Documents/SummerResearch2023/JsonTestFiles/";    
     string JsonExt = ".json";
@@ -97,12 +97,11 @@ module OverallJsonTester_tb();
             
             tmp = basenames[i];
             errorCode = $fgets(tmp, fileHandle);
-            $display("Read %d chars: %s", errorCode, tmp);
             basenames[i] = tmp.substr(0, tmp.len()-2);
             
             if(errorCode ==0) begin
                 // vivado doesn't support $ferror , which would let me be more specific
-                $display("ERROR ON BASENAME FILE READ" );
+                //$display("ERROR ON BASENAME FILE READ" );
             end
             // ensure we don't try to read BAD BAD BAD files
             if ($feof(fileHandle) > 0) begin
