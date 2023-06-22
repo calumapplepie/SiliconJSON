@@ -2,7 +2,9 @@ Hello and welcome to my 2023 summer reasearch project!
 
 Some Design notes:
 - All resets are synchronous
-- 
+- Floats currently unsupported
+- Integers > 2^63 unsupported
+- Strings longer than 2^23 unsupported (duh)
 
 Todo: spiel more
 Todo: document how to remake Vivado projects from committed git source

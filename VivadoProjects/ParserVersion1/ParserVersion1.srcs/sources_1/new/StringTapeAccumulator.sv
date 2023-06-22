@@ -30,9 +30,9 @@ module StringTapeAccumulator
         output hash
     );
 
-typedef logic [31:0] StringLength;
+typedef logic [23:0] StringLength;
 StringLength strLen;
-TapeIndex curIndex, editIndex, addressA, addressB;
+TapeIndex curIndex, addressA, addressB;
 logic [1:0] cyclesDisabled;
 UTF8_Char byteA, byteB;
 
@@ -40,7 +40,7 @@ UTF8_Char byteA, byteB;
 
 TapeBlockRam #(.WORDSIZE(8),.NUMWORDS(StringTapeLength)) ram (
     .clk(clk), .ena('1), .enb('1), 
-    .wea(enable || cyclesDisabled != 3), .web(!enable && cyclesDisabled != 3), // we gotta write 5 bytes after string ends
+    .wea(enable || ! cyclesDisabled[1]), .web(enable || !cyclesDisabled[1]), // we gotta write 5 bytes after string ends
     .addra(addressA), .addrb(addressB),
     .dia(byteA), .dib(byteB), .hash(hash)
 );
@@ -55,24 +55,24 @@ always_comb begin
     if(enable) begin
         byteA = nextStringByte;
         addressA = curIndex;
+        //enabling the second write at all times *might* worsen power consumption.  more study needed
+        // however, doing this enables a 2-cycle post-write period; which is needed for minified empty strings 
+        addressB = startIndex + 3;
+        byteB =  '0; // we don't support a full 32 bit string
     end else begin
         case(cyclesDisabled)
             0 : begin
                 addressA = curIndex;
                 byteA = '0;
-                addressB = editIndex;
-                byteB = {strLen[ 7: 0]}; end
-            1 : begin
-                addressA = editIndex + 1;
-                byteA = {strLen[15: 8]};
-                addressB = editIndex + 2;
+                addressB = startIndex + 2;
                 byteB = {strLen[23:16]};
-            end
-            2 : begin
-                addressA = editIndex + 1; //repeat to avoid problems
+            end    
+            1 : begin
+                addressA = startIndex + 1;
                 byteA = {strLen[15: 8]};
-                addressB = editIndex + 3;
-                byteB =  {strLen[31:24]};
+                
+                addressB = startIndex;
+                byteB = {strLen[ 7: 0]};
             end
         endcase;
     end
@@ -89,7 +89,6 @@ always_ff @(posedge clk ) begin
         strLen <= 0;
     end else if (enable) begin
         cyclesDisabled <= '0;
-        editIndex <= startIndex;
         // only write quotes or backslashes if theyre escaped
         if(!((nextStringByte=="\"") || (nextStringByte=="\\")) || characterEscaped ) begin
             curIndex <= curIndex + 1;
@@ -101,11 +100,11 @@ always_ff @(posedge clk ) begin
         end
         case (cyclesDisabled)
             0: curIndex <= curIndex +1;
-            1: startIndex <= curIndex;
-            2: begin
-                curIndex <= curIndex + 4;
-                strLen <= 0;
-            end
+            1: begin
+                   startIndex <= curIndex;
+                   curIndex <= curIndex + 4;
+                   strLen <= 0;
+               end
         endcase
         
         
