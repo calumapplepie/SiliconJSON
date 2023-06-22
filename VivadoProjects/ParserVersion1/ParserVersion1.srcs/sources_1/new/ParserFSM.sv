@@ -124,7 +124,10 @@ module ParserFSM import Core::*, ParserPkg::*; (
             ReadSimple  : nextState = simpleValScanComplete ? EndSimple : ReadSimple; 
             
             ReadNumber  : case(curCharType)
-                whitespace, comma, braceClose, bracketClose : nextState = (inArray ? FindValue : FindKey);
+                whitespace, comma, braceClose, bracketClose : begin
+                    if(inArray) findValueNextState();
+                    else        findKeyNextState();
+                end 
                 default : nextState = ReadNumber;
             endcase 
             
@@ -148,7 +151,8 @@ module ParserFSM import Core::*, ParserPkg::*; (
             ReadSimple              : curElementType = simpleValElement;
             ReadNumber              : begin
                 writeStructure = curCharType inside {whitespace, comma, braceClose, bracketClose};
-                curElementType = numberFirstElement;
+                //curElementType = numberFirstElement; 
+                // removing above line breaks already-broken float parsing, but is needed to support minified
             end
             EndSimple, EndNumber    : writeStructure = 1'b1;
             StartArray, EndArray    : writeStructure = 1'b1;

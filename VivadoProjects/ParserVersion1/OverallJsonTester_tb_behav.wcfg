@@ -14,15 +14,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="20673833fs"></ZoomStartTime>
-      <ZoomEndTime time="20747234fs"></ZoomEndTime>
-      <Cursor1Time time="20735000fs"></Cursor1Time>
+      <ZoomStartTime time="50538833fs"></ZoomStartTime>
+      <ZoomEndTime time="50612234fs"></ZoomEndTime>
+      <Cursor1Time time="50600000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="206"></NameColumnWidth>
       <ValueColumnWidth column_width="88"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="20" />
+   <WVObjectSize size="12" />
    <wave_markers>
       <marker time="8035000" label="" />
    </wave_markers>
@@ -173,41 +173,8 @@
       <obj_property name="ElementShortName">nextTapeEntry[63:0]</obj_property>
       <obj_property name="ObjectShortName">nextTapeEntry[63:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/elementBuilder/stringTapeIndex" type="array">
-      <obj_property name="ElementShortName">stringTapeIndex[55:0]</obj_property>
-      <obj_property name="ObjectShortName">stringTapeIndex[55:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/enable" type="logic">
-      <obj_property name="ElementShortName">enable</obj_property>
-      <obj_property name="ObjectShortName">enable</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/curIndex" type="array">
-      <obj_property name="ElementShortName">curIndex[55:0]</obj_property>
-      <obj_property name="ObjectShortName">curIndex[55:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/curIndexTapeEntry" type="array">
-      <obj_property name="ElementShortName">curIndexTapeEntry[63:0]</obj_property>
-      <obj_property name="ObjectShortName">curIndexTapeEntry[63:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/lastBraceIndex" type="array">
-      <obj_property name="ElementShortName">lastBraceIndex[55:0]</obj_property>
-      <obj_property name="ObjectShortName">lastBraceIndex[55:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/writer/structGoHere/stack/ram/addra" type="array">
-      <obj_property name="ElementShortName">addra[9:0]</obj_property>
-      <obj_property name="ObjectShortName">addra[9:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/inArray" type="logic">
-      <obj_property name="ElementShortName">inArray</obj_property>
-      <obj_property name="ObjectShortName">inArray</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/keyValuePairsSoFar" type="array">
-      <obj_property name="ElementShortName">keyValuePairsSoFar[23:0]</obj_property>
-      <obj_property name="ObjectShortName">keyValuePairsSoFar[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/numberFirstElement" type="array">
-      <obj_property name="ElementShortName">numberFirstElement[3:0]</obj_property>
-      <obj_property name="ObjectShortName">numberFirstElement[3:0]</obj_property>
+   <wvobject fp_name="/OverallJsonTester_tb/DUV/parser/writeStructure" type="logic">
+      <obj_property name="ElementShortName">writeStructure</obj_property>
+      <obj_property name="ObjectShortName">writeStructure</obj_property>
    </wvobject>
 </wave_config>
