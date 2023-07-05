@@ -67,21 +67,21 @@ module OverallJsonTester_tb();
 
         // compare
         foreach(expectedStringTape[i]) begin
-            if (expectedStringTape[i] !=  DUV.writer.stringGoHere.ram.ram[i]) begin
+            if (expectedStringTape[i] !=  DUV.storage.stringTapeRam.blockRam.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 9) begin
                      $display("Error at string tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStringTape[i], DUV.writer.stringGoHere.ram.ram[i]);
+                    $display("Expected %h, got %h", expectedStringTape[i], DUV.storage.stringTapeRam.blockRam.ram[i]);
                 end
             end
         end
 
         foreach(expectedStructTape[i]) begin
-            if (expectedStructTape[i] != DUV.writer.structGoHere.blockRam.ram[i]) begin
+            if (expectedStructTape[i] != DUV.storage.structTapeRam.blockRam.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 9) begin
                     $display("Error at struct tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStructTape[i], DUV.writer.structGoHere.blockRam.ram[i]);
+                    $display("Expected %h, got %h", expectedStructTape[i], DUV.storage.structTapeRam.blockRam.ram[i]);
                 end
             end
         end
