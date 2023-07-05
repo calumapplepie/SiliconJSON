@@ -63,11 +63,17 @@
         end 
     end
     
+    BlockRamConnection #(.WORDSIZE(8), .ADDRWIDTH(14)) stringRam ();
+    BlockRamConnection #(.WORDSIZE(64))                structRam     ();
     
     TapeWriter writer (
         .curChar(lastChar), .curElementType(lastElementType),
         .writeString(writeString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
-        .clk(clk),.rst(rst), .hash(LD0), .characterEscaped(lastCharacterEscaped)
+        .clk(clk),.rst(rst), .hash(LD0), .characterEscaped(lastCharacterEscaped),
+        .stringRam, .structRam
     );
+    
+    
+    TapeStorage storage ( .* );
 endmodule

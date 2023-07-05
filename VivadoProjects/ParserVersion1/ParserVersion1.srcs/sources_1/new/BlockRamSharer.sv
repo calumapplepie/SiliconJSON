@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 07/05/2023 03:36:42 PM
+// Create Date: 07/05/2023 06:09:09 PM
 // Design Name: 
-// Module Name: TapeStorage
+// Module Name: BlockRamSharer
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,8 +19,11 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module TapeStorage( input clk, BlockRamConnection.owner stringRam, BlockRamConnection.owner structRam);
-    BlockRamSharer #(.NUMWORDS(Core::StringTapeLength)) stringTapeRam (.clk, .r(stringRam));
-    BlockRamSharer #(.NUMWORDS(Core::StructTapeLength)) structTapeRam (.clk, .r(structRam));
+module BlockRamSharer #(NUMWORDS=64)(
+        input clk, BlockRamConnection.owner r
+    );
+    TapeBlockRam #(.WORDSIZE(r.WORDSIZE), .ADDRWIDTH(r.ADDRWIDTH),.NUMWORDS(NUMWORDS)) blockRam (
+       // use ordered to avoid headache
+       clk, r.ena, r.enb, r.wea, r.web, r.addra, r.addrb, r.dia, r.dib, r.doa, r.dob, r.hash  
+    );
 endmodule

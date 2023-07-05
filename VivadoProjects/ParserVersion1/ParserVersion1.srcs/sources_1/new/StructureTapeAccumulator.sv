@@ -25,7 +25,8 @@ module StructureTapeAccumulator
         input JsonTapeElement nextTapeEntry, numberSecondElement,
         input logic [23:0] keyValuePairs,
         input clk, rst, enable,
-        output hash
+        output logic hash,
+        BlockRamConnection.user ramConnection
     );
     
     TapeIndex curIndex;
@@ -39,12 +40,25 @@ module StructureTapeAccumulator
     logic [9:0] curDepth;
     
     logic doCloseBraceWrite, doNumberWrite, doDualWrite;
-    
+    /*
     TapeBlockRam #(.WORDSIZE(64), .NUMWORDS(StructTapeLength)) blockRam  (
             .clk(clk), .ena('1), .enb('1), //always enable
             .wea(enable | doDualWrite),            .web(doDualWrite),  
             .addra(curIndex),        .addrb(dualWriteIndex),
             .dia(curIndexTapeEntry), .dib(dualWriteTapeEntry), .hash(hash));
+    */
+    
+     always_comb begin  
+            ramConnection.ena = '1;
+            ramConnection.enb = '1; //always enable
+            ramConnection.wea = enable | doDualWrite;            
+            ramConnection.web = doDualWrite;  
+            ramConnection.addra = curIndex;        
+            ramConnection.addrb = dualWriteIndex;
+            ramConnection.dia = curIndexTapeEntry;
+            ramConnection.dib = dualWriteTapeEntry;
+            hash = ramConnection.hash;
+    end
             
     BlockRamStack stack (
         .clk, .enb(enable), .rst, 

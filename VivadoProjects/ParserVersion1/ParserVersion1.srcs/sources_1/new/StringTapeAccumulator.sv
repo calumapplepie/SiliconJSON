@@ -27,7 +27,8 @@ module StringTapeAccumulator
         input characterEscaped,
         output TapeIndex startIndex,
         input clk, rst, enable,
-        output hash
+        output logic hash,
+        BlockRamConnection.user ramConnection
     );
 
 typedef logic [23:0] StringLength;
@@ -37,13 +38,24 @@ logic [1:0] cyclesDisabled;
 UTF8_Char byteA, byteB;
 
 
-
-TapeBlockRam #(.WORDSIZE(8),.NUMWORDS(StringTapeLength), .ADDRWIDTH(14)) ram (
+/* tried this, but noooo it didnt work
+blockRamConnection #(.WORDSIZE(8),.NUMWORDS(StringTapeLength), .ADDRWIDTH(14)) ramConnector (
     .clk(clk), .ena('1), .enb('1), 
     .wea(enable || ! cyclesDisabled[1]), .web(enable || !cyclesDisabled[1]), // we gotta write 5 bytes after string ends
     .addra(addressA), .addrb(addressB),
     .dia(byteA), .dib(byteB), .hash(hash)
 );
+*/
+ always_comb begin
+    ramConnection.ena = '1;
+    ramConnection.enb = '1; 
+    ramConnection.wea = enable || !cyclesDisabled[1]; 
+    ramConnection.web = enable || !cyclesDisabled[1]; // we gotta write 5 bytes after string ends
+    ramConnection.addra = addressA; ramConnection.addrb = addressB;
+    ramConnection.dia = byteA; 
+    ramConnection.dib = byteB;
+    hash = ramConnection.hash;
+ end
 
 always_comb begin
     // setting these to X might make my circuit more efficent (if vivado is cool),

@@ -29,7 +29,8 @@ module TapeWriter
         input logic [23:0] keyValuePairs,
         input JsonTapeElement numberSecondElement,
         input clk, rst,
-        output hash
+        output hash,
+        BlockRamConnection.user stringRam, structRam
     );
     wire hashStr, hashStruct;
     
@@ -42,7 +43,7 @@ module TapeWriter
     StringTapeAccumulator stringGoHere (
         .nextStringByte, .enable(writeString),
         .startIndex(curStringIndex), .characterEscaped,
-        .clk(clk), .rst(rst), .hash(hashStr)
+        .clk(clk), .rst(rst), .hash(hashStr), .ramConnection(stringRam)
     );
     
     JsonTapeElement nextElement;
@@ -55,6 +56,6 @@ module TapeWriter
     StructureTapeAccumulator structGoHere(
         .nextTapeEntry(nextElement), .enable(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement,
-        .clk(clk), .rst(rst), .hash(hashStruct)
+        .clk(clk), .rst(rst), .hash(hashStruct), .ramConnection(structRam)
     );
 endmodule
