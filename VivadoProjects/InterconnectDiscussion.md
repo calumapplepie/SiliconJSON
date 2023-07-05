@@ -52,3 +52,12 @@ the hardware capabilities?
 
 We will quite possibly require a custom AXI-Stream implementation for either solution.
 AXI-Stream is... not a trivial protocol.
+
+Decision: pull BRAMs into their own module, outside of the TapeWriter.  That module
+then, when reading, outputs an AXI4-Stream.  We use Xylinx's DMA IP to handle the
+actual data transfer; just throw a pile of data at it and then let it sort out things
+like page tables and memory and junk.
+
+No reason to implement an AXI4 connector that can be hooked up to the HP interfaces.
+We're optimizing for throughput, so the obscene latency this approach will have (we dont
+even START transfering data until its fully parsed) doesn't matter! 
