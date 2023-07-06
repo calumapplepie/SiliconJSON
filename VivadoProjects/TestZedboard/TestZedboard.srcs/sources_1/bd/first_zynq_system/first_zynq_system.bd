@@ -7,8 +7,7 @@
       "name": "first_zynq_system",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2020.2",
-      "validated": "true"
+      "tool_version": "2020.2"
     },
     "design_tree": {
       "processing_system7_0": "",
@@ -18,72 +17,17 @@
           "auto_pc": ""
         }
       },
-      "rst_ps7_0_100M": ""
+      "rst_ps7_0_100M": "",
+      "VivadoPulseWrap_0": ""
     },
     "interface_ports": {
       "DDR": {
         "mode": "Master",
-        "vlnv": "xilinx.com:interface:ddrx_rtl:1.0",
-        "parameters": {
-          "AXI_ARBITRATION_SCHEME": {
-            "value": "TDM",
-            "value_src": "default"
-          },
-          "BURST_LENGTH": {
-            "value": "8",
-            "value_src": "default"
-          },
-          "CAN_DEBUG": {
-            "value": "false",
-            "value_src": "default"
-          },
-          "CAS_LATENCY": {
-            "value": "11",
-            "value_src": "default"
-          },
-          "CAS_WRITE_LATENCY": {
-            "value": "11",
-            "value_src": "default"
-          },
-          "CS_ENABLED": {
-            "value": "true",
-            "value_src": "default"
-          },
-          "DATA_MASK_ENABLED": {
-            "value": "true",
-            "value_src": "default"
-          },
-          "DATA_WIDTH": {
-            "value": "8",
-            "value_src": "default"
-          },
-          "MEMORY_TYPE": {
-            "value": "COMPONENTS",
-            "value_src": "default"
-          },
-          "MEM_ADDR_MAP": {
-            "value": "ROW_COLUMN_BANK",
-            "value_src": "default"
-          },
-          "SLOT": {
-            "value": "Single",
-            "value_src": "default"
-          },
-          "TIMEPERIOD_PS": {
-            "value": "1250",
-            "value_src": "default"
-          }
-        }
+        "vlnv": "xilinx.com:interface:ddrx_rtl:1.0"
       },
       "FIXED_IO": {
         "mode": "Master",
-        "vlnv": "xilinx.com:display_processing_system7:fixedio_rtl:1.0",
-        "parameters": {
-          "CAN_DEBUG": {
-            "value": "false",
-            "value_src": "default"
-          }
-        }
+        "vlnv": "xilinx.com:display_processing_system7:fixedio_rtl:1.0"
       },
       "leds_8bits": {
         "mode": "Master",
@@ -1241,25 +1185,42 @@
         "xci_name": "first_zynq_system_rst_ps7_0_100M_0",
         "xci_path": "ip\\first_zynq_system_rst_ps7_0_100M_0\\first_zynq_system_rst_ps7_0_100M_0.xci",
         "inst_hier_path": "rst_ps7_0_100M"
+      },
+      "VivadoPulseWrap_0": {
+        "vlnv": "xilinx.com:module_ref:VivadoPulseWrap:1.0",
+        "xci_name": "first_zynq_system_VivadoPulseWrap_0_0",
+        "xci_path": "ip\\first_zynq_system_VivadoPulseWrap_0_0\\first_zynq_system_VivadoPulseWrap_0_0.xci",
+        "inst_hier_path": "VivadoPulseWrap_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "VivadoPulseWrap",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "din": {
+            "direction": "I"
+          },
+          "d_pulse": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
-      "processing_system7_0_DDR": {
-        "interface_ports": [
-          "DDR",
-          "processing_system7_0/DDR"
-        ]
-      },
       "processing_system7_0_FIXED_IO": {
         "interface_ports": [
           "FIXED_IO",
           "processing_system7_0/FIXED_IO"
         ]
       },
-      "processing_system7_0_M_AXI_GP0": {
+      "axi_gpio_0_GPIO": {
         "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "ps7_0_axi_periph/S00_AXI"
+          "leds_8bits",
+          "axi_gpio_0/GPIO"
         ]
       },
       "ps7_0_axi_periph_M00_AXI": {
@@ -1268,10 +1229,16 @@
           "axi_gpio_0/S_AXI"
         ]
       },
-      "axi_gpio_0_GPIO": {
+      "processing_system7_0_DDR": {
         "interface_ports": [
-          "leds_8bits",
-          "axi_gpio_0/GPIO"
+          "DDR",
+          "processing_system7_0/DDR"
+        ]
+      },
+      "processing_system7_0_M_AXI_GP0": {
+        "interface_ports": [
+          "processing_system7_0/M_AXI_GP0",
+          "ps7_0_axi_periph/S00_AXI"
         ]
       }
     },
