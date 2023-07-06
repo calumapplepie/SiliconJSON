@@ -1,20 +1,22 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xE78A4D820FD32CDC",
+      "boundary_crc": "0xE78A4D82E5D56C88",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../TestZedboard.gen/sources_1/bd/first_zynq_system",
       "name": "first_zynq_system",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.1"
+      "tool_version": "2023.1",
+      "validated": "true"
     },
     "design_tree": {
-      "VivadoPulseWrap_0": "",
       "axi_gpio_0": "",
       "processing_system7_0": "",
       "ps7_0_axi_periph": {
-        "s00_couplers": {}
+        "s00_couplers": {
+          "auto_pc": ""
+        }
       },
       "rst_ps7_0_100M": ""
     },
@@ -112,27 +114,39 @@
           },
           "BA": {
             "physical_name": "DDR_ba",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "2",
+            "right": "0"
           },
           "ADDR": {
             "physical_name": "DDR_addr",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "14",
+            "right": "0"
           },
           "DM": {
             "physical_name": "DDR_dm",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
           },
           "DQ": {
             "physical_name": "DDR_dq",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "31",
+            "right": "0"
           },
           "DQS_N": {
             "physical_name": "DDR_dqs_n",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
           },
           "DQS_P": {
             "physical_name": "DDR_dqs_p",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
           }
         }
       },
@@ -149,7 +163,9 @@
         "port_maps": {
           "MIO": {
             "physical_name": "FIXED_IO_mio",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "53",
+            "right": "0"
           },
           "DDR_VRN": {
             "physical_name": "FIXED_IO_ddr_vrn",
@@ -180,35 +196,14 @@
         "port_maps": {
           "TRI_O": {
             "physical_name": "leds_8bits_tri_o",
-            "direction": "O"
+            "direction": "O",
+            "left": "7",
+            "right": "0"
           }
         }
       }
     },
     "components": {
-      "VivadoPulseWrap_0": {
-        "vlnv": "xilinx.com:module_ref:VivadoPulseWrap:1.0",
-        "xci_name": "first_zynq_system_VivadoPulseWrap_0_0",
-        "xci_path": "ip/first_zynq_system_VivadoPulseWrap_0_0/first_zynq_system_VivadoPulseWrap_0_0.xci",
-        "inst_hier_path": "VivadoPulseWrap_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "VivadoPulseWrap",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "din": {
-            "direction": "I"
-          },
-          "d_pulse": {
-            "direction": "O"
-          }
-        }
-      },
       "axi_gpio_0": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "xci_name": "first_zynq_system_axi_gpio_0_0",
@@ -2113,24 +2108,69 @@
                 "direction": "I"
               }
             },
+            "components": {
+              "auto_pc": {
+                "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
+                "xci_name": "first_zynq_system_auto_pc_0",
+                "xci_path": "ip/first_zynq_system_auto_pc_0/first_zynq_system_auto_pc_0.xci",
+                "inst_hier_path": "ps7_0_axi_periph/s00_couplers/auto_pc",
+                "parameters": {
+                  "MI_PROTOCOL": {
+                    "value": "AXI4LITE"
+                  },
+                  "SI_PROTOCOL": {
+                    "value": "AXI3"
+                  }
+                },
+                "interface_ports": {
+                  "S_AXI": {
+                    "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+                    "mode": "Slave",
+                    "bridges": [
+                      "M_AXI"
+                    ]
+                  }
+                }
+              }
+            },
             "interface_nets": {
-              "s00_couplers_to_s00_couplers": {
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
+                ]
+              },
+              "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
-                  "M_AXI"
+                  "auto_pc/S_AXI"
+                ]
+              }
+            },
+            "nets": {
+              "S_ACLK_1": {
+                "ports": [
+                  "S_ACLK",
+                  "auto_pc/aclk"
+                ]
+              },
+              "S_ARESETN_1": {
+                "ports": [
+                  "S_ARESETN",
+                  "auto_pc/aresetn"
                 ]
               }
             }
           }
         },
         "interface_nets": {
-          "ps7_0_axi_periph_upgraded_ipi_to_s00_couplers": {
+          "ps7_0_axi_periph_to_s00_couplers": {
             "interface_ports": [
               "S00_AXI",
               "s00_couplers/S_AXI"
             ]
           },
-          "s00_couplers_to_ps7_0_axi_periph_upgraded_ipi": {
+          "s00_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
               "s00_couplers/M_AXI",
               "M00_AXI"
@@ -2150,13 +2190,13 @@
               "s00_couplers/S_ARESETN"
             ]
           },
-          "ps7_0_axi_periph_upgraded_ipi_ACLK_net": {
+          "ps7_0_axi_periph_ACLK_net": {
             "ports": [
               "M00_ACLK",
               "s00_couplers/M_ACLK"
             ]
           },
-          "ps7_0_axi_periph_upgraded_ipi_ARESETN_net": {
+          "ps7_0_axi_periph_ARESETN_net": {
             "ports": [
               "M00_ARESETN",
               "s00_couplers/M_ARESETN"
