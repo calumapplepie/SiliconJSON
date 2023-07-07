@@ -28,7 +28,7 @@ module TapeWriter
         input writeString, writeStructure, characterEscaped,
         input logic [23:0] keyValuePairs,
         input JsonTapeElement numberSecondElement,
-        input clk, rst,
+        input clk, rst, enable,
         output hash,
         BlockRamConnection.user stringRam, structRam
     );
@@ -41,7 +41,7 @@ module TapeWriter
     assign nextStringByte = characterEscaped ? Core::unescapeCharacter(curChar) : curChar;
 
     StringTapeAccumulator stringGoHere (
-        .nextStringByte, .enable(writeString),
+        .nextStringByte, .enable, .active(writeString),
         .startIndex(curStringIndex), .characterEscaped,
         .clk(clk), .rst(rst), .hash(hashStr), .ramConnection(stringRam)
     );
@@ -54,7 +54,7 @@ module TapeWriter
     );
 
     StructureTapeAccumulator structGoHere(
-        .nextTapeEntry(nextElement), .enable(writeStructure), 
+        .nextTapeEntry(nextElement), .enable,  .active(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement,
         .clk(clk), .rst(rst), .hash(hashStruct), .ramConnection(structRam)
     );

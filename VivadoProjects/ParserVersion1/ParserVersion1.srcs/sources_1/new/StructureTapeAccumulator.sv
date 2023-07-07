@@ -24,7 +24,7 @@ module StructureTapeAccumulator
     import Core::JsonTapeElement, Core::StructTapeLength, Core::TapeIndex; (
         input JsonTapeElement nextTapeEntry, numberSecondElement,
         input logic [23:0] keyValuePairs,
-        input clk, rst, enable,
+        input clk, rst, enable, active,
         output logic hash,
         BlockRamConnection.user ramConnection
     );
@@ -49,9 +49,9 @@ module StructureTapeAccumulator
     */
     
      always_comb begin  
-            ramConnection.ena = '1;
-            ramConnection.enb = '1; //always enable
-            ramConnection.wea = enable | doDualWrite;            
+            ramConnection.ena = enable;
+            ramConnection.enb = enable; 
+            ramConnection.wea = active | doDualWrite;            
             ramConnection.web = doDualWrite;  
             ramConnection.addra = curIndex;        
             ramConnection.addrb = dualWriteIndex;
@@ -61,7 +61,7 @@ module StructureTapeAccumulator
     end
             
     BlockRamStack stack (
-        .clk, .enb(enable), .rst, 
+        .clk, .enb(active && enable), .rst, 
         .pushEnable(doOpenBraceWrite), .popTrigger(doCloseBraceWrite), 
         .popData(lastBraceIndex[17:0]), .pushData(curIndex), .curDepth
     );
@@ -101,7 +101,7 @@ module StructureTapeAccumulator
     always_ff @(posedge clk ) begin
         if (rst) begin
             curIndex <= 56'd1;
-        end else if(enable) begin            
+        end else if(active && enable) begin            
             if(doNumberWrite) curIndex <= curIndex + 2;
             else              curIndex <= curIndex + 1;  
 

@@ -71,7 +71,7 @@
         .writeString(writeString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
         .clk(clk),.rst(rst), .hash(LD0), .characterEscaped(lastCharacterEscaped),
-        .stringRam, .structRam
+        .stringRam, .structRam, .enable
     );
     
     

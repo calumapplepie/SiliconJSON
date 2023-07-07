@@ -26,7 +26,7 @@ module StringTapeAccumulator
         input UTF8_Char nextStringByte,
         input characterEscaped,
         output TapeIndex startIndex,
-        input clk, rst, enable,
+        input clk, rst, enable, active,
         output logic hash,
         BlockRamConnection.user ramConnection
     );
@@ -34,23 +34,23 @@ module StringTapeAccumulator
 typedef logic [23:0] StringLength;
 StringLength strLen;
 TapeIndex curIndex, addressA, addressB;
-logic [1:0] cyclesDisabled;
+logic [1:0] cyclesInactive;
 UTF8_Char byteA, byteB;
 
 
 /* tried this, but noooo it didnt work
 blockRamConnection #(.WORDSIZE(8),.NUMWORDS(StringTapeLength), .ADDRWIDTH(14)) ramConnector (
     .clk(clk), .ena('1), .enb('1), 
-    .wea(enable || ! cyclesDisabled[1]), .web(enable || !cyclesDisabled[1]), // we gotta write 5 bytes after string ends
+    .wea(active || ! cyclesInactive[1]), .web(active || !cyclesInactive[1]), // we gotta write 5 bytes after string ends
     .addra(addressA), .addrb(addressB),
     .dia(byteA), .dib(byteB), .hash(hash)
 );
 */
  always_comb begin
-    ramConnection.ena = '1;
-    ramConnection.enb = '1; 
-    ramConnection.wea = enable || !cyclesDisabled[1]; 
-    ramConnection.web = enable || !cyclesDisabled[1]; // we gotta write 5 bytes after string ends
+    ramConnection.ena = enable;
+    ramConnection.enb = enable; 
+    ramConnection.wea = active || !cyclesInactive[1]; 
+    ramConnection.web = active || !cyclesInactive[1]; // we gotta write 5 bytes after string ends
     ramConnection.addra = addressA; ramConnection.addrb = addressB;
     ramConnection.dia = byteA; 
     ramConnection.dib = byteB;
@@ -64,7 +64,7 @@ always_comb begin
     byteB = 'x;
     addressA = 'x;
     addressB = 'x;
-    if(enable) begin
+    if(active) begin
         byteA = nextStringByte;
         addressA = curIndex;
         //enabling the second write at all times *might* worsen power consumption.  more study needed
@@ -72,7 +72,7 @@ always_comb begin
         addressB = startIndex + 3;
         byteB =  '0; // we don't support a full 32 bit string
     end else begin
-        case(cyclesDisabled)
+        case(cyclesInactive)
             0 : begin
                 addressA = curIndex;
                 byteA = '0;
@@ -96,21 +96,22 @@ always_ff @(posedge clk ) begin
     if(rst) begin
         //foreach(tape[i]) tape[i] = '0;
         curIndex <= 4'd4;
-        cyclesDisabled <= '1;
+        cyclesInactive <= '1;
         startIndex <= '0;
         strLen <= 0;
-    end else if (enable) begin
-        cyclesDisabled <= '0;
+    end else if (!enable) begin end  //do nothing 
+    else if (active) begin
+        cyclesInactive <= '0;
         // only write quotes or backslashes if theyre escaped
         if(!((nextStringByte=="\"") || (nextStringByte=="\\")) || characterEscaped ) begin
             curIndex <= curIndex + 1;
             strLen <= strLen +1;
         end
     end else begin
-        if(cyclesDisabled < 3)begin
-            cyclesDisabled <= cyclesDisabled +1;
+        if(cyclesInactive < 3)begin
+            cyclesInactive <= cyclesInactive +1;
         end
-        case (cyclesDisabled)
+        case (cyclesInactive)
             0: curIndex <= curIndex +1;
             1: begin
                    startIndex <= curIndex;
