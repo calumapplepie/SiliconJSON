@@ -1,12 +1,14 @@
 module TopLevel import Core::UTF8_Char; (
     input UTF8_Char curChar,
-    input GCLK, rst, enable, readSide
+    input GCLK, rst, enable, readSide,
+    output logic [63:0] curStructBits,
+    output logic [7:0]  curStringBits
 );
     assign clk = GCLK;
     
     ParserTop parser (
-        .stringRam(readSide ? stringRam[1] : stringRam[0]), 
-        .structRam(readSide ? stringRam[1] : stringRam[0]),
+        .stringRam(readSide ? stringRam[0] : stringRam[1]), 
+        .structRam(readSide ? structRam[0] : structRam[1]),
         .*
     );
     
@@ -15,6 +17,7 @@ module TopLevel import Core::UTF8_Char; (
 
     TapeStorage storage[1:0] ( .*);
     
-    
+    BlockReader #(8) stringReader (.ram(readSide ? stringRam[1] : stringRam[0]), .*);
+    BlockReader #(64)structReader (.ram(readSide ? structRam[1] : structRam[0]), .*);
 
 endmodule
