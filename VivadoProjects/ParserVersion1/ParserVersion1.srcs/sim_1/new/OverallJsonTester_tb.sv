@@ -108,6 +108,7 @@ module OverallJsonTester_tb();
             // ensure we don't try to read BAD BAD BAD files
             if ($feof(fileHandle) > 0) begin
                 basenames[i] = "";
+                break;
             end
         end
         $fclose(fileHandle);

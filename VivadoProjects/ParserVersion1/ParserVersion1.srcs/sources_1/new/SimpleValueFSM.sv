@@ -45,7 +45,7 @@ module SimpleValueFSM import Core::UTF8_Char, Core::ElementType, Core::trueVal, 
             // ensure we have the first byte prepped, in case it starts a simple value
             // fsm won't tell us untill one clock cycle later
             charsSoFar[0] <= curChar;
-        end else begin
+        end else if (enb) begin
             charsSoFar[bytesRead] <= curChar;
             bytesRead <= bytesRead +1;
         end 

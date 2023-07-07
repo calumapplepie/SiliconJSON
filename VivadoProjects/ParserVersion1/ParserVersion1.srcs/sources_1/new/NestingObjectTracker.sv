@@ -78,7 +78,7 @@ module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
         if(rst) inArray <= '0;
         // we assume nobody goes over 2^16 key value pairs with our parser
         // that saves us a lot of energy
-        else case(curState)
+        else if (enb) case(curState)
             StartObject           : inArray <= '0;
             StartArray            : inArray <= '1;
             EndObject, EndArray   : inArray <= prevArrayStatus;
