@@ -7,8 +7,7 @@
       "name": "first_zynq_system",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.1",
-      "validated": "true"
+      "tool_version": "2023.1"
     },
     "design_tree": {
       "axi_gpio_0": "",
@@ -645,7 +644,7 @@
             "value": "150.000000"
           },
           "PCW_FPGA2_PERIPHERAL_FREQMHZ": {
-            "value": "50.000000"
+            "value": "50"
           },
           "PCW_FPGA3_PERIPHERAL_FREQMHZ": {
             "value": "50"
@@ -706,6 +705,9 @@
           },
           "PCW_INCLUDE_ACP_TRANS_CHECK": {
             "value": "0"
+          },
+          "PCW_IRQ_F2P_MODE": {
+            "value": "DIRECT"
           },
           "PCW_MIO_0_IOTYPE": {
             "value": "LVCMOS 3.3V"
@@ -1196,6 +1198,18 @@
           "PCW_M_AXI_GP0_THREAD_ID_WIDTH": {
             "value": "12"
           },
+          "PCW_M_AXI_GP1_ENABLE_STATIC_REMAP": {
+            "value": "0"
+          },
+          "PCW_M_AXI_GP1_ID_WIDTH": {
+            "value": "12"
+          },
+          "PCW_M_AXI_GP1_SUPPORT_NARROW_BURST": {
+            "value": "0"
+          },
+          "PCW_M_AXI_GP1_THREAD_ID_WIDTH": {
+            "value": "12"
+          },
           "PCW_NAND_CYCLES_T_AR": {
             "value": "1"
           },
@@ -1380,7 +1394,7 @@
             "value": "1"
           },
           "PCW_QSPI_PERIPHERAL_FREQMHZ": {
-            "value": "200.000000"
+            "value": "200"
           },
           "PCW_QSPI_QSPI_IO": {
             "value": "MIO 1 .. 6"
@@ -1465,6 +1479,18 @@
           },
           "PCW_SPI_PERIPHERAL_VALID": {
             "value": "0"
+          },
+          "PCW_S_AXI_HP0_DATA_WIDTH": {
+            "value": "64"
+          },
+          "PCW_S_AXI_HP1_DATA_WIDTH": {
+            "value": "64"
+          },
+          "PCW_S_AXI_HP2_DATA_WIDTH": {
+            "value": "64"
+          },
+          "PCW_S_AXI_HP3_DATA_WIDTH": {
+            "value": "64"
           },
           "PCW_TPIU_PERIPHERAL_CLKSRC": {
             "value": "External"
@@ -1812,7 +1838,7 @@
             "value": "1"
           },
           "PCW_USE_M_AXI_GP1": {
-            "value": "0"
+            "value": "1"
           },
           "PCW_USE_PROC_EVENT_BUS": {
             "value": "0"
@@ -1868,6 +1894,16 @@
             "base_address": {
               "minimum": "0x40000000",
               "maximum": "0x7FFFFFFF",
+              "width": "32"
+            }
+          },
+          "M_AXI_GP1": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "Data",
+            "base_address": {
+              "minimum": "0x80000000",
+              "maximum": "0xBFFFFFFF",
               "width": "32"
             }
           }
@@ -2212,12 +2248,6 @@
       }
     },
     "interface_nets": {
-      "axi_gpio_0_GPIO": {
-        "interface_ports": [
-          "leds_8bits",
-          "axi_gpio_0/GPIO"
-        ]
-      },
       "processing_system7_0_DDR": {
         "interface_ports": [
           "DDR",

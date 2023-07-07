@@ -5,19 +5,30 @@ module TopLevel import Core::UTF8_Char; (
     output logic [7:0]  curStringBits
 );
     assign clk = GCLK;
+    BlockRamConnection #(.WORDSIZE(8), .ADDRWIDTH(14)) stringRam[1:0] ();
+    BlockRamConnection #(.WORDSIZE(64))                structRam[1:0] ();
+    BlockRamConnection #(.WORDSIZE(8), .ADDRWIDTH(14)) parserStringRam ();
+    BlockRamConnection #(.WORDSIZE(64))                parserStructRam ();
+    BlockRamConnection #(.WORDSIZE(8), .ADDRWIDTH(14)) readerStringRam ();
+    BlockRamConnection #(.WORDSIZE(64))                readerStructRam ();
+    
     
     ParserTop parser (
-        .stringRam(readSide ? stringRam[0] : stringRam[1]), 
-        .structRam(readSide ? structRam[0] : structRam[1]),
+        .stringRam(parserStringRam), 
+        .structRam(parserStructRam),
         .*
     );
     
-    BlockRamConnection #(.WORDSIZE(8), .ADDRWIDTH(14)) stringRam[1:0] ();
-    BlockRamConnection #(.WORDSIZE(64))                structRam[1:0] ();
-
-    TapeStorage storage[1:0] ( .*);
+    BlockRamConnectionMux #2 why       (stringRam[1:0],  readSide, parserStringRam) ;
+    BlockRamConnectionMux #2 arent     (structRam[1:0],  readSide, parserStructRam) ;
+    BlockRamConnectionMux #2 interfacee(stringRam[1:0], !readSide, readerStringRam) ;
+    BlockRamConnectionMux #2 muxesReal (structRam[1:0], !readSide, readerStructRam) ;
     
-    BlockReader #(8) stringReader (.ram(readSide ? stringRam[1] : stringRam[0]), .data(curStringBits), .*);
-    BlockReader #(64)structReader (.ram(readSide ? structRam[1] : structRam[0]), .data(curStructBits), .*);
+
+
+    TapeStorage storage[1:0] (.stringRam(stringRam), .structRam(structRam), .*);
+    
+    BlockReader #(8) stringReader (.ram(readerStringRam), .data(curStringBits), .*);
+    BlockReader #(64)structReader (.ram(readerStructRam), .data(curStructBits), .*);
 
 endmodule
