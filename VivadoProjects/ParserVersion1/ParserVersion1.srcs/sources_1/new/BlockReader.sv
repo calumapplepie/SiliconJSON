@@ -22,7 +22,7 @@
 
 module BlockReader #(WORDSIZE=8)(
         BlockRamConnection.user ram,
-        input logic clk, enb, rst,
+        input logic clk, enable, rst,
         output logic [WORDSIZE-1:0] data 
     );
     logic [ram.ADDRWIDTH -1 :0] curAddr;
@@ -30,7 +30,7 @@ module BlockReader #(WORDSIZE=8)(
     
     always_comb begin
         ram.enb = '0;
-        ram.ena = enb;
+        ram.ena = enable;
         ram.wea = '0; ram.web = '0;
         
         ram.addra = curAddr;
@@ -39,7 +39,7 @@ module BlockReader #(WORDSIZE=8)(
     
     always_ff @(posedge clk) begin
         if(rst)      curAddr <= '0;
-        else if(enb) curAddr <= curAddr + 1;
+        else if(enable) curAddr <= curAddr + 1;
     end
     
 endmodule

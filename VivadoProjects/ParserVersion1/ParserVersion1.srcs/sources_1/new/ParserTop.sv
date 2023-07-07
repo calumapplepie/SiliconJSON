@@ -29,7 +29,7 @@ module ParserTop
     );
     ElementType curElementType;
     JsonTapeElement numberSecondElement;
-    wire writeString, writeStructure, clk, characterEscaped;
+    wire writeString, writeStructure, characterEscaped;
     wire [23:0] keyValuePairs;
     
     

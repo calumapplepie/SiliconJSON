@@ -13,11 +13,11 @@ module TopLevel import Core::UTF8_Char; (
     );
     
     BlockRamConnection #(.WORDSIZE(8), .ADDRWIDTH(14)) stringRam[1:0] ();
-    BlockRamConnection #(.WORDSIZE(64))                structRam[1:0]     ();
+    BlockRamConnection #(.WORDSIZE(64))                structRam[1:0] ();
 
     TapeStorage storage[1:0] ( .*);
     
-    BlockReader #(8) stringReader (.ram(readSide ? stringRam[1] : stringRam[0]), .*);
-    BlockReader #(64)structReader (.ram(readSide ? structRam[1] : structRam[0]), .*);
+    BlockReader #(8) stringReader (.ram(readSide ? stringRam[1] : stringRam[0]), .data(curStringBits), .*);
+    BlockReader #(64)structReader (.ram(readSide ? structRam[1] : structRam[0]), .data(curStructBits), .*);
 
 endmodule
