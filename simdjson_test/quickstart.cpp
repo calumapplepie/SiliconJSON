@@ -2,6 +2,7 @@
 #include "simdjson.h"
 #include <filesystem>
 #include <fstream>
+#include <set>
 
 using namespace simdjson;
 
@@ -95,7 +96,7 @@ namespace dom {
 int main(void) {
     dom::parser parser;
 	std::filesystem::path dir{target_file_dir};
-	std::ofstream basenamesOut{dir / "basenames.txt", std::ios_base::trunc};
+	std::set<std::string> baseNamesStorage;
 	
 	for (auto const& file : std::filesystem::directory_iterator{dir}){
 		if(!file.is_regular_file()){
@@ -107,7 +108,7 @@ int main(void) {
 			continue;
 		}
     	dom::element json = parser.load(file.path().string());
-		basenamesOut << file.path().stem().string() << std::endl;
+		baseNamesStorage.insert(file.path().stem().string());
 
 		auto hexPathStruct = file.path();
 		hexPathStruct.replace_extension("struct.hex");
@@ -128,6 +129,11 @@ int main(void) {
 		hexOutStruct.close();
 		minifiedOut.close();
 		
+	}
+
+	std::ofstream basenamesOut{dir / "basenames.txt", std::ios_base::trunc};
+	for (auto const& str : baseNamesStorage){
+		basenamesOut << str << std::endl;
 	}
 	basenamesOut.close();
     //json.dump_raw_tape(std::cout);
