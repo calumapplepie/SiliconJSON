@@ -103,4 +103,10 @@ package Core;
         endcase
     endfunction
     
+    typedef struct {
+        logic ena, enb, wea,web;
+        logic [ADDRWIDTH-1:0] addra,addrb;
+        logic [WORDSIZE-1:0] dia,dib;
+    } BlockRamInput;
+    
 endpackage
