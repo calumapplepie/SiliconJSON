@@ -57,7 +57,7 @@ module OverallJsonTester_tb();
             nextChar = $fgetc(jsonInFileHandle);
             #10;
             enable = '0;
-            #10;
+            #40;
             enable = '1;
         end
         
