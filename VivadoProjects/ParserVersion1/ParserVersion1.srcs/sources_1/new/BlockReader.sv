@@ -21,11 +21,16 @@
 
 
 module BlockReader import Ram::*;  #(WORDSIZE=8) (
-        input BlockRamWrite ramWrite, BlockRamRead ramRead,
+        output BlockRamWrite ramWrite, 
+        input BlockRamRead ramRead,
         input logic clk, enable, rst,
         output logic [WORDSIZE-1:0] data 
     );
-    logic [ram.ADDRWIDTH -1 :0] curAddr;
+    // get an actual number for this later
+    logic [32:0] curAddr;
+    
+    // todo: use asymetric TDP functions of block rams
+    // may require splitting this module in two?
     
     DualTapeUnionUnpacker(WORDSIZE);
     

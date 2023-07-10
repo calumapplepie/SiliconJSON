@@ -5,6 +5,7 @@ Some Design notes:
 - Floats currently unsupported
 - Integers > 2^63 unsupported
 - Strings longer than 2^23 unsupported (duh)
+- While classes *could* make some interfaces nicer code-wise, I don't think they'd behave in hardware
 
 Todo: spiel more
 Todo: document how to remake Vivado projects from committed git source
