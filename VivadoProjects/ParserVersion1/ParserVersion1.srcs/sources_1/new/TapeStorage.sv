@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TapeStorage import Ram::*; #(NUMTAPES = 4, ADDRWIDTH= $clog2(NUMTAPES)-1) ( 
+module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1) ( 
     input clk, //let users define their own ram enable code
     input [ADDRWIDTH:0] selectParser, selectReader,
     input StringBlockRamWrite parserStringWrite, readerStringWrite,
@@ -35,15 +35,18 @@ module TapeStorage import Ram::*; #(NUMTAPES = 4, ADDRWIDTH= $clog2(NUMTAPES)-1)
     StructBlockRamRead  structRamR [NUMTAPES-1:0];
     logic               enb        [NUMTAPES-1:0];
     
-    TapeInstance tapes  [NUMTAPES-1:0] (.clk, .enb, .stringRamW, .structRamW, .stringRamR, .structRamR);
+    // todo: make this a generate
+    // i shouldn't need to, but vivado won't obey 23.3.3.5, or some other thing is happening... not sure
+    TapeInstance tape0  (.clk, .enb(enb[0]), .stringRamW(stringRamW[0]), .structRamW(structRamW[0]), .stringRamR(stringRamR[0]), .structRamR(structRamR[0]));
+    TapeInstance tape1  (.clk, .enb(enb[1]), .stringRamW(stringRamW[1]), .structRamW(structRamW[1]), .stringRamR(stringRamR[1]), .structRamR(structRamR[1]));
+
     
     always_comb begin 
         // I think/hope this will stop latches from being inferred? 
         // assignment technique credit this SO thread
         // https://electronics.stackexchange.com/questions/179142/systemverilog-structure-initialization-with-default-1
-        foreach(stringRamW[i]) stringRamW[i] = '{default:'0};
-        foreach(structRamW[i]) structRamW[i] = '{default:'0};
-
+        foreach(stringRamW[i]) stringRamW[i] = '{default: 'x};
+        foreach(structRamW[i]) structRamW[i] = '{default: 'x};
         
         // default to disabled
         foreach(enb[i]       ) enb[i]        = '0;

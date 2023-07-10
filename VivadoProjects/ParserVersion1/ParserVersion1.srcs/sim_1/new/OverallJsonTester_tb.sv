@@ -36,7 +36,7 @@ module OverallJsonTester_tb();
     logic [7:0]     expectedStringTape [0:StringTapeLength];
     
     TopLevel DUV (
-        .curChar(nextChar), 
+        .curChar(nextChar), .readSide('0),
         .enable(enable), .GCLK(clk), .rst(rst));
     
     task static evaluateJsonFile(string basename);
@@ -69,21 +69,21 @@ module OverallJsonTester_tb();
 
         // compare
         foreach(expectedStringTape[i]) begin
-            if (expectedStringTape[i] !=  DUV.storage[0].stringTapeRam.blockRam.ram[i]) begin
+            if (expectedStringTape[i] !=  DUV.storage.tape1.stringTapeRam.blockRam.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 9) begin
                      $display("Error at string tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStringTape[i], DUV.storage[0].stringTapeRam.blockRam.ram[i]);
+                    $display("Expected %h, got %h", expectedStringTape[i], DUV.storage.tape1.stringTapeRam.blockRam.ram[i]);
                 end
             end
         end
 
         foreach(expectedStructTape[i]) begin
-            if (expectedStructTape[i] != DUV.storage[0].structTapeRam.blockRam.ram[i]) begin
+            if (expectedStructTape[i] != DUV.storage.tape1.structTapeRam.blockRam.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 9) begin
                     $display("Error at struct tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStructTape[i], DUV.storage[0].structTapeRam.blockRam.ram[i]);
+                    $display("Expected %h, got %h", expectedStructTape[i], DUV.storage.tape1.structTapeRam.blockRam.ram[i]);
                 end
             end
         end
