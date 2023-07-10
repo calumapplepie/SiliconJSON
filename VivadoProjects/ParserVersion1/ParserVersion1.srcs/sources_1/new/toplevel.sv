@@ -5,8 +5,15 @@ module TopLevel import Core::UTF8_Char; (
     output logic [7:0]  curStringBits
 );
     assign clk = GCLK;
-    BlockRamConnection #(.WORDSIZE(8), .ADDRWIDTH(14)) stringRam[1:0] ();
-    BlockRamConnection #(.WORDSIZE(64))                structRam[1:0] ();
+    
+    Ram::StringBlockRamWrite stringRam [1:0];
+    Ram::StructBlockRamWrite structRam [1:0];
+    
+    Ram::StringBlockRamWrite parserStringRam, readerStringRam;
+    Ram::StructBlockRamWrite parserStructRam, readerStructRam;
+    
+    assign parserStringRam = !readSide ? stringRam[1] : stringRam [0];
+    assign parserStructRam = !readSide ? structRam[1] : structRam [0];
     
     ParserTop parser (
         .stringRam(parserStringRam), 
@@ -15,6 +22,9 @@ module TopLevel import Core::UTF8_Char; (
     );
     
     TapeStorage storage[1:0] (.stringRam(stringRam), .structRam(structRam), .*);
+    
+    assign readerStringRam = readSide ? stringRam[1] : stringRam [0];
+    assign readerStructRam = readSide ? structRam[1] : structRam [0];
     
     BlockReader #(8) stringReader (.ram(readerStringRam), .data(curStringBits), .*);
     BlockReader #(64)structReader (.ram(readerStructRam), .data(curStructBits), .*);
