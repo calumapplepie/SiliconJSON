@@ -41,10 +41,8 @@ module TapeStorage import Ram::*; #(NUMTAPES = 4, ADDRWIDTH= $clog2(NUMTAPES)-1)
         // I think/hope this will stop latches from being inferred? 
         // assignment technique credit this SO thread
         // https://electronics.stackexchange.com/questions/179142/systemverilog-structure-initialization-with-default-1
-        foreach(stringRamW[i]) stringRamW[i] = '{default: 'x};
-        foreach(stringRamR[i]) stringRamR[i] = '{default: 'x};
-        foreach(structRamW[i]) structRamW[i] = '{default: 'x};
-        foreach(structRamW[i]) structRamR[i] = '{default: 'x};
+        foreach(stringRamW[i]) stringRamW[i] = '{default:'0};
+        foreach(structRamW[i]) structRamW[i] = '{default:'0};
 
         
         // default to disabled
