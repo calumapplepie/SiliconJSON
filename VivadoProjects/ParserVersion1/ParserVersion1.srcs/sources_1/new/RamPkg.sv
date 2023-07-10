@@ -34,11 +34,11 @@ package Ram;
 endpackage
 
 // makes said paramaterized modules easier by unpacking them 
-`define DualTapeUnionUnpacker(WORDSIZE)             \
-    generate if (WORDSIZE==8) begin                 \
-        let ramW = ramWrite.str;    \
-        let ramR = ramRead.str;     \
-    end else if (WORDSIZE == 64) begin              \
-        let ramW = ramWrite.stu;    \
-        let ramR = ramRead.stu;     \
+`define DualTapeUnionUnpacker(WORDSIZE)     \
+    generate if (WORDSIZE==8) begin         \
+        let ramW = ramWrite.str;            \
+        let ramR = ramRead.str;             \
+    end else if (WORDSIZE == 64) begin      \
+        let ramW = ramWrite.stu;            \
+        let ramR = ramRead.stu;             \
     end endgenerate
