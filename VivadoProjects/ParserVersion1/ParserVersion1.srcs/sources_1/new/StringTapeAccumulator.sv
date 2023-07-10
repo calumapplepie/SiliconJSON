@@ -28,7 +28,7 @@ module StringTapeAccumulator
         output TapeIndex startIndex,
         input clk, rst, enable, active,
         output logic hash,
-        BlockRamConnection.user ramConnection
+        output Ram::StringBlockRamWrite ramConnection
     );
 
 typedef logic [23:0] StringLength;

@@ -13,8 +13,8 @@ module TopLevel import Core::UTF8_Char; (
     Ram::StructBlockRamRead  readerStructRead;
         
     ParserTop parser (
-        .stringRam(parserStringRam), 
-        .structRam(parserStructRam),
+        .stringRam(parserStringWrite), 
+        .structRam(parserStructWrite),
         .*
     );
     

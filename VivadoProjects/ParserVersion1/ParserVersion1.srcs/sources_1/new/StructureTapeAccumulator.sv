@@ -26,7 +26,7 @@ module StructureTapeAccumulator
         input logic [23:0] keyValuePairs,
         input clk, rst, enable, active,
         output logic hash,
-        BlockRamConnection.user ramConnection
+        output Ram::StructBlockRamWrite ramConnection
     );
     
     TapeIndex curIndex;

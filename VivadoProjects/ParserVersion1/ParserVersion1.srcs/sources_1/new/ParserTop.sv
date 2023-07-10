@@ -25,7 +25,8 @@ module ParserTop
     (
         input UTF8_Char curChar,
         input clk, rst, enable,
-        BlockRamConnection.user stringRam, structRam
+        output Ram::StringBlockRamWrite stringRam, 
+        output Ram::StructBlockRamWrite structRam
     );
     ElementType curElementType;
     JsonTapeElement numberSecondElement;

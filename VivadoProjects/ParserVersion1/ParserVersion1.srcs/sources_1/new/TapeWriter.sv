@@ -29,8 +29,8 @@ module TapeWriter
         input logic [23:0] keyValuePairs,
         input JsonTapeElement numberSecondElement,
         input clk, rst, enable,
-        output hash,
-        BlockRamConnection.user stringRam, structRam
+        output Ram::StringBlockRamWrite stringRam, 
+        output Ram::StructBlockRamWrite structRam
     );
     wire hashStr, hashStruct;
     
