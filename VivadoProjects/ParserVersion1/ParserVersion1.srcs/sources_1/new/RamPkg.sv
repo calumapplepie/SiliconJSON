@@ -2,13 +2,13 @@ package Ram;
 
     typedef struct {
         logic ena, enb, wea,web;
-        logic [$clog2(Core::StringTapeLength):0] addra,addrb;
+        logic [$clog2(Core::StringTapeLength)-1:0] addra,addrb;
         logic [7:0] dia,dib;
     } StringBlockRamWrite;
     
     typedef struct {
         logic ena, enb, wea,web;
-        logic [$clog2(Core::StructTapeLength):0] addra,addrb;
+        logic [$clog2(Core::StructTapeLength)-1:0] addra,addrb;
         logic [63:0] dia,dib;
     } StructBlockRamWrite;
       

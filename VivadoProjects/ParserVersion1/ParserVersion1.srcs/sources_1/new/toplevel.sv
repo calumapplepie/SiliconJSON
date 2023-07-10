@@ -7,7 +7,7 @@ module TopLevel import Core::UTF8_Char; (
     assign clk = GCLK;
     
     Ram::StringBlockRamWrite stringRamW [1:0];
-    Ram::StructBlockRamWrite structRamR [1:0];
+    Ram::StructBlockRamWrite structRamW [1:0];
     
     Ram::StringBlockRamWrite parserStringRam, readerStringRam;
     Ram::StructBlockRamWrite parserStructRam, readerStructRam;
