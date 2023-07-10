@@ -5,12 +5,8 @@ module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS)-1) (
     input logic clk, ena, enb, wea,web, 
     input [ADDRWIDTH-1:0] addra,addrb, 
     input [WORDSIZE-1:0] dia,dib,
-    output logic [WORDSIZE-1:0] doa,dob,
-    output hash
+    output logic [WORDSIZE-1:0] doa,dob
 );
-
-// crude hack to force vivado to generate this module
-assign hash = (^doa) ^ (^dob);
 
 logic [WORDSIZE-1:0] ram [0:NUMWORDS-1];
 

@@ -32,18 +32,16 @@ module TapeWriter
         output Ram::StringBlockRamWrite stringRam, 
         output Ram::StructBlockRamWrite structRam
     );
-    wire hashStr, hashStruct;
     
     TapeIndex curStringIndex;
     UTF8_Char nextStringByte;
-    assign hash = hashStr ^ hashStruct;
     
     assign nextStringByte = characterEscaped ? Core::unescapeCharacter(curChar) : curChar;
 
     StringTapeAccumulator stringGoHere (
         .nextStringByte, .enable, .active(writeString),
         .startIndex(curStringIndex), .characterEscaped,
-        .clk(clk), .rst(rst), .hash(hashStr), .ramConnection(stringRam)
+        .clk(clk), .rst(rst), .ramConnection(stringRam)
     );
     
     JsonTapeElement nextElement;
@@ -56,6 +54,6 @@ module TapeWriter
     StructureTapeAccumulator structGoHere(
         .nextTapeEntry(nextElement), .enable,  .active(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement,
-        .clk(clk), .rst(rst), .hash(hashStruct), .ramConnection(structRam)
+        .clk(clk), .rst(rst), .ramConnection(structRam)
     );
 endmodule

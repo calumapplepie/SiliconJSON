@@ -67,7 +67,7 @@ module ParserTop
         .curChar(lastChar), .curElementType(lastElementType),
         .writeString(writeString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
-        .clk(clk),.rst(rst), .hash(LD0), .characterEscaped(lastCharacterEscaped),
+        .clk(clk),.rst(rst), .characterEscaped(lastCharacterEscaped),
         .stringRam, .structRam, .enable
     );
 endmodule

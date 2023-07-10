@@ -27,7 +27,6 @@ module StringTapeAccumulator
         input characterEscaped,
         output TapeIndex startIndex,
         input clk, rst, enable, active,
-        output logic hash,
         output Ram::StringBlockRamWrite ramConnection
     );
 
@@ -43,7 +42,7 @@ blockRamConnection #(.WORDSIZE(8),.NUMWORDS(StringTapeLength), .ADDRWIDTH(14)) r
     .clk(clk), .ena('1), .enb('1), 
     .wea(active || ! cyclesInactive[1]), .web(active || !cyclesInactive[1]), // we gotta write 5 bytes after string ends
     .addra(addressA), .addrb(addressB),
-    .dia(byteA), .dib(byteB), .hash(hash)
+    .dia(byteA), .dib(byteB),
 );
 */
  always_comb begin
@@ -54,7 +53,6 @@ blockRamConnection #(.WORDSIZE(8),.NUMWORDS(StringTapeLength), .ADDRWIDTH(14)) r
     ramConnection.addra = addressA; ramConnection.addrb = addressB;
     ramConnection.dia = byteA; 
     ramConnection.dib = byteB;
-    hash = ramConnection.hash;
  end
 
 always_comb begin

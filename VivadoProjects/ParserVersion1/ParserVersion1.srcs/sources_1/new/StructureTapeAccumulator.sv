@@ -25,7 +25,6 @@ module StructureTapeAccumulator
         input JsonTapeElement nextTapeEntry, numberSecondElement,
         input logic [23:0] keyValuePairs,
         input clk, rst, enable, active,
-        output logic hash,
         output Ram::StructBlockRamWrite ramConnection
     );
     
@@ -45,7 +44,7 @@ module StructureTapeAccumulator
             .clk(clk), .ena('1), .enb('1), //always enable
             .wea(enable | doDualWrite),            .web(doDualWrite),  
             .addra(curIndex),        .addrb(dualWriteIndex),
-            .dia(curIndexTapeEntry), .dib(dualWriteTapeEntry), .hash(hash));
+            .dia(curIndexTapeEntry), .dib(dualWriteTapeEntry));
     */
     
      always_comb begin  
@@ -57,7 +56,6 @@ module StructureTapeAccumulator
             ramConnection.addrb = dualWriteIndex;
             ramConnection.dia = curIndexTapeEntry;
             ramConnection.dib = dualWriteTapeEntry;
-            hash = ramConnection.hash;
     end
             
     BlockRamStack stack (
