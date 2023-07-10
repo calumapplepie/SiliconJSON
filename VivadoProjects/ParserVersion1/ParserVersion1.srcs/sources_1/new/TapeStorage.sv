@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1) ( 
+module TapeStorage import Ram::*; #(NUMTAPES = 4, ADDRWIDTH= $clog2(NUMTAPES)-1) ( 
     input clk, //let users define their own ram enable code
     input [ADDRWIDTH:0] selectParser, selectReader,
     input StringBlockRamWrite parserStringWrite, readerStringWrite,
@@ -33,7 +33,7 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
     StringBlockRamRead  stringRamR [NUMTAPES-1:0];
     StructBlockRamWrite structRamW [NUMTAPES-1:0];
     StructBlockRamRead  structRamR [NUMTAPES-1:0];
-    logic                enb       [NUMTAPES-1:0];
+    logic               enb        [NUMTAPES-1:0];
     
     TapeInstance tapes  [NUMTAPES-1:0] (.clk, .enb, .stringRamW, .structRamW, .stringRamR, .structRamR);
     
@@ -44,6 +44,8 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
         foreach(stringRamW[i]) stringRamW[i] = '{default: 'x};
         foreach(stringRamR[i]) stringRamR[i] = '{default: 'x};
         foreach(structRamW[i]) structRamW[i] = '{default: 'x};
+        foreach(structRamW[i]) structRamR[i] = '{default: 'x};
+
         
         // default to disabled
         foreach(enb[i]       ) enb[i]        = '0;

@@ -27,7 +27,8 @@ module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
         output logic [23:0] keyValuePairsSoFar
     );
     
-    logic [17:0] nextKeyValuePairs, lastObjKeyValuePairs;
+    logic [17:0] lastObjKeyValuePairs;
+    logic [16:0] nextKeyValuePairs;
     logic [9:0] curDepth;
     
     BlockRamStack stack (
@@ -40,7 +41,6 @@ module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
     
     // zero excess bits
     assign keyValuePairsSoFar[23:17] = '0;
-    assign nextKeyValuePairs[17]     = '0;
     
     // our previous array status (needed externally, sometimes)
     assign prevArrayStatus = lastObjKeyValuePairs[17];
@@ -58,7 +58,7 @@ module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
             StartKey    : nextKeyValuePairs = keyValuePairsSoFar+1;
             StartObject : nextKeyValuePairs = '0;
             StartArray  : nextKeyValuePairs = 17'd1;
-            EndObject, EndArray   : nextKeyValuePairs[16:0] = lastObjKeyValuePairs[16:0];
+            EndObject, EndArray   : nextKeyValuePairs = lastObjKeyValuePairs[16:0];
         endcase
         // handle the array member counting
         if(curCharType == comma && !(curState inside {ReadString, StartString, EndArray}) && inArray)

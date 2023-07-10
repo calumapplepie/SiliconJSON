@@ -43,7 +43,7 @@ module BlockReader import Ram::*;  #(WORDSIZE=8, type WriteType, type ReadType) 
         ramWrite.wea = '0; ramWrite.web = '0;
         
         ramWrite.addra = curAddr;
-        ramRead.doa = data;
+        data = ramRead.doa;
     end
     
     always_ff @(posedge clk) begin
