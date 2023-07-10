@@ -21,6 +21,7 @@
 
 
 module TapeStorage( input clk, BlockRamConnection.owner stringRam, BlockRamConnection.owner structRam);
-    BlockRamSharer #(.NUMWORDS(Core::StringTapeLength)) stringTapeRam (.clk, .r(stringRam));
-    BlockRamSharer #(.NUMWORDS(Core::StructTapeLength)) structTapeRam (.clk, .r(structRam));
+    
+    
+    
 endmodule
