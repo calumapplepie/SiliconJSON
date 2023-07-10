@@ -40,6 +40,7 @@ module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
     
     // zero excess bits
     assign keyValuePairsSoFar[23:17] = '0;
+    assign nextKeyValuePairs[17]     = '0;
     
     // our previous array status (needed externally, sometimes)
     assign prevArrayStatus = lastObjKeyValuePairs[17];
@@ -76,8 +77,6 @@ module NestingObjectTracker import Core::CharType, Core::comma, ParserPkg::*; (
     // inArray logic
     always_ff @(posedge clk) begin
         if(rst) inArray <= '0;
-        // we assume nobody goes over 2^16 key value pairs with our parser
-        // that saves us a lot of energy
         else if (enb) case(curState)
             StartObject           : inArray <= '0;
             StartArray            : inArray <= '1;
