@@ -32,13 +32,3 @@ package Ram;
     } BlockRamRead;
 
 endpackage
-
-// makes said paramaterized modules easier by unpacking them 
-`define DualTapeUnionUnpacker(WORDSIZE)             \
-    generate if (WORDSIZE==8) begin                 \
-        StringBlockRamWrite ramW = ramWrite.str;    \
-        StringBlockRamRead  ramR = ramRead.str;     \
-    end else if (WORDSIZE == 64) begin              \
-        StructBlockRamWrite ramW = ramWrite.stu;    \
-        StructBlockRamRead  ramR = ramRead.stu;     \
-    end endgenerate

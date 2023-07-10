@@ -19,28 +19,31 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+// Yes, this module has a ton of parameters and only two ways we combine them all.
+// Since I am open sourcing this, I should maximize the reusable details for others.
+// Perhaps I could even build a separate Block Ram Library, because of the amount of tomfoolery
+// I do with them.
+// This would be easier if SystemVerilog and Vivado included just a few more features (eg, virtual classes
 
-module BlockReader import Ram::*;  #(WORDSIZE=8) (
-        output BlockRamWrite ramWrite, 
-        input BlockRamRead ramRead,
+module BlockReader import Ram::*;  #(WORDSIZE=8, type WriteType, type ReadType) (
+        output WriteType ramWrite, 
+        input ReadType ramRead,
         input logic clk, enable, rst,
         output logic [WORDSIZE-1:0] data 
     );
     // get an actual number for this later
     logic [32:0] curAddr;
     
-    // todo: use asymetric TDP functions of block rams
-    // may require splitting this module in two?
-    
-    `DualTapeUnionUnpacker(WORDSIZE);
+    // todo: use asymetric TDP functions of zedboard block rams
+    // will require yet more parameters
     
     always_comb begin
-        ramW.enb = '0;
-        ramW.ena = enable;
-        ramW.wea = '0; ram.web = '0;
+        ramWrite.enb = '0;
+        ramWrite.ena = enable;
+        ramWrite.wea = '0; ramWrite.web = '0;
         
-        ramW.addra = curAddr;
-        ramR.doa = data;
+        ramWrite.addra = curAddr;
+        ramRead.doa = data;
     end
     
     always_ff @(posedge clk) begin

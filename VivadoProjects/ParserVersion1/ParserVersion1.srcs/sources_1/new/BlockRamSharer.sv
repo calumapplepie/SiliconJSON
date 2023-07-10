@@ -19,12 +19,10 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module BlockRamSharer import Ram::*; #(NUMWORDS=64, WORDSIZE=8)(
-        input clk, enb, input BlockRamWrite ramWrite, output BlockRamRead ramRead
+module BlockRamSharer import Ram::*; #(NUMWORDS=64, WORDSIZE=8, type ReadType, type WriteType)(
+        input clk, enb, input WriteType ramW, output ReadType ramR
     );
-    
-    `DualTapeUnionUnpacker(WORDSIZE);    
-    
+      
     TapeBlockRam #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS)) blockRam (
        // use ordered to avoid headache
        clk, ramW.ena && enb, ramW.enb && enb, ramW.wea, ramW.web, ramW.addra, ramW.addrb, ramW.dia, ramW.dib, ramR.doa, ramR.dob  

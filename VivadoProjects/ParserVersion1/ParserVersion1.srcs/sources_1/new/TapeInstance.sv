@@ -25,11 +25,13 @@ module TapeInstance import Ram::*; (
         output StringBlockRamRead  stringRamR, StructBlockRamRead  structRamR 
     );
     
-    BlockRamSharer #(.NUMWORDS(Core::StringTapeLength), .WORDSIZE(8))  stringTapeRam (
-        .clk, .enb, .ramWrite(stringRamW), .ramRead(stringRamR)
+    BlockRamSharer #(.NUMWORDS(Core::StringTapeLength), .WORDSIZE(8), .ReadType(StringBlockRamRead), .WriteType(StringBlockRamWrite))  
+        stringTapeRam (
+        .clk, .enb, .ramW(stringRamW), .ramR(stringRamR)
     );
-    BlockRamSharer #(.NUMWORDS(Core::StructTapeLength), .WORDSIZE(64)) structTapeRam (
-        .clk, .enb, .ramWrite(structRamW), .ramRead(structRamR)
+    BlockRamSharer #(.NUMWORDS(Core::StructTapeLength), .WORDSIZE(64), .ReadType(StructBlockRamRead), .WriteType(StructBlockRamWrite)) 
+    structTapeRam (
+        .clk, .enb, .ramW(structRamW), .ramR(structRamR)
     );
     
 endmodule
