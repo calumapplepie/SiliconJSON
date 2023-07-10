@@ -27,15 +27,7 @@ module BlockReader import Ram::*;  #(WORDSIZE=8) (
     );
     logic [ram.ADDRWIDTH -1 :0] curAddr;
     
-    generate
-    if(WORDSIZE==8) begin
-        StringBlockRamWrite ramW = ramWrite.str;
-        StringBlockRamRead  ramR = ramRead.str;
-    end else if (WORDSIZE == 64) begin
-        StructBlockRamWrite ramW = ramWrite.stu;
-        StructBlockRamRead  ramR = ramRead.stu;
-    end    
-    endgenerate
+    DualTapeUnionUnpacker(WORDSIZE);
     
     always_comb begin
         ramW.enb = '0;

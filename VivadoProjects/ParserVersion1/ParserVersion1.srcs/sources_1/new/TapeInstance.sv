@@ -19,8 +19,18 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module TapeInstance(
-
+module TapeStorage import Ram::*; ( 
+        input clk, enb, 
+        input  StringBlockRamWrite stringRamW, StructBlockRamWrite structRamW,
+        output StringBlockRamRead  stringRamR, StructBlockRamRead  structRamR 
     );
+    
+    BlockRamSharer #(.NUMWORDS(Core::StringTapeLength), .WORDSIZE(8))  stringTapeRam (
+        .clk, .r(stringRam)
+    );
+    BlockRamSharer #(.NUMWORDS(Core::StructTapeLength), .WORDSIZE(64)) structTapeRam (
+        .clk, .r(structRam)
+    );
+    
 endmodule
+
