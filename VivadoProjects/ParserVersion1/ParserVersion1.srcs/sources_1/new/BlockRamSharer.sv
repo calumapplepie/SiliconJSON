@@ -23,7 +23,7 @@ module BlockRamSharer import Ram::*; #(NUMWORDS=64, WORDSIZE=8)(
         input clk, enb, input BlockRamWrite ramWrite, output BlockRamRead ramRead
     );
     
-    DualTapeUnionUnpacker(WORDSIZE);    
+    `DualTapeUnionUnpacker(WORDSIZE);    
     
     TapeBlockRam #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS)) blockRam (
        // use ordered to avoid headache

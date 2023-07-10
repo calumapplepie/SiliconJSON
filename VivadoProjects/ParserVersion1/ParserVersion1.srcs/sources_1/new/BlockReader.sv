@@ -32,7 +32,7 @@ module BlockReader import Ram::*;  #(WORDSIZE=8) (
     // todo: use asymetric TDP functions of block rams
     // may require splitting this module in two?
     
-    DualTapeUnionUnpacker(WORDSIZE);
+    `DualTapeUnionUnpacker(WORDSIZE);
     
     always_comb begin
         ramW.enb = '0;
