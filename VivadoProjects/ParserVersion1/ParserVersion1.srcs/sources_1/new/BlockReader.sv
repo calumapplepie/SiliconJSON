@@ -20,21 +20,30 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module BlockReader #(WORDSIZE=8)(
-        BlockRamConnection.user ram,
+module BlockReader import Ram::*;  #(WORDSIZE=8) (
+        input BlockRamWrite ramWrite, BlockRamRead ramRead,
         input logic clk, enable, rst,
         output logic [WORDSIZE-1:0] data 
     );
     logic [ram.ADDRWIDTH -1 :0] curAddr;
     
+    generate
+    if(WORDSIZE==8) begin
+        StringBlockRamWrite ramW = ramWrite.str;
+        StringBlockRamRead  ramR = ramRead.str;
+    end else if (WORDSIZE == 64) begin
+        StructBlockRamWrite ramW = ramWrite.stu;
+        StructBlockRamRead  ramR = ramRead.stu;
+    end    
+    endgenerate
     
     always_comb begin
-        ram.enb = '0;
-        ram.ena = enable;
-        ram.wea = '0; ram.web = '0;
+        ramW.enb = '0;
+        ramW.ena = enable;
+        ramW.wea = '0; ram.web = '0;
         
-        ram.addra = curAddr;
-        ram.doa = data;
+        ramW.addra = curAddr;
+        ramR.doa = data;
     end
     
     always_ff @(posedge clk) begin

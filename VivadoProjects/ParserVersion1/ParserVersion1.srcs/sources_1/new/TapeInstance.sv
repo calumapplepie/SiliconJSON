@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 07/10/2023 01:59:12 PM
+// Create Date: 07/10/2023 02:30:22 PM
 // Design Name: 
-// Module Name: TapeReader
+// Module Name: TapeInstance
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,11 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TapeReader(
-        input clk, enb, rst,
-        input Ram::StringBlockRamWrite stringRam,
-        input Ram::StructBlockRamWrite structRam
+module TapeInstance(
+
     );
-    
-    
 endmodule

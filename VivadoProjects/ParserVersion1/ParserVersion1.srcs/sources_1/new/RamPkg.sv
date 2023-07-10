@@ -11,7 +11,7 @@ package Ram;
         logic [$clog2(Core::StructTapeLength):0] addra,addrb;
         logic [63:0] dia,dib;
     } StructBlockRamWrite;
-    
+      
     typedef struct {
         logic [7:0] doa,dob;
     } StringBlockRamRead;
@@ -20,7 +20,16 @@ package Ram;
         logic [63:0] doa,dob;
     } StructBlockRamRead;
     
+    // allows me to use parameterized modules, user must ensure proper bitwidths
+    typedef union {
+        StringBlockRamWrite str;
+        StructBlockRamWrite stu;
+    } BlockRamWrite;
     
+    typedef union {
+        StringBlockRamRead str;
+        StructBlockRamRead stu;
+    } BlockRamRead;
 
 
 endpackage
