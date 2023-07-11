@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 07/10/2023 07:51:13 PM
+// Create Date: 07/11/2023 01:57:00 PM
 // Design Name: 
-// Module Name: VivadoDidYouBreakClog2
+// Module Name: GPIO_Interface_Test
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,12 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module VivadoDidYouBreakClog2();
-    integer i;
-    initial begin
-        for(i = 0; i<4098; i++)begin
-            $display("clog2(%d) = %d", i, $clog2(i)-1);
-        end 
-    end
+module GPIO_Interface_Test(
 
+    );
 endmodule
