@@ -34,7 +34,19 @@ module GPIO_Interface_Test(
     
     task runTest();
         readSide <= '0;
-    
+        foreach(testDoc1[i]) begin
+            curChar <= testDoc1[i];
+            enable <= '1; #10;
+            enable <= '0; #10;
+        end
+        readSide <='0;
+        #20; // may not be needed but is accurate
+        foreach(testDoc2[i]) begin
+            curChar <= testDoc2[i];
+            enable <= '1; #10;
+            enable <= '0; #10;
+        end
+        
     endtask
     
     
