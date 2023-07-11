@@ -1,3 +1,14 @@
+RemoteSystemsTempFiles/
+IDE.log
+.analytics
+
+# next two credit https://asktheoracle.com/how-to-use-git-source-code-control-with-vivado/
+Xilinx.spec
+ldscript.ld
+
+# remaining lines pulled from https://github.com/github/gitignore/blob/main/Global/Eclipse.gitignore
+# file at commit 584ee18 
+
 .metadata
 bin/
 tmp/
