@@ -1,7 +1,7 @@
 // Dual-Port Block RAM with Two Write Ports
 // File: rams_tdp_rf_rf.v
 
-module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS)-1) (
+module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS)) (
     input logic clk, ena, enb, wea,web, 
     input [ADDRWIDTH-1:0] addra,addrb, 
     input [WORDSIZE-1:0] dia,dib,
