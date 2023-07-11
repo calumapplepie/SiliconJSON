@@ -30,7 +30,13 @@ module GPIO_Interface_Test(
     
     string testDoc1 = "{\"author\":\"calum\"}";
     string testDoc2 = "{\"The Answer\": 42}";
-
+    
+    Core::JsonTapeElement doc1Struct [5:0] = {64'h7200000000000006, 64'h7b00000100000005, 64'h2200000000000000, 64'h220000000000000b, 64'h7d00000000000001, 64'h7200000000000000};
+    Core::JsonTapeElement doc2Struct [6:0] = {64'h7200000000000007, 64'h7b00000100000006, 64'h2200000000000000, 64'h6c00000000000000, 64'h2a, 64'h7d00000000000001, 64'h7200000000000000}; 
+    
+    logic[7:0] doc1String [20:0] = {8'h6, 8'h0, 8'h0, 8'h0, 8'h61, 8'h75, 8'h74, 8'h68, 8'h6f, 8'h72, 8'h0, 8'h5, 8'h0, 8'h0, 8'h0, 8'h63, 8'h61, 8'h6c, 8'h75, 8'h6d, 8'h0};
+    logic[7:0] doc1String [14:0] = {8'ha, 8'h0, 8'h0, 8'h0, 8'h54, 8'h68, 8'h65, 8'h20, 8'h41, 8'h6e, 8'h73, 8'h77, 8'h65, 8'h72, 8'h0};
+    
     
     task runTest();
         readSide <= '0;
@@ -46,6 +52,11 @@ module GPIO_Interface_Test(
             enable <= '1; #10;
             enable <= '0; #10;
         end
+        // reset the readers
+
+        rst <= '1; #10; rst <= '0;
+        
+        
         
     endtask
     
