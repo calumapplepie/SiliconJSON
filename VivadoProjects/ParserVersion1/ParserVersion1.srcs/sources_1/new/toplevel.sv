@@ -1,6 +1,6 @@
 module TopLevel import Core::UTF8_Char; (
     input UTF8_Char curChar,
-    input GCLK, rst, enable, readSide,
+    input GCLK, rst, enable, readSide, parseEnable,
     output logic [63:0] curStructBits,
     output logic [7:0]  curStringBits
 );
@@ -15,12 +15,10 @@ module TopLevel import Core::UTF8_Char; (
     ParserTop parser (
         .stringRam(parserStringWrite), 
         .structRam(parserStructWrite),
+        .enable(parseEnable && enable),
         .*
     );
-    
-    logic selectParser = !readSide;
-    logic selectReader = readSide; 
-  
+      
     TapeStorage storage (.selectParser(!readSide), .selectReader(readSide), .*);
     
     BlockReader #(.WORDSIZE(8), .WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (

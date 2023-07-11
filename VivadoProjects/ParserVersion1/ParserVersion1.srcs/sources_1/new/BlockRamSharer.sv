@@ -24,8 +24,9 @@ module BlockRamSharer import Ram::*; #(NUMWORDS=64, WORDSIZE=8, type ReadType, t
     );
       
     TapeBlockRam #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS)) blockRam (
-       // use ordered to avoid headache
-       clk, ramW.ena && enb, ramW.enb && enb, ramW.wea, ramW.web, ramW.addra, ramW.addrb, ramW.dia, ramW.dib, ramR.doa, ramR.dob  
+       .clk(clk), .ena(ramW.ena && enb), .enb(ramW.enb && enb), 
+       .wea(ramW.wea), .web(ramW.web), .addra(ramW.addra), .addrb(ramW.addrb), 
+       .dia(ramW.dia), .dib(ramW.dib), .doa(ramR.doa), .dob(ramR.dob)  
     );
     
 endmodule

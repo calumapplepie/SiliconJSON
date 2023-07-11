@@ -22,9 +22,9 @@
 
 module TopWrapper (
     input wire [7:0] curChar,
-    input GCLK, rst, enable, readSide,
+    input GCLK, rst, enable, readSide, parseEnable,
     output wire [63:0] curStructBits,
     output wire [7:0]  curStringBits
 );
-    TopLevel topLevel (curChar, GCLK, rst, enable, readSide, curStructBits, curStringBits);
+    TopLevel topLevel (curChar, GCLK, rst, enable, readSide, parseEnable, curStructBits, curStringBits);
 endmodule
