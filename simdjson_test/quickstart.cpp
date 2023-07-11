@@ -9,14 +9,24 @@ using namespace simdjson;
 // Config Parameters
 
 const std::string target_file_dir =  "../JsonTestFiles/";
-#define INCLUDE_LINE_BREAKS 1
-#define FORMAT_FOR_VIVADO 1
+#define INCLUDE_LINE_BREAKS 1	// Include some line breaks in strategic locations
+#undef  INCLUDE_COMMAS 			// Seperate words with commas and spaces
+#undef 	FORMAT_SYSV_LITERALS    // Format as a list of system-verilog literals 
+#undef  FORMAT_C_LITERALS       // Format as a list of C literals
+#define FORMAT_READMEMH 	1	// Format as a $readmemh() compatable file
 
 // Rest of the code should work without modifications
 
-#ifdef FORMAT_FOR_VIVADO
+#ifdef FORMAT_READMEMH
 #define INCLUDE_LINE_BREAKS 1
 #endif
+#ifdef FORMAT_SYSV_LITERALS
+#define INCLUDE_COMMAS 		1
+#endif
+#ifdef FORMAT_C_LITERALS
+#define INCLUDE_COMMAS		1
+#endif
+
 
 namespace simdjson {
 namespace dom {
@@ -46,8 +56,18 @@ namespace dom {
 		
 		// now write the tape out to a string
 		for (; tape_idx < how_many; tape_idx++) {
+			#ifdef FORMAT_SYSV_LITERALS
+					structureTape << "64'h"
+			#endif
+
+
 			const uint64_t curElement =  document->tape[tape_idx];
 			structureTape << std::hex << curElement;
+
+			#ifdef INCLUDE_COMMAS
+					structureTape << ", "
+			#endif
+
 
 			#ifdef INCLUDE_LINE_BREAKS 
 				structureTape <<std::endl;
@@ -72,17 +92,25 @@ namespace dom {
 				}
 
 				for(string_buf_pos = stringPos; string_buf_pos < stringPos + string_length + 5; string_buf_pos++){
+					#ifdef FORMAT_SYSV_LITERALS
+					stringTape << "8'h"
+					#endif
+
 					// that little plus promotes it to a real number!
 					stringTape << std::hex << +(document->string_buf[string_buf_pos]);
+					
+					#ifdef INCLUDE_COMMAS
+					stringTape << ", "
+					#endif
 
-					#ifdef FORMAT_FOR_VIVADO
+					#ifdef FORMAT_READMEMH
 					// the verilog memory read function we use requires each number to be whitespace-separated
 					stringTape << std::endl;
 					#endif
 				}
 				
 				#ifdef INCLUDE_LINE_BREAKS 
-				#ifndef FORMAT_FOR_VIVADO
+				#ifndef FORMAT_READMEMH
 					stringTape <<std::endl;
 				#endif
 				#endif
