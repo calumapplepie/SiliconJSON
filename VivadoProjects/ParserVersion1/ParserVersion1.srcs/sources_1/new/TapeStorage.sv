@@ -35,11 +35,11 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
     StructBlockRamRead  structRamR [NUMTAPES-1:0];
     logic               enb        [NUMTAPES-1:0];
     
-    // todo: make this a generate
-    // i shouldn't need to, but vivado won't obey LRM 23.3.3.5, or some other thing is happening... not sure
-    TapeInstance tape0  (.clk, .enb(enb[0]), .stringRamW(stringRamW[0]), .structRamW(structRamW[0]), .stringRamR(stringRamR[0]), .structRamR(structRamR[0]));
-    TapeInstance tape1  (.clk, .enb(enb[1]), .stringRamW(stringRamW[1]), .structRamW(structRamW[1]), .stringRamR(stringRamR[1]), .structRamR(structRamR[1]));
-
+    // this shouldn't need to be a generate, but vivado won't obey LRM 23.3.3.5, or some other thing is happening... not sure
+    genvar i;
+    for(i=0; i<NUMTAPES; i++) begin:tape
+        TapeInstance tape  (.clk, .enb(enb[i]), .stringRamW(stringRamW[i]), .structRamW(structRamW[i]), .stringRamR(stringRamR[i]), .structRamR(structRamR[i]));
+    end:tape
     
     always_comb begin 
         // I think/hope this will stop latches from being inferred? 
