@@ -16,14 +16,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="2,069.842 ns"></ZoomEndTime>
+      <ZoomEndTime time="1,007.116 ns"></ZoomEndTime>
       <Cursor1Time time="1,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="206"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <ValueColumnWidth column_width="64"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="29" />
+   <WVObjectSize size="16" />
    <wave_markers>
       <marker label="" time="330000" />
    </wave_markers>
@@ -79,14 +79,6 @@
       <obj_property name="ElementShortName">parseEnable</obj_property>
       <obj_property name="ObjectShortName">parseEnable</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/curStructBits">
-      <obj_property name="ElementShortName">curStructBits[63:0]</obj_property>
-      <obj_property name="ObjectShortName">curStructBits[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/curStringBits">
-      <obj_property name="ElementShortName">curStringBits[7:0]</obj_property>
-      <obj_property name="ObjectShortName">curStringBits[7:0]</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/ramW.dia">
       <obj_property name="ElementShortName">.dia[63:0]</obj_property>
       <obj_property name="ObjectShortName">.dia[63:0]</obj_property>
@@ -95,51 +87,7 @@
       <obj_property name="ElementShortName">dia[63:0]</obj_property>
       <obj_property name="ObjectShortName">dia[63:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/tapey/lookAtMe">
-      <obj_property name="ElementShortName">lookAtMe[63:0]</obj_property>
-      <obj_property name="ObjectShortName">lookAtMe[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/tapey/structRamW.dia">
-      <obj_property name="ElementShortName">.dia[63:0]</obj_property>
-      <obj_property name="ObjectShortName">.dia[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/lookAtMe">
-      <obj_property name="ElementShortName">lookAtMe[63:0]</obj_property>
-      <obj_property name="ObjectShortName">lookAtMe[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/tapey/structTapeRam/ramW.dia">
-      <obj_property name="ElementShortName">.dia[63:0]</obj_property>
-      <obj_property name="ObjectShortName">.dia[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/writer/structGoHere/ramConnection.dia">
-      <obj_property name="ElementShortName">.dia[63:0]</obj_property>
-      <obj_property name="ObjectShortName">.dia[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/writer/structGoHere/curIndexTapeEntry">
-      <obj_property name="ElementShortName">curIndexTapeEntry[63:0]</obj_property>
-      <obj_property name="ObjectShortName">curIndexTapeEntry[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/lookAtMe1">
-      <obj_property name="ElementShortName">lookAtMe1[63:0]</obj_property>
-      <obj_property name="ObjectShortName">lookAtMe1[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/lookAtMe2">
-      <obj_property name="ElementShortName">lookAtMe2[63:0]</obj_property>
-      <obj_property name="ObjectShortName">lookAtMe2[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /lookAtMe">
-      <obj_property name="ElementShortName">lookAtMe[63:0]</obj_property>
-      <obj_property name="ObjectShortName">lookAtMe[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structRamW.dia">
-      <obj_property name="ElementShortName">.dia[63:0]</obj_property>
-      <obj_property name="ObjectShortName">.dia[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[0].tape /lookAtMe">
-      <obj_property name="ElementShortName">lookAtMe[63:0]</obj_property>
-      <obj_property name="ObjectShortName">lookAtMe[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /lookAtMe">
+   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/lookAtMe">
       <obj_property name="ElementShortName">lookAtMe[63:0]</obj_property>
       <obj_property name="ObjectShortName">lookAtMe[63:0]</obj_property>
    </wvobject>
