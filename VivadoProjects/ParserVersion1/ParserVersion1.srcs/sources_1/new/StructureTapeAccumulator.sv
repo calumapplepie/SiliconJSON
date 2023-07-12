@@ -54,9 +54,11 @@ module StructureTapeAccumulator
             ramConnection.web = doDualWrite;  
             ramConnection.addra = curIndex;        
             ramConnection.addrb = dualWriteIndex;
-            ramConnection.dia = curIndexTapeEntry;
+            
             ramConnection.dib = dualWriteTapeEntry;
     end
+    
+    assign ramConnection.dia = curIndexTapeEntry;
             
     BlockRamStack stack (
         .clk, .enb(active && enable), .rst, 
