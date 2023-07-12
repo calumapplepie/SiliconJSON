@@ -17,13 +17,13 @@
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
       <ZoomEndTime time="739.001 ns"></ZoomEndTime>
-      <Cursor1Time time="180.000 ns"></Cursor1Time>
+      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="206"></NameColumnWidth>
       <ValueColumnWidth column_width="80"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="31" />
+   <WVObjectSize size="18" />
    <wvobject type="logic" fp_name="/GPIO_Interface_Test/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -76,76 +76,25 @@
       <obj_property name="ElementShortName">readString[31:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">readString[31:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/enb">
-      <obj_property name="ElementShortName">enb[1:0]</obj_property>
-      <obj_property name="ObjectShortName">enb[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/structRamW[1]">
-      <obj_property name="ElementShortName">[1]</obj_property>
-      <obj_property name="ObjectShortName">[1]</obj_property>
+   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/ramW">
+      <obj_property name="ElementShortName">ramW</obj_property>
+      <obj_property name="ObjectShortName">ramW</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/dia">
       <obj_property name="ElementShortName">dia[63:0]</obj_property>
       <obj_property name="ObjectShortName">dia[63:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
+   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/ramW.dia">
+      <obj_property name="ElementShortName">.dia[63:0]</obj_property>
+      <obj_property name="ObjectShortName">.dia[63:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/ena">
-      <obj_property name="ElementShortName">ena</obj_property>
-      <obj_property name="ObjectShortName">ena</obj_property>
+   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /stringTapeRam/ramW.dia">
+      <obj_property name="ElementShortName">.dia[7:0]</obj_property>
+      <obj_property name="ObjectShortName">.dia[7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/enb">
-      <obj_property name="ElementShortName">enb</obj_property>
-      <obj_property name="ObjectShortName">enb</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/wea">
-      <obj_property name="ElementShortName">wea</obj_property>
-      <obj_property name="ObjectShortName">wea</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/web">
-      <obj_property name="ElementShortName">web</obj_property>
-      <obj_property name="ObjectShortName">web</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/addra">
-      <obj_property name="ElementShortName">addra[8:0]</obj_property>
-      <obj_property name="ObjectShortName">addra[8:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/addrb">
-      <obj_property name="ElementShortName">addrb[8:0]</obj_property>
-      <obj_property name="ObjectShortName">addrb[8:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/dia">
-      <obj_property name="ElementShortName">dia[63:0]</obj_property>
-      <obj_property name="ObjectShortName">dia[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/dib">
-      <obj_property name="ElementShortName">dib[63:0]</obj_property>
-      <obj_property name="ObjectShortName">dib[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/doa">
-      <obj_property name="ElementShortName">doa[63:0]</obj_property>
-      <obj_property name="ObjectShortName">doa[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/dob">
-      <obj_property name="ElementShortName">dob[63:0]</obj_property>
-      <obj_property name="ObjectShortName">dob[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/ram">
-      <obj_property name="ElementShortName">ram[0:511][63:0]</obj_property>
-      <obj_property name="ObjectShortName">ram[0:511][63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/WORDSIZE">
-      <obj_property name="ElementShortName">WORDSIZE[31:0]</obj_property>
-      <obj_property name="ObjectShortName">WORDSIZE[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/NUMWORDS">
-      <obj_property name="ElementShortName">NUMWORDS[31:0]</obj_property>
-      <obj_property name="ObjectShortName">NUMWORDS[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/ADDRWIDTH">
-      <obj_property name="ElementShortName">ADDRWIDTH[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ADDRWIDTH[31:0]</obj_property>
+   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /stringTapeRam/blockRam/dia">
+      <obj_property name="ElementShortName">dia[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dia[7:0]</obj_property>
    </wvobject>
 </wave_config>

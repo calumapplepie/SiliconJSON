@@ -45,8 +45,8 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
         // I think/hope this will stop latches from being inferred? 
         // assignment technique credit this SO thread
         // https://electronics.stackexchange.com/questions/179142/systemverilog-structure-initialization-with-default-1
-        foreach(stringRamW[i]) stringRamW[i] = '{default: 'x};
-        foreach(structRamW[i]) structRamW[i] = '{default: 'x};
+        foreach(stringRamW[i]) stringRamW[i] = '{default: '0};
+        foreach(structRamW[i]) structRamW[i] = '{default: '0};
         
         // default to disabled
         foreach(enb[i]       ) enb[i]        = '0;
@@ -55,6 +55,7 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
         structRamW [selectParser] = parserStructWrite;
         enb[selectParser] = '1;
         
+        /*
         // wish there was a way to declare that selectParser != selectReader
         // that'd probably allow some optimizations on vivado's side
         stringRamW [selectReader] = readerStringWrite;
@@ -62,7 +63,7 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
         readerStringRead = stringRamR[selectReader];
         readerStructRead = structRamR[selectReader];
         
-        enb[selectReader] = '1;
+        enb[selectReader] = '1; */
         
     end
     
