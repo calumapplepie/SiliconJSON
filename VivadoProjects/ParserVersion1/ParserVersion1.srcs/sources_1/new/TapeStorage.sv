@@ -35,17 +35,19 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)) (
     StructBlockRamRead  structRamR [NUMTAPES-1:0];
     logic               enb        [NUMTAPES-1:0];
     
-    // this shouldn't need to be a generate, but vivado won't obey LRM 23.3.3.5, or some other thing is happening... not sure
+    // this shouldn't need to be a generate, for the tape to work, but vivado won't obey LRM 23.3.3.5, or some other thing is happening... not sure
     genvar  i;
     for(i=0; i<NUMTAPES; i++) begin:tape
         TapeInstance tape  (.clk, .enb(enb[i]), .stringRamW(stringRamW[i]), .structRamW(structRamW[i]), .stringRamR(stringRamR[i]), .structRamR(structRamR[i]));
+                
+                // lets try assigning the structs in here, see if the problem continues
                 assign stringRamW[i] = i == selectParser ? parserStringWrite : readerStringWrite;
                 assign structRamW[i] = i == selectParser ? parserStructWrite : readerStructWrite;
                 assign enb[i] = i == selectParser ? '1 : 0;
     
     end:tape
     
-    /* 
+    /* Previous mux logic
     always_comb begin 
         // I think/hope this will stop latches from being inferred? 
         // assignment technique credit this SO thread
@@ -57,7 +59,7 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)) (
         foreach(enb[i]       ) enb[i]        = '0;
         
         // based on the following link, weird problems with the obvious way to do things are common, sooo... yay!
-        
+        // https://support.xilinx.com/s/question/0D52E00006iHlfoSAC/systemverilog-struct-wrong-behaviour?language=en_US
         
         stringRamW [selectParser] = parserStringWrite;
         lookAtMe1 = parserStructWrite.dia;
