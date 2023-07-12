@@ -70,4 +70,6 @@ module ParserTop
         .clk(clk),.rst(rst), .characterEscaped(lastCharacterEscaped),
         .stringRam, .structRam, .enable
     );
+    
+    wire [63:0] lookAtMe = structRam.dia; 
 endmodule

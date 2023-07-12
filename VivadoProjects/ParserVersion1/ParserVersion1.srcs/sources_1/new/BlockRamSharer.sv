@@ -33,11 +33,16 @@ endmodule
 module BlockRamSharerStruct import Ram::*; (
         input clk, enb, input StructBlockRamWrite ramW, output StructBlockRamRead ramR
     );
-      
+    
+    wire [63:0] lookAtMe;
+    assign lookAtMe = ramW.dia[63:0]; 
+    
     TapeBlockRam #(.WORDSIZE(64), .NUMWORDS(Core::StructTapeLength)) blockRam (
        .clk(clk), .ena(ramW.ena && enb), .enb(ramW.enb && enb), 
        .wea(ramW.wea), .web(ramW.web), .addra(ramW.addra), .addrb(ramW.addrb), 
-        .dib(ramW.dib), .dia(ramW.dia), .doa(ramR.doa), .dob(ramR.dob)  
+        .dib(ramW.dib), .dia(lookAtMe), .doa(ramR.doa), .dob(ramR.dob)  
     );
+    
+
     
 endmodule

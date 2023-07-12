@@ -7,9 +7,9 @@ package Ram;
     } StringBlockRamWrite;
     
     typedef struct {
-        logic ena, enb, wea,web;
-        logic [$clog2(Core::StructTapeLength)-1:0] addra,addrb;
-        logic [63:0] dia, dib;
+        bit ena, enb, wea,web;
+        bit [$clog2(Core::StructTapeLength)-1:0] addra,addrb;
+        bit [63:0] dia, dib;
     } StructBlockRamWrite;
       
     typedef struct {

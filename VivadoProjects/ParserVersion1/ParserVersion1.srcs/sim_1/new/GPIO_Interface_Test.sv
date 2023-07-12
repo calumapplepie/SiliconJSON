@@ -118,6 +118,10 @@ module GPIO_Interface_Test(
     end
 
     initial begin
+        parseEnable <='1; // may be extraneous
+        readSide <= '0;    
+        curChar <= '0;
+    
         enable <= '0;
         rst <= 1'b1;
         #10;

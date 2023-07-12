@@ -20,15 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1) ( 
+module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)) ( 
     input clk, //let users define their own ram enable code
-    input [ADDRWIDTH:0] selectParser, selectReader,
+    input [ADDRWIDTH-1:0] selectParser, selectReader,
     input StringBlockRamWrite parserStringWrite, readerStringWrite,
     input StructBlockRamWrite parserStructWrite, readerStructWrite,
     output StringBlockRamRead readerStringRead, 
     output StructBlockRamRead readerStructRead 
 );
-
+    logic [63:0] lookAtMe1,lookAtMe2;
     StringBlockRamWrite stringRamW [NUMTAPES-1:0];
     StringBlockRamRead  stringRamR [NUMTAPES-1:0];
     StructBlockRamWrite structRamW [NUMTAPES-1:0];
@@ -45,17 +45,19 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
         // I think/hope this will stop latches from being inferred? 
         // assignment technique credit this SO thread
         // https://electronics.stackexchange.com/questions/179142/systemverilog-structure-initialization-with-default-1
-        foreach(stringRamW[i]) stringRamW[i] = '{default: '0};
-        foreach(structRamW[i]) structRamW[i] = '{default: '0};
+        /*foreach(stringRamW[i]) stringRamW[i] = '{default: '0};
+        foreach(structRamW[i]) structRamW[i] = '{default: '0};*/
         
         // default to disabled
         foreach(enb[i]       ) enb[i]        = '0;
         
         stringRamW [selectParser] = parserStringWrite;
+        lookAtMe1 = parserStructWrite.dia;
         structRamW [selectParser] = parserStructWrite;
+        lookAtMe2 = structRamW[selectParser].dia;
         enb[selectParser] = '1;
         
-        /*
+       /* 
         // wish there was a way to declare that selectParser != selectReader
         // that'd probably allow some optimizations on vivado's side
         stringRamW [selectReader] = readerStringWrite;
@@ -63,8 +65,8 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)-1)
         readerStringRead = stringRamR[selectReader];
         readerStructRead = structRamR[selectReader];
         
-        enb[selectReader] = '1; */
-        
+        enb[selectReader] = '1; 
+        */
     end
     
 endmodule
