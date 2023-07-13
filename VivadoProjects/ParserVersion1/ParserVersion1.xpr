@@ -297,6 +297,9 @@
         <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_processing_system7_0_0/GPIO_Cpu_Interface_processing_system7_0_0.xci">
           <Proxy FileSetName="GPIO_Cpu_Interface_processing_system7_0_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_clk_wiz_0_0/GPIO_Cpu_Interface_clk_wiz_0_0.xci">
+          <Proxy FileSetName="GPIO_Cpu_Interface_clk_wiz_0_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_axi_gpio_1_0/GPIO_Cpu_Interface_axi_gpio_1_0.xci">
           <Proxy FileSetName="GPIO_Cpu_Interface_axi_gpio_1_0"/>
         </CompFileExtendedInfo>
@@ -308,9 +311,6 @@
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_xbar_0/GPIO_Cpu_Interface_xbar_0.xci">
           <Proxy FileSetName="GPIO_Cpu_Interface_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_auto_pc_0/GPIO_Cpu_Interface_auto_pc_0.xci">
-          <Proxy FileSetName="GPIO_Cpu_Interface_auto_pc_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_axi_gpio_0_0/GPIO_Cpu_Interface_axi_gpio_0_0.xci">
           <Proxy FileSetName="GPIO_Cpu_Interface_axi_gpio_0_0"/>
@@ -470,15 +470,15 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="GPIO_Cpu_Interface_auto_pc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/GPIO_Cpu_Interface_auto_pc_0" RelGenDir="$PGENDIR/GPIO_Cpu_Interface_auto_pc_0">
-      <Config>
-        <Option Name="TopModule" Val="GPIO_Cpu_Interface_auto_pc_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="GPIO_Cpu_Interface_axi_gpio_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/GPIO_Cpu_Interface_axi_gpio_0_0" RelGenDir="$PGENDIR/GPIO_Cpu_Interface_axi_gpio_0_0">
       <Config>
         <Option Name="TopModule" Val="GPIO_Cpu_Interface_axi_gpio_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="GPIO_Cpu_Interface_clk_wiz_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/GPIO_Cpu_Interface_clk_wiz_0_0" RelGenDir="$PGENDIR/GPIO_Cpu_Interface_clk_wiz_0_0">
+      <Config>
+        <Option Name="TopModule" Val="GPIO_Cpu_Interface_clk_wiz_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -601,7 +601,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="GPIO_Cpu_Interface_auto_pc_0_synth_1" Type="Ft3:Synth" SrcSet="GPIO_Cpu_Interface_auto_pc_0" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_auto_pc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/GPIO_Cpu_Interface_auto_pc_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_auto_pc_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_auto_pc_0_synth_1">
+    <Run Id="GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" Type="Ft3:Synth" SrcSet="GPIO_Cpu_Interface_axi_gpio_0_0" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_axi_gpio_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -613,7 +613,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" Type="Ft3:Synth" SrcSet="GPIO_Cpu_Interface_axi_gpio_0_0" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_axi_gpio_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_synth_1">
+    <Run Id="GPIO_Cpu_Interface_clk_wiz_0_0_synth_1" Type="Ft3:Synth" SrcSet="GPIO_Cpu_Interface_clk_wiz_0_0" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_clk_wiz_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/GPIO_Cpu_Interface_clk_wiz_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_clk_wiz_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_clk_wiz_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -778,7 +778,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="GPIO_Cpu_Interface_auto_pc_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_auto_pc_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="GPIO_Cpu_Interface_auto_pc_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_auto_pc_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_auto_pc_0_impl_1">
+    <Run Id="GPIO_Cpu_Interface_axi_gpio_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_axi_gpio_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
           <Desc>Default settings for Implementation.</Desc>
@@ -797,7 +797,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="GPIO_Cpu_Interface_axi_gpio_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_axi_gpio_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="GPIO_Cpu_Interface_axi_gpio_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_axi_gpio_0_0_impl_1">
+    <Run Id="GPIO_Cpu_Interface_clk_wiz_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_clk_wiz_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="GPIO_Cpu_Interface_clk_wiz_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_clk_wiz_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_clk_wiz_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
           <Desc>Default settings for Implementation.</Desc>
