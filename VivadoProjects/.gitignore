@@ -23,8 +23,11 @@
 */*.ip_user_files
 */*.sim
 
-// not quite sure what you are
+# not quite sure what you are
 */*.dcp
 
-// generated hardware description
+# generated hardware description
 */*.xsa
+
+# waveform conf
+*/*.wcfg
