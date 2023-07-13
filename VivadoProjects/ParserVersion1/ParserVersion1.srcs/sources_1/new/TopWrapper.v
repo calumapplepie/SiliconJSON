@@ -31,5 +31,6 @@ module TopWrapper (
     always @ (posedge GCLK) begin
         curCharOut <= curChar;
     end
-    TopLevel topLevel (curChar, GCLK, rst, enable, readSide, parseEnable, curStructBits, curStringBits);
+    
+    TopLevel topLevel (curCharOut, GCLK, rst, enable, readSide, parseEnable, curStructBits, curStringBits);
 endmodule

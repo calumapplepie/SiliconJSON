@@ -24,7 +24,7 @@
 */*.sim
 
 # Design checkpoint file, changed on every syntehsis
-*/*.dcp
+*.dcp
 
 # generated hardware description
 */*.xsa
