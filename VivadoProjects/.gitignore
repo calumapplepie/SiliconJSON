@@ -12,7 +12,7 @@
 # I'm not into dealing with either option, so I'll just track the basics and only ever 
 # build on this machine.  Future contributors are advised to make their own project.
 
-# note to self: make todo for contributors
+# note to self: make and test a todo for contributors onlining
 
 # This .gitignore file is intended to be placed in a directory containing Vivado project directories
 
@@ -23,7 +23,7 @@
 */*.ip_user_files
 */*.sim
 
-# not quite sure what you are
+# Design checkpoint file, changed on every syntehsis
 */*.dcp
 
 # generated hardware description
