@@ -30,7 +30,7 @@ module NumberParsingFSM import Core::UTF8_Char, Core::ElementType;(
     logic enableAccumulator;
 
     assign curDigit = Bcd::charToBcd(curChar);
-    assign enableAccumulator = curDigit <= 4'd9;
+    assign enableAccumulator = curDigit <= 4'd9 && enb;
 
     logic numSign, exponentSign, isFloat;
     logic [63:0] parsedNumSegments [2:0];

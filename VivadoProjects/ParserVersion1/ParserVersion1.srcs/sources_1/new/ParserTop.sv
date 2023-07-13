@@ -47,26 +47,23 @@ module ParserTop
     UTF8_Char lastChar;
     logic lastCharacterEscaped;
     ElementType lastElementType;
-    JsonTapeElement lastSecondElement;
     always_ff @(posedge clk ) begin
         if(rst) begin
             lastChar             <= "{";
             lastCharacterEscaped <= '0;
             lastElementType      <= Core::objOpen;
-            lastSecondElement    <= '0;
         end
         else if(enable) begin
             lastChar             <= curChar;
             lastCharacterEscaped <= characterEscaped;
             lastElementType      <= curElementType;
-            lastSecondElement    <= numberSecondElement;
         end 
     end
     
     TapeWriter writer (
         .curChar(lastChar), .curElementType(lastElementType),
         .writeString(writeString), .writeStructure(writeStructure), 
-        .keyValuePairs(keyValuePairs), .numberSecondElement(lastSecondElement),
+        .keyValuePairs(keyValuePairs), .numberSecondElement(numberSecondElement),
         .clk(clk),.rst(rst), .characterEscaped(lastCharacterEscaped),
         .stringRam, .structRam, .enable
     );
