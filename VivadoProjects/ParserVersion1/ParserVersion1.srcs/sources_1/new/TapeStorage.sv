@@ -46,15 +46,17 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)) (
     // yes this is copy pasted, thats the only way to not trigger this bug AFAICT:
     // https://support.xilinx.com/s/question/0D54U000076hQ0GSAU/intermittent-struct-member-access-misbehavior?language=en_US&t=1689260946429
     TapeInstance tape0  (.clk, .enb(enb0), .stringRamW(stringRamW0), .structRamW(structRamW0), .stringRamR(stringRamR0), .structRamR(structRamR0));
-    assign stringRamW0 = 0 == selectParser ? parserStringWrite : readerStringWrite;
-    assign structRamW0 = 0 == selectParser ? parserStructWrite : readerStructWrite;
-    assign enb0        = 0 == selectParser ? '1 : 0;
+    assign stringRamW0 = 1'd0 == selectParser ? parserStringWrite : readerStringWrite;
+    assign structRamW0 = 1'd0 == selectParser ? parserStructWrite : readerStructWrite;
+    assign enb0        = 1'd0 == selectParser ? '1 : 0;
     
     TapeInstance tape1  (.clk, .enb(enb0), .stringRamW(stringRamW0), .structRamW(structRamW0), .stringRamR(stringRamR0), .structRamR(structRamR0));
-    assign stringRamW1 = 1 == selectParser ? parserStringWrite : readerStringWrite;
-    assign structRamW1 = 1 == selectParser ? parserStructWrite : readerStructWrite;
-    assign enb1        = 1 == selectParser ? '1 : 0;
+    assign stringRamW1 = 1'd1 == selectParser ? parserStringWrite : readerStringWrite;
+    assign structRamW1 = 1'd1 == selectParser ? parserStructWrite : readerStructWrite;
+    assign enb1        = 1'd1 == selectParser ? '1 : 0;
     
+    assign readerStringRead = 1'd0 == selectReader ? stringRamR0 : stringRamR1;
+    assign readerStructRead = 1'd0 == selectReader ? structRamR0 : structRamR1;
     
     
     /* Previous mux logic

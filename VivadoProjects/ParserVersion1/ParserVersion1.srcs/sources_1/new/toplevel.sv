@@ -20,10 +20,7 @@ module TopLevel import Core::UTF8_Char; (
     );
       
     TapeStorage storage (.selectParser(!readSide), .selectReader(readSide), .*);
-    
-    TapeInstance tapey (.clk(clk), .enb(enable), .stringRamW(parserStringWrite), .structRamW(parserStructWrite));
 
-    
     BlockReader #(.WORDSIZE(8), .WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (
         .ramWrite(readerStringWrite), .ramRead(readerStringRead), .data(curStringBits), .*
     );
