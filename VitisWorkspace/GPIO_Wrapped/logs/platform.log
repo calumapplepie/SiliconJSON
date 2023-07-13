@@ -1,0 +1,2165 @@
+TRACE::2023-07-13.15:56:47::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:47::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:47::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:47::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:47::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:47::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:47::SCWPlatform::Do not have an existing db opened. 
+TRACE::2023-07-13.15:56:48::SCWPlatform::Opened new HwDB with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	""
+}
+TRACE::2023-07-13.15:56:48::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped"
+		}]
+}
+TRACE::2023-07-13.15:56:48::SCWPlatform::Boot application domains not present, creating them
+TRACE::2023-07-13.15:56:48::SCWDomain::checking for install qemu data   : 
+TRACE::2023-07-13.15:56:48::SCWDomain:: Using the QEMU Data from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2023-07-13.15:56:48::SCWDomain:: Using the QEMU args  from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:48::SCWPlatform::Boot application domain added for zynq_fsbl
+TRACE::2023-07-13.15:56:48::SCWPlatform::Generating the sources  .
+TRACE::2023-07-13.15:56:48::SCWBDomain::Generating boot domain sources.
+TRACE::2023-07-13.15:56:48::SCWBDomain:: Generating the zynq_fsbl Application.
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:48::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:48::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:48::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:48::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2023-07-13.15:56:48::SCWMssOS::No sw design opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:48::SCWMssOS::mss does not exists at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:48::SCWMssOS::Creating sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:49::SCWMssOS::Adding the swdes entry, created swdb /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:49::SCWMssOS::updating the scw layer changes to swdes at   /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:49::SCWMssOS::Writing mss at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:49::SCWMssOS::Completed writing the mss file at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp
+TRACE::2023-07-13.15:56:49::SCWMssOS::Picking up changes from newly written mss file into SCW Layer. 
+TRACE::2023-07-13.15:56:49::SCWMssOS::Updated the changes from newly written mss file into SCW Layer. 
+TRACE::2023-07-13.15:56:49::SCWBDomain::Completed writing the mss file at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp
+TRACE::2023-07-13.15:56:51::SCWPlatform::Generating sources Done.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2023-07-13.15:56:51::SCWMssOS::No sw design opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::mss exists loading the mss file  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Opened the sw design from mss  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Adding the swdes entry /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name system
+TRACE::2023-07-13.15:56:51::SCWMssOS::updating the scw layer about changes
+TRACE::2023-07-13.15:56:51::SCWMssOS::Opened the sw design.  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped",
+			"sysActiveDom":	"zynq_fsbl",
+			"sysDefaultDom":	"",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"08778ffe563215a1333892a47bacdb81",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:5.0", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWDomain::checking for install qemu data   : 
+TRACE::2023-07-13.15:56:51::SCWDomain:: Using the QEMU Data from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2023-07-13.15:56:51::SCWDomain:: Using the QEMU args  from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWDomain::Qemu Directory name is changed from "" to "qemu"
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::No sw design opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::mss does not exists at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Creating sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Adding the swdes entry, created swdb /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::updating the scw layer changes to swdes at   /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Writing mss at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writing the mss file at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2023-07-13.15:56:51::SCWMssOS::Picking up changes from newly written mss file into SCW Layer. 
+TRACE::2023-07-13.15:56:51::SCWMssOS::Updated the changes from newly written mss file into SCW Layer. 
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writing the mss file at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2023-07-13.15:56:51::SCWMssOS::Forcing BSP Sources regeneration.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Adding the swdes entry, mss present, able to open swdb /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2023-07-13.15:56:51::SCWMssOS::Writing the mss file completed /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"08778ffe563215a1333892a47bacdb81",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:5.0", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt",
+					"qemuData":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"4d43c44f8b4be5aa0ecd0e62b30d6322",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+LOG::2023-07-13.15:56:51::SCWPlatform::Started generating the artifacts platform GPIO_Wrapped
+TRACE::2023-07-13.15:56:51::SCWPlatform::Sanity checking of platform is completed
+LOG::2023-07-13.15:56:51::SCWPlatform::Started generating the artifacts for system configuration GPIO_Wrapped
+LOG::2023-07-13.15:56:51::SCWSystem::Checking the domain zynq_fsbl
+LOG::2023-07-13.15:56:51::SCWSystem::Doing application build for :  zynq_fsbl
+TRACE::2023-07-13.15:56:51::SCWBDomain::Not a forced makefile updation, No changes are present. 
+TRACE::2023-07-13.15:56:51::SCWDomain::Skipping the build for domain :  zynq_fsbl
+LOG::2023-07-13.15:56:51::SCWSystem::Checking the domain standalone_domain
+LOG::2023-07-13.15:56:51::SCWSystem::Not a boot domain 
+LOG::2023-07-13.15:56:51::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2023-07-13.15:56:51::SCWDomain::Generating domain artifcats
+TRACE::2023-07-13.15:56:51::SCWMssOS::Generating standalone artifcats
+TRACE::2023-07-13.15:56:51::SCWMssOS::Copying the qemu file from  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt To /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/export/GPIO_Wrapped/sw/GPIO_Wrapped/qemu/
+TRACE::2023-07-13.15:56:51::SCWMssOS::Copying the qemu file from  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt To /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/export/GPIO_Wrapped/sw/GPIO_Wrapped/standalone_domain/qemu/
+TRACE::2023-07-13.15:56:51::SCWMssOS:: Copying the user libraries. 
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writing the mss file at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2023-07-13.15:56:51::SCWMssOS::Mss edits present, copying mssfile into export location /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2023-07-13.15:56:51::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2023-07-13.15:56:51::SCWDomain::Skipping the build for domain :  standalone_domain
+TRACE::2023-07-13.15:56:51::SCWMssOS::skipping the bsp build ... 
+TRACE::2023-07-13.15:56:51::SCWMssOS::Copying to export directory.
+TRACE::2023-07-13.15:56:51::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2023-07-13.15:56:51::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+TRACE::2023-07-13.15:56:51::SCWMssOS:: Completed Standalone Artifacts creation 
+LOG::2023-07-13.15:56:51::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2023-07-13.15:56:51::SCWSystem::Completed Processing the sysconfig GPIO_Wrapped
+LOG::2023-07-13.15:56:51::SCWPlatform::Completed generating the artifacts for system configuration GPIO_Wrapped
+TRACE::2023-07-13.15:56:51::SCWPlatform::Started preparing the platform 
+TRACE::2023-07-13.15:56:51::SCWSystem::Writing the bif file for system config GPIO_Wrapped
+TRACE::2023-07-13.15:56:51::SCWSystem::dir created 
+TRACE::2023-07-13.15:56:51::SCWSystem::Writing the bif 
+TRACE::2023-07-13.15:56:51::SCWPlatform::Started writing the spfm file 
+TRACE::2023-07-13.15:56:51::SCWPlatform::Started writing the xpfm file 
+TRACE::2023-07-13.15:56:51::SCWPlatform::Completed generating the platform
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"08778ffe563215a1333892a47bacdb81",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:5.0", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt",
+					"qemuData":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"4d43c44f8b4be5aa0ecd0e62b30d6322",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2023-07-13.15:56:51::SCWPlatform::updated the xpfm file.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"08778ffe563215a1333892a47bacdb81",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:5.0", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt",
+					"qemuData":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"4d43c44f8b4be5aa0ecd0e62b30d6322",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"08778ffe563215a1333892a47bacdb81",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:5.0", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on ps7_cortexa9_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt",
+					"qemuData":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"4d43c44f8b4be5aa0ecd0e62b30d6322",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:51::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:51::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_0
+TRACE::2023-07-13.15:56:51::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:51::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:51::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:51::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"08778ffe563215a1333892a47bacdb81",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:5.0", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on ps7_cortexa9_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt",
+					"qemuData":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"4d43c44f8b4be5aa0ecd0e62b30d6322",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2023-07-13.15:56:52::SCWPlatform::Clearing the existing platform
+TRACE::2023-07-13.15:56:52::SCWSystem::Clearing the existing sysconfig
+TRACE::2023-07-13.15:56:52::SCWBDomain::clearing the fsbl build
+TRACE::2023-07-13.15:56:52::SCWMssOS::Removing the swdes entry for  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:52::SCWMssOS::Removing the swdes entry for  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:52::SCWSystem::Clearing the domains completed.
+TRACE::2023-07-13.15:56:52::SCWPlatform::Clearing the opened hw db.
+TRACE::2023-07-13.15:56:52::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform:: Platform location is /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:52::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:52::SCWPlatform::Removing the HwDB with name /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:52::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:52::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:52::SCWPlatform::Do not have an existing db opened. 
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened new HwDB with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWReader::Active system found as  GPIO_Wrapped
+TRACE::2023-07-13.15:56:53::SCWReader::Handling sysconfig GPIO_Wrapped
+TRACE::2023-07-13.15:56:53::SCWDomain::checking for install qemu data   : 
+TRACE::2023-07-13.15:56:53::SCWDomain:: Using the QEMU Data from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2023-07-13.15:56:53::SCWDomain:: Using the QEMU args  from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWReader::Boot application domain added for zynq_fsbl
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2023-07-13.15:56:53::SCWMssOS::No sw design opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::mss exists loading the mss file  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::Opened the sw design from mss  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::Adding the swdes entry /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name system
+TRACE::2023-07-13.15:56:53::SCWMssOS::updating the scw layer about changes
+TRACE::2023-07-13.15:56:53::SCWMssOS::Opened the sw design.  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:53::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS:: library already available in sw design:  xilffs:5.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:53::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS:: library already available in sw design:  xilrsa:1.6
+TRACE::2023-07-13.15:56:53::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:53::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:53::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:53::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2023-07-13.15:56:53::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:53::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWReader::No isolation master present  
+TRACE::2023-07-13.15:56:53::SCWDomain::checking for install qemu data   : 
+TRACE::2023-07-13.15:56:53::SCWDomain:: Using the QEMU Data from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2023-07-13.15:56:53::SCWDomain:: Using the QEMU args  from install at  : /home/user/Xylinx/Vitis/2023.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:53::SCWMssOS::No sw design opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::mss exists loading the mss file  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::Opened the sw design from mss  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::Adding the swdes entry /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2023-07-13.15:56:53::SCWMssOS::updating the scw layer about changes
+TRACE::2023-07-13.15:56:53::SCWMssOS::Opened the sw design.  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:56:53::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:56:53::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:56:53::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2023-07-13.15:56:53::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:56:53::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:56:53::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:56:53::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:56:53::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:56:53::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:56:53::SCWReader::No isolation master present  
+LOG::2023-07-13.15:57:11::SCWPlatform::Started generating the artifacts platform GPIO_Wrapped
+TRACE::2023-07-13.15:57:11::SCWPlatform::Sanity checking of platform is completed
+LOG::2023-07-13.15:57:11::SCWPlatform::Started generating the artifacts for system configuration GPIO_Wrapped
+LOG::2023-07-13.15:57:11::SCWSystem::Checking the domain zynq_fsbl
+LOG::2023-07-13.15:57:11::SCWSystem::Doing application build for :  zynq_fsbl
+TRACE::2023-07-13.15:57:11::SCWBDomain::Not a forced makefile updation, No changes are present. 
+TRACE::2023-07-13.15:57:11::SCWDomain::Building the domain as part of full build :  zynq_fsbl
+TRACE::2023-07-13.15:57:11::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:11::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:11::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:11::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:57:11::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:11::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:57:11::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:11::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:11::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:57:11::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:57:11::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:57:11::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:57:11::SCWBDomain::Completed writing the mss file at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp
+TRACE::2023-07-13.15:57:11::SCWBDomain::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2023-07-13.15:57:11::SCWBDomain::Not a forced makefile updation, No changes are present. 
+TRACE::2023-07-13.15:57:11::SCWBDomain::System Command Ran  cd  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl ; bash -c " make -C zynq_fsbl_bsp ; make  " 
+TRACE::2023-07-13.15:57:11::SCWBDomain::make: Entering directory '/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp'
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make --no-print-directory seq_libs
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-
+TRACE::2023-07-13.15:57:11::SCWBDomain::none-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-a
+TRACE::2023-07-13.15:57:11::SCWBDomain::bi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-no
+TRACE::2023-07-13.15:57:11::SCWBDomain::ne-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi
+TRACE::2023-07-13.15:57:11::SCWBDomain::=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_2/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:11::SCWBDomain::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:11::SCWBDomain::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_7/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:11::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:11::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_8/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/dmaps_v2_8/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:11::SCWBDomain::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:11::SCWBDomain::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/gpio_v4_9/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/gpio_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-a
+TRACE::2023-07-13.15:57:11::SCWBDomain::s" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -no
+TRACE::2023-07-13.15:57:11::SCWBDomain::startfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/scugic_v5_1/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scugic_v5_1/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:11::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:11::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_4/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scutimer_v2_4/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-ea
+TRACE::2023-07-13.15:57:11::SCWBDomain::bi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard
+TRACE::2023-07-13.15:57:11::SCWBDomain:: -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_4/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_4/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:11::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:11::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/standalone_v8_1/src
+
+TRACE::2023-07-13.15:57:11::SCWBDomain::make -C ps7_cortexa9_0/libsrc/standalone_v8_1/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-
+TRACE::2023-07-13.15:57:11::SCWBDomain::eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=ha
+TRACE::2023-07-13.15:57:11::SCWBDomain::rd -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_6/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xadcps_v2_6/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/xilffs_v5_0/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilffs_v5_0/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/xilrsa_v1_6/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilrsa_v1_6/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/xilrsa_v1_6/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilrsa_v1_6/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:12::SCWBDomain::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:12::SCWBDomain::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Finished building libraries sequentially.
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -j 6 --no-print-directory par_libs
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-
+TRACE::2023-07-13.15:57:12::SCWBDomain::none-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-a
+TRACE::2023-07-13.15:57:12::SCWBDomain::bi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_2/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-no
+TRACE::2023-07-13.15:57:12::SCWBDomain::ne-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi
+TRACE::2023-07-13.15:57:12::SCWBDomain::=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:12::SCWBDomain::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:12::SCWBDomain::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_7/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_8/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/dmaps_v2_8/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:12::SCWBDomain::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:12::SCWBDomain::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/gpio_v4_9/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/gpio_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-a
+TRACE::2023-07-13.15:57:12::SCWBDomain::s" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -no
+TRACE::2023-07-13.15:57:12::SCWBDomain::startfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_4/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/scugic_v5_1/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scutimer_v2_4/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-ea
+TRACE::2023-07-13.15:57:12::SCWBDomain::bi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard
+TRACE::2023-07-13.15:57:12::SCWBDomain:: -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_4/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scugic_v5_1/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_4/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/standalone_v8_1/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/standalone_v8_1/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-
+TRACE::2023-07-13.15:57:12::SCWBDomain::eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=ha
+TRACE::2023-07-13.15:57:12::SCWBDomain::rd -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_6/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xadcps_v2_6/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/xilffs_v5_0/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilffs_v5_0/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make include in ps7_cortexa9_0/libsrc/xilrsa_v1_6/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilrsa_v1_6/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:12::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:12::SCWBDomain::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-non
+TRACE::2023-07-13.15:57:12::SCWBDomain::e-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=
+TRACE::2023-07-13.15:57:12::SCWBDomain::hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_2/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_7/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-
+TRACE::2023-07-13.15:57:12::SCWBDomain::eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=ha
+TRACE::2023-07-13.15:57:12::SCWBDomain::rd -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_8/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2023-07-13.15:57:12::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2023-07-13.15:57:12::SCWBDomain::artfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:12::SCWBDomain::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:12::SCWBDomain::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/gpio_v4_9/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/dmaps_v2_8/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2023-07-13.15:57:12::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2023-07-13.15:57:12::SCWBDomain::artfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/gpio_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2023-07-13.15:57:12::SCWBDomain::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2023-07-13.15:57:12::SCWBDomain::rtfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/scugic_v5_1/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scugic_v5_1/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:12::SCWBDomain::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:12::SCWBDomain::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_4/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scutimer_v2_4/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:12::SCWBDomain::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:12::SCWBDomain::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_4/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_4/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:12::SCWBDomain::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:12::SCWBDomain::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/standalone_v8_1/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/standalone_v8_1/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eab
+TRACE::2023-07-13.15:57:12::SCWBDomain::i-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard 
+TRACE::2023-07-13.15:57:12::SCWBDomain::-nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_6/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xadcps_v2_6/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:12::SCWBDomain::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:12::SCWBDomain::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::Running Make libs in ps7_cortexa9_0/libsrc/xilffs_v5_0/src
+
+TRACE::2023-07-13.15:57:12::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilffs_v5_0/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:12::SCWBDomain::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:12::SCWBDomain::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::Finished building libraries parallelly.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::make --no-print-directory archive
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-ar -r  ps7_cortexa9_0/lib/libxil.a ps7_cortexa9_0/lib/_exit.o ps7_cortexa9_0/lib/_open.o ps7_cortexa9_0/lib/_sbrk
+TRACE::2023-07-13.15:57:13::SCWBDomain::.o ps7_cortexa9_0/lib/abort.o ps7_cortexa9_0/lib/asm_vectors.o ps7_cortexa9_0/lib/boot.o ps7_cortexa9_0/lib/close.o ps7_cortexa
+TRACE::2023-07-13.15:57:13::SCWBDomain::9_0/lib/cpputest_time.o ps7_cortexa9_0/lib/cpu_init.o ps7_cortexa9_0/lib/errno.o ps7_cortexa9_0/lib/fcntl.o ps7_cortexa9_0/lib/
+TRACE::2023-07-13.15:57:13::SCWBDomain::fstat.o ps7_cortexa9_0/lib/getentropy.o ps7_cortexa9_0/lib/getpid.o ps7_cortexa9_0/lib/inbyte.o ps7_cortexa9_0/lib/isatty.o ps7
+TRACE::2023-07-13.15:57:13::SCWBDomain::_cortexa9_0/lib/kill.o ps7_cortexa9_0/lib/lseek.o ps7_cortexa9_0/lib/open.o ps7_cortexa9_0/lib/outbyte.o ps7_cortexa9_0/lib/pri
+TRACE::2023-07-13.15:57:13::SCWBDomain::nt.o ps7_cortexa9_0/lib/putnum.o ps7_cortexa9_0/lib/read.o ps7_cortexa9_0/lib/sbrk.o ps7_cortexa9_0/lib/sleep.o ps7_cortexa9_0/
+TRACE::2023-07-13.15:57:13::SCWBDomain::lib/time.o ps7_cortexa9_0/lib/translation_table.o ps7_cortexa9_0/lib/unlink.o ps7_cortexa9_0/lib/usleep.o ps7_cortexa9_0/lib/ve
+TRACE::2023-07-13.15:57:13::SCWBDomain::ctors.o ps7_cortexa9_0/lib/write.o ps7_cortexa9_0/lib/xadcps.o ps7_cortexa9_0/lib/xadcps_g.o ps7_cortexa9_0/lib/xadcps_intr.o p
+TRACE::2023-07-13.15:57:13::SCWBDomain::s7_cortexa9_0/lib/xadcps_selftest.o ps7_cortexa9_0/lib/xadcps_sinit.o ps7_cortexa9_0/lib/xcoresightpsdcc.o ps7_cortexa9_0/lib/x
+TRACE::2023-07-13.15:57:13::SCWBDomain::devcfg.o ps7_cortexa9_0/lib/xdevcfg_g.o ps7_cortexa9_0/lib/xdevcfg_hw.o ps7_cortexa9_0/lib/xdevcfg_intr.o ps7_cortexa9_0/lib/xd
+TRACE::2023-07-13.15:57:13::SCWBDomain::evcfg_selftest.o ps7_cortexa9_0/lib/xdevcfg_sinit.o ps7_cortexa9_0/lib/xdmaps.o ps7_cortexa9_0/lib/xdmaps_g.o ps7_cortexa9_0/li
+TRACE::2023-07-13.15:57:13::SCWBDomain::b/xdmaps_hw.o ps7_cortexa9_0/lib/xdmaps_selftest.o ps7_cortexa9_0/lib/xdmaps_sinit.o ps7_cortexa9_0/lib/xgpio.o ps7_cortexa9_0/
+TRACE::2023-07-13.15:57:13::SCWBDomain::lib/xgpio_extra.o ps7_cortexa9_0/lib/xgpio_g.o ps7_cortexa9_0/lib/xgpio_intr.o ps7_cortexa9_0/lib/xgpio_selftest.o ps7_cortexa9
+TRACE::2023-07-13.15:57:13::SCWBDomain::_0/lib/xgpio_sinit.o ps7_cortexa9_0/lib/xil-crt0.o ps7_cortexa9_0/lib/xil_assert.o ps7_cortexa9_0/lib/xil_cache.o ps7_cortexa9_
+TRACE::2023-07-13.15:57:13::SCWBDomain::0/lib/xil_clocking.o ps7_cortexa9_0/lib/xil_exception.o ps7_cortexa9_0/lib/xil_mem.o ps7_cortexa9_0/lib/xil_misc_psreset_api.o 
+TRACE::2023-07-13.15:57:13::SCWBDomain::ps7_cortexa9_0/lib/xil_mmu.o ps7_cortexa9_0/lib/xil_printf.o ps7_cortexa9_0/lib/xil_sleepcommon.o ps7_cortexa9_0/lib/xil_sleept
+TRACE::2023-07-13.15:57:13::SCWBDomain::imer.o ps7_cortexa9_0/lib/xil_spinlock.o ps7_cortexa9_0/lib/xil_testcache.o ps7_cortexa9_0/lib/xil_testio.o ps7_cortexa9_0/lib/
+TRACE::2023-07-13.15:57:13::SCWBDomain::xil_testmem.o ps7_cortexa9_0/lib/xil_util.o ps7_cortexa9_0/lib/xinterrupt_wrap.o ps7_cortexa9_0/lib/xl2cc_counter.o ps7_cortexa
+TRACE::2023-07-13.15:57:13::SCWBDomain::9_0/lib/xplatform_info.o ps7_cortexa9_0/lib/xpm_counter.o ps7_cortexa9_0/lib/xscugic.o ps7_cortexa9_0/lib/xscugic_g.o ps7_corte
+TRACE::2023-07-13.15:57:13::SCWBDomain::xa9_0/lib/xscugic_hw.o ps7_cortexa9_0/lib/xscugic_intr.o ps7_cortexa9_0/lib/xscugic_selftest.o ps7_cortexa9_0/lib/xscugic_sinit
+TRACE::2023-07-13.15:57:13::SCWBDomain::.o ps7_cortexa9_0/lib/xscutimer.o ps7_cortexa9_0/lib/xscutimer_g.o ps7_cortexa9_0/lib/xscutimer_selftest.o ps7_cortexa9_0/lib/x
+TRACE::2023-07-13.15:57:13::SCWBDomain::scutimer_sinit.o ps7_cortexa9_0/lib/xscuwdt.o ps7_cortexa9_0/lib/xscuwdt_g.o ps7_cortexa9_0/lib/xscuwdt_selftest.o ps7_cortexa9
+TRACE::2023-07-13.15:57:13::SCWBDomain::_0/lib/xscuwdt_sinit.o ps7_cortexa9_0/lib/xtime_l.o
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::Finished building libraries
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::make: Leaving directory '/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp'
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c fsbl_hooks.c -o fsbl_hooks.o -Izynq_f
+TRACE::2023-07-13.15:57:13::SCWBDomain::sbl_bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c image_mover.c -o image_mover.o -Izynq
+TRACE::2023-07-13.15:57:13::SCWBDomain::_fsbl_bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c main.c -o main.o -Izynq_fsbl_bsp/ps7_
+TRACE::2023-07-13.15:57:13::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c md5.c -o md5.o -Izynq_fsbl_bsp/ps7_co
+TRACE::2023-07-13.15:57:13::SCWBDomain::rtexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c nand.c -o nand.o -Izynq_fsbl_bsp/ps7_
+TRACE::2023-07-13.15:57:13::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c nor.c -o nor.o -Izynq_fsbl_bsp/ps7_co
+TRACE::2023-07-13.15:57:13::SCWBDomain::rtexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c pcap.c -o pcap.o -Izynq_fsbl_bsp/ps7_
+TRACE::2023-07-13.15:57:13::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c ps7_init.c -o ps7_init.o -Izynq_fsbl_
+TRACE::2023-07-13.15:57:13::SCWBDomain::bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c qspi.c -o qspi.o -Izynq_fsbl_bsp/ps7_
+TRACE::2023-07-13.15:57:13::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c rsa.c -o rsa.o -Izynq_fsbl_bsp/ps7_co
+TRACE::2023-07-13.15:57:13::SCWBDomain::rtexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c sd.c -o sd.o -Izynq_fsbl_bsp/ps7_cort
+TRACE::2023-07-13.15:57:13::SCWBDomain::exa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc  -O2 -c -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard  -c fsbl_handoff.S -o fsbl_handoff.o -Izy
+TRACE::2023-07-13.15:57:13::SCWBDomain::nq_fsbl_bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2023-07-13.15:57:13::SCWBDomain::arm-none-eabi-gcc -o fsbl.elf fsbl_handoff.o fsbl_hooks.o image_mover.o main.o md5.o nand.o nor.o pcap.o ps7_init.o qspi.o rsa.
+TRACE::2023-07-13.15:57:13::SCWBDomain::o sd.o -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id
+TRACE::2023-07-13.15:57:13::SCWBDomain::=none -specs=Xilinx.spec  -lrsa -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-
+TRACE::2023-07-13.15:57:13::SCWBDomain::group -Wl,--start-group,-lrsa,-lxil,-lgcc,-lc,--end-group                               -Wl,--gc-sections -Lzynq_fsbl_bsp/ps7_c
+TRACE::2023-07-13.15:57:13::SCWBDomain::ortexa9_0/lib -L./ -Tlscript.ld
+
+LOG::2023-07-13.15:57:13::SCWSystem::Checking the domain standalone_domain
+LOG::2023-07-13.15:57:13::SCWSystem::Not a boot domain 
+LOG::2023-07-13.15:57:13::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2023-07-13.15:57:13::SCWDomain::Generating domain artifcats
+TRACE::2023-07-13.15:57:13::SCWMssOS::Generating standalone artifcats
+TRACE::2023-07-13.15:57:13::SCWMssOS::Copying the qemu file from  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt To /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/export/GPIO_Wrapped/sw/GPIO_Wrapped/qemu/
+TRACE::2023-07-13.15:57:13::SCWMssOS::Copying the qemu file from  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt To /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/export/GPIO_Wrapped/sw/GPIO_Wrapped/standalone_domain/qemu/
+TRACE::2023-07-13.15:57:13::SCWMssOS:: Copying the user libraries. 
+TRACE::2023-07-13.15:57:13::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:13::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:13::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:13::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:57:13::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:13::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:57:13::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:13::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:13::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:57:13::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:57:13::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:57:13::SCWMssOS::Completed writing the mss file at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2023-07-13.15:57:13::SCWMssOS::Mss edits present, copying mssfile into export location /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:57:13::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2023-07-13.15:57:13::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2023-07-13.15:57:13::SCWDomain::Building the domain as part of full build :  standalone_domain
+TRACE::2023-07-13.15:57:13::SCWMssOS::doing bsp build ... 
+TRACE::2023-07-13.15:57:13::SCWMssOS::System Command Ran  cd  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp ; bash -c "make  " 
+TRACE::2023-07-13.15:57:13::SCWMssOS::make --no-print-directory seq_libs
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Finished building libraries sequentially.
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -j 6 --no-print-directory par_libs
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-
+TRACE::2023-07-13.15:57:13::SCWMssOS::none-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-a
+TRACE::2023-07-13.15:57:13::SCWMssOS::bi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-no
+TRACE::2023-07-13.15:57:13::SCWMssOS::ne-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi
+TRACE::2023-07-13.15:57:13::SCWMssOS::=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_2/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_7/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:13::SCWMssOS::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:13::SCWMssOS::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:13::SCWMssOS::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:13::SCWMssOS::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_8/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/dmaps_v2_8/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:13::SCWMssOS::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:13::SCWMssOS::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/gpio_v4_9/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/gpio_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-a
+TRACE::2023-07-13.15:57:13::SCWMssOS::s" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -no
+TRACE::2023-07-13.15:57:13::SCWMssOS::startfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/scugic_v5_1/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scugic_v5_1/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:13::SCWMssOS::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:13::SCWMssOS::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_4/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scutimer_v2_4/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-ea
+TRACE::2023-07-13.15:57:13::SCWMssOS::bi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard
+TRACE::2023-07-13.15:57:13::SCWMssOS:: -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_4/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_4/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:13::SCWMssOS::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:13::SCWMssOS::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/standalone_v8_1/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/standalone_v8_1/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-
+TRACE::2023-07-13.15:57:13::SCWMssOS::eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=ha
+TRACE::2023-07-13.15:57:13::SCWMssOS::rd -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_6/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/xadcps_v2_6/src -s include  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2023-07-13.15:57:13::SCWMssOS::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2023-07-13.15:57:13::SCWMssOS::nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-non
+TRACE::2023-07-13.15:57:13::SCWMssOS::e-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=
+TRACE::2023-07-13.15:57:13::SCWMssOS::hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_11/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-
+TRACE::2023-07-13.15:57:13::SCWMssOS::eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=ha
+TRACE::2023-07-13.15:57:13::SCWMssOS::rd -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_2/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2023-07-13.15:57:13::SCWMssOS:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2023-07-13.15:57:13::SCWMssOS::artfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_7/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:13::SCWMssOS::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:13::SCWMssOS::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_8/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/dmaps_v2_8/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2023-07-13.15:57:13::SCWMssOS:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2023-07-13.15:57:13::SCWMssOS::artfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/gpio_v4_9/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/gpio_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2023-07-13.15:57:13::SCWMssOS::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2023-07-13.15:57:13::SCWMssOS::rtfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/scugic_v5_1/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scugic_v5_1/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:13::SCWMssOS::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:13::SCWMssOS::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_4/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scutimer_v2_4/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-
+TRACE::2023-07-13.15:57:13::SCWMssOS::as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -n
+TRACE::2023-07-13.15:57:13::SCWMssOS::ostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_4/src
+
+TRACE::2023-07-13.15:57:13::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_4/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:13::SCWMssOS::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:13::SCWMssOS::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/standalone_v8_1/src
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::make -C ps7_cortexa9_0/libsrc/standalone_v8_1/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eab
+TRACE::2023-07-13.15:57:14::SCWMssOS::i-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard 
+TRACE::2023-07-13.15:57:14::SCWMssOS::-nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_6/src
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::make -C ps7_cortexa9_0/libsrc/xadcps_v2_6/src -s libs  "SHELL=/bin/sh" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2023-07-13.15:57:14::SCWMssOS::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2023-07-13.15:57:14::SCWMssOS::tartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::Finished building libraries parallelly.
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::make --no-print-directory archive
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::arm-none-eabi-ar -r  ps7_cortexa9_0/lib/libxil.a ps7_cortexa9_0/lib/_exit.o ps7_cortexa9_0/lib/_open.o ps7_cortexa9_0/lib/_sbrk
+TRACE::2023-07-13.15:57:14::SCWMssOS::.o ps7_cortexa9_0/lib/abort.o ps7_cortexa9_0/lib/asm_vectors.o ps7_cortexa9_0/lib/boot.o ps7_cortexa9_0/lib/close.o ps7_cortexa
+TRACE::2023-07-13.15:57:14::SCWMssOS::9_0/lib/cpputest_time.o ps7_cortexa9_0/lib/cpu_init.o ps7_cortexa9_0/lib/errno.o ps7_cortexa9_0/lib/fcntl.o ps7_cortexa9_0/lib/
+TRACE::2023-07-13.15:57:14::SCWMssOS::fstat.o ps7_cortexa9_0/lib/getentropy.o ps7_cortexa9_0/lib/getpid.o ps7_cortexa9_0/lib/inbyte.o ps7_cortexa9_0/lib/isatty.o ps7
+TRACE::2023-07-13.15:57:14::SCWMssOS::_cortexa9_0/lib/kill.o ps7_cortexa9_0/lib/lseek.o ps7_cortexa9_0/lib/open.o ps7_cortexa9_0/lib/outbyte.o ps7_cortexa9_0/lib/pri
+TRACE::2023-07-13.15:57:14::SCWMssOS::nt.o ps7_cortexa9_0/lib/putnum.o ps7_cortexa9_0/lib/read.o ps7_cortexa9_0/lib/sbrk.o ps7_cortexa9_0/lib/sleep.o ps7_cortexa9_0/
+TRACE::2023-07-13.15:57:14::SCWMssOS::lib/time.o ps7_cortexa9_0/lib/translation_table.o ps7_cortexa9_0/lib/unlink.o ps7_cortexa9_0/lib/usleep.o ps7_cortexa9_0/lib/ve
+TRACE::2023-07-13.15:57:14::SCWMssOS::ctors.o ps7_cortexa9_0/lib/write.o ps7_cortexa9_0/lib/xadcps.o ps7_cortexa9_0/lib/xadcps_g.o ps7_cortexa9_0/lib/xadcps_intr.o p
+TRACE::2023-07-13.15:57:14::SCWMssOS::s7_cortexa9_0/lib/xadcps_selftest.o ps7_cortexa9_0/lib/xadcps_sinit.o ps7_cortexa9_0/lib/xcoresightpsdcc.o ps7_cortexa9_0/lib/x
+TRACE::2023-07-13.15:57:14::SCWMssOS::devcfg.o ps7_cortexa9_0/lib/xdevcfg_g.o ps7_cortexa9_0/lib/xdevcfg_hw.o ps7_cortexa9_0/lib/xdevcfg_intr.o ps7_cortexa9_0/lib/xd
+TRACE::2023-07-13.15:57:14::SCWMssOS::evcfg_selftest.o ps7_cortexa9_0/lib/xdevcfg_sinit.o ps7_cortexa9_0/lib/xdmaps.o ps7_cortexa9_0/lib/xdmaps_g.o ps7_cortexa9_0/li
+TRACE::2023-07-13.15:57:14::SCWMssOS::b/xdmaps_hw.o ps7_cortexa9_0/lib/xdmaps_selftest.o ps7_cortexa9_0/lib/xdmaps_sinit.o ps7_cortexa9_0/lib/xgpio.o ps7_cortexa9_0/
+TRACE::2023-07-13.15:57:14::SCWMssOS::lib/xgpio_extra.o ps7_cortexa9_0/lib/xgpio_g.o ps7_cortexa9_0/lib/xgpio_intr.o ps7_cortexa9_0/lib/xgpio_selftest.o ps7_cortexa9
+TRACE::2023-07-13.15:57:14::SCWMssOS::_0/lib/xgpio_sinit.o ps7_cortexa9_0/lib/xil-crt0.o ps7_cortexa9_0/lib/xil_assert.o ps7_cortexa9_0/lib/xil_cache.o ps7_cortexa9_
+TRACE::2023-07-13.15:57:14::SCWMssOS::0/lib/xil_clocking.o ps7_cortexa9_0/lib/xil_exception.o ps7_cortexa9_0/lib/xil_mem.o ps7_cortexa9_0/lib/xil_misc_psreset_api.o 
+TRACE::2023-07-13.15:57:14::SCWMssOS::ps7_cortexa9_0/lib/xil_mmu.o ps7_cortexa9_0/lib/xil_printf.o ps7_cortexa9_0/lib/xil_sleepcommon.o ps7_cortexa9_0/lib/xil_sleept
+TRACE::2023-07-13.15:57:14::SCWMssOS::imer.o ps7_cortexa9_0/lib/xil_spinlock.o ps7_cortexa9_0/lib/xil_testcache.o ps7_cortexa9_0/lib/xil_testio.o ps7_cortexa9_0/lib/
+TRACE::2023-07-13.15:57:14::SCWMssOS::xil_testmem.o ps7_cortexa9_0/lib/xil_util.o ps7_cortexa9_0/lib/xinterrupt_wrap.o ps7_cortexa9_0/lib/xl2cc_counter.o ps7_cortexa
+TRACE::2023-07-13.15:57:14::SCWMssOS::9_0/lib/xplatform_info.o ps7_cortexa9_0/lib/xpm_counter.o ps7_cortexa9_0/lib/xscugic.o ps7_cortexa9_0/lib/xscugic_g.o ps7_corte
+TRACE::2023-07-13.15:57:14::SCWMssOS::xa9_0/lib/xscugic_hw.o ps7_cortexa9_0/lib/xscugic_intr.o ps7_cortexa9_0/lib/xscugic_selftest.o ps7_cortexa9_0/lib/xscugic_sinit
+TRACE::2023-07-13.15:57:14::SCWMssOS::.o ps7_cortexa9_0/lib/xscutimer.o ps7_cortexa9_0/lib/xscutimer_g.o ps7_cortexa9_0/lib/xscutimer_selftest.o ps7_cortexa9_0/lib/x
+TRACE::2023-07-13.15:57:14::SCWMssOS::scutimer_sinit.o ps7_cortexa9_0/lib/xscuwdt.o ps7_cortexa9_0/lib/xscuwdt_g.o ps7_cortexa9_0/lib/xscuwdt_selftest.o ps7_cortexa9
+TRACE::2023-07-13.15:57:14::SCWMssOS::_0/lib/xscuwdt_sinit.o ps7_cortexa9_0/lib/xtime_l.o
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::Finished building libraries
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::Copying to export directory.
+TRACE::2023-07-13.15:57:14::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2023-07-13.15:57:14::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2023-07-13.15:57:14::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2023-07-13.15:57:14::SCWSystem::Completed Processing the sysconfig GPIO_Wrapped
+LOG::2023-07-13.15:57:14::SCWPlatform::Completed generating the artifacts for system configuration GPIO_Wrapped
+TRACE::2023-07-13.15:57:14::SCWPlatform::Started preparing the platform 
+TRACE::2023-07-13.15:57:14::SCWSystem::Writing the bif file for system config GPIO_Wrapped
+TRACE::2023-07-13.15:57:14::SCWSystem::dir created 
+TRACE::2023-07-13.15:57:14::SCWSystem::Writing the bif 
+TRACE::2023-07-13.15:57:14::SCWPlatform::Started writing the spfm file 
+TRACE::2023-07-13.15:57:14::SCWPlatform::Started writing the xpfm file 
+TRACE::2023-07-13.15:57:14::SCWPlatform::Completed generating the platform
+TRACE::2023-07-13.15:57:14::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:57:14::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:57:14::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:57:14::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:57:14::SCWMssOS::Saving the mss changes /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:57:14::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2023-07-13.15:57:14::SCWMssOS::Completed writemss as part of save.
+TRACE::2023-07-13.15:57:14::SCWMssOS::Commit changes completed.
+TRACE::2023-07-13.15:57:14::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:57:14::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:57:14::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:14::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:14::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:57:14::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:57:14::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2023-07-13.15:57:14::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:57:14::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:14::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:57:14::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:14::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:14::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:57:14::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:57:14::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:57:14::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:57:14::SCWWriter::formatted JSON is {
+	"platformName":	"GPIO_Wrapped",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"GPIO_Wrapped",
+	"platHandOff":	"/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/GPIO_Cpu_Interface_wrapper.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"GPIO_Wrapped",
+	"systems":	[{
+			"systemName":	"GPIO_Wrapped",
+			"systemDesc":	"GPIO_Wrapped",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"GPIO_Wrapped",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"08778ffe563215a1333892a47bacdb81",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:5.0", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on ps7_cortexa9_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu_args.txt",
+					"qemuData":	"<platformDir>/resources/GPIO_Wrapped/standalone_domain/qemu",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"8.1",
+					"mssFile":	"",
+					"md5Digest":	"4d43c44f8b4be5aa0ecd0e62b30d6322",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2023-07-13.15:57:14::SCWPlatform::updated the xpfm file.
+TRACE::2023-07-13.15:57:15::SCWPlatform::Trying to open the hw design at /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:15::SCWPlatform::DSA given /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:15::SCWPlatform::DSA absoulate path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:15::SCWPlatform::DSA directory /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw
+TRACE::2023-07-13.15:57:15::SCWPlatform:: Platform Path /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/hw/GPIO_Cpu_Interface_wrapper.xsa
+TRACE::2023-07-13.15:57:15::SCWPlatform:: Unique name xilinx:zed::0.0
+TRACE::2023-07-13.15:57:15::SCWPlatform::Trying to set the existing hwdb with name GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:15::SCWPlatform::Opened existing hwdb GPIO_Cpu_Interface_wrapper_1
+TRACE::2023-07-13.15:57:15::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2023-07-13.15:57:15::SCWMssOS::Checking the sw design at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2023-07-13.15:57:15::SCWMssOS::DEBUG:  swdes dump  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2023-07-13.15:57:15::SCWMssOS::Sw design exists and opened at  /home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/ps7_cortexa9_0/standalone_domain/bsp/system.mss
