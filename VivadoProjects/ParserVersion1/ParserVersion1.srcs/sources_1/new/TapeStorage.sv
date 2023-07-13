@@ -29,23 +29,33 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)) (
     output StructBlockRamRead readerStructRead 
 );
     logic [63:0] lookAtMe1,lookAtMe2;
-    StringBlockRamWrite stringRamW [NUMTAPES-1:0];
-    StringBlockRamRead  stringRamR [NUMTAPES-1:0];
-    StructBlockRamWrite structRamW [NUMTAPES-1:0];
-    StructBlockRamRead  structRamR [NUMTAPES-1:0];
-    logic               enb        [NUMTAPES-1:0];
     
-    // this shouldn't need to be a generate, for the tape to work, but vivado won't obey LRM 23.3.3.5, or some other thing is happening... not sure
-    genvar  i;
-    for(i=0; i<NUMTAPES; i++) begin:tape
-        TapeInstance tape  (.clk, .enb(enb[i]), .stringRamW(stringRamW[i]), .structRamW(structRamW[i]), .stringRamR(stringRamR[i]), .structRamR(structRamR[i]));
-                
-                // lets try assigning the structs in here, see if the problem continues
-                assign stringRamW[i] = i == selectParser ? parserStringWrite : readerStringWrite;
-                assign structRamW[i] = i == selectParser ? parserStructWrite : readerStructWrite;
-                assign enb[i] = i == selectParser ? '1 : 0;
+    // its not an array of structs, vivado, you happy now????!?!
+    StringBlockRamWrite stringRamW0;
+    StringBlockRamRead  stringRamR0;
+    StructBlockRamWrite structRamW0;
+    StructBlockRamRead  structRamR0;
+    logic               enb0;
     
-    end:tape
+    StringBlockRamWrite stringRamW1;
+    StringBlockRamRead  stringRamR1;
+    StructBlockRamWrite structRamW1;
+    StructBlockRamRead  structRamR1;
+    logic               enb1;
+    
+    // yes this is copy pasted, thats the only way to not trigger this bug AFAICT:
+    // https://support.xilinx.com/s/question/0D54U000076hQ0GSAU/intermittent-struct-member-access-misbehavior?language=en_US&t=1689260946429
+    TapeInstance tape0  (.clk, .enb(enb0), .stringRamW(stringRamW0), .structRamW(structRamW0), .stringRamR(stringRamR0), .structRamR(structRamR0));
+    assign stringRamW0 = 0 == selectParser ? parserStringWrite : readerStringWrite;
+    assign structRamW0 = 0 == selectParser ? parserStructWrite : readerStructWrite;
+    assign enb0        = 0 == selectParser ? '1 : 0;
+    
+    TapeInstance tape1  (.clk, .enb(enb0), .stringRamW(stringRamW0), .structRamW(structRamW0), .stringRamR(stringRamR0), .structRamR(structRamR0));
+    assign stringRamW1 = 1 == selectParser ? parserStringWrite : readerStringWrite;
+    assign structRamW1 = 1 == selectParser ? parserStructWrite : readerStructWrite;
+    assign enb1        = 1 == selectParser ? '1 : 0;
+    
+    
     
     /* Previous mux logic
     always_comb begin 

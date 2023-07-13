@@ -16,79 +16,25 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,007.116 ns"></ZoomEndTime>
+      <ZoomEndTime time="2,016.898 ns"></ZoomEndTime>
       <Cursor1Time time="1,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="206"></NameColumnWidth>
-      <ValueColumnWidth column_width="64"></ValueColumnWidth>
+      <NameColumnWidth column_width="520"></NameColumnWidth>
+      <ValueColumnWidth column_width="162"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="16" />
+   <WVObjectSize size="2" />
    <wave_markers>
       <marker label="" time="330000" />
    </wave_markers>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
+   <wvobject type="group" fp_name="group346">
+      <obj_property name="label">Problem</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/rst">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[0].tape /structTapeRam/blockRam/ena">
-      <obj_property name="ElementShortName">ena</obj_property>
-      <obj_property name="ObjectShortName">ena</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/ena">
-      <obj_property name="ElementShortName">ena</obj_property>
-      <obj_property name="ObjectShortName">ena</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/enable">
-      <obj_property name="ElementShortName">enable</obj_property>
-      <obj_property name="ObjectShortName">enable</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[0].tape /structTapeRam/enb">
-      <obj_property name="ElementShortName">enb</obj_property>
-      <obj_property name="ObjectShortName">enb</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/readSide">
-      <obj_property name="ElementShortName">readSide</obj_property>
-      <obj_property name="ObjectShortName">readSide</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/curChar">
-      <obj_property name="ElementShortName">curChar[7:0]</obj_property>
-      <obj_property name="ObjectShortName">curChar[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/GCLK">
-      <obj_property name="ElementShortName">GCLK</obj_property>
-      <obj_property name="ObjectShortName">GCLK</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/rst">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/enable">
-      <obj_property name="ElementShortName">enable</obj_property>
-      <obj_property name="ObjectShortName">enable</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/readSide">
-      <obj_property name="ElementShortName">readSide</obj_property>
-      <obj_property name="ObjectShortName">readSide</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/parseEnable">
-      <obj_property name="ElementShortName">parseEnable</obj_property>
-      <obj_property name="ObjectShortName">parseEnable</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/ramW.dia">
-      <obj_property name="ElementShortName">.dia[63:0]</obj_property>
-      <obj_property name="ObjectShortName">.dia[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/blockRam/dia">
-      <obj_property name="ElementShortName">dia[63:0]</obj_property>
-      <obj_property name="ObjectShortName">dia[63:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/\tape[1].tape /structTapeRam/lookAtMe">
-      <obj_property name="ElementShortName">lookAtMe[63:0]</obj_property>
-      <obj_property name="ObjectShortName">lookAtMe[63:0]</obj_property>
+   <wvobject type="group" fp_name="group350">
+      <obj_property name="label">Working</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>
