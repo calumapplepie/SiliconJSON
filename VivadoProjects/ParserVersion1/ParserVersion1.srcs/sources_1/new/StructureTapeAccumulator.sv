@@ -69,7 +69,7 @@ module StructureTapeAccumulator
     assign lastBraceIndex[55:18] = '0;
    
     assign doOpenBraceWrite  = (nextTapeEntry[63:56] == "{" || nextTapeEntry[63:56] == "[");
-    assign doCloseBraceWrite = (nextTapeEntry[63:56] == "}" || nextTapeEntry[63:56] == "]");
+    assign doCloseBraceWrite = (nextTapeEntry[63:56] == "}" || nextTapeEntry[63:56] == "]") && curDepth !=10'h3ff;
     assign doNumberWrite     = nextTapeEntry[63:56] inside {"l", "d", "u"}; //fancy set membership op i saw in the spec 
     assign doDualWrite       = (doCloseBraceWrite || doNumberWrite);
     

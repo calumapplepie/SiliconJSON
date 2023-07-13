@@ -15,15 +15,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,191.874 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,206.135 ns"></ZoomEndTime>
-      <Cursor1Time time="1,197.314 ns"></Cursor1Time>
+      <ZoomStartTime time="1,370.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,093.001 ns"></ZoomEndTime>
+      <Cursor1Time time="1,800.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="182"></NameColumnWidth>
-      <ValueColumnWidth column_width="124"></ValueColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
+   <WVObjectSize size="8" />
    <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -39,6 +39,10 @@
    <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/parser/curState">
       <obj_property name="ElementShortName">curState[3:0]</obj_property>
       <obj_property name="ObjectShortName">curState[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GPIO_Interface_Test/parseEnable">
+      <obj_property name="ElementShortName">parseEnable</obj_property>
+      <obj_property name="ObjectShortName">parseEnable</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/writer/writeString">
       <obj_property name="ElementShortName">writeString</obj_property>
