@@ -33,13 +33,17 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define GPIO_DEVICE_ID  XPAR_AXI_GPIO_0_DEVICE_ID	/* GPIO device that LEDs are connected to */
+#define PARSER_INPUT_DEVICE_ID  XPAR_AXI_GPIO_0_DEVICE_ID	/* GPIO device that LEDs are connected to */
+#define PARSER_STRING_DEVICE 	XPAR_AXI_GPIO_1_DEVICE_ID
 #define LED 0xC3									/* Initial LED value - XX0000XX */
 #define LED_DELAY 10000000							/* Software delay length */
 #define LED_CHANNEL 1								/* GPIO port for LEDs */
 #define printf xil_printf							/* smaller, optimised printf */
 
-XGpio Gpio;											/* GPIO Device driver instance */
+XGpio GpioParserInput;											/* GPIO Device driver instance */
+XGpio GpioStructReader;
+XGpio GpioStringReader;
+
 
 int LEDOutputExample(void)
 {
@@ -49,7 +53,8 @@ int LEDOutputExample(void)
 	int led = LED; /* Hold current LED value. Initialise to LED definition */
 
 		/* GPIO driver initialisation */
-		Status = XGpio_Initialize(&Gpio, GPIO_DEVICE_ID);
+		Status = XGpio_Initialize(&GpioParserInput, XPAR_AXI_GPIO_0_DEVICE_ID);
+		Status |= XGpio_Initialize(&GpioStructReader, XPAR_AXI_GPIO_1_DEVICE_ID)
 		if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}

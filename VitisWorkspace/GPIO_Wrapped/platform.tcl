@@ -20,3 +20,7 @@ platform active {GPIO_Wrapped}
 platform active {GPIO_Wrapped}
 domain active {zynq_fsbl}
 bsp reload
+platform active {GPIO_Wrapped}
+platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
+platform active {GPIO_Wrapped}
+platform generate

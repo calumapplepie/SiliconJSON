@@ -32,3 +32,4 @@ bsp reload
 platform active {first_zynq_system_wrapper}
 domain active {zynq_fsbl}
 bsp reload
+platform generate
