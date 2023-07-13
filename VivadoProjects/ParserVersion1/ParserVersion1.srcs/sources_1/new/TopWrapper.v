@@ -26,5 +26,10 @@ module TopWrapper (
     output wire [63:0] curStructBits,
     output wire [7:0]  curStringBits
 );
+    // lock inputs to clock edges
+    reg [7:0] curCharOut;
+    always @ (posedge GCLK) begin
+        curCharOut <= curChar;
+    end
     TopLevel topLevel (curChar, GCLK, rst, enable, readSide, parseEnable, curStructBits, curStringBits);
 endmodule
