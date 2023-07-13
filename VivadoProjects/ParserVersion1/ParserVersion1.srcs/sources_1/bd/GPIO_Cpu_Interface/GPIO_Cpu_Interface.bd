@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x0",
+      "boundary_crc": "0xCC6CFA539DDF0AAD",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../ParserVersion1.gen/sources_1/bd/GPIO_Cpu_Interface",
       "name": "GPIO_Cpu_Interface",
@@ -15,7 +15,9 @@
       "axi_gpio_0": "",
       "ps7_0_axi_periph": {
         "xbar": "",
-        "s00_couplers": {},
+        "s00_couplers": {
+          "auto_pc": ""
+        },
         "m00_couplers": {},
         "m01_couplers": {},
         "m02_couplers": {}
@@ -28,7 +30,8 @@
       "axi_gpio_1": "",
       "axi_gpio_2": "",
       "StructHigh": "",
-      "StructLow": ""
+      "StructLow": "",
+      "SinglePulser_Wrapper_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -124,27 +127,39 @@
           },
           "BA": {
             "physical_name": "DDR_ba",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "2",
+            "right": "0"
           },
           "ADDR": {
             "physical_name": "DDR_addr",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "14",
+            "right": "0"
           },
           "DM": {
             "physical_name": "DDR_dm",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
           },
           "DQ": {
             "physical_name": "DDR_dq",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "31",
+            "right": "0"
           },
           "DQS_N": {
             "physical_name": "DDR_dqs_n",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
           },
           "DQS_P": {
             "physical_name": "DDR_dqs_p",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "3",
+            "right": "0"
           }
         }
       },
@@ -161,7 +176,9 @@
         "port_maps": {
           "MIO": {
             "physical_name": "FIXED_IO_mio",
-            "direction": "IO"
+            "direction": "IO",
+            "left": "53",
+            "right": "0"
           },
           "DDR_VRN": {
             "physical_name": "FIXED_IO_ddr_vrn",
@@ -204,7 +221,21 @@
             "right": "0"
           },
           "GCLK": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "GPIO_Cpu_Interface_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
           },
           "rst": {
             "type": "rst",
@@ -236,6 +267,11 @@
         "xci_name": "GPIO_Cpu_Interface_processing_system7_0_0",
         "xci_path": "ip/GPIO_Cpu_Interface_processing_system7_0_0/GPIO_Cpu_Interface_processing_system7_0_0.xci",
         "inst_hier_path": "processing_system7_0",
+        "parameters": {
+          "PCW_FPGA_FCLK0_ENABLE": {
+            "value": "1"
+          }
+        },
         "interface_ports": {
           "M_AXI_GP0": {
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
@@ -577,11 +613,56 @@
                 "direction": "I"
               }
             },
+            "components": {
+              "auto_pc": {
+                "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
+                "xci_name": "GPIO_Cpu_Interface_auto_pc_0",
+                "xci_path": "ip/GPIO_Cpu_Interface_auto_pc_0/GPIO_Cpu_Interface_auto_pc_0.xci",
+                "inst_hier_path": "ps7_0_axi_periph/s00_couplers/auto_pc",
+                "parameters": {
+                  "MI_PROTOCOL": {
+                    "value": "AXI4LITE"
+                  },
+                  "SI_PROTOCOL": {
+                    "value": "AXI3"
+                  }
+                },
+                "interface_ports": {
+                  "S_AXI": {
+                    "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+                    "mode": "Slave",
+                    "bridges": [
+                      "M_AXI"
+                    ]
+                  }
+                }
+              }
+            },
             "interface_nets": {
-              "s00_couplers_to_s00_couplers": {
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
+                ]
+              },
+              "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
-                  "M_AXI"
+                  "auto_pc/S_AXI"
+                ]
+              }
+            },
+            "nets": {
+              "S_ACLK_1": {
+                "ports": [
+                  "S_ACLK",
+                  "auto_pc/aclk"
+                ]
+              },
+              "S_ARESETN_1": {
+                "ports": [
+                  "S_ARESETN",
+                  "auto_pc/aresetn"
                 ]
               }
             }
@@ -806,59 +887,15 @@
           }
         },
         "nets": {
-          "M00_ACLK_1": {
-            "ports": [
-              "M00_ACLK",
-              "m00_couplers/M_ACLK"
-            ]
-          },
-          "M00_ARESETN_1": {
-            "ports": [
-              "M00_ARESETN",
-              "m00_couplers/M_ARESETN"
-            ]
-          },
-          "M01_ACLK_1": {
-            "ports": [
-              "M01_ACLK",
-              "m01_couplers/M_ACLK"
-            ]
-          },
-          "M01_ARESETN_1": {
-            "ports": [
-              "M01_ARESETN",
-              "m01_couplers/M_ARESETN"
-            ]
-          },
-          "M02_ACLK_1": {
-            "ports": [
-              "M02_ACLK",
-              "m02_couplers/M_ACLK"
-            ]
-          },
-          "M02_ARESETN_1": {
-            "ports": [
-              "M02_ARESETN",
-              "m02_couplers/M_ARESETN"
-            ]
-          },
-          "S00_ACLK_1": {
-            "ports": [
-              "S00_ACLK",
-              "s00_couplers/S_ACLK"
-            ]
-          },
-          "S00_ARESETN_1": {
-            "ports": [
-              "S00_ARESETN",
-              "s00_couplers/S_ARESETN"
-            ]
-          },
           "ps7_0_axi_periph_ACLK_net": {
             "ports": [
               "ACLK",
               "xbar/aclk",
+              "s00_couplers/S_ACLK",
               "s00_couplers/M_ACLK",
+              "m00_couplers/M_ACLK",
+              "m01_couplers/M_ACLK",
+              "m02_couplers/M_ACLK",
               "m00_couplers/S_ACLK",
               "m01_couplers/S_ACLK",
               "m02_couplers/S_ACLK"
@@ -868,7 +905,11 @@
             "ports": [
               "ARESETN",
               "xbar/aresetn",
+              "s00_couplers/S_ARESETN",
               "s00_couplers/M_ARESETN",
+              "m00_couplers/M_ARESETN",
+              "m01_couplers/M_ARESETN",
+              "m02_couplers/M_ARESETN",
               "m00_couplers/S_ARESETN",
               "m01_couplers/S_ARESETN",
               "m02_couplers/S_ARESETN"
@@ -1005,6 +1046,29 @@
             "value": "64"
           }
         }
+      },
+      "SinglePulser_Wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:SinglePulser_Wrapper:1.0",
+        "xci_name": "GPIO_Cpu_Interface_SinglePulser_Wrapper_0_0",
+        "xci_path": "ip/GPIO_Cpu_Interface_SinglePulser_Wrapper_0_0/GPIO_Cpu_Interface_SinglePulser_Wrapper_0_0.xci",
+        "inst_hier_path": "SinglePulser_Wrapper_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "SinglePulser_Wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "din": {
+            "direction": "I"
+          },
+          "d_pulse": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1046,6 +1110,12 @@
       }
     },
     "nets": {
+      "SinglePulser_Wrapper_0_d_pulse": {
+        "ports": [
+          "SinglePulser_Wrapper_0/d_pulse",
+          "TopWrapper_0/enable"
+        ]
+      },
       "StructHigh_Dout": {
         "ports": [
           "StructHigh/Dout",
@@ -1099,7 +1169,8 @@
           "axi_gpio_1/s_axi_aclk",
           "ps7_0_axi_periph/M01_ACLK",
           "axi_gpio_2/s_axi_aclk",
-          "ps7_0_axi_periph/M02_ACLK"
+          "ps7_0_axi_periph/M02_ACLK",
+          "SinglePulser_Wrapper_0/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -1124,7 +1195,7 @@
       "xlslice_0_Dout": {
         "ports": [
           "xlslice_0/Dout",
-          "TopWrapper_0/enable"
+          "SinglePulser_Wrapper_0/din"
         ]
       },
       "xlslice_1_Dout": {
