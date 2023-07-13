@@ -16,3 +16,7 @@ platform write
 platform generate -domains 
 platform active {GPIO_Wrapped}
 platform generate
+platform active {GPIO_Wrapped}
+platform active {GPIO_Wrapped}
+domain active {zynq_fsbl}
+bsp reload

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2023.1 (64-bit)                              -->
+<!-- Product Version: Vivado v2023.1.1 (64-bit)                              -->
 <!--                                                                         -->
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
@@ -96,17 +96,17 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="first_zynq_system.bd" FileRelPathName="ip/first_zynq_system_axi_gpio_0_0/first_zynq_system_axi_gpio_0_0.xci">
-          <Proxy FileSetName="first_zynq_system_axi_gpio_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="first_zynq_system.bd" FileRelPathName="ip/first_zynq_system_processing_system7_0_0/first_zynq_system_processing_system7_0_0.xci">
-          <Proxy FileSetName="first_zynq_system_processing_system7_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="first_zynq_system.bd" FileRelPathName="ip/first_zynq_system_auto_pc_0/first_zynq_system_auto_pc_0.xci">
           <Proxy FileSetName="first_zynq_system_auto_pc_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="first_zynq_system.bd" FileRelPathName="ip/first_zynq_system_rst_ps7_0_100M_0/first_zynq_system_rst_ps7_0_100M_0.xci">
           <Proxy FileSetName="first_zynq_system_rst_ps7_0_100M_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="first_zynq_system.bd" FileRelPathName="ip/first_zynq_system_axi_gpio_0_0/first_zynq_system_axi_gpio_0_0.xci">
+          <Proxy FileSetName="first_zynq_system_axi_gpio_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="first_zynq_system.bd" FileRelPathName="ip/first_zynq_system_processing_system7_0_0/first_zynq_system_processing_system7_0_0.xci">
+          <Proxy FileSetName="first_zynq_system_processing_system7_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PGENDIR/sources_1/bd/first_zynq_system/hdl/first_zynq_system_wrapper.v">
