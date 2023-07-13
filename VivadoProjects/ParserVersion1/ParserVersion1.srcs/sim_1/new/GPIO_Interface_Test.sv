@@ -43,7 +43,6 @@ module GPIO_Interface_Test(
         
     task runTest();
         parseEnable <='1; // not extraneous
-        readSide <= '1;
         foreach(testDoc1[i]) begin
             curChar <= testDoc1[i];
             enable <= '1; #10;
@@ -53,7 +52,7 @@ module GPIO_Interface_Test(
         #30;
         
         rst      <='1;
-        readSide <='0;
+        readSide <= !readSide;
         #20; 
         rst      <='0;
         foreach(testDoc2[i]) begin
@@ -87,7 +86,7 @@ module GPIO_Interface_Test(
         end
         
         // read in the seccond doc
-        rst <='1; readSide <= '1; #10; 
+        rst <='1; readSide <= !readSide; #10; 
         rst <= '0;
         for(int i = 0; i < 32; i++) begin
             #10; 
@@ -137,6 +136,7 @@ module GPIO_Interface_Test(
         rst <= 0;
         #50;
         // run test twice to ensure reset doesn't leave residue
+        readSide <= '1; 
         runTest();
         enable <= '0;
         #60;
