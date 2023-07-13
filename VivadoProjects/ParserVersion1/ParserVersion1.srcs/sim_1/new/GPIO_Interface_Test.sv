@@ -26,7 +26,7 @@ module GPIO_Interface_Test(
     logic clk, rst, enable, readSide, parseEnable;
     Core::UTF8_Char curChar;
     
-    TopWrapper DUV (.GCLK(clk), .rst, .enable, .readSide({1'd0,readSide}), .curChar, .curStructBits, .curStringBits,.parseEnable);
+    TopWrapper DUV (.GCLK(clk), .rst, .enable, .readSide, .curChar, .curStructBits, .curStringBits,.parseEnable);
     
     string testDoc1 = "{\"author\":\"calum\"}";
     string testDoc2 = "{\"The Answer\": 42}";
@@ -42,8 +42,8 @@ module GPIO_Interface_Test(
     logic[7:0] readString [31:0];
         
     task runTest();
-        parseEnable <='1; // may be extraneous
-        readSide <= '0;
+        parseEnable <='1; // not extraneous
+        readSide <= '1;
         foreach(testDoc1[i]) begin
             curChar <= testDoc1[i];
             enable <= '1; #10;
@@ -53,7 +53,7 @@ module GPIO_Interface_Test(
         #30;
         
         rst      <='1;
-        readSide <='1;
+        readSide <='0;
         #20; 
         rst      <='0;
         foreach(testDoc2[i]) begin
@@ -63,6 +63,8 @@ module GPIO_Interface_Test(
         end
         enable <='1;
         #30;
+        // done parsing
+        parseEnable <='0; 
         
         // reset the readers, and enable
         rst <= '1; #10; 

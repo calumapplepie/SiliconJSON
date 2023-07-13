@@ -104,8 +104,6 @@ module StructureTapeAccumulator
         end else if(active && enable) begin            
             if(doNumberWrite) curIndex <= curIndex + 2;
             else              curIndex <= curIndex + 1;  
-
-            
         end
     end
 

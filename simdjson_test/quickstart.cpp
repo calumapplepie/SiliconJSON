@@ -11,9 +11,9 @@ using namespace simdjson;
 const std::string target_file_dir =  "../JsonTestFiles/";
 #undef  INCLUDE_LINE_BREAKS  	// Include some line breaks in strategic locations
 #undef  INCLUDE_COMMAS 			// Seperate words with commas and spaces
-#define	FORMAT_SYSV_LITERALS 1  // Format as a list of system-verilog literals 
+#undef	FORMAT_SYSV_LITERALS   // Format as a list of system-verilog literals 
 #undef  FORMAT_C_LITERALS       // Format as a list of C literals
-#undef  FORMAT_READMEMH 		// Format as a $readmemh() compatable file
+#define  FORMAT_READMEMH 	1	// Format as a $readmemh() compatable file
 
 // Rest of the code should work without modifications
 

@@ -15,26 +15,42 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="2,016.898 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="1,191.874 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,206.135 ns"></ZoomEndTime>
+      <Cursor1Time time="1,197.314 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="520"></NameColumnWidth>
-      <ValueColumnWidth column_width="162"></ValueColumnWidth>
+      <NameColumnWidth column_width="182"></NameColumnWidth>
+      <ValueColumnWidth column_width="124"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="2" />
-   <wave_markers>
-      <marker label="" time="330000" />
-   </wave_markers>
-   <wvobject type="group" fp_name="group346">
-      <obj_property name="label">Problem</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <WVObjectSize size="7" />
+   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group350">
-      <obj_property name="label">Working</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
+   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GPIO_Interface_Test/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/parser/curState">
+      <obj_property name="ElementShortName">curState[3:0]</obj_property>
+      <obj_property name="ObjectShortName">curState[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/writer/writeString">
+      <obj_property name="ElementShortName">writeString</obj_property>
+      <obj_property name="ObjectShortName">writeString</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/GPIO_Interface_Test/DUV/topLevel/parser/writer/writeStructure">
+      <obj_property name="ElementShortName">writeStructure</obj_property>
+      <obj_property name="ObjectShortName">writeStructure</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/GPIO_Interface_Test/DUV/topLevel/storage/tape0/structTapeRam/blockRam/ram">
+      <obj_property name="ElementShortName">ram[0:511][63:0]</obj_property>
+      <obj_property name="ObjectShortName">ram[0:511][63:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

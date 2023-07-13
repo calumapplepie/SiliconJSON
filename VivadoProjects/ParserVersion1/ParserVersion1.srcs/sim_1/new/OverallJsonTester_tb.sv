@@ -37,7 +37,7 @@ module OverallJsonTester_tb();
     
     TopLevel DUV (
         .curChar(nextChar), .readSide('0),
-        .enable(enable), .GCLK(clk), .rst(rst));
+        .enable(enable), .GCLK(clk), .rst(rst), .parseEnable('1));
     
     task static evaluateJsonFile(string basename);
         int jsonInFileHandle = $fopen({JsonTestFilesDir,basename,JsonExt},"r");
@@ -65,25 +65,25 @@ module OverallJsonTester_tb();
         $fclose(jsonInFileHandle);
         
         // bonus clock for pipeline
-        #10;
+        #40;
 
         // compare
         foreach(expectedStringTape[i]) begin
-            if (expectedStringTape[i] !=  DUV.storage.tape[1].tape.stringTapeRam.blockRam.ram[i]) begin
+            if (expectedStringTape[i] !=  DUV.storage.tape1.stringTapeRam.blockRam.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 9) begin
                      $display("Error at string tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStringTape[i], DUV.storage.tape[1].tape.stringTapeRam.blockRam.ram[i]);
+                    $display("Expected %h, got %h", expectedStringTape[i], DUV.storage.tape1.stringTapeRam.blockRam.ram[i]);
                 end
             end
         end
 
         foreach(expectedStructTape[i]) begin
-            if (expectedStructTape[i] != DUV.storage.tape[1].tape.structTapeRam.blockRam.ram[i]) begin
+            if (expectedStructTape[i] != DUV.storage.tape1.structTapeRam.blockRam.ram[i]) begin
                 errorsSoFar++;
                 if(errorsSoFar <= 9) begin
                     $display("Error at struct tape index %d when reading file %s",  i, basename);
-                    $display("Expected %h, got %h", expectedStructTape[i], DUV.storage.tape[1].tape.structTapeRam.blockRam.ram[i]);
+                    $display("Expected %h, got %h", expectedStructTape[i], DUV.storage.tape1.structTapeRam.blockRam.ram[i]);
                 end
             end
         end
