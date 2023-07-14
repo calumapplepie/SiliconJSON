@@ -33,20 +33,21 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define PARSER_INPUT_DEVICE_ID  XPAR_AXI_GPIO_0_DEVICE_ID	/* GPIO device that LEDs are connected to */
-#define PARSER_STRING_DEVICE 	XPAR_AXI_GPIO_1_DEVICE_ID
 #define LED 0xC3									/* Initial LED value - XX0000XX */
-#define LED_DELAY 10000000							/* Software delay length */
+#define LED_DELAY 100000							/* Software delay length */
 #define LED_CHANNEL 1								/* GPIO port for LEDs */
 #define printf xil_printf							/* smaller, optimised printf */
 
 XGpio GpioParserInput;											/* GPIO Device driver instance */
 XGpio GpioStructReader;
 XGpio GpioStringReader;
+char* testDoc1 = "{\"author\":\"calum\"}";
+char  parserControlSignal = 0x0;
+uint64_t readStructTape [16];
+char	 readStringTape [64]; 
 
 
-int LEDOutputExample(void)
-{
+int LEDOutputExample(void){
 
 	volatile int Delay;
 	int Status;
@@ -54,25 +55,50 @@ int LEDOutputExample(void)
 
 		/* GPIO driver initialisation */
 		Status = XGpio_Initialize(&GpioParserInput, XPAR_AXI_GPIO_0_DEVICE_ID);
-		Status |= XGpio_Initialize(&GpioStructReader, XPAR_AXI_GPIO_1_DEVICE_ID)
+		Status |= XGpio_Initialize(&GpioStructReader, XPAR_AXI_GPIO_1_DEVICE_ID);
 		if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}
 
-		/*Set the direction for the LEDs to output. */
-		XGpio_SetDataDirection(&Gpio, LED_CHANNEL, 0x00);
+		/*Set the direction for the various chanels*/
+		XGpio_SetDataDirection(&GpioParserInput, 1, 0x00);			// current character
+		XGpio_SetDataDirection(&GpioParserInput, 2, 0x00);			// control
+		XGpio_SetDataDirection(&GpioStructReader, 1, 0xFFFFFFFF);	// lower bits of struct tape
+		XGpio_SetDataDirection(&GpioStructReader, 2, 0xFFFFFFFF);	// higher bits of struct tape
+		XGpio_SetDataDirection(&GpioStringReader, 1, 0xFFFFFFFF);	// string tape bits
 
-		/* Loop forever blinking the LED. */
-			while (1) {
-				/* Write output to the LEDs. */
-				XGpio_DiscreteWrite(&Gpio, LED_CHANNEL, led);
+		// set the parsercontrol byte to our starting value
+		// Byte is: [0,0,0,0,ParseEnable, ReadSide, Rst, Enable]
+		XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
 
-				/* Flip LEDs. */
-				led = ~led;
 
-				/* Wait a small amount of time so that the LED blinking is visible. */
-				for (Delay = 0; Delay < LED_DELAY; Delay++);
-			}
+		int i = 0;
+		/* Loop to provide parser input */
+		while (testDoc1[++i]) { // go to null terminator
+			/* Write to parser */
+			XGpio_DiscreteWrite(&GpioParserInput, 1, testDoc1[i]);
+			
+			// set enable bit (its the low bit of our control signal)
+			XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
+
+			/* Let PL read high enable */
+			for (Delay = 0; Delay < LED_DELAY; Delay++);
+
+			// clear enable bit 
+			XGpio_DiscreteClear(&GpioParserInput, 2, 0x1);
+			/* Let PL read low enable */
+			for (Delay = 0; Delay < LED_DELAY; Delay++);
+		}
+		// now we signal a reset to the PL
+		XGpio_DiscreteSet(&GpioParserInput, 2, 0x2); 
+		for (Delay = 0; Delay < LED_DELAY; Delay++);
+		// swap read/write sides, disable parsing, clear reset
+		XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
+
+		// read document
+
+
+
 
 		return XST_SUCCESS; /* Should be unreachable */
 }
