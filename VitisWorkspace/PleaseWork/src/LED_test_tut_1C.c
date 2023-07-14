@@ -47,6 +47,26 @@ uint64_t readStructTape [16];
 char	 readStringTape [64]; 
 
 
+void provideParserInput(char* testDoc){
+	volatile int Delay;
+	int i = 0;
+	while (testDoc[++i]) { // go to null terminator
+		/* Write to parser */
+		XGpio_DiscreteWrite(&GpioParserInput, 1, testDoc1[i]);
+		
+		// set enable bit (its the low bit of our control signal)
+		XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
+
+		/* Let PL read high enable */
+		for (Delay = 0; Delay < LED_DELAY; Delay++);
+
+		// clear enable bit 
+		XGpio_DiscreteClear(&GpioParserInput, 2, 0x1);
+		/* Let PL read low enable */
+		for (Delay = 0; Delay < LED_DELAY; Delay++);
+	}
+}
+
 int LEDOutputExample(void){
 
 	volatile int Delay;
@@ -72,23 +92,7 @@ int LEDOutputExample(void){
 		XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
 
 
-		int i = 0;
-		/* Loop to provide parser input */
-		while (testDoc1[++i]) { // go to null terminator
-			/* Write to parser */
-			XGpio_DiscreteWrite(&GpioParserInput, 1, testDoc1[i]);
-			
-			// set enable bit (its the low bit of our control signal)
-			XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
-
-			/* Let PL read high enable */
-			for (Delay = 0; Delay < LED_DELAY; Delay++);
-
-			// clear enable bit 
-			XGpio_DiscreteClear(&GpioParserInput, 2, 0x1);
-			/* Let PL read low enable */
-			for (Delay = 0; Delay < LED_DELAY; Delay++);
-		}
+		
 		// now we signal a reset to the PL
 		XGpio_DiscreteSet(&GpioParserInput, 2, 0x2); 
 		for (Delay = 0; Delay < LED_DELAY; Delay++);
