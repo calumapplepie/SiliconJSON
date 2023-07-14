@@ -93,40 +93,40 @@ void readParserOutput(){
 int LEDOutputExample(void){
 	int Status;
 
-		/* GPIO driver initialisation */
-		Status = XGpio_Initialize(&GpioParserInput, XPAR_AXI_GPIO_0_DEVICE_ID);
-		Status |= XGpio_Initialize(&GpioStructReader, XPAR_AXI_GPIO_1_DEVICE_ID);
-		Status |= XGpio_Initialize(&GpioStringReader, XPAR_AXI_GPIO_2_DEVICE_ID);
-		if (Status != XST_SUCCESS) {
-			return XST_FAILURE;
-		}
+	/* GPIO driver initialisation */
+	Status = XGpio_Initialize(&GpioParserInput, XPAR_AXI_GPIO_0_DEVICE_ID);
+	Status |= XGpio_Initialize(&GpioStructReader, XPAR_AXI_GPIO_1_DEVICE_ID);
+	Status |= XGpio_Initialize(&GpioStringReader, XPAR_AXI_GPIO_2_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
 
-		/*Set the direction for the various chanels*/
-		XGpio_SetDataDirection(&GpioParserInput, 1, 0x00);			// current character
-		XGpio_SetDataDirection(&GpioParserInput, 2, 0x00);			// control
-		XGpio_SetDataDirection(&GpioStructReader, 1, 0xFFFFFFFF);	// lower bits of struct tape
-		XGpio_SetDataDirection(&GpioStructReader, 2, 0xFFFFFFFF);	// higher bits of struct tape
-		XGpio_SetDataDirection(&GpioStringReader, 1, 0xFFFFFFFF);	// string tape bits
+	/*Set the direction for the various chanels*/
+	XGpio_SetDataDirection(&GpioParserInput, 1, 0x00);			// current character
+	XGpio_SetDataDirection(&GpioParserInput, 2, 0x00);			// control
+	XGpio_SetDataDirection(&GpioStructReader, 1, 0xFFFFFFFF);	// lower bits of struct tape
+	XGpio_SetDataDirection(&GpioStructReader, 2, 0xFFFFFFFF);	// higher bits of struct tape
+	XGpio_SetDataDirection(&GpioStringReader, 1, 0xFFFFFFFF);	// string tape bits
 
-		// set the parsercontrol byte to our starting value
-		// Byte is: [0,0,0,0,ParseEnable, ReadSide, Rst, Enable]
-		XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
-
-
-		
-		// now we signal a reset to the PL
-		XGpio_DiscreteSet(&GpioParserInput, 2, 0x2); 
-		waitForPL();
-		// swap read/write sides, disable parsing, clear reset
-		XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
-
-		// read document
-		readParserOutput();
-
-		// verify (later)
+	// set the parsercontrol byte to our starting value
+	// Byte is: [0,0,0,0,ParseEnable, ReadSide, Rst, Enable]
+	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
 
 
-		return XST_SUCCESS; 
+	
+	// now we signal a reset to the PL
+	XGpio_DiscreteSet(&GpioParserInput, 2, 0x2); 
+	waitForPL();
+	// swap read/write sides, disable parsing, clear reset
+	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
+
+	// read document
+	readParserOutput();
+
+	// verify (later)
+
+
+	return XST_SUCCESS; 
 }
 
 /* Main function. */
@@ -136,9 +136,9 @@ int main(void){
 	xil_printf("Lets get this party STARTED");
 	/* Execute the LED output. */
 	Status = LEDOutputExample();
-	if (Status != XST_SUCCESS) {
-		xil_printf("GPIO output to the LEDs failed!\r\n");
-	}
+
+	xil_printf("okay, struct tape's first few bits are: %x %x %x", readStructTape[0],readStructTape[1],readStructTape[2]);
+	xil_printf("string tape first string len: %d str: %s", readStringTape[0],readStringTape[4] );
 
 	return 0;
 }
