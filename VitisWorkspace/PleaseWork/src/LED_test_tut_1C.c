@@ -34,7 +34,7 @@
 
 /* Definitions */
 #define LED 0xC3									/* Initial LED value - XX0000XX */
-#define LED_DELAY 100000							/* Software delay length */
+#define PL_DELAY 100000	     						/* Software delay length */
 #define LED_CHANNEL 1								/* GPIO port for LEDs */
 #define printf xil_printf							/* smaller, optimised printf */
 
@@ -46,9 +46,13 @@ char  parserControlSignal = 0x0;
 uint64_t readStructTape [16];
 char	 readStringTape [64]; 
 
+void waitForPL(){
+	volatile int Delay;
+	for (Delay = 0; Delay < PL_DELAY; Delay++);
+
+}
 
 void provideParserInput(char* testDoc){
-	volatile int Delay;
 	int i = 0;
 	while (testDoc[++i]) { // go to null terminator
 		/* Write to parser */
@@ -58,24 +62,23 @@ void provideParserInput(char* testDoc){
 		XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
 
 		/* Let PL read high enable */
-		for (Delay = 0; Delay < LED_DELAY; Delay++);
+		waitForPL();
 
 		// clear enable bit 
 		XGpio_DiscreteClear(&GpioParserInput, 2, 0x1);
 		/* Let PL read low enable */
-		for (Delay = 0; Delay < LED_DELAY; Delay++);
+		waitForPL();
 	}
 }
 
 int LEDOutputExample(void){
-
-	volatile int Delay;
 	int Status;
 	int led = LED; /* Hold current LED value. Initialise to LED definition */
 
 		/* GPIO driver initialisation */
 		Status = XGpio_Initialize(&GpioParserInput, XPAR_AXI_GPIO_0_DEVICE_ID);
 		Status |= XGpio_Initialize(&GpioStructReader, XPAR_AXI_GPIO_1_DEVICE_ID);
+		Status |= XGpio_Initialize(&GpioStringReader, XPAR_AXI_GPIO_2_DEVICE_ID);
 		if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}
@@ -95,7 +98,7 @@ int LEDOutputExample(void){
 		
 		// now we signal a reset to the PL
 		XGpio_DiscreteSet(&GpioParserInput, 2, 0x2); 
-		for (Delay = 0; Delay < LED_DELAY; Delay++);
+		waitForPL();
 		// swap read/write sides, disable parsing, clear reset
 		XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
 
