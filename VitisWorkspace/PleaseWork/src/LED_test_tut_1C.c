@@ -33,23 +33,36 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define LED 0xC3									/* Initial LED value - XX0000XX */
-#define PL_DELAY 100000	     						/* Software delay length */
-#define LED_CHANNEL 1								/* GPIO port for LEDs */
+#define PL_DELAY 500	     						/* Software delay length */
 #define printf xil_printf							/* smaller, optimised printf */
+#define STRING_TAPE_LEN 64
+#define LAYOUT_TAPE_LEN 16	// oh my god layout tape is so much nicer i'll have some changes to make
+
 
 XGpio GpioParserInput;											/* GPIO Device driver instance */
 XGpio GpioStructReader;
 XGpio GpioStringReader;
 char* testDoc1 = "{\"author\":\"calum\"}";
 char  parserControlSignal = 0x0;
-uint64_t readStructTape [16];
-char	 readStringTape [64]; 
+uint64_t readStructTape [LAYOUT_TAPE_LEN];
+char	 readStringTape [STRING_TAPE_LEN]; 
 
 void waitForPL(){
 	volatile int Delay;
 	for (Delay = 0; Delay < PL_DELAY; Delay++);
 
+}
+void pulseEnable(){
+	// set enable bit (its the low bit of our control signal)
+	XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
+
+	/* Let PL read high enable */
+	waitForPL();
+
+	// clear enable bit 
+	XGpio_DiscreteClear(&GpioParserInput, 2, 0x1);
+	/* Let PL read low enable */
+	waitForPL();
 }
 
 void provideParserInput(char* testDoc){
@@ -57,23 +70,28 @@ void provideParserInput(char* testDoc){
 	while (testDoc[++i]) { // go to null terminator
 		/* Write to parser */
 		XGpio_DiscreteWrite(&GpioParserInput, 1, testDoc1[i]);
-		
-		// set enable bit (its the low bit of our control signal)
-		XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
+		// pulse the enable bit
+		pulseEnable();
+	}
+}
 
-		/* Let PL read high enable */
-		waitForPL();
+void readParserOutput(){
+	for(int i = 0; i < STRING_TAPE_LEN; i++){
+		// set enable, let PL update vals
+		pulseEnable();
 
-		// clear enable bit 
-		XGpio_DiscreteClear(&GpioParserInput, 2, 0x1);
-		/* Let PL read low enable */
-		waitForPL();
+		if(i<LAYOUT_TAPE_LEN){
+			uint64_t readElement = 	XGpio_DiscreteRead(&GpioStructReader, 2);	// higher bits of struct tape
+			readElement <<= 32; // shift to make space
+			readElement += XGpio_DiscreteRead(&GpioStructReader, 1);
+			readStructTape[i] = readElement;
+		}
+		readStringTape[i] = XGpio_DiscreteRead(&GpioStringReader,1);
 	}
 }
 
 int LEDOutputExample(void){
 	int Status;
-	int led = LED; /* Hold current LED value. Initialise to LED definition */
 
 		/* GPIO driver initialisation */
 		Status = XGpio_Initialize(&GpioParserInput, XPAR_AXI_GPIO_0_DEVICE_ID);
@@ -103,11 +121,12 @@ int LEDOutputExample(void){
 		XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
 
 		// read document
+		readParserOutput();
+
+		// verify (later)
 
 
-
-
-		return XST_SUCCESS; /* Should be unreachable */
+		return XST_SUCCESS; 
 }
 
 /* Main function. */
