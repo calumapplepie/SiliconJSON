@@ -10,8 +10,8 @@ module TapeBlockRam #(WORDSIZE=8, NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS)) (
 
 logic [WORDSIZE-1:0] ram [0:NUMWORDS-1];
 
-// explicitly zero ram on initialization
-initial foreach(ram[i]) ram[i] = 0;
+// explicitly canary-ify ram on initialization
+initial foreach(ram[i]) ram[i] = {WORDSIZE/8{8'hBA}};
 
 // docs say accesses ports can have different bitwidths.  todo: determine if they also support 
 // unaligned access.
