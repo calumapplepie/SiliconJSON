@@ -9,6 +9,9 @@ ldscript.ld
 # bitstream files
 *.bit
 
+# logs (duh)
+*.log
+
 # remaining lines pulled from https://github.com/github/gitignore/blob/main/Global/Eclipse.gitignore
 # file at commit 584ee18 
 
