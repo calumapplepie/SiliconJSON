@@ -74,6 +74,10 @@ void provideParserInput(char* testDoc){
 		pulseEnable();
 		i++;
 	}
+	// give it three pulses for good luck and/or pipeline clearing
+	pulseEnable();
+	pulseEnable();
+	pulseEnable();
 }
 
 void readParserOutput(){
@@ -87,7 +91,8 @@ void readParserOutput(){
 			readElement += XGpio_DiscreteRead(&GpioStructReader, 1);
 			readStructTape[i] = readElement;
 		}
-		readStringTape[i] = XGpio_DiscreteRead(&GpioStringReader,1);
+		uint8_t readString = XGpio_DiscreteRead(&GpioStringReader,1);
+		readStringTape[i] = readString;
 	}
 }
 
