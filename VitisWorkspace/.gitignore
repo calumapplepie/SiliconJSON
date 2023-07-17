@@ -6,8 +6,9 @@ IDE.log
 Xilinx.spec
 ldscript.ld
 
-# bitstream files
+# bitstream/bootimage files
 *.bit
+*.bif
 
 # logs (duh)
 *.log
