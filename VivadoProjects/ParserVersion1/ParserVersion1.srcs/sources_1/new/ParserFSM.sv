@@ -41,7 +41,7 @@ module ParserFSM import Core::*, ParserPkg::*; (
     
     logic numberParserReset;
     ElementType numberFirstElement; 
-    assign numberParserReset = rst || nextState != ReadNumber;
+    assign numberParserReset = rst || (nextState != ReadNumber && enb);
                                        
     NumberParsingFSM numberParser (
         //note: see commit that introduced the enable logic for a long commit-message reflection

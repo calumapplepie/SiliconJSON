@@ -42,7 +42,8 @@ module GPIO_Interface_Test(
     logic[7:0] readString [31:0];
         
     task runTest();
-        parseEnable <='1; // not extraneous
+        parseEnable <='1; 
+        curChar <= " "; #10// current character is registered
         foreach(testDoc1[i]) begin
             curChar <= testDoc1[i];
             enable <= '1; #10;
@@ -53,6 +54,7 @@ module GPIO_Interface_Test(
         
         rst      <='1;
         readSide <= !readSide;
+        curChar <= " ";
         #20; 
         rst      <='0;
         foreach(testDoc2[i]) begin
