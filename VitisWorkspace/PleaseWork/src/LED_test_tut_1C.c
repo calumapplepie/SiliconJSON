@@ -94,7 +94,7 @@ void readParserOutput(){
 int LEDOutputExample(void){
 	int Status;
 
-	/* GPIO driver initialisation */
+	/* GPIO driver initialization */
 	Status = XGpio_Initialize(&GpioParserInput, XPAR_AXI_GPIO_0_DEVICE_ID);
 	Status |= XGpio_Initialize(&GpioStructReader, XPAR_AXI_GPIO_1_DEVICE_ID);
 	Status |= XGpio_Initialize(&GpioStringReader, XPAR_AXI_GPIO_2_DEVICE_ID);
