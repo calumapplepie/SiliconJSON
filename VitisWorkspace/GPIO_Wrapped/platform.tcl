@@ -24,3 +24,36 @@ platform active {GPIO_Wrapped}
 platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
 platform active {GPIO_Wrapped}
 platform generate
+platform generate
+platform active {GPIO_Wrapped}
+platform active {GPIO_Wrapped}
+domain active {standalone_domain}
+bsp reload
+platform active {GPIO_Wrapped}
+domain active {zynq_fsbl}
+bsp reload
+bsp reload
+domain active {standalone_domain}
+bsp reload
+platform active {GPIO_Wrapped}
+bsp config stdout "ps7_coresight_comp_0"
+bsp config stdin "ps7_uart_1"
+bsp config stdout "ps7_uart_1"
+bsp config microblaze_exceptions "false"
+bsp reload
+platform generate -domains 
+platform active {GPIO_Wrapped}
+bsp config stdin "ps7_uart_1"
+bsp config stdout "ps7_uart_1"
+bsp reload
+bsp config stdin "ps7_uart_1"
+bsp config stdout "ps7_uart_1"
+bsp write
+bsp reload
+catch {bsp regenerate}
+bsp write
+platform generate -domains standalone_domain 
+bsp reload
+platform active {GPIO_Wrapped}
+bsp reload
+bsp reload

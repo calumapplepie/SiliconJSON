@@ -33,7 +33,7 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define PL_DELAY 500	     						/* Software delay length */
+#define PL_DELAY 500000	     						/* Software delay length */
 #define printf xil_printf							/* smaller, optimised printf */
 #define STRING_TAPE_LEN 64
 #define LAYOUT_TAPE_LEN 16	// oh my god layout tape is so much nicer i'll have some changes to make
@@ -50,8 +50,8 @@ char	 readStringTape [STRING_TAPE_LEN];
 void waitForPL(){
 	volatile int Delay;
 	for (Delay = 0; Delay < PL_DELAY; Delay++);
-
 }
+
 void pulseEnable(){
 	// set enable bit (its the low bit of our control signal)
 	XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
@@ -132,13 +132,12 @@ int LEDOutputExample(void){
 /* Main function. */
 int main(void){
 
-	int Status;
-	xil_printf("Lets get this party STARTED");
+	xil_printf("Lets get this party STARTED\n");
 	/* Execute the LED output. */
-	Status = LEDOutputExample();
+	LEDOutputExample();
 
-	xil_printf("okay, struct tape's first few bits are: %x %x %x", readStructTape[0],readStructTape[1],readStructTape[2]);
-	xil_printf("string tape first string len: %d str: %s", readStringTape[0],readStringTape[4] );
+	xil_printf("okay, struct tape's first few bits are: %x %x %x\n", readStructTape[0],readStructTape[1],readStructTape[2]);
+	xil_printf("string tape first string len: %d str: %s\n", readStringTape[0],readStringTape[4] );
 
 	return 0;
 }
