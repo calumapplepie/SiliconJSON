@@ -28,7 +28,7 @@ module ParserFSM import Core::*, ParserPkg::*; (
     output JsonTapeElement numberSecondElement
     );
 
-    ParserState curState;
+    (* mark_debug = "true" *) ParserState curState;
     ParserState nextState;
         
     logic simpleValScanComplete;
