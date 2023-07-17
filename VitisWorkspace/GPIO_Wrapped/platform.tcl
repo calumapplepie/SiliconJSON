@@ -57,3 +57,5 @@ bsp reload
 platform active {GPIO_Wrapped}
 bsp reload
 bsp reload
+platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
+platform generate -domains 

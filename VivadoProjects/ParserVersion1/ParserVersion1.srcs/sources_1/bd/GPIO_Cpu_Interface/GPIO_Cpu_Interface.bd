@@ -7,7 +7,8 @@
       "name": "GPIO_Cpu_Interface",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.1.1"
+      "tool_version": "2023.1.1",
+      "validated": "true"
     },
     "design_tree": {
       "ps7_0_axi_periph": {
@@ -2665,7 +2666,21 @@
             "right": "0"
           },
           "GCLK": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "GPIO_Cpu_Interface_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
           },
           "rst": {
             "type": "rst",
