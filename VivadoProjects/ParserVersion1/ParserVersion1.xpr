@@ -297,9 +297,6 @@
         <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_SinglePulser_Wrapper_0_0/GPIO_Cpu_Interface_SinglePulser_Wrapper_0_0.xci">
           <Proxy FileSetName="GPIO_Cpu_Interface_SinglePulser_Wrapper_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_TopWrapper_0_0/GPIO_Cpu_Interface_TopWrapper_0_0.xci">
-          <Proxy FileSetName="GPIO_Cpu_Interface_TopWrapper_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="GPIO_Cpu_Interface.bd" FileRelPathName="ip/GPIO_Cpu_Interface_axi_gpio_0_0/GPIO_Cpu_Interface_axi_gpio_0_0.xci">
           <Proxy FileSetName="GPIO_Cpu_Interface_axi_gpio_0_0"/>
         </CompFileExtendedInfo>
@@ -456,12 +453,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="GPIO_Cpu_Interface_TopWrapper_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/GPIO_Cpu_Interface_TopWrapper_0_0" RelGenDir="$PGENDIR/GPIO_Cpu_Interface_TopWrapper_0_0">
-      <Config>
-        <Option Name="TopModule" Val="GPIO_Cpu_Interface_TopWrapper_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="GPIO_Cpu_Interface_processing_system7_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/GPIO_Cpu_Interface_processing_system7_0_0" RelGenDir="$PGENDIR/GPIO_Cpu_Interface_processing_system7_0_0">
       <Config>
         <Option Name="TopModule" Val="GPIO_Cpu_Interface_processing_system7_0_0"/>
@@ -542,16 +533,6 @@
       <RQSFiles/>
     </Run>
     <Run Id="GPIO_Cpu_Interface_xbar_0_synth_1" Type="Ft3:Synth" SrcSet="GPIO_Cpu_Interface_xbar_0" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_xbar_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/GPIO_Cpu_Interface_xbar_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_xbar_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_xbar_0_synth_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2023"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="GPIO_Cpu_Interface_TopWrapper_0_0_synth_1" Type="Ft3:Synth" SrcSet="GPIO_Cpu_Interface_TopWrapper_0_0" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_TopWrapper_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/GPIO_Cpu_Interface_TopWrapper_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_TopWrapper_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_TopWrapper_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
@@ -677,7 +658,7 @@
           <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
           <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
-        <ReportConfig DisplayName="Incremental Reuse 1 - Place Design" Name="impl_1_place_report_incremental_reuse_2" Spec="report_incremental_reuse" RunStep="place_design" ReportFile="GPIO_Cpu_Interface_wrapper_incremental_reuse_placed_1.rpt" Version="1" Minor="0">
+        <ReportConfig DisplayName="Incremental Reuse 1 - Place Design" Name="impl_1_place_report_incremental_reuse_2" Spec="report_incremental_reuse" RunStep="place_design" ReportFile="GPIO_Cpu_Interface_wrapper_incremental_reuse_placed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
         </ReportConfig>
         <ReportConfig DisplayName="Timing Summary - Post-Place Power Opt Design" Name="impl_1_post_place_power_opt_report_timing_summary_0" Spec="report_timing_summary" RunStep="post_place_power_opt_design" ReportFile="GPIO_Cpu_Interface_wrapper_timing_summary_postplace_pwropted.rpt" Version="1" Minor="0" IsDisabled="true">
@@ -767,23 +748,6 @@
       <RQSFiles/>
     </Run>
     <Run Id="GPIO_Cpu_Interface_xbar_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_xbar_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="GPIO_Cpu_Interface_xbar_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_xbar_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_xbar_0_impl_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="GPIO_Cpu_Interface_TopWrapper_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="GPIO_Cpu_Interface_TopWrapper_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="GPIO_Cpu_Interface_TopWrapper_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_TopWrapper_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/GPIO_Cpu_Interface_TopWrapper_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
