@@ -30,13 +30,6 @@ module BlockRamStack #(WIDTH=18, DEPTH=512)(
         output logic [9:0] curDepth
     );
     
-    // we assume the RAM is initialized to 0 in other code, but this isn't the case now
-    // make it true where it matters
-    initial begin 
-        ram.ram[DEPTH-1] = '0;
-        ram.ram[0]       = '0; 
-    end
-    
     // note: we never write to the lowest index of the stack.  
     logic[9:0] curTop = 0;
     logic[9:0] nextAddress;
