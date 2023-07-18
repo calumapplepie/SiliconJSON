@@ -87,3 +87,4 @@ platform clean
 platform generate
 platform active {GPIO_Wrapped}
 platform write
+platform generate -domains 

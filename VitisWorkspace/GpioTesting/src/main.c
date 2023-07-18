@@ -112,14 +112,14 @@ int LEDOutputExample(void){
 		return XST_FAILURE;
 	}
 
-	/*Set the direction for the various chanels*/
+	/*Set the direction for the various channels*/
 	XGpio_SetDataDirection(&GpioParserInput, 1, 0x00);			// current character
 	XGpio_SetDataDirection(&GpioParserInput, 2, 0x00);			// control
 	XGpio_SetDataDirection(&GpioStructReader, 1, 0xFFFFFFFF);	// lower bits of struct tape
 	XGpio_SetDataDirection(&GpioStructReader, 2, 0xFFFFFFFF);	// higher bits of struct tape
 	XGpio_SetDataDirection(&GpioStringReader, 1, 0xFFFFFFFF);	// string tape bits
 
-	// set the parsercontrol byte to our starting value
+	// set the parser control byte to our starting value
 	// Byte is: [0,0,0,0,ParseEnable, ReadSide, Rst, Enable]
 	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
 
