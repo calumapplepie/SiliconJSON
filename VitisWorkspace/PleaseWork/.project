@@ -4,6 +4,7 @@
 	<comment>Created by Vitis v2023.1</comment>
 	<projects>
 		<project>GPIO_Wrapped</project>
+		<project>PleaseWork_system</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

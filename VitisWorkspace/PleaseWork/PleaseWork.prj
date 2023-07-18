@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
-<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="PleaseWork" location="/home/user/SiliconJSON/VitisWorkspace/PleaseWork" platform="/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/export/GPIO_Wrapped/GPIO_Wrapped.xpfm" platformUID="xilinx:zed::0.0(custom)" systemProject="PleaseWork_system" sysConfig="GPIO_Wrapped" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="9c8a64a7bbeaacd84798d94e3c4662b4">
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="PleaseWork" location="/home/user/SiliconJSON/VitisWorkspace/PleaseWork" platform="/home/user/SiliconJSON/VitisWorkspace/GPIO_Wrapped/export/GPIO_Wrapped/GPIO_Wrapped.xpfm" platformUID="xilinx:zed::0.0(custom)" systemProject="PleaseWork_system" sysConfig="GPIO_Wrapped" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" dimmRepoPath="" mssSignature="9c8a64a7bbeaacd84798d94e3c4662b4">
   <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1598785302">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
     <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
   </configuration>
-  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.274910478" dirty="true">
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.274910478">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
   </configuration>
   <template appTemplateName="empty_application"/>
 </sdkproject:SdkProject>

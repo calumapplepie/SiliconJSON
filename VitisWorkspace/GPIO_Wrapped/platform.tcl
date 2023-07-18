@@ -70,3 +70,15 @@ domain active {zynq_fsbl}
 domain active {standalone_domain}
 domain active {standalone_ps7_cortexa9_1}
 platform generate -quick
+platform generate -domains standalone_ps7_cortexa9_1 
+platform active {GPIO_Wrapped}
+platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
+platform generate -domains 
+domain active {standalone_domain}
+bsp reload
+bsp write
+domain active {zynq_fsbl}
+bsp reload
+domain active {standalone_ps7_cortexa9_1}
+bsp reload
+platform generate -domains 
