@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>PleaseWork</name>
+	<name>GpioTesting</name>
 	<comment>Created by Vitis v2023.1</comment>
 	<projects>
-		<project>PleaseWork_system</project>
+		<project>GPIO_Cpu_Interface_wrapper</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -23,5 +23,6 @@
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 	</natures>
 </projectDescription>

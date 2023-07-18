@@ -1,0 +1,5 @@
+/export/
+*.o
+*.d
+zynq_fsbl/
+**/standalone_ps7_cortexa9_0/bsp

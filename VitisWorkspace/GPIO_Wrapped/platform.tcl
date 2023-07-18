@@ -82,3 +82,8 @@ bsp reload
 domain active {standalone_ps7_cortexa9_1}
 bsp reload
 platform generate -domains 
+platform active {GPIO_Wrapped}
+platform clean
+platform generate
+platform active {GPIO_Wrapped}
+platform write
