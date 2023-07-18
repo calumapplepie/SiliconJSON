@@ -33,7 +33,7 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define PL_DELAY 500000	     						/* Software delay length */
+#define PL_DELAY 600	     						/* Software delay length */
 #define printf xil_printf							/* smaller, optimised printf */
 #define STRING_TAPE_LEN 64
 #define LAYOUT_TAPE_LEN 16	// oh my god layout tape is so much nicer i'll have some changes to make
@@ -64,6 +64,7 @@ void pulseEnable(){
 	/* Let PL read low enable */
 	waitForPL();
 }
+
 
 void provideParserInput(char* testDoc){
 	int i = 0;
@@ -137,14 +138,14 @@ int LEDOutputExample(void){
 
 /* Main function. */
 int main(void){
+	while(1) {
+		xil_printf("Lets get this party STARTED\n");
+		/* Execute the LED output. */
+		LEDOutputExample();
 
-	xil_printf("Lets get this party STARTED\n");
-	/* Execute the LED output. */
-	LEDOutputExample();
-
-	xil_printf("okay, struct tape's first few bits are: %x %x %x\n", readStructTape[0],readStructTape[1],readStructTape[2]);
-	xil_printf("string tape first string len: %d str: %s\n", readStringTape[0],readStringTape[4] );
-
+		xil_printf("okay, struct tape's first few bits are: %x %x %x\n", readStructTape[0],readStructTape[1],readStructTape[2]);
+		xil_printf("string tape first string len: %d str: %s\n", readStringTape[0],readStringTape[4] );
+	}
 	return 0;
 }
 
