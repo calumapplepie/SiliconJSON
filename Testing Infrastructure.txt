@@ -1,0 +1,11 @@
+# Testing Infrastructure ideas
+- Make as giant C source files, using literals (script ?)
+- Somehow force data into boot image
+ + Elf sections?
+ + Seems to be impossible to do reasonably
+- Make as SD card
+ + Xylinx IPs and APIs
+ + Filesystem
+ + Extensible
+ - Bottlenecked at SD card - must load into RAM
+ - More complicated code

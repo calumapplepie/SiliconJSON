@@ -48,3 +48,4 @@ bsp reload
 catch {bsp regenerate}
 platform clean
 platform clean
+bsp reload
