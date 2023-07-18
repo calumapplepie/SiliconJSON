@@ -61,3 +61,12 @@ platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/
 platform generate -domains 
 platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
 platform generate -domains 
+platform clean
+platform generate
+domain create -name {standalone_ps7_cortexa9_1} -display-name {standalone_ps7_cortexa9_1} -os {standalone} -proc {ps7_cortexa9_1} -runtime {cpp} -arch {32-bit} -support-app {empty_application}
+platform generate -domains 
+platform active {GPIO_Wrapped}
+domain active {zynq_fsbl}
+domain active {standalone_domain}
+domain active {standalone_ps7_cortexa9_1}
+platform generate -quick

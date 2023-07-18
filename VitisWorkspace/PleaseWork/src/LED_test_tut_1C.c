@@ -33,7 +33,7 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define PL_DELAY 600	     						/* Software delay length */
+#define PL_DELAY 100	     						/* Software delay length */
 #define printf xil_printf							/* smaller, optimised printf */
 #define STRING_TAPE_LEN 64
 #define LAYOUT_TAPE_LEN 16	// oh my god layout tape is so much nicer i'll have some changes to make
@@ -47,12 +47,11 @@ char  parserControlSignal = 0x0;
 uint64_t readStructTape [LAYOUT_TAPE_LEN];
 char	 readStringTape [STRING_TAPE_LEN]; 
 
-void waitForPL(){
-	volatile int Delay;
-	for (Delay = 0; Delay < PL_DELAY; Delay++);
+void static inline waitForPL(){
+	// PL appears to be faster than PS
 }
 
-void pulseEnable(){
+void static inline pulseEnable(){
 	// set enable bit (its the low bit of our control signal)
 	XGpio_DiscreteSet(&GpioParserInput, 2, 0x1);
 
@@ -65,7 +64,7 @@ void pulseEnable(){
 	waitForPL();
 }
 
-void resetPL(){
+void static inline resetPL(){
 	XGpio_DiscreteSet(&GpioParserInput, 2, 0x2);
 	waitForPL();
 	XGpio_DiscreteClear(&GpioParserInput, 2, 0x2);
