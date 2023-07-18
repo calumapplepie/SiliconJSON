@@ -148,7 +148,7 @@ int main(void){
 		LEDOutputExample();
 
 		xil_printf("okay, struct tape's first few bits are: %x %x %x\n", readStructTape[0],readStructTape[1],readStructTape[2]);
-		xil_printf("string tape first string len: %d str: %s\n", readStringTape[0],readStringTape[4] );
+		xil_printf("string tape first string len: %d str: %s\n", readStringTape[0],&readStringTape[4] );
 	}
 	return 0;
 }
