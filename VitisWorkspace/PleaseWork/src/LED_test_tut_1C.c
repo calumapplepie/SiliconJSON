@@ -65,6 +65,11 @@ void pulseEnable(){
 	waitForPL();
 }
 
+void resetPL(){
+	XGpio_DiscreteSet(&GpioParserInput, 2, 0x2);
+	waitForPL();
+	XGpio_DiscreteClr(&GpioParserInput, 2, 0x2);
+}
 
 void provideParserInput(char* testDoc){
 	int i = 0;
@@ -119,11 +124,10 @@ int LEDOutputExample(void){
 	// Byte is: [0,0,0,0,ParseEnable, ReadSide, Rst, Enable]
 	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
 
+	resetPL();
 	provideParserInput(testDoc1);
 	
-	// now we signal a reset to the PL
-	XGpio_DiscreteSet(&GpioParserInput, 2, 0x2); 
-	waitForPL();
+	resetPL();
 	// swap read/write sides, disable parsing, clear reset
 	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
 
