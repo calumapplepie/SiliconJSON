@@ -20,3 +20,25 @@ domain active {zynq_fsbl}
 domain active {standalone_ps7_cortexa9_0}
 platform generate -quick
 platform generate
+catch {platform remove GPIO_Wrapped}
+domain active {zynq_fsbl}
+bsp reload
+bsp reload
+domain active {standalone_ps7_cortexa9_0}
+bsp reload
+bsp reload
+domain active {zynq_fsbl}
+bsp config compiler "arm-none-eabi-gcc"
+bsp reload
+domain active {standalone_ps7_cortexa9_0}
+bsp config compiler "arm-none-eabi-gcc"
+bsp config extra_compiler_flags "-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+bsp config dependency_flags "-MMD -MP"
+bsp config dependency_flags "-MMD -MP"
+bsp config extra_compiler_flags "-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns -flto"
+bsp write
+bsp reload
+catch {bsp regenerate}
+platform generate -domains standalone_ps7_cortexa9_0 
+platform clean
+platform generate
