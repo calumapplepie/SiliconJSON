@@ -73,7 +73,7 @@
                                     								
                                 </option>
                                 								
-                                <option id="xilinx.gnu.compiler.misc.other.1497566262" name="Other flags" superClass="xilinx.gnu.compiler.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -MT&quot;$@&quot; -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -flto" valueType="string"/>
+                                <option id="xilinx.gnu.compiler.misc.other.1497566262" name="Other flags" superClass="xilinx.gnu.compiler.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -MT&quot;$@&quot; -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard " valueType="string"/>
                                 								
                                 <inputType id="xilinx.gnu.armv7.cxx.compiler.input.2078096729" name="C++ source files" superClass="xilinx.gnu.armv7.cxx.compiler.input"/>
                                 							
@@ -125,7 +125,7 @@
                                 								
                                 <option id="xilinx.gnu.c.linker.option.lscript.889484965" name="Linker Script" superClass="xilinx.gnu.c.linker.option.lscript" value="../src/lscript.ld" valueType="string"/>
                                 								
-                                <option id="xilinx.gnu.c.link.option.ldflags.79943243" name="Linker Flags" superClass="xilinx.gnu.c.link.option.ldflags" useByScannerDiscovery="false" value=" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -flto" valueType="string"/>
+                                <option id="xilinx.gnu.c.link.option.ldflags.79943243" name="Linker Flags" superClass="xilinx.gnu.c.link.option.ldflags" useByScannerDiscovery="false" value=" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec " valueType="string"/>
                                 								
                                 <inputType id="xilinx.gnu.linker.input.1432621458" superClass="xilinx.gnu.linker.input">
                                     									
@@ -356,5 +356,7 @@
     </storageModule>
     	
     <storageModule moduleId="refreshScope"/>
+    	
+    <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
     
 </cproject>

@@ -42,3 +42,9 @@ catch {bsp regenerate}
 platform generate -domains standalone_ps7_cortexa9_0 
 platform clean
 platform generate
+bsp config extra_compiler_flags "-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns"
+bsp write
+bsp reload
+catch {bsp regenerate}
+platform clean
+platform clean
