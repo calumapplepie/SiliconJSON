@@ -68,7 +68,7 @@ void pulseEnable(){
 void resetPL(){
 	XGpio_DiscreteSet(&GpioParserInput, 2, 0x2);
 	waitForPL();
-	XGpio_DiscreteClr(&GpioParserInput, 2, 0x2);
+	XGpio_DiscreteClear(&GpioParserInput, 2, 0x2);
 }
 
 void provideParserInput(char* testDoc){
