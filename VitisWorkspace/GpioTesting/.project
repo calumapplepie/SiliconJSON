@@ -25,4 +25,16 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/testFiles.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-WORKSPACE_LOC/JsonTestFiles/testFiles.c</locationURI>
+		</link>
+		<link>
+			<name>src/testFiles.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-WORKSPACE_LOC/JsonTestFiles/testFiles.h</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
