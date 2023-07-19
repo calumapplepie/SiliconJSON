@@ -1,30 +1,12 @@
 /*
- * LED_test.c
+ * File loosley based on:
+ * BasLED_test.c
  *
  *  Created on: 	13 June 2013
  *      Author: 	Ross Elliot
  *     Version:		1.1
  */
 
-/********************************************************************************************
-* VERSION HISTORY
-********************************************************************************************
-* v1.1 - 27 January 2014
-* 	GPIO_DEVICE_ID definition updated to reflect new naming conventions in Vivado 2013.3
-*		onwards.
-*
-*	v1.0 - 13 June 2013
-*		First version created.
-*******************************************************************************************/
-
-/********************************************************************************************
- * This file contains an example of using the GPIO driver to provide communication between
- * the Zynq Processing System (PS) and the AXI GPIO block implemented in the Zynq Programmable
- * Logic (PL). The AXI GPIO is connected to the LEDs on the ZedBoard.
- *
- * The provided code demonstrates how to use the GPIO driver to write to the memory mapped AXI
- * GPIO block, which in turn controls the LEDs.
- ********************************************************************************************/
 
 /* Include Files */
 #include "xparameters.h"

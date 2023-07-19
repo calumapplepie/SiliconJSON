@@ -27,6 +27,16 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>src/simdjson.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-WORKSPACE_LOC/simdjson_test/simdjson.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/simdjson.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-WORKSPACE_LOC/simdjson_test/simdjson.h</locationURI>
+		</link>
+		<link>
 			<name>src/testFiles.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-WORKSPACE_LOC/JsonTestFiles/testFiles.c</locationURI>
