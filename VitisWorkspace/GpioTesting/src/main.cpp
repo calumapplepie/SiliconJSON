@@ -1,5 +1,5 @@
 /*
- * File loosley based on:
+ * File loosely based on:
  * BasLED_test.c
  *
  *  Created on: 	13 June 2013
@@ -15,7 +15,6 @@
 #include "xil_printf.h"
 
 /* Definitions */
-#define PL_DELAY 100	     						/* Software delay length */
 #define printf xil_printf							/* smaller, optimised printf */
 #define STRING_TAPE_LEN 64
 #define LAYOUT_TAPE_LEN 16	// oh my god layout tape is so much nicer i'll have some changes to make
@@ -83,7 +82,7 @@ void readParserOutput(){
 	}
 }
 
-int LEDOutputExample(void){
+int driveTestingCycle(void){
 	int Status;
 
 	/* GPIO driver initialization */
@@ -126,7 +125,7 @@ int main(void){
 	while(1) {
 		xil_printf("Lets get this party STARTED\n");
 		/* Execute the LED output. */
-		LEDOutputExample();
+		driveTestingCycle();
 
 		xil_printf("okay, struct tape's first few bits are: %x %x %x\n", readStructTape[0],readStructTape[1],readStructTape[2]);
 		xil_printf("string tape first string len: %d str: %s\n", readStringTape[0],&readStringTape[4] );

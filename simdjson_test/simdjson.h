@@ -5856,7 +5856,8 @@ private:
   friend struct simdjson_result<element>;
   template<typename T>
   friend class simdjson::internal::string_builder;
-  friend void ScrewYouIWantTheTape(element toStealFrom, std::ostream &structureTape, std::ostream &stringTape);
+  // Calum adds this to allow for him to access the tape, used for testing purposes.
+  friend std::tuple<const uint64_t*, const uint8_t*> ScrewYouIWantTheTape(const dom::document toStealFrom);
 
 
 };
@@ -13027,6 +13028,9 @@ simdjson_inline size_t significant_digits(const uint8_t * start_digits, size_t d
   return digit_count - size_t(start - start_digits);
 }
 
+// HEY CALUM LOOK HERE TO SEE HOW THEY PARSED FLOATS IF YOU WANNA ADD SUPPORT FOR IT SOMEDAY
+// YEAH LOOK HERE
+// YOUR EYES ON ME RN PLEASE
 template<typename W>
 simdjson_inline error_code write_float(const uint8_t *const src, bool negative, uint64_t i, const uint8_t * start_digits, size_t digit_count, int64_t exponent, W &writer) {
   // If we frequently had to deal with long strings of digits,

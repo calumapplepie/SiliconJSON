@@ -31,99 +31,108 @@ const std::string target_file_dir =  "../JsonTestFiles/";
 
 namespace simdjson {
 namespace dom {
-	void ScrewYouIWantTheTape(
-			const dom::element toStealFrom, std::ostream &structureTape, std::ostream &stringTape
+	std::tuple<const uint64_t*, const uint8_t*> ScrewYouIWantTheTape(
+			dom::element toStealFrom
 		){
 		// sneak in and steal the document
 		auto document = toStealFrom.tape.doc;
+		// violate the guarantees of a unique_ptr
+		uint64_t* struct_tape = document->tape.release();
+
 		
-		// code stolen almost verbatim from simdjson.h
-		uint32_t string_length;
-		uint32_t string_buf_pos =0;
-		size_t tape_idx = 0;
-		uint64_t tape_val = document->tape[tape_idx];
-		uint8_t type = uint8_t(tape_val >> 56);
-		// tape_idx++;
-
-		// get length of array (yes we trust this data)
-		size_t how_many = 0;
-		if (type == 'r') {
-				how_many = size_t(tape_val & internal::JSON_VALUE_MASK);
-		}
-		else{
-			std::cout << "wtf you had one job! gimme a valid json document";
-			std::abort();
-		}
-		
-		// now write the tape out to a string
-		for (; tape_idx < how_many; tape_idx++) {
-			#ifdef FORMAT_SYSV_LITERALS
-					structureTape << "64'h";
-			#endif
-			#ifdef FORMAT_C_LITERALS
-					structureTape << "0x";
-			#endif
-
-			const uint64_t curElement =  document->tape[tape_idx];
-			structureTape << std::hex << curElement;
-
-			#ifdef INCLUDE_COMMAS
-				structureTape << ", ";
-			#endif
-			#ifdef INCLUDE_LINE_BREAKS 
-				structureTape <<std::endl;
-			#endif
-
-			// check if string element
-			const char elementType = uint8_t(curElement >> 56);
-			if (elementType == '"'){
-				// grab the payload
-				const uint64_t stringPos = curElement & 0x00FFFFFF;
-				// now we get to some stuff I took from dump_raw_json again
-				// but not quite, remember we still want hex
-				std::memcpy(&string_length, document->string_buf.get() + stringPos, sizeof(uint32_t));
-
-				// having done that nifty trick, we now go back to my code
-				// we need to include both the null ending byte and the size bytes.
-				// the only reason we don't just print out the whole tape... is because...
-				// as far as i can tell, they throw away the length of the buffer when
-				// they're done parsing.
-				if(string_buf_pos != stringPos){
-					std::cout << "ERROR! String buffer position not as expected" <<std::endl;
-				}
-
-				for(string_buf_pos = stringPos; string_buf_pos < stringPos + string_length + 5; string_buf_pos++){
-					#ifdef FORMAT_SYSV_LITERALS
-					stringTape << "8'h";
-					#endif
-					#ifdef FORMAT_C_LITERALS
-					stringTape << "0x";
-					#endif
-
-
-					// that little plus promotes it to a real number!
-					stringTape << std::hex << +(document->string_buf[string_buf_pos]);
-					
-					#ifdef INCLUDE_COMMAS
-					stringTape << ", ";
-					#endif
-					#ifdef FORMAT_READMEMH
-					// the verilog memory read function we use requires each number to be whitespace-separated
-					stringTape << std::endl;
-					#endif
-				}
-				
-				#ifdef INCLUDE_LINE_BREAKS 
-				#ifndef FORMAT_READMEMH
-					stringTape <<std::endl;
-				#endif
-				#endif
-
-			}
-		}
-
 	}
 }}
+
+void tapeToStreams (
+			const dom::document toStealFrom, std::ostream &structureTape, std::ostream &stringTape
+		){
+	// code stolen almost verbatim from simdjson.h
+	uint32_t string_length;
+	uint32_t string_buf_pos =0;
+	size_t tape_idx = 0;
+	uint64_t tape_val = document->tape[tape_idx];
+	uint8_t type = uint8_t(tape_val >> 56);
+	// tape_idx++;
+
+	// get length of array (yes we trust this data)
+	size_t how_many = 0;
+	if (type == 'r') {
+			how_many = size_t(tape_val & internal::JSON_VALUE_MASK);
+	}
+	else{
+		std::cout << "wtf you had one job! gimme a valid json document";
+		std::abort();
+	}
+	
+	// now write the tape out to a string
+	for (; tape_idx < how_many; tape_idx++) {
+		#ifdef FORMAT_SYSV_LITERALS
+				structureTape << "64'h";
+		#endif
+		#ifdef FORMAT_C_LITERALS
+				structureTape << "0x";
+		#endif
+
+		const uint64_t curElement =  document->tape[tape_idx];
+		structureTape << std::hex << curElement;
+
+		#ifdef INCLUDE_COMMAS
+			structureTape << ", ";
+		#endif
+		#ifdef INCLUDE_LINE_BREAKS 
+			structureTape <<std::endl;
+		#endif
+
+		// check if string element
+		const char elementType = uint8_t(curElement >> 56);
+		if (elementType == '"'){
+			// grab the payload
+			const uint64_t stringPos = curElement & 0x00FFFFFF;
+			// now we get to some stuff I took from dump_raw_json again
+			// but not quite, remember we still want hex
+			std::memcpy(&string_length, document->string_buf.get() + stringPos, sizeof(uint32_t));
+
+			// having done that nifty trick, we now go back to my code
+			// we need to include both the null ending byte and the size bytes.
+			// the only reason we don't just print out the whole tape... is because...
+			// as far as i can tell, they throw away the length of the buffer when
+			// they're done parsing.
+			if(string_buf_pos != stringPos){
+				std::cout << "ERROR! String buffer position not as expected" <<std::endl;
+			}
+
+			for(string_buf_pos = stringPos; string_buf_pos < stringPos + string_length + 5; string_buf_pos++){
+				#ifdef FORMAT_SYSV_LITERALS
+				stringTape << "8'h";
+				#endif
+				#ifdef FORMAT_C_LITERALS
+				stringTape << "0x";
+				#endif
+
+
+				// that little plus promotes it to a real number!
+				stringTape << std::hex << +(document->string_buf[string_buf_pos]);
+				
+				#ifdef INCLUDE_COMMAS
+				stringTape << ", ";
+				#endif
+				#ifdef FORMAT_READMEMH
+				// the verilog memory read function we use requires each number to be whitespace-separated
+				stringTape << std::endl;
+				#endif
+			}
+			
+			#ifdef INCLUDE_LINE_BREAKS 
+			#ifndef FORMAT_READMEMH
+				stringTape <<std::endl;
+			#endif
+			#endif
+
+		}
+	}
+
+		
+}
 
 void writeCFileVersion (std::filesystem::path  jsonFilePath){
 	std::ifstream jsonFileStream {jsonFilePath};
@@ -180,7 +189,7 @@ int main(void) {
 
 		minifiedOut << minify(json) << std::endl;
 
-    	dom::ScrewYouIWantTheTape(json, hexOutStruct, hexOutString);
+    	tapeToStreams(json, hexOutStruct, hexOutString);
 
 		auto baseName = file.path().stem().string();
 		auto fullFile = get_file_contents(file);
