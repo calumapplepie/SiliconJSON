@@ -15,7 +15,6 @@ const std::string target_file_dir =  "../JsonTestFiles/";
 #undef	FORMAT_SYSV_LITERALS   // Format as a list of system-verilog literals 
 #undef  FORMAT_C_LITERALS       // Format as a list of C literals
 #define  FORMAT_READMEMH 	1	// Format as a $readmemh() compatable file
-#define GENERATE_C_VERSION  1   // generate .c and .h files that wrap the json arrays
 
 // Rest of the code should work without modifications
 
@@ -189,8 +188,11 @@ int main(void) {
 		minifiedOut.close();
 		
 		auto baseName = file.path().stem().string();
-		
-		rawFileStorage.insert({baseName,get_file_contents(file),minify(json)});
+		auto fullFile = get_file_contents(file);
+		fullFile.erase(std::remove(fullFile.begin(), fullFile.end(), '\n'), fullFile.cend());
+		fullFile.erase(std::remove(fullFile.begin(), fullFile.end(), '\r'), fullFile.cend());
+
+		rawFileStorage.insert({baseName,fullFile,minify(json)});
 	}
 
 	std::ofstream cFileOut 	{dir / "testFiles.c", std::ios_base::trunc};
@@ -200,10 +202,12 @@ int main(void) {
 	hFileOut << "#ifndef TESTFILES_H \n #define TESTFILES_H";
 	hFileOut << "extern char ** jsonTestFiles; ";
 	hFileOut << "extern char ** jsonTestFilesMinified;";
+	hFileOut << "extern char ** jsonTestFilesNames;";
 	hFileOut << "#endif";
 	
 	std::stringstream fullArray;
 	std::stringstream minArray;
+	std::stringstream nameArray;
 
 	// what follows is c++ structured binding declaration in a range-based for loop
 	// my GOD this language has everything
@@ -211,10 +215,12 @@ int main(void) {
 		basenamesOut << baseName << std::endl;
 		fullArray 	 << std::quoted(fullJson) << ",\n";
 		minArray	 << std::quoted(minJson) << ",\n";
+		nameArray	 << std::quoted(baseName) << ",\n";
 	}
 
-	cFileOut << "char** jsonTestFiles = [" << fullArray.str() << "];";
-	cFileOut << "char** jsonTestFilesMinified = [" << minArray.str() << "];";
+	cFileOut << "char** jsonTestFiles = {" << fullArray.str() << "};";
+	cFileOut << "char** jsonTestFilesMinified = {" << minArray.str() << "};";
+	cFileOut << "char** jsonTestFilesNames = {" << minArray.str() << "};";
 
 	basenamesOut.close();
 	hFileOut.close();
