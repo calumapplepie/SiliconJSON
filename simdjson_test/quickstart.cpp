@@ -28,29 +28,14 @@ const std::string target_file_dir =  "../JsonTestFiles/";
 #define INCLUDE_COMMAS		1
 #endif
 
-
-namespace simdjson {
-namespace dom {
-	std::tuple<const uint64_t*, const uint8_t*> ScrewYouIWantTheTape(
-			dom::element toStealFrom
-		){
-		// sneak in and steal the document
-		auto document = toStealFrom.tape.doc;
-		// violate the guarantees of a unique_ptr
-		uint64_t* struct_tape = document->tape.release();
-
-		
-	}
-}}
-
 void tapeToStreams (
-			const dom::document toStealFrom, std::ostream &structureTape, std::ostream &stringTape
+			dom::document& toStealFrom, std::ostream &structureTape, std::ostream &stringTape
 		){
 	// code stolen almost verbatim from simdjson.h
 	uint32_t string_length;
 	uint32_t string_buf_pos =0;
 	size_t tape_idx = 0;
-	uint64_t tape_val = document->tape[tape_idx];
+	uint64_t tape_val = toStealFrom.tape[tape_idx];
 	uint8_t type = uint8_t(tape_val >> 56);
 	// tape_idx++;
 
@@ -73,7 +58,7 @@ void tapeToStreams (
 				structureTape << "0x";
 		#endif
 
-		const uint64_t curElement =  document->tape[tape_idx];
+		const uint64_t curElement =  toStealFrom.tape[tape_idx];
 		structureTape << std::hex << curElement;
 
 		#ifdef INCLUDE_COMMAS
@@ -90,7 +75,7 @@ void tapeToStreams (
 			const uint64_t stringPos = curElement & 0x00FFFFFF;
 			// now we get to some stuff I took from dump_raw_json again
 			// but not quite, remember we still want hex
-			std::memcpy(&string_length, document->string_buf.get() + stringPos, sizeof(uint32_t));
+			std::memcpy(&string_length, toStealFrom.string_buf.get() + stringPos, sizeof(uint32_t));
 
 			// having done that nifty trick, we now go back to my code
 			// we need to include both the null ending byte and the size bytes.
@@ -111,7 +96,7 @@ void tapeToStreams (
 
 
 				// that little plus promotes it to a real number!
-				stringTape << std::hex << +(document->string_buf[string_buf_pos]);
+				stringTape << std::hex << +(toStealFrom.string_buf[string_buf_pos]);
 				
 				#ifdef INCLUDE_COMMAS
 				stringTape << ", ";
@@ -174,7 +159,9 @@ int main(void) {
 			// ignore, its not a target
 			continue;
 		}
-    	dom::element json = parser.load(file.path().string());
+		auto fullFile = get_file_contents(file);
+		dom::document jsonDoc;
+    	dom::element json = parser.parse_into_document(jsonDoc, fullFile);
 
 		auto hexPathStruct = file.path();
 		hexPathStruct.replace_extension("struct.hex");
@@ -189,10 +176,10 @@ int main(void) {
 
 		minifiedOut << minify(json) << std::endl;
 
-    	tapeToStreams(json, hexOutStruct, hexOutString);
+    	tapeToStreams(jsonDoc, hexOutStruct, hexOutString);
 
 		auto baseName = file.path().stem().string();
-		auto fullFile = get_file_contents(file);
+		
 		std::replace(fullFile.begin(), fullFile.end(), '\n', ' ');
 		std::replace(fullFile.begin(), fullFile.end(), '\r', ' ');
 

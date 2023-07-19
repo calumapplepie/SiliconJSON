@@ -5856,10 +5856,6 @@ private:
   friend struct simdjson_result<element>;
   template<typename T>
   friend class simdjson::internal::string_builder;
-  // Calum adds this to allow for him to access the tape, used for testing purposes.
-  friend std::tuple<const uint64_t*, const uint8_t*> ScrewYouIWantTheTape(const dom::document toStealFrom);
-
-
 };
 
 } // namespace dom
