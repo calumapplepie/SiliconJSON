@@ -2,6 +2,7 @@
 #include "simdjson.h"
 #include <filesystem>
 #include <fstream>
+#include <sstream>
 #include <set>
 
 using namespace simdjson;
@@ -143,6 +144,15 @@ void writeCFileVersion (std::filesystem::path  jsonFilePath){
 	return;
 }
 
+// function credit https://insanecoding.blogspot.com/2011/11/how-to-read-in-file-in-c.html, with changes
+std::string get_file_contents(std::filesystem::path file) {
+	std::ifstream in(file, std::ios::in | std::ios::binary);
+    std::ostringstream contents;
+    contents << in.rdbuf();
+    in.close();
+    return(contents.str());
+}
+
 int main(void) {
     dom::parser parser;
 	std::filesystem::path dir{target_file_dir};
@@ -179,18 +189,35 @@ int main(void) {
 		minifiedOut.close();
 		
 		auto baseName = file.path().stem().string();
-		rawFileStorage.insert({baseName,"",minify(json)});
+		
+		rawFileStorage.insert({baseName,get_file_contents(file),minify(json)});
 	}
 
-	auto cFilePath = dir / "testFiles.c";
-	auto hFilePath = dir / "testFiles.h";
-
+	std::ofstream cFileOut 	{dir / "testFiles.c", std::ios_base::trunc};
+	std::ofstream hFileOut	{dir / "testFiles.h", std::ios_base::trunc};
 	std::ofstream basenamesOut{dir / "basenames.txt", std::ios_base::trunc};
-	// c++ structured binding declaration in a range-based for loop
+
+	hFileOut << "#ifndef TESTFILES_H \n #define TESTFILES_H";
+	hFileOut << "extern char ** jsonTestFiles; ";
+	hFileOut << "extern char ** jsonTestFilesMinified;";
+	hFileOut << "#endif";
+	
+	std::stringstream fullArray;
+	std::stringstream minArray;
+
+	// what follows is c++ structured binding declaration in a range-based for loop
 	// my GOD this language has everything
 	for (auto const& [baseName, fullJson, minJson] : rawFileStorage){
 		basenamesOut << baseName << std::endl;
+		fullArray 	 << std::quoted(fullJson) << ",\n";
+		minArray	 << std::quoted(minJson) << ",\n";
 	}
+
+	cFileOut << "char** jsonTestFiles = [" << fullArray.str() << "];";
+	cFileOut << "char** jsonTestFilesMinified = [" << minArray.str() << "];";
+
 	basenamesOut.close();
+	hFileOut.close();
+	cFileOut.close();
     //json.dump_raw_tape(std::cout);
 }
