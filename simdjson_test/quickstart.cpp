@@ -146,8 +146,8 @@ void writeCFileVersion (std::filesystem::path  jsonFilePath){
 int main(void) {
     dom::parser parser;
 	std::filesystem::path dir{target_file_dir};
-	std::set<std::string> baseNamesStorage;
-	
+	std::set<std::tuple<std::string, std::string, std::string>> rawFileStorage;
+
 	for (auto const& file : std::filesystem::directory_iterator{dir}){
 		if(!file.is_regular_file()){
 			std::cout << "please ensure directory is only standard files, only a flat structure is supported";
@@ -158,7 +158,6 @@ int main(void) {
 			continue;
 		}
     	dom::element json = parser.load(file.path().string());
-		baseNamesStorage.insert(file.path().stem().string());
 
 		auto hexPathStruct = file.path();
 		hexPathStruct.replace_extension("struct.hex");
@@ -179,11 +178,18 @@ int main(void) {
 		hexOutStruct.close();
 		minifiedOut.close();
 		
+		auto baseName = file.path().stem().string();
+		rawFileStorage.insert({baseName,"",minify(json)});
 	}
 
+	auto cFilePath = dir / "testFiles.c";
+	auto hFilePath = dir / "testFiles.h";
+
 	std::ofstream basenamesOut{dir / "basenames.txt", std::ios_base::trunc};
-	for (auto const& str : baseNamesStorage){
-		basenamesOut << str << std::endl;
+	// c++ structured binding declaration in a range-based for loop
+	// my GOD this language has everything
+	for (auto const& [baseName, fullJson, minJson] : rawFileStorage){
+		basenamesOut << baseName << std::endl;
 	}
 	basenamesOut.close();
     //json.dump_raw_tape(std::cout);
