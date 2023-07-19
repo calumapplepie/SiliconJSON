@@ -14,6 +14,7 @@ const std::string target_file_dir =  "../JsonTestFiles/";
 #undef	FORMAT_SYSV_LITERALS   // Format as a list of system-verilog literals 
 #undef  FORMAT_C_LITERALS       // Format as a list of C literals
 #define  FORMAT_READMEMH 	1	// Format as a $readmemh() compatable file
+#define GENERATE_C_VERSION  1   // generate .c and .h files that wrap the json arrays
 
 // Rest of the code should work without modifications
 
@@ -123,6 +124,24 @@ namespace dom {
 
 	}
 }}
+
+void writeCFileVersion (std::filesystem::path  jsonFilePath){
+	std::ifstream jsonFileStream {jsonFilePath};
+	auto cFilePath = jsonFilePath;
+	auto hFilePath = jsonFilePath;
+
+	cFilePath.replace_extension(".c");
+	hFilePath.replace_extension(".h");
+
+	std::ofstream cFileStream {cFilePath, std::ios_base::trunc} ;
+	std::ofstream hFileStream {hFilePath, std::ios_base::trunc} ;
+
+	auto basename = jsonFilePath.stem().string();
+	
+	hFileStream << "extern char* testFile" << basename;
+
+	return;
+}
 
 int main(void) {
     dom::parser parser;
