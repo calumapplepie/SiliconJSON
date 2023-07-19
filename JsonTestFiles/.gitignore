@@ -2,4 +2,3 @@
 *.minjson
 /basenames.txt
 testFiles.c
-testFiles.h

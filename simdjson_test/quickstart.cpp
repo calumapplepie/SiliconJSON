@@ -148,7 +148,6 @@ std::string get_file_contents(std::filesystem::path file) {
 	std::ifstream in(file, std::ios::in | std::ios::binary);
     std::ostringstream contents;
     contents << in.rdbuf();
-    in.close();
     return(contents.str());
 }
 
@@ -183,27 +182,16 @@ int main(void) {
 
     	dom::ScrewYouIWantTheTape(json, hexOutStruct, hexOutString);
 
-		hexOutString.close();
-		hexOutStruct.close();
-		minifiedOut.close();
-		
 		auto baseName = file.path().stem().string();
 		auto fullFile = get_file_contents(file);
-		fullFile.erase(std::remove(fullFile.begin(), fullFile.end(), '\n'), fullFile.cend());
-		fullFile.erase(std::remove(fullFile.begin(), fullFile.end(), '\r'), fullFile.cend());
+		std::replace(fullFile.begin(), fullFile.end(), '\n', ' ');
+		std::replace(fullFile.begin(), fullFile.end(), '\r', ' ');
 
 		rawFileStorage.insert({baseName,fullFile,minify(json)});
 	}
 
 	std::ofstream cFileOut 	{dir / "testFiles.c", std::ios_base::trunc};
-	std::ofstream hFileOut	{dir / "testFiles.h", std::ios_base::trunc};
 	std::ofstream basenamesOut{dir / "basenames.txt", std::ios_base::trunc};
-
-	hFileOut << "#ifndef TESTFILES_H \n #define TESTFILES_H";
-	hFileOut << "extern char ** jsonTestFiles; ";
-	hFileOut << "extern char ** jsonTestFilesMinified;";
-	hFileOut << "extern char ** jsonTestFilesNames;";
-	hFileOut << "#endif";
 	
 	std::stringstream fullArray;
 	std::stringstream minArray;
@@ -221,9 +209,5 @@ int main(void) {
 	cFileOut << "char** jsonTestFiles = {" << fullArray.str() << "};";
 	cFileOut << "char** jsonTestFilesMinified = {" << minArray.str() << "};";
 	cFileOut << "char** jsonTestFilesNames = {" << minArray.str() << "};";
-
-	basenamesOut.close();
-	hFileOut.close();
-	cFileOut.close();
     //json.dump_raw_tape(std::cout);
 }
