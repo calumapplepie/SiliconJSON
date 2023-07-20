@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 07/11/2023 01:54:15 PM
+// Create Date: 07/20/2023 03:43:09 PM
 // Design Name: 
-// Module Name: TopWrapper
+// Module Name: OutputBlockBreaker
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,11 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TopWrapper (
-    input wire [7:0] curChar,
-    input GCLK, rst, enable, readSide, parseEnable,
-    output wire [63:0] curStructBits,
-    output wire [7:0]  curStringBits
-);    
-    TopLevel topLevel (curCharOut, GCLK, rst, enable, readSide, parseEnable, curStructBits, curStringBits);
+module OutputBlockBreaker(
+
+    );
 endmodule
