@@ -4,9 +4,9 @@
 #include "xil_printf.h"
 #include "simdjson.h"
 
-void init();
+void init_simdjson();
 
-void parse(char* inputChars);
+void parse_simdjson(char* inputChars);
 
-int verify(char* stringTape, uint64_t* layoutTape);
+int  verify(char* stringTape, uint64_t* layoutTape);
 #endif

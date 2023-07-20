@@ -12,8 +12,10 @@
 #include "xparameters.h"
 #include "xgpio.h"
 #include "xstatus.h"
-#include "ConfigParam.h"
 
+#include "ConfigParam.h"
+#include "testFiles.h"
+#include "SimdjsonStealer.h"
 
 XGpio GpioParserInput;											/* GPIO Device driver instance */
 XGpio GpioStructReader;
@@ -77,6 +79,25 @@ void readParserOutput(){
 	}
 }
 
+int testDocument(char* testDoc){
+	// set the parser control byte to our starting value
+	// Byte is: [0,0,0,0,ParseEnable, ReadSide, Rst, Enable]
+	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
+
+	resetPL();
+	provideParserInput(testDoc);
+
+	resetPL();
+	// swap read/write sides, disable parsing, clear reset
+	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
+
+	// read document
+	readParserOutput();
+
+	parse_simdjson(testDoc);
+	return verify(readStringTape, readStructTape);
+}
+
 int driveTestingCycle(void){
 	int Status;
 
@@ -95,21 +116,7 @@ int driveTestingCycle(void){
 	XGpio_SetDataDirection(&GpioStructReader, 2, 0xFFFFFFFF);	// higher bits of struct tape
 	XGpio_SetDataDirection(&GpioStringReader, 1, 0xFFFFFFFF);	// string tape bits
 
-	// set the parser control byte to our starting value
-	// Byte is: [0,0,0,0,ParseEnable, ReadSide, Rst, Enable]
-	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00001000);
 
-	resetPL();
-	provideParserInput(testDoc1);
-
-	resetPL();
-	// swap read/write sides, disable parsing, clear reset
-	XGpio_DiscreteWrite(&GpioParserInput, 2, 0b00000100);
-
-	// read document
-	readParserOutput();
-
-	// verify (later)
 
 
 	return XST_SUCCESS;
@@ -117,6 +124,7 @@ int driveTestingCycle(void){
 
 /* Main function. */
 int main(void){
+	init_simdjson();
 	while(1) {
 		xil_printf("Lets get this party STARTED\n");
 		/* Execute the LED output. */
