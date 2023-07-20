@@ -2,7 +2,7 @@
 #define SIMDJSONSTEALER_H
 
 #include "xil_printf.h"
-#include "simdjson.h"
+#include <cstdint>
 
 void init_simdjson();
 

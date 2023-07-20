@@ -1,5 +1,6 @@
 #include "SimdjsonStealer.h"
 #include "ConfigParam.h"
+#include "simdjson.h"
 
 using namespace simdjson;
 

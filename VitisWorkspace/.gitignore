@@ -1,6 +1,7 @@
 RemoteSystemsTempFiles/
 IDE.log
 .analytics
+*/tempdsa
 
 # next two credit https://asktheoracle.com/how-to-use-git-source-code-control-with-vivado/
 Xilinx.spec

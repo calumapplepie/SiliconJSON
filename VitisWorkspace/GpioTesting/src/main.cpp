@@ -50,12 +50,17 @@ void static inline resetPL(){
 
 void provideParserInput(char* testDoc){
 	int i = 0;
-	while (testDoc[i]) { // go to null terminator
+	int maxI = strlen(testDoc);
+	while (i < maxI) {
 		/* Write to parser */
-		XGpio_DiscreteWrite(&GpioParserInput, 1, testDoc[i]);
+		uint32_t stringBlock;
+		// note: out-of-bounds is acceptable, nothing SHOULD happen after the last character
+		std::memcpy(&stringBlock, testDoc + i, sizeof(uint32_t));
+
+		XGpio_DiscreteWrite(&GpioParserInput, 1, stringBlock);
 		// pulse the enable bit
 		pulseEnable();
-		i++;
+		i+= 4;
 	}
 	// give it three pulses for good luck and/or pipeline clearing
 	pulseEnable();
@@ -119,14 +124,16 @@ int driveTestingCycle(void){
 	// test standard versions
 	for(int i = 0; i < numFiles; i++){
 		int errors  = testDocument(jsonTestFiles[i]);
-		if(errors != 0){printf("ERROR ERROR ERROR\n");}
+		if(errors != 0){
+			printf("ERROR ERROR ERROR\n");}
 		printf("encountered %d errors in document %d: %s\n", errors,i, jsonTestFilesNames[i]);
 	}
 
 	// test minified versions
 	for(int i = 0; i < numFiles; i++){
 		int errors  = testDocument(jsonTestFilesMinified[i]);
-		if(errors != 0){printf("ERROR ERROR ERROR\n");}
+		if(errors != 0){
+			printf("ERROR ERROR ERROR\n");}
 		printf("encountered %d errors in document %d: %s\n", errors,i, jsonTestFilesNames[i]);
 	}
 

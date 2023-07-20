@@ -54,3 +54,5 @@ platform active {GPIO_Cpu_Interface_wrapper}
 platform generate
 platform clean
 platform generate
+platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
+platform generate -domains 
