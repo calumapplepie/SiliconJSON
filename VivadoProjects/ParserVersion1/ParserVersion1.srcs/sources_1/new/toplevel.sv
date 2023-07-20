@@ -6,8 +6,10 @@ module TopLevel import Core::UTF8_Char; (
 );
     assign clk = GCLK;
         
-    (* mark_debug = "true" *) Ram::StringBlockRamWrite parserStringWrite, readerStringWrite;
-    (* mark_debug = "true" *) Ram::StructBlockRamWrite parserStructWrite, readerStructWrite;
+    (* mark_debug = "true" *) Ram::StringBlockRamWrite parserStringWrite;
+    Ram::StringBlockRamWrite readerStringWrite;
+    (* mark_debug = "true" *) Ram::StructBlockRamWrite parserStructWrite;
+    Ram::StructBlockRamWrite readerStructWrite;
     
     Ram::StringBlockRamRead  readerStringRead;
     Ram::StructBlockRamRead  readerStructRead;

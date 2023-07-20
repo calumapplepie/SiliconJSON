@@ -31,8 +31,8 @@
       "axi_gpio_2": "",
       "processing_system7_0": "",
       "rst_ps7_0_50M": "",
-      "TopWrapper_0": "",
-      "InputBlockBreakerWra_0": ""
+      "InputBlockBreakerWra_0": "",
+      "TopWrapper_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -2616,6 +2616,57 @@
         "xci_path": "ip/GPIO_Cpu_Interface_rst_ps7_0_50M_0/GPIO_Cpu_Interface_rst_ps7_0_50M_0.xci",
         "inst_hier_path": "rst_ps7_0_50M"
       },
+      "InputBlockBreakerWra_0": {
+        "vlnv": "xilinx.com:module_ref:InputBlockBreakerWrapper:1.0",
+        "xci_name": "GPIO_Cpu_Interface_InputBlockBreakerWra_0_0",
+        "xci_path": "ip/GPIO_Cpu_Interface_InputBlockBreakerWra_0_0/GPIO_Cpu_Interface_InputBlockBreakerWra_0_0.xci",
+        "inst_hier_path": "InputBlockBreakerWra_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "InputBlockBreakerWrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "curCharBlock": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "GPIO_Cpu_Interface_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "enableIn": {
+            "direction": "I"
+          },
+          "enableOut": {
+            "direction": "O"
+          },
+          "curChar": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
       "TopWrapper_0": {
         "vlnv": "xilinx.com:module_ref:TopWrapper:1.0",
         "xci_name": "GPIO_Cpu_Interface_TopWrapper_0_0",
@@ -2668,57 +2719,6 @@
             "right": "0"
           },
           "curStringBits": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          }
-        }
-      },
-      "InputBlockBreakerWra_0": {
-        "vlnv": "xilinx.com:module_ref:InputBlockBreakerWrapper:1.0",
-        "xci_name": "GPIO_Cpu_Interface_InputBlockBreakerWra_0_0",
-        "xci_path": "ip/GPIO_Cpu_Interface_InputBlockBreakerWra_0_0/GPIO_Cpu_Interface_InputBlockBreakerWra_0_0.xci",
-        "inst_hier_path": "InputBlockBreakerWra_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "InputBlockBreakerWrapper",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "curCharBlock": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "GPIO_Cpu_Interface_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "enableIn": {
-            "direction": "I"
-          },
-          "enableOut": {
-            "direction": "O"
-          },
-          "curChar": {
             "direction": "O",
             "left": "7",
             "right": "0"
@@ -2783,7 +2783,15 @@
         "ports": [
           "InputBlockBreakerWra_0/enableOut",
           "TopWrapper_0/enable"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "StructHigh_Dout": {
         "ports": [
@@ -2801,14 +2809,30 @@
         "ports": [
           "TopWrapper_0/curStringBits",
           "axi_gpio_2/gpio_io_i"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "TopWrapper_0_curStructBits": {
         "ports": [
           "TopWrapper_0/curStructBits",
           "StructLow/Din",
           "StructHigh/Din"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "axi_gpio_0_gpio2_io_o": {
         "ports": [
@@ -2854,8 +2878,8 @@
           "axi_gpio_2/s_axi_aclk",
           "processing_system7_0/M_AXI_GP0_ACLK",
           "rst_ps7_0_50M/slowest_sync_clk",
-          "TopWrapper_0/GCLK",
-          "InputBlockBreakerWra_0/clk"
+          "InputBlockBreakerWra_0/clk",
+          "TopWrapper_0/GCLK"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -2886,8 +2910,8 @@
       "xlslice_1_Dout": {
         "ports": [
           "xlslice_1/Dout",
-          "TopWrapper_0/rst",
-          "InputBlockBreakerWra_0/rst"
+          "InputBlockBreakerWra_0/rst",
+          "TopWrapper_0/rst"
         ]
       },
       "xlslice_2_Dout": {

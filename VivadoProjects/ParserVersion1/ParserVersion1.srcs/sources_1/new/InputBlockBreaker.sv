@@ -21,7 +21,7 @@
 
 // breaks a block of 4 characters into 4 cycles of 1 character blocks
 module InputBlockBreaker(
-        input logic [7:0] curCharBlock [0:3], logic clk, rst, enableIn,
+        input logic [7:0] curCharBlock [3:0], logic clk, rst, enableIn,
         output logic enableOut, logic[7:0] curChar
     );
     logic [1:0] curBlock;

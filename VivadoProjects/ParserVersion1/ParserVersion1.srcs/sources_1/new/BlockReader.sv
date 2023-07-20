@@ -32,7 +32,7 @@ module BlockReader import Ram::*;  #(WORDSIZE=8, type WriteType, type ReadType) 
         output logic [WORDSIZE-1:0] data 
     );
     // get an actual number for this later
-    logic [32:0] curAddr;
+    (* mark_debug = "true" *) logic [16:0] curAddr;
     
     // todo: use asymetric TDP functions of zedboard block rams
     // will require yet more parameters

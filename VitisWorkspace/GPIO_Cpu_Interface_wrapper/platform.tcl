@@ -58,3 +58,5 @@ platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/
 platform generate -domains 
 platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
 platform generate -domains 
+platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
+platform generate -domains 
