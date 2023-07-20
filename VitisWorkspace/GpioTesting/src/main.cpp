@@ -12,6 +12,7 @@
 #include "xparameters.h"
 #include "xgpio.h"
 #include "xstatus.h"
+#include <cstdio>
 
 #include "ConfigParam.h"
 #include "testFiles.h"
@@ -55,7 +56,7 @@ void provideParserInput(char* testDoc){
 		/* Write to parser */
 		uint32_t stringBlock;
 		// note: out-of-bounds is acceptable, nothing SHOULD happen after the last character
-		std::memcpy(&stringBlock, testDoc + i, sizeof(uint32_t));
+		memcpy(&stringBlock, testDoc + i, sizeof(uint32_t));
 
 		XGpio_DiscreteWrite(&GpioParserInput, 1, stringBlock);
 		// pulse the enable bit
