@@ -2769,7 +2769,15 @@
         "ports": [
           "InputBlockBreakerWra_0/curChar",
           "TopWrapper_0/curChar"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "InputBlockBreakerWra_0_enableOut": {
         "ports": [
@@ -2809,13 +2817,29 @@
           "xlslice_1/Din",
           "xlslice_2/Din",
           "xlslice_3/Din"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "axi_gpio_0_gpio_io_o": {
         "ports": [
           "axi_gpio_0/gpio_io_o",
           "InputBlockBreakerWra_0/curCharBlock"
-        ]
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "processing_system7_0_FCLK_CLK0": {
         "ports": [
