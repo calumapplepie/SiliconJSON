@@ -67,13 +67,17 @@
                                 								
                                 <option id="xilinx.gnu.compiler.option.debugging.level.36008105" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <option id="xilinx.gnu.compiler.inferred.swplatform.includes.1400256468" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.includes.1400256468" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath"/>
+                                								
+                                <option id="xilinx.gnu.compiler.misc.other.1497566262" name="Other flags" superClass="xilinx.gnu.compiler.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -MT&quot;$@&quot; -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard " valueType="string"/>
+                                								
+                                <option id="xilinx.gnu.compiler.dircategory.includes.1079392887" name="Include Paths" superClass="xilinx.gnu.compiler.dircategory.includes" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/GpioTesting/src}&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="${resolvePlatformFile:project=GpioTesting,fileType=bspInclude}"/>
                                     								
                                 </option>
-                                								
-                                <option id="xilinx.gnu.compiler.misc.other.1497566262" name="Other flags" superClass="xilinx.gnu.compiler.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -MT&quot;$@&quot; -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard " valueType="string"/>
                                 								
                                 <inputType id="xilinx.gnu.armv7.cxx.compiler.input.2078096729" name="C++ source files" superClass="xilinx.gnu.armv7.cxx.compiler.input"/>
                                 							
@@ -149,7 +153,7 @@
                     					
                     <sourceEntries>
                         						
-                        <entry excluding="src/testFiles.c|src/simdjson.cpp|src/simdjson.h|_ide" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+                        <entry excluding="src/testFiles.c|_ide" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
                         					
                     </sourceEntries>
                     				
@@ -327,17 +331,35 @@
         	
     </storageModule>
     	
+    <storageModule moduleId="refreshScope" versionNumber="2">
+        		
+        <configuration configurationName="Debug">
+            			
+            <resource resourceType="PROJECT" workspacePath="/GpioTesting"/>
+            		
+        </configuration>
+        		
+        <configuration configurationName="Release">
+            			
+            <resource resourceType="PROJECT" workspacePath="/GpioTesting"/>
+            		
+        </configuration>
+        	
+    </storageModule>
+    	
+    <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+    	
     <storageModule moduleId="scannerConfiguration">
         		
         <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
         		
-        <scannerConfigBuildInfo instanceId="xilinx.gnu.armv7.exe.debug.555648788;xilinx.gnu.armv7.exe.debug.555648788.;xilinx.gnu.armv7.c.toolchain.compiler.debug.966918406;xilinx.gnu.armv7.c.compiler.input.1921734942">
+        <scannerConfigBuildInfo instanceId="xilinx.gnu.armv7.exe.debug.555648788;xilinx.gnu.armv7.exe.debug.555648788.">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.ARMA53X32GCCManagedMakePerProjectProfileC"/>
             		
         </scannerConfigBuildInfo>
         		
-        <scannerConfigBuildInfo instanceId="xilinx.gnu.armv7.exe.debug.555648788;xilinx.gnu.armv7.exe.debug.555648788.">
+        <scannerConfigBuildInfo instanceId="xilinx.gnu.armv7.exe.debug.555648788;xilinx.gnu.armv7.exe.debug.555648788.;xilinx.gnu.armv7.cxx.toolchain.compiler.debug.145356597;xilinx.gnu.armv7.cxx.compiler.input.2078096729">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.ARMA53X32GCCManagedMakePerProjectProfileC"/>
             		
@@ -356,23 +378,5 @@
         </scannerConfigBuildInfo>
         	
     </storageModule>
-    	
-    <storageModule moduleId="refreshScope" versionNumber="2">
-        		
-        <configuration configurationName="Debug">
-            			
-            <resource resourceType="PROJECT" workspacePath="/GpioTesting"/>
-            		
-        </configuration>
-        		
-        <configuration configurationName="Release">
-            			
-            <resource resourceType="PROJECT" workspacePath="/GpioTesting"/>
-            		
-        </configuration>
-        	
-    </storageModule>
-    	
-    <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
     
 </cproject>

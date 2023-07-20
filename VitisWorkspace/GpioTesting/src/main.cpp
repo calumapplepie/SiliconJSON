@@ -12,12 +12,7 @@
 #include "xparameters.h"
 #include "xgpio.h"
 #include "xstatus.h"
-#include "xil_printf.h"
-
-/* Definitions */
-#define printf xil_printf							/* smaller, optimised printf */
-#define STRING_TAPE_LEN 64
-#define LAYOUT_TAPE_LEN 16	// oh my god layout tape is so much nicer i'll have some changes to make
+#include "ConfigParam.h"
 
 
 XGpio GpioParserInput;											/* GPIO Device driver instance */
