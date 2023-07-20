@@ -186,7 +186,7 @@ int main(void) {
 		rawFileStorage.insert({baseName,fullFile,minify(json)});
 	}
 
-	std::ofstream cFileOut 	{dir / "testFiles.c", std::ios_base::trunc};
+	std::ofstream cFileOut 	{dir / "testFiles.cpp", std::ios_base::trunc};
 	std::ofstream basenamesOut{dir / "basenames.txt", std::ios_base::trunc};
 	
 	std::stringstream fullArray;
@@ -201,9 +201,10 @@ int main(void) {
 		minArray	 << std::quoted(minJson) << ",\n";
 		nameArray	 << std::quoted(baseName) << ",\n";
 	}
-
-	cFileOut << "char** jsonTestFiles = {" << fullArray.str() << "};";
-	cFileOut << "char** jsonTestFilesMinified = {" << minArray.str() << "};";
-	cFileOut << "char** jsonTestFilesNames = {" << minArray.str() << "};";
+	cFileOut << "#include \"testFiles.h\"\n";
+	cFileOut << "char* jsonTestFiles[] = {" << fullArray.str() 			<< "};\n";
+	cFileOut << "char* jsonTestFilesMinified[] = {" << minArray.str() 	<< "};\n";
+	cFileOut << "char* jsonTestFilesNames[] = {" << minArray.str() 		<< "};\n";
+	cFileOut << "const int numFiles =" << rawFileStorage.size() 		<<";\n";
     //json.dump_raw_tape(std::cout);
 }

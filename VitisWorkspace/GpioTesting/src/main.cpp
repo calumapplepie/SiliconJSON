@@ -116,7 +116,19 @@ int driveTestingCycle(void){
 	XGpio_SetDataDirection(&GpioStructReader, 2, 0xFFFFFFFF);	// higher bits of struct tape
 	XGpio_SetDataDirection(&GpioStringReader, 1, 0xFFFFFFFF);	// string tape bits
 
+	// test standard versions
+	for(int i = 0; i < numFiles; i++){
+		int errors  = testDocument(jsonTestFiles[i]);
+		if(errors != 0){printf("ERROR ERROR ERROR\n");}
+		printf("encountered %d errors in document %d: %s\n", errors,i, jsonTestFilesNames[i]);
+	}
 
+	// test minified versions
+	for(int i = 0; i < numFiles; i++){
+		int errors  = testDocument(jsonTestFilesMinified[i]);
+		if(errors != 0){printf("ERROR ERROR ERROR\n");}
+		printf("encountered %d errors in document %d: %s\n", errors,i, jsonTestFilesNames[i]);
+	}
 
 
 	return XST_SUCCESS;

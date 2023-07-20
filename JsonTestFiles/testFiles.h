@@ -3,4 +3,5 @@
     extern char * jsonTestFiles[];
     extern char * jsonTestFilesMinified[];
     extern char * jsonTestFilesNames[];
+    extern const int numFiles;
 #endif

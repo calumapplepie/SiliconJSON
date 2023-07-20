@@ -1,4 +1,4 @@
 *.hex
 *.minjson
 /basenames.txt
-testFiles.c
+testFiles.cpp

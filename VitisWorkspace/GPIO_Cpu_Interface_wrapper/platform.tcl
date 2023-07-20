@@ -50,3 +50,7 @@ platform clean
 platform clean
 bsp reload
 platform generate
+platform active {GPIO_Cpu_Interface_wrapper}
+platform generate
+platform clean
+platform generate

@@ -7,7 +7,10 @@ dom::parser jsonParser;
 dom::document doc;
 
 void init_simdjson(){
-	doc.allocate(STRING_TAPE_LEN+LAYOUT_TAPE_LEN);
+	auto retval = doc.allocate(STRING_TAPE_LEN+LAYOUT_TAPE_LEN);
+	if (retval != 0){
+		printf("allocation error! %d", retval);
+	}
 }
 
 void parse_simdjson(char* inputChars){
@@ -38,7 +41,7 @@ int verify(char* stringTape, uint64_t* layoutTape){
 			uint64_t curLayoutElement = doc.tape[tape_idx];
 			if(curLayoutElement != layoutTape[tape_idx]){
 				retval++;
-				printf("Mismatch at %d: expected %x, got %x", tape_idx, curLayoutElement, layoutTape[tape_idx]);
+				printf("Mismatch at %d: expected %x, got %x\n", tape_idx, curLayoutElement, layoutTape[tape_idx]);
 			}
 
 			// limit string tape overflow severity
@@ -62,13 +65,14 @@ int verify(char* stringTape, uint64_t* layoutTape){
 				// they're done parsing.
 				if(string_buf_pos != stringPos){
 					printf("ERROR! String buffer position not as expected");
+					return 9999;
 				}
 
 				for(string_buf_pos = stringPos; string_buf_pos < stringPos + string_length + 5; string_buf_pos++){
 					// that little plus promotes it to a real number!
 					char curStringElement = doc.string_buf[string_buf_pos];
 					if(curStringElement != stringTape[string_buf_pos]){
-						printf("Mismatch at %d: expected %x, got %x", string_buf_pos, curStringElement, stringTape[string_buf_pos]);
+						printf("Mismatch at %d: expected %x, got %x\n", string_buf_pos, curStringElement, stringTape[string_buf_pos]);
 						retval++;
 					}
 
