@@ -32,27 +32,38 @@ end
 always_ff @(posedge clk) begin
     if (ena) begin
         if (wea) begin
-            automatic logic [$clog2(WRITE_RATIO)-1:0] lower_addr_bits = 0; // blocking assignment because this is procedural stuff
-            for(logic [$clog2(WRITE_RATIO)-1:0] lower_addr_bits = 0; lower_addr_bits < WRITE_RATIO; lower_addr_bits++) begin
+            for(integer i = 0; i < WRITE_RATIO; i++) begin
+                automatic logic [$clog2(WRITE_RATIO)-1:0] lower_addr_bits = i;
                 automatic logic [ADDRWIDTH-1:0] address = {addra[ADDRWIDTH-1:$clog2(WRITE_RATIO)], lower_addr_bits};
-                ram[address] <= dia[lower_addr_bits*WORDSIZE_RAM +: WORDSIZE_RAM]; // saw this in the xylinx docs and wondered what it was; now I know!
+                ram[address] <= dia[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM]; // saw this in the xylinx docs and wondered what it was; now I know!
             end
         end
         
-        begin // i don't know why vivado wants a seperate block here
-            automatic logic [$clog2(READ_RATIO)-1:0] lower_addr_bits = 0; // blocking assignment because this is procedural stuff
-            for(logic [$clog2(READ_RATIO)-1:0] lower_addr_bits = 0; lower_addr_bits < READ_RATIO; lower_addr_bits++) begin
-                automatic logic [ADDRWIDTH-1:0] address = {addra[ADDRWIDTH-1:$clog2(READ_RATIO)], lower_addr_bits};
-                doa[lower_addr_bits*WORDSIZE_RAM +: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
-            end
+        for(integer i = 0; i < READ_RATIO; i++) begin
+            automatic logic [$clog2(READ_RATIO)-1:0] lower_addr_bits = i;
+            automatic logic [ADDRWIDTH-1:0] address = {addra[ADDRWIDTH-1:$clog2(READ_RATIO)], lower_addr_bits};
+            doa[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
         end
+        
     end
 end
 
 always_ff @(posedge clk) begin
     if (enb) begin
-        if (web) ram[addrb] <= dib;
-        dob <= ram[addrb];
+        if (web) begin
+            for(integer i = 0; i < WRITE_RATIO; i++) begin
+                automatic logic [$clog2(WRITE_RATIO)-1:0] lower_addr_bits = i;
+                automatic logic [ADDRWIDTH-1:0] address = {addrb[ADDRWIDTH-1:$clog2(WRITE_RATIO)], lower_addr_bits};
+                ram[address] <= dib[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM]; // saw this in the xylinx docs and wondered what it was; now I know!
+            end
+        end
+        
+        for(integer i = 0; i < READ_RATIO; i++) begin
+            automatic logic [$clog2(READ_RATIO)-1:0] lower_addr_bits = i;
+            automatic logic [ADDRWIDTH-1:0] address = {addrb[ADDRWIDTH-1:$clog2(READ_RATIO)], lower_addr_bits};
+            dob[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
+        end
+        
     end
 end
 
