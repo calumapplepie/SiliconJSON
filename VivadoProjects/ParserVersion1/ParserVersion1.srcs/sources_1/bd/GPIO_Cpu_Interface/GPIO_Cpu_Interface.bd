@@ -31,6 +31,7 @@
       "processing_system7_0": "",
       "rst_ps7_0_50M": "",
       "InputBlockBreakerWra_0": "",
+      "system_ila_0": "",
       "TopWrapper_0": ""
     },
     "interface_ports": {
@@ -2666,6 +2667,38 @@
           }
         }
       },
+      "system_ila_0": {
+        "vlnv": "xilinx.com:ip:system_ila:1.1",
+        "xci_name": "GPIO_Cpu_Interface_system_ila_0_0",
+        "xci_path": "ip/GPIO_Cpu_Interface_system_ila_0_0/GPIO_Cpu_Interface_system_ila_0_0.xci",
+        "inst_hier_path": "system_ila_0",
+        "parameters": {
+          "C_MON_TYPE": {
+            "value": "NATIVE"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "6"
+          },
+          "C_PROBE0_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE1_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE2_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE3_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE4_TYPE": {
+            "value": "0"
+          },
+          "C_PROBE5_TYPE": {
+            "value": "0"
+          }
+        }
+      },
       "TopWrapper_0": {
         "vlnv": "xilinx.com:module_ref:TopWrapper:1.0",
         "xci_name": "GPIO_Cpu_Interface_TopWrapper_0_0",
@@ -2753,6 +2786,7 @@
       "InputBlockBreakerWra_0_curChar": {
         "ports": [
           "InputBlockBreakerWra_0/curChar",
+          "system_ila_0/probe2",
           "TopWrapper_0/curChar"
         ],
         "hdl_attributes": {
@@ -2767,6 +2801,7 @@
       "InputBlockBreakerWra_0_enableOut": {
         "ports": [
           "InputBlockBreakerWra_0/enableOut",
+          "system_ila_0/probe3",
           "TopWrapper_0/enable"
         ],
         "hdl_attributes": {
@@ -2793,7 +2828,8 @@
       "TopWrapper_0_curStringBits": {
         "ports": [
           "TopWrapper_0/curStringBits",
-          "axi_gpio_2/gpio_io_i"
+          "axi_gpio_2/gpio_io_i",
+          "system_ila_0/probe4"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -2808,7 +2844,8 @@
         "ports": [
           "TopWrapper_0/curStructBits",
           "StructLow/Din",
-          "StructHigh/Din"
+          "StructHigh/Din",
+          "system_ila_0/probe5"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -2825,7 +2862,8 @@
           "xlslice_0/Din",
           "xlslice_1/Din",
           "xlslice_2/Din",
-          "xlslice_3/Din"
+          "xlslice_3/Din",
+          "system_ila_0/probe0"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -2839,7 +2877,8 @@
       "axi_gpio_0_gpio_io_o": {
         "ports": [
           "axi_gpio_0/gpio_io_o",
-          "InputBlockBreakerWra_0/curCharBlock"
+          "InputBlockBreakerWra_0/curCharBlock",
+          "system_ila_0/probe1"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -2864,6 +2903,7 @@
           "processing_system7_0/M_AXI_GP0_ACLK",
           "rst_ps7_0_50M/slowest_sync_clk",
           "InputBlockBreakerWra_0/clk",
+          "system_ila_0/clk",
           "TopWrapper_0/GCLK"
         ]
       },
