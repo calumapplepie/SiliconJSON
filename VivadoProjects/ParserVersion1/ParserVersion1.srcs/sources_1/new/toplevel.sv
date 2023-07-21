@@ -5,6 +5,7 @@ module TopLevel import Core::UTF8_Char; (
     output logic [31:0]  curStringBits
 );
     assign clk = GCLK;
+    logic[7:0] stringByte;
         
     (* mark_debug = "true" *) Ram::StringBlockRamWrite parserStringWrite;
     Ram::StringBlockRamWrite readerStringWrite;
@@ -25,11 +26,14 @@ module TopLevel import Core::UTF8_Char; (
 
     SinglePulser pulsey (.clk, .din(enable), .d_pulse(readerEnable));
 
-    BlockReader #(.WORDSIZE(32), .JUMPSIZE(4),.WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (
-        .ramWrite(readerStringWrite), .ramRead(readerStringRead), .data(curStringBits), .enable(enable), .*
+    BlockReader #(.WORDSIZE(8), .WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (
+        .ramWrite(readerStringWrite), .ramRead(readerStringRead), .data(stringByte), .enable(enable), .*
     );
+    
     BlockReader #(.WORDSIZE(64), .WriteType(Ram::StructBlockRamWrite), .ReadType(Ram::StructBlockRamRead)) structReader (
         .ramWrite(readerStructWrite), .ramRead(readerStructRead), .data(curStructBits), .enable(readerEnable), .*
     );
+    
+    OutputBlockMaker assembler (.curByte(stringByte), .byteBlock(curStringBits), .*);
 
 endmodule

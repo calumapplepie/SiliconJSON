@@ -21,6 +21,19 @@
 
 
 module OutputBlockMaker(
-
+        input clk, enable, rst, [7:0] curByte,
+        output logic [31:0] byteBlock
     );
+    logic [1:0] curBlock;
+    
+    always_ff @(posedge clk) byteBlock[(curBlock+1)*8-1 -: 8] <= curByte;
+        
+    always_ff @(posedge clk) begin  
+        if(rst) curBlock <= '0;
+        else if(enable) begin
+            curBlock <= curBlock +1;
+        end
+        
+    end;
+    
 endmodule
