@@ -70,7 +70,7 @@ void provideParserInput(char* testDoc){
 }
 
 void readParserOutput(){
-	for(int i = 0; i < STRING_TAPE_LEN; i++){
+	for(int i = 0; i < STRING_TAPE_LEN; i+= 4){
 		// set enable, let PL update vals
 		pulseEnable();
 
@@ -80,8 +80,8 @@ void readParserOutput(){
 			readElement += XGpio_DiscreteRead(&GpioStructReader, 1);
 			readStructTape[i] = readElement;
 		}
-		uint8_t readString = XGpio_DiscreteRead(&GpioStringReader,1);
-		readStringTape[i] = readString;
+		uint32_t readString = XGpio_DiscreteRead(&GpioStringReader,1);
+		memcpy(readStringTape+i, &readString, sizeof(readString));
 	}
 }
 
