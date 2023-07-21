@@ -4,6 +4,8 @@
 // 7 Series TDP rams are capable of all kinds of nonsense.  Each read and write port can be different.
 // while I could use Xylinx libraries, I kind of don't want to, for copyright reasons.  Bad enough I carried the
 // initial version of this file over.
+// Also, IF inference works properly, then this model is more generalizable; i don't need to worry so much about
+// how to divide this among block rams
 module TapeBlockRam #(
             WORDSIZE=8, WORDSIZE_IN=WORDSIZE, WORDSIZE_OUT=WORDSIZE, // default to symetric, but allow asymetric reading  
             NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS)) (

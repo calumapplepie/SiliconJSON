@@ -838,7 +838,7 @@
             "value": "1"
           },
           "C_GPIO_WIDTH": {
-            "value": "8"
+            "value": "32"
           }
         }
       },
@@ -2705,7 +2705,7 @@
           },
           "curStringBits": {
             "direction": "O",
-            "left": "7",
+            "left": "31",
             "right": "0"
           }
         }
