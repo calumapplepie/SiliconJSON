@@ -5,7 +5,7 @@ module TopLevel import Core::UTF8_Char; (
     output logic [31:0]  curStringBits
 );
     assign clk = GCLK;
-    logic[7:0] stringByte;
+    (* mark_debug = "true" *) logic[7:0] stringByte;
         
     (* mark_debug = "true" *) Ram::StringBlockRamWrite parserStringWrite;
     Ram::StringBlockRamWrite readerStringWrite;
