@@ -2,7 +2,7 @@ module TopLevel import Core::UTF8_Char; (
     input UTF8_Char curChar,
     input GCLK, rst, enable, readSide, parseEnable,
     output logic [63:0] curStructBits,
-    output logic [7:0]  curStringBits
+    output logic [31:0]  curStringBits
 );
     assign clk = GCLK;
         
@@ -23,11 +23,13 @@ module TopLevel import Core::UTF8_Char; (
       
     TapeStorage storage (.selectParser(!readSide), .selectReader(readSide), .*);
 
-    BlockReader #(.WORDSIZE(8), .WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (
-        .ramWrite(readerStringWrite), .ramRead(readerStringRead), .data(curStringBits), .*
+    SinglePulser pulsey (.clk, .din(enable), .din_pulse(readerEnable));
+
+    BlockReader #(.WORDSIZE(31), .WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (
+        .ramWrite(readerStringWrite), .ramRead(readerStringRead), .data(curStringBits), .enable(readerEnable), .*
     );
     BlockReader #(.WORDSIZE(64), .WriteType(Ram::StructBlockRamWrite), .ReadType(Ram::StructBlockRamRead)) structReader (
-        .ramWrite(readerStructWrite), .ramRead(readerStructRead), .data(curStructBits), .*
+        .ramWrite(readerStructWrite), .ramRead(readerStructRead), .data(curStructBits), .enable(readerEnable), .*
     );
 
 endmodule

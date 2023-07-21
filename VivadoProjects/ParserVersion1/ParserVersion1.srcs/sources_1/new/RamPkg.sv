@@ -13,7 +13,7 @@ package Ram;
     } StructBlockRamWrite;
       
     typedef struct {
-        logic [7:0] doa,dob;
+        logic [31:0] doa,dob;
     } StringBlockRamRead;
     
     typedef struct {
