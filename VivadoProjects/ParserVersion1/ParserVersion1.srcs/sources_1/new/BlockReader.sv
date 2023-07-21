@@ -25,7 +25,7 @@
 // I do with them.
 // This would be easier if SystemVerilog and Vivado included just a few more features (eg, virtual classes
 
-module BlockReader import Ram::*;  #(WORDSIZE=8, type WriteType, type ReadType) (
+module BlockReader import Ram::*;  #(WORDSIZE=8, JUMPSIZE=1, type WriteType, type ReadType) (
         output WriteType ramWrite, 
         input ReadType ramRead,
         input logic clk, enable, rst,
@@ -33,9 +33,6 @@ module BlockReader import Ram::*;  #(WORDSIZE=8, type WriteType, type ReadType) 
     );
     // get an actual number for this later
     (* mark_debug = "true" *) logic [16:0] curAddr;
-    
-    // todo: use asymetric TDP functions of zedboard block rams
-    // will require yet more parameters
     
     always_comb begin
         ramWrite.enb = '0;
@@ -48,7 +45,7 @@ module BlockReader import Ram::*;  #(WORDSIZE=8, type WriteType, type ReadType) 
     
     always_ff @(posedge clk) begin
         if(rst)      curAddr <= '0;
-        else if(enable) curAddr <= curAddr + 1;
+        else if(enable) curAddr <= curAddr + JUMPSIZE;
     end
     
 endmodule

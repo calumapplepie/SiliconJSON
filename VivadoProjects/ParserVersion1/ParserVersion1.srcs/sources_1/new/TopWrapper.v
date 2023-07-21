@@ -26,5 +26,5 @@ module TopWrapper (
     output wire [63:0] curStructBits,
     output wire [31:0]  curStringBits
 );    
-    TopLevel topLevel (curCharOut, GCLK, rst, enable, readSide, parseEnable, curStructBits, curStringBits);
+    TopLevel topLevel (curChar, GCLK, rst, enable, readSide, parseEnable, curStructBits, curStringBits);
 endmodule

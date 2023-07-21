@@ -23,9 +23,9 @@ module TopLevel import Core::UTF8_Char; (
       
     TapeStorage storage (.selectParser(!readSide), .selectReader(readSide), .*);
 
-    SinglePulser pulsey (.clk, .din(enable), .din_pulse(readerEnable));
+    SinglePulser pulsey (.clk, .din(enable), .d_pulse(readerEnable));
 
-    BlockReader #(.WORDSIZE(31), .WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (
+    BlockReader #(.WORDSIZE(32), .JUMPSIZE(4),.WriteType(Ram::StringBlockRamWrite), .ReadType(Ram::StringBlockRamRead)) stringReader (
         .ramWrite(readerStringWrite), .ramRead(readerStringRead), .data(curStringBits), .enable(readerEnable), .*
     );
     BlockReader #(.WORDSIZE(64), .WriteType(Ram::StructBlockRamWrite), .ReadType(Ram::StructBlockRamRead)) structReader (
