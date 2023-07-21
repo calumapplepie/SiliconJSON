@@ -29,7 +29,7 @@ module OutputBlockMaker(
     always_ff @(posedge clk) byteBlock[(curBlock+1)*8-1 -: 8] <= curByte;
         
     always_ff @(posedge clk) begin  
-        if(rst) curBlock <= '0;
+        if(rst) curBlock <= '1;
         else if(enable) begin
             curBlock <= curBlock +1;
         end

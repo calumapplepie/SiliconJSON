@@ -32,7 +32,7 @@ module InputBlockBreaker(
     
     always_ff @(posedge clk) begin  
         enableOut <= '0; // default to disabled
-        if(rst) curBlock <= '0;
+        if(rst) curBlock <= '1;
         if(curBlock == 0 && lastEnableIn) begin end // do nothing if we've already read the block
         else if(enableIn) begin
             curBlock <= curBlock +1;
