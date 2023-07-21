@@ -32,14 +32,16 @@ end
 always_ff @(posedge clk) begin
     if (ena) begin
         if (wea) begin
-            for(integer i = 0; i < WRITE_RATIO; i++) begin
+            if (WRITE_RATIO == 1) ram[addra] <= dia;
+            else for(integer i = 0; i < WRITE_RATIO; i++) begin
                 automatic logic [$clog2(WRITE_RATIO)-1:0] lower_addr_bits = i;
                 automatic logic [ADDRWIDTH-1:0] address = {addra[ADDRWIDTH-1:$clog2(WRITE_RATIO)], lower_addr_bits};
                 ram[address] <= dia[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM]; // saw this in the xylinx docs and wondered what it was; now I know!
             end
         end
         
-        for(integer i = 0; i < READ_RATIO; i++) begin
+        if(READ_RATIO == 1) doa <= ram[addra];
+        else for(integer i = 0; i < READ_RATIO; i++) begin
             automatic logic [$clog2(READ_RATIO)-1:0] lower_addr_bits = i;
             automatic logic [ADDRWIDTH-1:0] address = {addra[ADDRWIDTH-1:$clog2(READ_RATIO)], lower_addr_bits};
             doa[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
@@ -51,14 +53,16 @@ end
 always_ff @(posedge clk) begin
     if (enb) begin
         if (web) begin
-            for(integer i = 0; i < WRITE_RATIO; i++) begin
+            if (WRITE_RATIO == 1) ram[addrb] <= dib;
+            else for(integer i = 0; i < WRITE_RATIO; i++) begin
                 automatic logic [$clog2(WRITE_RATIO)-1:0] lower_addr_bits = i;
                 automatic logic [ADDRWIDTH-1:0] address = {addrb[ADDRWIDTH-1:$clog2(WRITE_RATIO)], lower_addr_bits};
                 ram[address] <= dib[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM]; // saw this in the xylinx docs and wondered what it was; now I know!
             end
         end
         
-        for(integer i = 0; i < READ_RATIO; i++) begin
+        if(READ_RATIO == 1) dob <= ram[addrb];
+        else for(integer i = 0; i < READ_RATIO; i++) begin
             automatic logic [$clog2(READ_RATIO)-1:0] lower_addr_bits = i;
             automatic logic [ADDRWIDTH-1:0] address = {addrb[ADDRWIDTH-1:$clog2(READ_RATIO)], lower_addr_bits};
             dob[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
