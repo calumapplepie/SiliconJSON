@@ -24,7 +24,7 @@ XGpio GpioStringReader;
 char* testDoc1 = "{\"author\":\"calum\"}";
 char  parserControlSignal = 0x0;
 uint64_t readStructTape [LAYOUT_TAPE_LEN];
-char	 readStringTape [STRING_TAPE_LEN];
+char	 readStringTape [STRING_TAPE_LEN+16]; // add some buffer at the end to protect against memcpy
 
 void static inline waitForPL(){
 	// PL appears to be faster than PS
@@ -74,11 +74,11 @@ void readParserOutput(){
 		// set enable, let PL update vals
 		pulseEnable();
 
-		if(i<LAYOUT_TAPE_LEN){
+		if(i/4<LAYOUT_TAPE_LEN){
 			uint64_t readElement = 	XGpio_DiscreteRead(&GpioStructReader, 2);	// higher bits of struct tape
 			readElement <<= 32; // shift to make space
 			readElement += XGpio_DiscreteRead(&GpioStructReader, 1);
-			readStructTape[i] = readElement;
+			readStructTape[i/4] = readElement;
 		}
 		uint32_t readString = XGpio_DiscreteRead(&GpioStringReader,1);
 		memcpy(readStringTape+i, &readString, sizeof(readString));

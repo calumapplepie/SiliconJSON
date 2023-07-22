@@ -204,7 +204,7 @@ int main(void) {
 	cFileOut << "#include \"testFiles.h\"\n";
 	cFileOut << "char* jsonTestFiles[] = {" << fullArray.str() 			<< "};\n";
 	cFileOut << "char* jsonTestFilesMinified[] = {" << minArray.str() 	<< "};\n";
-	cFileOut << "char* jsonTestFilesNames[] = {" << minArray.str() 		<< "};\n";
+	cFileOut << "char* jsonTestFilesNames[] = {" << nameArray.str() 		<< "};\n";
 	cFileOut << "const int numFiles =" << rawFileStorage.size() 		<<";\n";
     //json.dump_raw_tape(std::cout);
 }
