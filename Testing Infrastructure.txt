@@ -9,3 +9,6 @@
  + Extensible
  - Bottlenecked at SD card - must load into RAM
  - More complicated code
+- Stream data in over ethernet
+ + thats not a test, thats a finished product
+ 
