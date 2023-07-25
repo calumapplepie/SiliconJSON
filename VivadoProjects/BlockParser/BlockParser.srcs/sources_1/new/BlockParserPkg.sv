@@ -26,5 +26,6 @@ package Block;
     typedef Core::UTF8_Char[BlockSizeChars-1:0] TextBlock;
     typedef logic [BlockSizeChars-1:0]     BitBlock;
     
+    // maybe I should move those classes into here
     
 endpackage
