@@ -20,7 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module StageOneParser(
-
+module StageOneParser import Block::*; ( input clk, enb, rst,
+                        input TextBlock chars, 
+                        output logic holdPipeline
     );
+    
 endmodule
