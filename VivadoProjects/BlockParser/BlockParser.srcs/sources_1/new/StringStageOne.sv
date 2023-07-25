@@ -30,7 +30,7 @@ module StringStageOne import Block::*; (
     logic prev_escaped,   next_escaped;
     
     always_comb begin
-        scannedChars = new(backslashes, quotes, escapedChars, stringChars);
+        scannedChars = {backslashes, quotes, escapedChars, stringChars};
     end
     
     always_ff@(posedge clk) begin
