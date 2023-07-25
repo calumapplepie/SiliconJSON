@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 package Core;
-    typedef logic [7:0] UTF8_Char;
+    typedef logic [7:0]  UTF8_Char;
     typedef logic [63:0] JsonTapeElement;
     typedef logic [55:0] TapeIndex;
     

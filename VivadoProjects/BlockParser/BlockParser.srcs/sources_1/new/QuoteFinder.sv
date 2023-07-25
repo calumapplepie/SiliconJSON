@@ -21,6 +21,6 @@
 
 
 module QuoteFinder(
-
+        input TextBlock chars
     );
 endmodule
