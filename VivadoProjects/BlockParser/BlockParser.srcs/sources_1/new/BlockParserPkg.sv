@@ -35,17 +35,20 @@ package Block;
           // unescaped quotes
           BitBlock quote;
           // string characters, including start but not end quote
-          BitBlock in_string;} ScannedCharBlock;
+          BitBlock in_string;
+    } ScannedCharBlock;
     
-    class ScannedLayoutBlock;
+    typedef struct{ 
+          BitBlock whitespace;
+          BitBlock pseudoStructural;
+    } ScannedLayoutBlock;
     
-    endclass
     
-    
-    class ScannedJsonBlock;
-        
-    
-    endclass
+    typedef struct {
+        ScannedCharBlock   strings;
+        ScannedLayoutBlock layout;
+        BitBlock followsPotentialScalar;// they have a whole definition for this but I assume its for a good reason
+    } ScannedJsonBlock;
     
     
 endpackage
