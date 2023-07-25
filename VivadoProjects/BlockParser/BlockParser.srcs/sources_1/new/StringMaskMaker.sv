@@ -1,29 +1,10 @@
-module StringMaskMaker import Block::*; (
-        input clk, rst, enb, 
-        input TextBlock chars, 
-        output ScannedCharBlock scannedChars);
-    BitBlock backslashes, quotes, escapedChars, stringChars;
-    
-    logic prev_in_string, next_in_string;
-    logic prev_escaped,   next_escaped;
-    
-    always_comb begin
-        scannedChars = new(backslashes, quotes, escapedChars, stringChars);
+module StringMaskMaker import Block::*; (input BitBlock quotes, input logic prev_in_string, output BitBlock stringChars, output logic next_in_string);
+    // they call this the "prefix xor".  it flips on the bits in the string, and off bits outside of it.
+    genvar i;
+    for(i = 0; i < BlockSizeBits; i++) begin
+        assign stringChars[i] =  ^quotes[i:0] ^ prev_in_string;
     end
-    
-    always_ff@(posedge clk) begin
-        if(rst)begin
-            prev_in_string <= '0;
-            prev_escaped   <= '0;
-        end else if(enb) begin
-            prev_in_string <= next_in_string;
-            prev_escaped <= next_escaped;
-        end
-    end
-    
-    QuoteFinder classifer       (.chars, .quotes, .backslashes);
-    EscapedCharFinder escapee   (.backslashes, .prev_escaped, .escapedChars, .next_escaped);
+    assign next_in_string = stringChars[BlockSizeBits-1];
     
     
-    
-endmodule
+endmodule 
