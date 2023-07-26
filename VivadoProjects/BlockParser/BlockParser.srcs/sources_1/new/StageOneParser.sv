@@ -24,6 +24,15 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
                         input TextBlock chars, 
                         output logic holdPipeline
     );
+    LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmapsA);
+    ScannedJsonBlock scannedBitmapsA, scannedBitmapsB;
+    always_ff @(posedge clk) scannedBitmapsB <= scannedBitmapsA;
+    
+    
+    
+    
+    
+    
     /*
     okay fam lets talk.  SO; simdjson makes a variety of design decisions that make it good for CPU and less good for FPGA
     if we want to just yoink the approach.  While the first half of stage one is almost completely unproblematic, except for one adder,
