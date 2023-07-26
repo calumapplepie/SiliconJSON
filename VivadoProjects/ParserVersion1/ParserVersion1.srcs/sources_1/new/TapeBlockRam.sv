@@ -27,43 +27,48 @@ parameter WORDSIZE_MAX = WORDSIZE_IN < WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN
 parameter BRAM_DEPTH = WORDSIZE_MIN * NUMWORDS;
 parameter BRAM_SIZE = BRAM_DEPTH < 16384 ? "18Kb" : "36Kb"; // could in theory improve efficency, but thats AMD's job
 
-parameter WIDTH_CUTS = int'( $ceil(real'(WORDSIZE_MAX) / real'(32)));//.0 makes this a REAL boy!
-parameter DEPTH_CUTS = int'( $ceil(real'(BRAM_DEPTH) / real'(32768)));
+parameter int WIDTH_CUTS = int'( $ceil((WORDSIZE_MAX) / (32.0)));//.0 makes this a REAL boy!
+parameter int DEPTH_CUTS = int'( $ceil((BRAM_DEPTH) / (32768.0 * WIDTH_CUTS)));
 
 parameter WIDTH_READ = WORDSIZE_OUT/WIDTH_CUTS; // if someone is using extra wide words, they can be reasonable for me.
 parameter WIDTH_WRITE = WORDSIZE_IN/WIDTH_CUTS;
 
 genvar width_i, depth_i;
 for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
-for(width_i = 0; width_i < WIDTH_CUTS; width_i++) begin
-logic useThisOneA = addra[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i;
-logic useThisOneB = addrb[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i;
-
-// Xilinx HDL Language Template, version 2022.2
-BRAM_TDP_MACRO #(
-   .BRAM_SIZE(BRAM_SIZE), // Target BRAM: "18Kb" or "36Kb"
-   .DOA_REG(1), .DOB_REG(1),        // Optional port B output register (0 or 1) (yes i can disable this)
-   .READ_WIDTH_A (WIDTH_READ), .READ_WIDTH_B (WIDTH_READ),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
-   .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
-                                 //   "GENERATE_X_ONLY" or "NONE"
-   .WRITE_MODE_A("WRITE_FIRST"), .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
-   .WRITE_WIDTH_A(WIDTH_WRITE), .WRITE_WIDTH_B(WIDTH_WRITE) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
-) BRAM_TDP_MACRO_inst (
-   .DOA(doa[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-A data, width defined by READ_WIDTH_A parameter
-   .DOB(dob[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-B data, width defined by READ_WIDTH_B parameter
-   .ADDRA(addrb), .ADDRB(addra),   // rely on auto truncation
-   .CLKA(clk), .CLKB(clk),     // tik tock goes the clock 
-   .DIA(dia[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-A data, width defined by WRITE_WIDTH_A parameter
-   .DIB(dib[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-B data, width defined by WRITE_WIDTH_B parameter
-   .ENA(ena & useThisOneA),       // 1-bit input port-A enable
-   .ENB(enb & useThisOneB),       // 1-bit input port-B enable
-   .REGCEA('1), .REGCEB('1), // register enabler? i hardley know her!
-   .RSTA('0), .RSTB('0),     // resets are for chumps
-   .WEA({4{wea}}), .WEB({4{web}})  // just do 4 bits, it'll truncate if that's too many        
-);
-
-// End of BRAM_TDP_MACRO_inst instantiation
-end
+    for(width_i = 0; width_i < WIDTH_CUTS; width_i++) begin
+        logic useThisOneA = '1;
+        logic useThisOneB = '1;
+        if (DEPTH_CUTS > 1) begin
+        always_comb begin
+            useThisOneA = (addra[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i)? '1 : '0;
+            useThisOneB = (addrb[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i)? '1 : '0;
+        end end 
+        
+        // Xilinx HDL Language Template, version 2022.2
+        BRAM_TDP_MACRO #(
+           .BRAM_SIZE(BRAM_SIZE), // Target BRAM: "18Kb" or "36Kb"
+           .DOA_REG(1), .DOB_REG(1),        // Optional port B output register (0 or 1) (yes i can disable this)
+           .READ_WIDTH_A (WIDTH_READ), .READ_WIDTH_B (WIDTH_READ),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+           .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
+                                         //   "GENERATE_X_ONLY" or "NONE"
+           .WRITE_MODE_A("WRITE_FIRST"), .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
+           .WRITE_WIDTH_A(WIDTH_WRITE), .WRITE_WIDTH_B(WIDTH_WRITE) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+        ) BRAM_TDP_MACRO_inst (
+           .DOA(doa[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-A data, width defined by READ_WIDTH_A parameter
+           .DOB(dob[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-B data, width defined by READ_WIDTH_B parameter
+           .ADDRA(addrb), .ADDRB(addra),   // rely on auto truncation
+           .CLKA(clk), .CLKB(clk),     // tik tock goes the clock 
+           .DIA(dia[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-A data, width defined by WRITE_WIDTH_A parameter
+           .DIB(dib[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-B data, width defined by WRITE_WIDTH_B parameter
+           .ENA(ena & useThisOneA),       // 1-bit input port-A enable
+           .ENB(enb & useThisOneB),       // 1-bit input port-B enable
+           .REGCEA('1), .REGCEB('1), // register enabler? i hardley know her!
+           .RSTA('0), .RSTB('0),     // resets are for chumps
+           .WEA({4{wea}}), .WEB({4{web}})  // just do 4 bits, it'll truncate if that's too many        
+        );
+        
+        // End of BRAM_TDP_MACRO_inst instantiation
+    end
 end
 endgenerate
 `else

@@ -25,7 +25,7 @@ package Core;
     typedef logic [55:0] TapeIndex;
     
     parameter int StringTapeLength = 4096; // two block rams
-    parameter int StructTapeLength = 512;  // max value without expanding into 4 block rams
+    parameter int StructTapeLength = 1024;  // max value without expanding into 4 block rams
     typedef enum logic [3:0] {braceOpen, braceClose, bracketOpen, bracketClose, 
                                 quote, colon, comma, minusSign, backslash,
                                 whitespace, numeric, controlChar, asciiAlphabetical, 
