@@ -7,7 +7,7 @@
 // Also, IF inference works properly, then this model is more generalizable; i don't need to worry so much about
 // how to divide this among block rams.  However, it does not work properly in the case of asymetric (read/write) TDP
 // block rams.  As of Vivado 2023.1.1, there is a change request filed to at least make it not crash.
-`define VIVADO_BROKEN
+`define VIVADO_BROKEN 1
 module TapeBlockRam #(
             WORDSIZE=8, WORDSIZE_IN=WORDSIZE, WORDSIZE_OUT=WORDSIZE, // default to symetric, but allow asymetric reading  
             NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS)) (
@@ -19,63 +19,39 @@ module TapeBlockRam #(
 
 
 `ifdef VIVADO_BROKEN
-// xpm_memory_tdpram: True Dual Port RAM
-// Xilinx Parameterized Macro, version 2023.1
-
-xpm_memory_tdpram #(
-   .ADDR_WIDTH_A(ADDRWIDTH),
-   .ADDR_WIDTH_B(ADDRWIDTH), 
-   .BYTE_WRITE_WIDTH_A(WORDSIZE_IN), 
-   .BYTE_WRITE_WIDTH_B(WORDSIZE_IN), 
-   .MEMORY_OPTIMIZATION("true"),
-   .MEMORY_PRIMITIVE("auto"),
-   .MEMORY_INIT_PARAM("BA"),
-   .MEMORY_SIZE(NUMWORDS),
-   .MESSAGE_CONTROL(1), 
-   .READ_DATA_WIDTH_A(WORDSIZE_OUT),
-   .READ_DATA_WIDTH_B(WORDSIZE_OUT),
-   .READ_LATENCY_A(2), 
-   .READ_LATENCY_B(2),
-   .SIM_ASSERT_CHK(1),
-   .WRITE_DATA_WIDTH_A(WORDSIZE_IN),
-   .WRITE_DATA_WIDTH_B(WORDSIZE_IN)
-)
-xpm_memory_tdpram_inst (
-   .douta(doa),                   // READ_DATA_WIDTH_A-bit output: Data output for port A read operations.
-   .doutb(dob),                   // READ_DATA_WIDTH_B-bit output: Data output for port B read operations.
-
-   .addra(addra),                   // ADDR_WIDTH_A-bit input: Address for port A write and read operations.
-   .addrb(addrb),                   // ADDR_WIDTH_B-bit input: Address for port B write and read operations.
-   .clka(clk),                     // 1-bit input: Clock signal for port A. Also clocks port B when
-                                    // parameter CLOCKING_MODE is "common_clock".
-
-   .dina(dia),                     // WRITE_DATA_WIDTH_A-bit input: Data input for port A write operations.
-   .dinb(dib),                     // WRITE_DATA_WIDTH_B-bit input: Data input for port B write operations.
-   .ena(ena),                       // 1-bit input: Memory enable signal for port A. Must be high on clock
-                                    // cycles when read or write operations are initiated. Pipelined
-                                    // internally.
-
-   .enb(enb),                       // 1-bit input: Memory enable signal for port B. Must be high on clock
-                                    // cycles when read or write operations are initiated. Pipelined
-                                    // internally.
-
-   .wea(wea),                       // WRITE_DATA_WIDTH_A/BYTE_WRITE_WIDTH_A-bit input: Write enable vector
-                                    // for port A input data port dina. 1 bit wide when word-wide writes are
-                                    // used. In byte-wide write configurations, each bit controls the
-                                    // writing one byte of dina to address addra. For example, to
-                                    // synchronously write only bits [15-8] of dina when WRITE_DATA_WIDTH_A
-                                    // is 32, wea would be 4'b0010.
-
-   .web(web)                        // WRITE_DATA_WIDTH_B/BYTE_WRITE_WIDTH_B-bit input: Write enable vector
-                                    // for port B input data port dinb. 1 bit wide when word-wide writes are
-                                    // used. In byte-wide write configurations, each bit controls the
-                                    // writing one byte of dinb to address addrb. For example, to
-                                    // synchronously write only bits [15-8] of dinb when WRITE_DATA_WIDTH_B
-                                    // is 32, web would be 4'b0010.
-
+// Xilinx HDL Language Template, version 2022.2
+BRAM_TDP_MACRO #(
+   .BRAM_SIZE("36Kb"), // Target BRAM: "18Kb" or "36Kb"
+   .DOA_REG(1),        // Optional port A output register (0 or 1)
+   .DOB_REG(1),        // Optional port B output register (0 or 1)
+   .READ_WIDTH_A (WORDSIZE_OUT),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .READ_WIDTH_B (WORDSIZE_OUT),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
+                                 //   "GENERATE_X_ONLY" or "NONE"
+   .WRITE_MODE_A("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
+   .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
+   .WRITE_WIDTH_A(WORDSIZE_IN), // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .WRITE_WIDTH_B(WORDSIZE_IN) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+) BRAM_TDP_MACRO_inst (
+   .DOA(doa),       // Output port-A data, width defined by READ_WIDTH_A parameter
+   .DOB(dob),       // Output port-B data, width defined by READ_WIDTH_B parameter
+   .ADDRA(addrb),   // Input port-A address, width defined by Port A depth
+   .ADDRB(addra),   // Input port-B address, width defined by Port B depth
+   .CLKA(clk),     // 1-bit input port-A clock
+   .CLKB(clk),     // 1-bit input port-B clock
+   .DIA(dia),       // Input port-A data, width defined by WRITE_WIDTH_A parameter
+   .DIB(dib),       // Input port-B data, width defined by WRITE_WIDTH_B parameter
+   .ENA(ena),       // 1-bit input port-A enable
+   .ENB(enb),       // 1-bit input port-B enable
+   .REGCEA('1), // 1-bit input port-A output register enable
+   .REGCEB('1), // 1-bit input port-B output register enable
+   .RSTA('0),     // 1-bit input port-A reset
+   .RSTB('0),     // 1-bit input port-B reset
+   .WEA({4{wea}}),       // Input port-A write enable, width defined by Port A depth
+   .WEB({4{web}})        // Input port-B write enable, width defined by Port B depth
 );
 
-// End of xpm_memory_tdpram_inst instantiation
+// End of BRAM_TDP_MACRO_inst instantiation
 
 `else
 // maybe in is big, maybe out is big; user chooses
