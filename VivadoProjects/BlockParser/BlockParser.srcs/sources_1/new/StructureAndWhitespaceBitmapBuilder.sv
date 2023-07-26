@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 07/25/2023 05:28:19 PM
-// Design Name: 
-// Module Name: StructureAndWhitespaceBitmapBuilder
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module StructureAndWhitespaceBitmapBuilder import Block::*; (
         input TextBlock chars, output BitBlock structureChars, whitespace
