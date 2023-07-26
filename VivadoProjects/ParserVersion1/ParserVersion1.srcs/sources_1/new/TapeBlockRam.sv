@@ -27,8 +27,11 @@ localparam WORDSIZE_MAX = WORDSIZE_IN < WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_I
 localparam BRAM_DEPTH = WORDSIZE_MIN * NUMWORDS;
 localparam BRAM_SIZE = BRAM_DEPTH < 16384 ? "18Kb" : "36Kb"; // could in theory improve efficency, but thats AMD's job
 
-localparam WIDTH_CUTS = $ceil(WORDSIZE_MAX / 32.0);
+localparam WIDTH_CUTS = $ceil(WORDSIZE_MAX / 32.0);//.0 makes this a REAL boy!
 localparam DEPTH_CUTS = $ceil(BRAM_DEPTH / 32768.0);
+
+localparam WIDTH_READ = WORDSIZE_OUT/WIDTH_CUTS; // if someone is using extra wide words, they can be reasonable for me.
+localparam WIDTH_WRITE = WORDSIZE_IN/WIDTH_CUTS;
 
 genvar width_i, depth_i;
 for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
@@ -39,33 +42,24 @@ logic useThisOneB = addrb[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i;
 // Xilinx HDL Language Template, version 2022.2
 BRAM_TDP_MACRO #(
    .BRAM_SIZE(BRAM_SIZE), // Target BRAM: "18Kb" or "36Kb"
-   .DOA_REG(1),        // Optional port A output register (0 or 1)
-   .DOB_REG(1),        // Optional port B output register (0 or 1)
-   .READ_WIDTH_A (WORDSIZE_OUT/WIDTH_CUTS),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
-   .READ_WIDTH_B (WORDSIZE_OUT/WIDTH_CUTS),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .DOA_REG(1), .DOB_REG(1),        // Optional port B output register (0 or 1) (yes i can disable this)
+   .READ_WIDTH_A (WIDTH_READ), .READ_WIDTH_B (WIDTH_READ),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
    .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
                                  //   "GENERATE_X_ONLY" or "NONE"
-   .WRITE_MODE_A("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
-   .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
-   .WRITE_WIDTH_A(WORDSIZE_IN/WIDTH_CUTS), // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
-   .WRITE_WIDTH_B(WORDSIZE_IN/WIDTH_CUTS) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .WRITE_MODE_A("WRITE_FIRST"), .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
+   .WRITE_WIDTH_A(WIDTH_WRITE), .WRITE_WIDTH_B(WIDTH_WRITE) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
 ) BRAM_TDP_MACRO_inst (
-   .DOA(doa),       // Output port-A data, width defined by READ_WIDTH_A parameter
-   .DOB(dob),       // Output port-B data, width defined by READ_WIDTH_B parameter
-   .ADDRA(addrb),   // Input port-A address, width defined by Port A depth
-   .ADDRB(addra),   // Input port-B address, width defined by Port B depth
-   .CLKA(clk),     // 1-bit input port-A clock
-   .CLKB(clk),     // 1-bit input port-B clock
-   .DIA(dia),       // Input port-A data, width defined by WRITE_WIDTH_A parameter
-   .DIB(dib),       // Input port-B data, width defined by WRITE_WIDTH_B parameter
-   .ENA(ena),       // 1-bit input port-A enable
-   .ENB(enb),       // 1-bit input port-B enable
-   .REGCEA('1), // 1-bit input port-A output register enable
-   .REGCEB('1), // 1-bit input port-B output register enable
-   .RSTA('0),     // 1-bit input port-A reset
-   .RSTB('0),     // 1-bit input port-B reset
-   .WEA({4{wea}}),       // Input port-A write enable, width defined by Port A depth
-   .WEB({4{web}})        // Input port-B write enable, width defined by Port B depth
+   .DOA(doa[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-A data, width defined by READ_WIDTH_A parameter
+   .DOB(dob[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-B data, width defined by READ_WIDTH_B parameter
+   .ADDRA(addrb), .ADDRB(addra),   // rely on auto truncation
+   .CLKA(clk), .CLKB(clk),     // tik tock goes the clock 
+   .DIA(dia[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-A data, width defined by WRITE_WIDTH_A parameter
+   .DIB(dib[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-B data, width defined by WRITE_WIDTH_B parameter
+   .ENA(ena & useThisOneA),       // 1-bit input port-A enable
+   .ENB(enb & useThisOneB),       // 1-bit input port-B enable
+   .REGCEA('1), .REGCEB('1), // register enabler? i hardley know her!
+   .RSTA('0), .RSTB('0),     // resets are for chumps
+   .WEA({4{wea}}), .WEB({4{web}})  // just do 4 bits, it'll truncate if that's too many        
 );
 
 // End of BRAM_TDP_MACRO_inst instantiation
