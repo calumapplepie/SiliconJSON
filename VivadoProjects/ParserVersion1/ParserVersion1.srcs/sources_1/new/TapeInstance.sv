@@ -25,8 +25,6 @@ module TapeInstance import Ram::*; (
         output StringBlockRamRead  stringRamR, StructBlockRamRead  structRamR 
     );
     
-    wire [63:0] lookAtMe = structRamW.dia;
-
     
     BlockRamSharerString  
     stringTapeRam (

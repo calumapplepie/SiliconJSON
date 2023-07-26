@@ -28,7 +28,6 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)) (
     output StringBlockRamRead readerStringRead, 
     output StructBlockRamRead readerStructRead 
 );
-    logic [63:0] lookAtMe1,lookAtMe2;
     
     // its not an array of structs, vivado, you happy now????!?!
     StringBlockRamWrite stringRamW0;
@@ -75,9 +74,7 @@ module TapeStorage import Ram::*; #(NUMTAPES = 2, ADDRWIDTH= $clog2(NUMTAPES)) (
         // https://support.xilinx.com/s/question/0D52E00006iHlfoSAC/systemverilog-struct-wrong-behaviour?language=en_US
         
         stringRamW [selectParser] = parserStringWrite;
-        lookAtMe1 = parserStructWrite.dia;
         structRamW [selectParser] = parserStructWrite;
-        lookAtMe2 = structRamW[selectParser].dia;
         
         
        

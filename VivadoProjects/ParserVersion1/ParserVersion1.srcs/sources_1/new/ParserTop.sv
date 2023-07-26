@@ -68,5 +68,4 @@ module ParserTop
         .stringRam, .structRam, .enable
     );
     
-    wire [63:0] lookAtMe = structRam.dia; 
 endmodule
