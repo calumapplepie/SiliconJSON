@@ -7,7 +7,6 @@ module BitmapToIndicies import Block::*; (
         
         BitBlockIndex [3:0] dexes;
         
-        BitBlockIndex offset;
         BitBlock bitmap_cur;
         logic [$clog2(BlockSizeChars):0] numOnes; // must be extra wide to avoid Problems in all-bits-are-one case
         
@@ -15,16 +14,13 @@ module BitmapToIndicies import Block::*; (
         
         always_ff @(posedge clk) begin // handle re-running in case of pipeline stall
             if(rst) begin
-                offset <= '0;
                 bitmap_cur <= '0;            
             end
             else if (enb) begin
                 if(!holdPipeline) begin
                     bitmap_cur <= bitmap;
-                    offset     <= '0;
                 end else begin
-                    bitmap_cur <= bitmap_cur >> dexes[3]; // TODO: determine if shift-and-offset is more efficent than masking logic... boy thats a silly question isn't it
-                    offset <= dexes[3] + offset; 
+                    bitmap_cur <= bitmap_cur & ({BlockSizeChars{1'd1}}<< dexes[3]);
                 end
             end
         end
@@ -35,7 +31,7 @@ module BitmapToIndicies import Block::*; (
         // transform bitmap indexes to block indexes
         always_comb begin
             for(int i = 0; i < 4; i++) begin
-                oneIndexes[i] = dexes[i] + startingIndex + offset;
+                oneIndexes[i] = dexes[i] + startingIndex;
             end
         end
         
