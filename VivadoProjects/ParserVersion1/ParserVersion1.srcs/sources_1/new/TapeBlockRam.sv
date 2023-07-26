@@ -20,18 +20,18 @@ module TapeBlockRam #(
 
 `ifdef VIVADO_BROKEN
 // yay i get to do this stuff manually!!!! wooohoooooooo!!!!
-generate
-localparam WORDSIZE_MIN = WORDSIZE_IN > WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
-localparam WORDSIZE_MAX = WORDSIZE_IN < WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
+generate 
+parameter WORDSIZE_MIN = WORDSIZE_IN > WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
+parameter WORDSIZE_MAX = WORDSIZE_IN < WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
 
-localparam BRAM_DEPTH = WORDSIZE_MIN * NUMWORDS;
-localparam BRAM_SIZE = BRAM_DEPTH < 16384 ? "18Kb" : "36Kb"; // could in theory improve efficency, but thats AMD's job
+parameter BRAM_DEPTH = WORDSIZE_MIN * NUMWORDS;
+parameter BRAM_SIZE = BRAM_DEPTH < 16384 ? "18Kb" : "36Kb"; // could in theory improve efficency, but thats AMD's job
 
-localparam WIDTH_CUTS = $ceil(WORDSIZE_MAX / 32.0);//.0 makes this a REAL boy!
-localparam DEPTH_CUTS = $ceil(BRAM_DEPTH / 32768.0);
+parameter WIDTH_CUTS = int'( $ceil(real'(WORDSIZE_MAX) / real'(32)));//.0 makes this a REAL boy!
+parameter DEPTH_CUTS = int'( $ceil(real'(BRAM_DEPTH) / real'(32768)));
 
-localparam WIDTH_READ = WORDSIZE_OUT/WIDTH_CUTS; // if someone is using extra wide words, they can be reasonable for me.
-localparam WIDTH_WRITE = WORDSIZE_IN/WIDTH_CUTS;
+parameter WIDTH_READ = WORDSIZE_OUT/WIDTH_CUTS; // if someone is using extra wide words, they can be reasonable for me.
+parameter WIDTH_WRITE = WORDSIZE_IN/WIDTH_CUTS;
 
 genvar width_i, depth_i;
 for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
@@ -64,7 +64,7 @@ BRAM_TDP_MACRO #(
 
 // End of BRAM_TDP_MACRO_inst instantiation
 end
-
+end
 endgenerate
 `else
 // maybe in is big, maybe out is big; user chooses
