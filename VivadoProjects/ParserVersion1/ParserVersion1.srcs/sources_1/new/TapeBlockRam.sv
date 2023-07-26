@@ -23,32 +23,34 @@ module TapeBlockRam #(
 // Xilinx Parameterized Macro, version 2023.1
 
 xpm_memory_tdpram #(
-   .ADDR_WIDTH_A(6),               // DECIMAL
-   .ADDR_WIDTH_B(6),               // 
-   .MEMORY_OPTIMIZATION("true"),   // String
-   .MEMORY_PRIMITIVE("auto"),      // String
+   .ADDR_WIDTH_A(ADDRWIDTH),
+   .ADDR_WIDTH_B(ADDRWIDTH), 
+   .BYTE_WRITE_WIDTH_A(WORDSIZE_IN), 
+   .BYTE_WRITE_WIDTH_B(WORDSIZE_IN), 
+   .MEMORY_OPTIMIZATION("true"),
+   .MEMORY_PRIMITIVE("auto"),
    .MEMORY_INIT_PARAM("BA"),
-   .MEMORY_SIZE(2048),             // DECIMAL
-   .MESSAGE_CONTROL(1),            // DECIMAL
-   .READ_DATA_WIDTH_A(32),         // DECIMAL
-   .READ_DATA_WIDTH_B(32),         // DECIMAL
-   .READ_LATENCY_A(2),             // DECIMAL
-   .READ_LATENCY_B(2),             // DECIMAL
-   .SIM_ASSERT_CHK(1),             // DECIMAL; 0=disable simulation messages, 1=enable simulation messages
-   .WRITE_DATA_WIDTH_A(32),        // DECIMAL
-   .WRITE_DATA_WIDTH_B(32)        // DECIMAL
+   .MEMORY_SIZE(NUMWORDS),
+   .MESSAGE_CONTROL(1), 
+   .READ_DATA_WIDTH_A(WORDSIZE_OUT),
+   .READ_DATA_WIDTH_B(WORDSIZE_OUT),
+   .READ_LATENCY_A(2), 
+   .READ_LATENCY_B(2),
+   .SIM_ASSERT_CHK(1),
+   .WRITE_DATA_WIDTH_A(WORDSIZE_IN),
+   .WRITE_DATA_WIDTH_B(WORDSIZE_IN)
 )
 xpm_memory_tdpram_inst (
-   .douta(douta),                   // READ_DATA_WIDTH_A-bit output: Data output for port A read operations.
-   .doutb(doutb),                   // READ_DATA_WIDTH_B-bit output: Data output for port B read operations.
+   .douta(doa),                   // READ_DATA_WIDTH_A-bit output: Data output for port A read operations.
+   .doutb(dob),                   // READ_DATA_WIDTH_B-bit output: Data output for port B read operations.
 
    .addra(addra),                   // ADDR_WIDTH_A-bit input: Address for port A write and read operations.
    .addrb(addrb),                   // ADDR_WIDTH_B-bit input: Address for port B write and read operations.
-   .clka(clka),                     // 1-bit input: Clock signal for port A. Also clocks port B when
+   .clka(clk),                     // 1-bit input: Clock signal for port A. Also clocks port B when
                                     // parameter CLOCKING_MODE is "common_clock".
 
-   .dina(dina),                     // WRITE_DATA_WIDTH_A-bit input: Data input for port A write operations.
-   .dinb(dinb),                     // WRITE_DATA_WIDTH_B-bit input: Data input for port B write operations.
+   .dina(dia),                     // WRITE_DATA_WIDTH_A-bit input: Data input for port A write operations.
+   .dinb(dib),                     // WRITE_DATA_WIDTH_B-bit input: Data input for port B write operations.
    .ena(ena),                       // 1-bit input: Memory enable signal for port A. Must be high on clock
                                     // cycles when read or write operations are initiated. Pipelined
                                     // internally.
@@ -56,11 +58,6 @@ xpm_memory_tdpram_inst (
    .enb(enb),                       // 1-bit input: Memory enable signal for port B. Must be high on clock
                                     // cycles when read or write operations are initiated. Pipelined
                                     // internally.
-   .regcea(regcea),                 // 1-bit input: Clock Enable for the last register stage on the output
-                                    // data path.
-
-   .regceb(regceb),                 // 1-bit input: Clock Enable for the last register stage on the output
-                                    // data path.
 
    .wea(wea),                       // WRITE_DATA_WIDTH_A/BYTE_WRITE_WIDTH_A-bit input: Write enable vector
                                     // for port A input data port dina. 1 bit wide when word-wide writes are
