@@ -8,7 +8,7 @@ module BitmapIndexDecoder import Block::*; (input BitBlock in, output BitBlockIn
         for(int i = 0; i < BlockSizeChars; i++) begin
             if(in[i]) begin // we have a one! announce to the world that this is an in to dex!
                 for(int j = 0; j < 4; j++) begin
-                    if(valids[j] == '1) begin
+                    if(valids[j] == '0) begin
                         valids[j] = '1;
                         dexes [j] = i;
                         break;
