@@ -26,9 +26,18 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
     );
     LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmapsA);
     ScannedJsonBlock scannedBitmapsA, scannedBitmapsB;
-    always_ff @(posedge clk) scannedBitmapsB <= scannedBitmapsA;
     
+    BitmapToIndicies (.clk, .rst, .enb, .holdPipeline, .bitmap(scannedBitmapsA)); // includes pipelining all on its own!
     
+    always_ff @(posedge clk) begin
+        if(enb && ! holdPipeline) begin
+            scannedBitmapsB <= scannedBitmapsA;  // when we pass a map on to the next stage, it needs to be delayed a bit
+            
+        end
+    end 
+    
+    // todo: store indexes
+    // todo: testbench
     
     
     
