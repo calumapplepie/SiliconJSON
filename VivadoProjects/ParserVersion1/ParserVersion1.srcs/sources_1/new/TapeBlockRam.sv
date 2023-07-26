@@ -19,19 +19,36 @@ module TapeBlockRam #(
 
 
 `ifdef VIVADO_BROKEN
+// yay i get to do this stuff manually!!!! wooohoooooooo!!!!
+generate
+localparam WORDSIZE_MIN = WORDSIZE_IN > WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
+localparam WORDSIZE_MAX = WORDSIZE_IN < WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
+
+localparam BRAM_DEPTH = WORDSIZE_MIN * NUMWORDS;
+localparam BRAM_SIZE = BRAM_DEPTH < 16384 ? "18Kb" : "36Kb"; // could in theory improve efficency, but thats AMD's job
+
+localparam WIDTH_CUTS = $ceil(WORDSIZE_MAX / 32.0);
+localparam DEPTH_CUTS = $ceil(BRAM_DEPTH / 32768.0);
+
+genvar width_i, depth_i;
+for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
+for(width_i = 0; width_i < WIDTH_CUTS; width_i++) begin
+logic useThisOneA = addra[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i;
+logic useThisOneB = addrb[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i;
+
 // Xilinx HDL Language Template, version 2022.2
 BRAM_TDP_MACRO #(
-   .BRAM_SIZE("36Kb"), // Target BRAM: "18Kb" or "36Kb"
+   .BRAM_SIZE(BRAM_SIZE), // Target BRAM: "18Kb" or "36Kb"
    .DOA_REG(1),        // Optional port A output register (0 or 1)
    .DOB_REG(1),        // Optional port B output register (0 or 1)
-   .READ_WIDTH_A (WORDSIZE_OUT),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
-   .READ_WIDTH_B (WORDSIZE_OUT),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .READ_WIDTH_A (WORDSIZE_OUT/WIDTH_CUTS),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .READ_WIDTH_B (WORDSIZE_OUT/WIDTH_CUTS),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
    .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
                                  //   "GENERATE_X_ONLY" or "NONE"
    .WRITE_MODE_A("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
    .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
-   .WRITE_WIDTH_A(WORDSIZE_IN), // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
-   .WRITE_WIDTH_B(WORDSIZE_IN) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .WRITE_WIDTH_A(WORDSIZE_IN/WIDTH_CUTS), // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
+   .WRITE_WIDTH_B(WORDSIZE_IN/WIDTH_CUTS) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
 ) BRAM_TDP_MACRO_inst (
    .DOA(doa),       // Output port-A data, width defined by READ_WIDTH_A parameter
    .DOB(dob),       // Output port-B data, width defined by READ_WIDTH_B parameter
@@ -52,7 +69,9 @@ BRAM_TDP_MACRO #(
 );
 
 // End of BRAM_TDP_MACRO_inst instantiation
+end
 
+endgenerate
 `else
 // maybe in is big, maybe out is big; user chooses
 localparam WORDSIZE_RAM = WORDSIZE_IN > WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;

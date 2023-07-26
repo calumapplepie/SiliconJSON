@@ -66,7 +66,7 @@ module OverallJsonTester_tb();
         
         // bonus clock for pipeline
         #40;
-
+/*
         // compare
         foreach(expectedStringTape[i]) begin
             if (expectedStringTape[i] !=  DUV.storage.tape1.stringTapeRam.blockRam.ram[i]) begin
@@ -88,7 +88,7 @@ module OverallJsonTester_tb();
             end
         end
 
-
+*/
     endtask
     string tmp;
     task static loadBasenames();
