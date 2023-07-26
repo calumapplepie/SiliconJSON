@@ -1,9 +1,10 @@
 `timescale 1ns / 1ps
 
-module BitmapOneCounter import Block::*; (input BitBlock in, output BitBlockIndex numOnes  );
+module BitmapOneCounter    import Block::*; #(InputWidth=BlockSizeChars)
+        (logic [InputWidth-1:0] in, output logic[$clog2(InputWidth):0] numOnes  );
     always_comb begin
         numOnes = '0;
-        for(int i = 0; i < BlockSizeChars; i++) begin
+        for(int i = 0; i < InputWidth; i++) begin
             numOnes += in[i];
         end
     end
