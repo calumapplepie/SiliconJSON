@@ -36,6 +36,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
         end
     end 
     
+    AsymetricBlockRam blocky ();
     // todo: store indexes
     // todo: testbench
     

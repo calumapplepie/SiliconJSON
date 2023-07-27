@@ -11,6 +11,18 @@ package Ram;
         logic [$clog2(Core::StructTapeLength)-1:0] addra,addrb;
         logic [63:0] dia, dib;
     } StructBlockRamWrite;
+    
+    typedef struct {
+        logic ena, enb, wea,web;
+        logic [$clog2(Core::StructTapeLength)-1:0] addra,addrb;
+        logic [63:0] dia, dib;
+    } IndexBlockRamWrite;
+    
+    typedef struct {
+        logic ena, enb, wea,web;
+        logic [$clog2(Core::StructTapeLength)-1:0] addra,addrb;
+        logic [63:0] dia, dib;
+    } BitmapBlockRamWrite;    
       
     typedef struct {
         logic [31:0] doa,dob;

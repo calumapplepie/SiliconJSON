@@ -3,7 +3,8 @@
 package Block;
     parameter int BlockSizeChars = 8;
     parameter int BlockSizeBits = BlockSizeChars * 8;
-    parameter int StageOnePt2Width= 4;
+    parameter int StageOnePt2Width= 4; //can't just be tweaked
+    parameter int IndexRamDepth = Core::MaxInputLength / 2; // don't support really long really rude inputs
     typedef Core::UTF8_Char[BlockSizeChars-1:0] TextBlock;
     typedef logic [BlockSizeChars-1:0]          BitBlock;
     typedef logic [$clog2(BlockSizeChars)-1:0]  BitBlockIndex;
