@@ -10,7 +10,7 @@
 `define VIVADO_BROKEN 1
 module AsymetricBlockRam #(
             WORDSIZE=8, WORDSIZE_IN=WORDSIZE, WORDSIZE_OUT=WORDSIZE, // default to symetric, but allow asymetric reading  
-            NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS), DO_OUTPUT_REG=1) (
+            NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS), DO_REG=1) (
     input logic clk, ena, enb, wea,web, 
     input [ADDRWIDTH-1:0] addra,addrb, 
     input [WORDSIZE_IN-1:0] dia,dib,
@@ -58,11 +58,11 @@ localparam depth_i =0;
         // Xilinx HDL Language Template, version 2022.2
         BRAM_TDP_MACRO #(
            .BRAM_SIZE(BRAM_SIZE), // Target BRAM: "18Kb" or "36Kb"
-           .DOA_REG(DO_OUTPUT_REG), .DOB_REG(DO_OUTPUT_REG),        // Optional port B output register (0 or 1) (yes i can disable this)
+           .DOA_REG(DO_REG), .DOB_REG(DO_REG),        // Optional port B output register (0 or 1) (yes i can disable this)
            .READ_WIDTH_A (WIDTH_READ), .READ_WIDTH_B (WIDTH_READ),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
            .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
                                          //   "GENERATE_X_ONLY" or "NONE"
-           .INIT_00({4{64'h1122334455667788}}),
+           .INIT_00({4{64'h7766554433221100}}),
            .INIT_A(36'hCDCDCDCD),
            .WRITE_MODE_A("WRITE_FIRST"), .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
            .WRITE_WIDTH_A(WIDTH_WRITE), .WRITE_WIDTH_B(WIDTH_WRITE) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")

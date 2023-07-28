@@ -35,7 +35,7 @@ module AxiStreamReaderTest import Ram::*; (
     );
     
     // give 'er a BRAM
-    AsymetricBramSharer #(.NUMWORDS(64), .ReadType(StringBlockRamRead), .WriteType(StringBlockRamWrite)) bob (
+    AsymetricBramSharer #(.NUMWORDS(64), .ReadType(StringBlockRamRead), .WriteType(StringBlockRamWrite), .DO_REG(0)) bob (
         .clk, .enb('1), .ramW(ramWrite), .ramR(ramRead)
     );
     
@@ -62,7 +62,7 @@ module AxiStreamReaderTest import Ram::*; (
     
     
     initial begin
-        #160
+        #190
         // run the test twice, for Surety
         transferLen = '1;
         runTest(); 

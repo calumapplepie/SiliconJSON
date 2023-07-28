@@ -52,7 +52,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
 
     
     GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType)) reader (
-        .clk, .enable(enable && updateOutput), .rst(reset), .data(TDATA), .ramWrite, .ramRead
+        .clk, .enable(updateOutput), .rst(reset), .data(TDATA), .ramWrite, .ramRead
     );  
         
     always_ff @(posedge clk) begin
