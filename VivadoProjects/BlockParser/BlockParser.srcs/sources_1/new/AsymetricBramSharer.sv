@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 // note: infers data widths from passed args
-module AsymetricBramSharer import Ram::*; #(NUMWORDS=64, type ReadType, type WriteType)  (
+module AsymetricBramSharer import Ram::*; #(NUMWORDS=64, type ReadType=StructBlockRamRead, type WriteType=StringBlockRamWrite)  (
         input clk, enb, input WriteType ramW, output ReadType ramR
     );
       
