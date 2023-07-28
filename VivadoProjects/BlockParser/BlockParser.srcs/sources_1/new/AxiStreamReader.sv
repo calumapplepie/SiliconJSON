@@ -20,6 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 // encapsulates a BRAM reader to provide stream-reading powers
+// DESIGN NOTE: BlockRamSharer MUST be enabled and connected to this module DURING a clock edge when reset is asserted
+// yes that adds complexity, but I think it's a clever optimization which saves us a cycle of latency on the likley-critical path (bram reading start)
+// ALSO NOTE: Does not do TDEST or TID handling.  It could tho.  I'm considering making TID randomly generated
 module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType, type ReadType) (
         output WriteType ramWrite, 
         input ReadType ramRead,
@@ -39,6 +42,9 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType,
     assign updateOutput = reset || TVALID && TREADY;  // (note that reset + enable causes the bram to emit ram[0])
     assign TVALID = enable && !wasReset && !reset && !wasLast; 
     assign TLAST = ramWrite.addrA > transferLen - NUMWORDS;
+    
+    // todo: tkeep support
+    assign TKEEP = '1;
 
     
     GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType)) reader (
