@@ -45,7 +45,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType,
     
     assign updateOutput = reset || TVALID && TREADY;  // (note that reset + enable causes the bram to emit ram[0])
     assign TVALID = enable && !wasReset && !reset && !wasLast; 
-    assign TLAST = ramWrite.addrA > transferLen - NUMWORDS;
+    assign TLAST = ramWrite.addra > transferLen - NUMWORDS;
     
     // todo: tkeep support
     assign TKEEP = '1;

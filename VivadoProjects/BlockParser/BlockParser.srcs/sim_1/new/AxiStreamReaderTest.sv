@@ -24,6 +24,8 @@ module AxiStreamReaderTest import Ram::*; (
 
     );
     logic clk, enb, rst, TREADY;
+    StructBlockRamRead  ramRead;
+    StringBlockRamWrite ramWrite;
     
     // simulate 8-char string reader with the struct data types
     AxiStreamReader #(.WORDSIZE(8), .NUMWORDS(4), .ReadType(StructBlockRamRead), .WriteType(StringBlockRamWrite)) DUV (
