@@ -51,7 +51,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
     assign TKEEP = '1;
 
     
-    GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType)) reader (
+    GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType), .STARTDEX(1)) reader (
         .clk, .enable(updateOutput), .rst(reset), .data(TDATA), .ramWrite, .ramRead
     );  
         

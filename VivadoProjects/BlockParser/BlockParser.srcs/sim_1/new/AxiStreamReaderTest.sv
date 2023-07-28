@@ -41,7 +41,7 @@ module AxiStreamReaderTest import Ram::*; (
     
     task runTest();
         rst<='1;TREADY <= '1;
-        enb <='0; #10;
+        enb <='0; #20; // two clocks so that things can get all nice and ready
                                         // now lets run it a bit
         enb <= '1; rst <= '0;   #40;    // check the outputs, calum!
         enb <='0;               #20; 

@@ -22,7 +22,8 @@
 // Reads a possibly-asymetric BRAM.  ReadType and WriteType should be structs of the form typical in RamPkg.sv , NUMWORDS is the number
 // of words that are read at once (if RAM is asymetric), and WORDSIZE is the bitwidth of each word
 // Verilog's weak typing system makes the fact that the 'data' output is an array not really matter
-module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType, type ReadType) (
+module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0, // startdex is used by AXI, so that it can start reading ASAP
+                                                type WriteType, type ReadType) (
         output WriteType ramWrite, 
         input ReadType ramRead,
         input logic clk, enable, rst, 
@@ -47,7 +48,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
     end
     
     always_ff @(posedge clk) begin
-        if(rst)         curAddr <= '0;
+        if(rst)         curAddr <= STARTDEX;
         else if(enable) curAddr <= curAddr + NUMWORDS;
     end
     
