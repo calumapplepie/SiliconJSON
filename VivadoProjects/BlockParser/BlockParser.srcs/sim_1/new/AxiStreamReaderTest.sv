@@ -40,6 +40,16 @@ module AxiStreamReaderTest import Ram::*; (
         enb <='0; #10;
         // now lets run it a bit
         enb <= '1; rst <= '0; TREADY <= '1;
+        #40; // check the outputs, calum!
+        enb <='0; #20; enb <='1; #10;                        // pulse enable
+        TREADY <= '0; #20; TREADY <='1; #10;                 // pulse TREADY
+        // pulse both TREADY and enable
+        enb <='0; TREADY <= '0; #20; TREADY <='1; #10; enb <='1;
+        rst <='1; #10; rst <= '0; #50;                      // confirm reset works
+        TREADY <= '0; rst <= '1; #10; rst <= '0;            // confirm reset with TREADY off works
+        #40; TREADY <= '1; #20; enb <= '0; #20;             // disable, confirm bits
+        
+        #50;
     end
     
     initial forever begin
