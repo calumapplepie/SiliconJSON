@@ -1,0 +1,63 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 07/28/2023 01:22:53 PM
+// Design Name: 
+// Module Name: AxiStreamReader
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+// encapsulates a BRAM reader to provide stream-reading powers
+module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType, type ReadType) (
+        output WriteType ramWrite, 
+        input ReadType ramRead,
+        input logic clk, enable, rst, 
+        input logic[$bits(ramWrite.addra)-1:0] transferLen,
+        // AXI signals
+        input logic TREADY, TRESET, 
+        output logic [WORDSIZE-1:0] [NUMWORDS-1:0] TDATA,
+        // Todo: TKEEP support (may not be worth it)
+        output logic [WORDSIZE*NUMWORDS/8-1:0] TKEEP, // note: all ones except for when TLAST is asserted.  Xylinx doesn't sopport other things, see PG022
+        output logic TLAST, TVALID
+    );
+    
+    logic updateOutput, wasReset, wasLast;
+    logic reset = rst && !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
+    
+    assign updateOutput = reset || TVALID && TREADY;  // (note that reset + enable causes the bram to emit ram[0])
+    assign TVALID = enable && !wasReset && !reset && !wasLast; 
+    assign TLAST = ramWrite.addrA > transferLen - NUMWORDS;
+
+    
+    GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType)) reader (
+        .clk, .enable(enable && updateOutput), .rst(reset), .data(TDATA), .ramWrite, .ramRead
+    );  
+        
+    always_ff @(posedge clk) begin
+        if(reset) begin
+            wasReset <= '1;   
+            wasLast  <= '0;     
+        end
+        else if (enable) begin
+            if(wasReset) begin // we just reset
+                wasReset <= '0;
+            end
+            if(TLAST) begin
+                wasLast <= '1;
+            end
+        end
+    end
+    
+endmodule

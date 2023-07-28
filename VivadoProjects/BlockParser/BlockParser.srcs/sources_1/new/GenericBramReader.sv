@@ -25,7 +25,7 @@
 module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType, type ReadType) (
         output WriteType ramWrite, 
         input ReadType ramRead,
-        input logic clk, enable, rst,
+        input logic clk, enable, rst, 
         output logic [WORDSIZE-1:0] [NUMWORDS-1:0] data 
     );
     
@@ -38,7 +38,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
         ramWrite.ena = enable;
         ramWrite.wea = '0; ramWrite.web = '0;
         
-        ramWrite.addra = curAddr;
+        ramWrite.addra = rst ? '0 : curAddr;
         data = ramRead.doa;
         
         // set others to 'x to make the compiler not complain about unassigned vars, and maybe do a bit of optimization
@@ -47,7 +47,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
     end
     
     always_ff @(posedge clk) begin
-        if(rst)      curAddr <= '0;
+        if(rst)         curAddr <= '0;
         else if(enable) curAddr <= curAddr + NUMWORDS;
     end
     
