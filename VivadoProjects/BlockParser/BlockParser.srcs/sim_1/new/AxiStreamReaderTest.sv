@@ -20,17 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module AxiStreamReaderTest(
+module AxiStreamReaderTest import Ram::*; (
 
     );
     logic clk, enb, rst, TREADY;
     
     // simulate 8-char string reader with the struct data types
-    AxiStreamReader #(.WORDSIZE(8), .NUMWORDS(4), .ReadType(Ram::StructBlockRamRead), .WriteType(Ram::StringBlockRamWrite)) DUV (
-        .clk, .enable(enb), .rst, .TREADY
+    AxiStreamReader #(.WORDSIZE(8), .NUMWORDS(4), .ReadType(StructBlockRamRead), .WriteType(StringBlockRamWrite)) DUV (
+        .clk, .enable(enb), .rst, .TREADY, .ramWrite, .ramRead
     );
     
     // give 'er a BRAM
+    AsymetricBramSharer #(.NUMWORDS(64), .ReadType(StructBlockRamRead), .WriteType(StringBlockRamWrite)) bob (
+        .clk, .enb('1), .ramW(ramWrite), .ramR(ramRead)
+    );
     
     initial begin
         rst<='1;
