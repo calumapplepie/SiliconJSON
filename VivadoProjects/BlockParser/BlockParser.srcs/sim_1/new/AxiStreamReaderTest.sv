@@ -27,9 +27,11 @@ module AxiStreamReaderTest import Ram::*; (
     StructBlockRamRead  ramRead;
     StringBlockRamWrite ramWrite;
     
+    logic [7:0] transferLen;
+    
     // simulate 8-char string reader with the struct data types
-    AxiStreamReader #(.WORDSIZE(8), .NUMWORDS(4), .ReadType(StructBlockRamRead), .WriteType(StringBlockRamWrite)) DUV (
-        .clk, .enable(enb), .rst, .TREADY, .ramWrite, .ramRead, .TRESET('0)
+    AxiStreamReader #(.WORDSIZE(8), .NUMWORDS(8), .ReadType(StructBlockRamRead), .WriteType(StringBlockRamWrite)) DUV (
+        .clk, .enable(enb), .rst, .TREADY, .ramWrite, .ramRead, .TRESET('0), .transferLen
     );
     
     // give 'er a BRAM
@@ -61,8 +63,11 @@ module AxiStreamReaderTest import Ram::*; (
     
     initial begin
         // run the test twice, for Surety
+        transferLen = '1;
         runTest(); 
+        transferLen = 8'd24;
         runTest();
+        $finish();
     end;
     
     initial forever begin
