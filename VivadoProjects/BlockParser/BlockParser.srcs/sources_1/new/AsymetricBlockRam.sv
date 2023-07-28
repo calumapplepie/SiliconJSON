@@ -14,7 +14,7 @@ module AsymetricBlockRam #(
     input logic clk, ena, enb, wea,web, 
     input [ADDRWIDTH-1:0] addra,addrb, 
     input [WORDSIZE_IN-1:0] dia,dib,
-    output logic [WORDSIZE_OUT-1:0] doa,dob
+    output wire [WORDSIZE_OUT-1:0] doa,dob // make output a net so we can do silly things with 'z
 );
 
 
@@ -33,6 +33,10 @@ parameter int DEPTH_CUTS = int'( $ceil((BRAM_DEPTH) / (32768.0 * WIDTH_CUTS)));
 parameter WIDTH_READ = WORDSIZE_OUT/WIDTH_CUTS; // if someone is using extra wide words, they can be reasonable for me.
 parameter WIDTH_WRITE = WORDSIZE_IN/WIDTH_CUTS; // (ie, make sure that their width is divisible by the number of cuts i'll need to do)
 
+// just do 4 bits, it'll truncate if that's too many    
+wire [3:0] WEA = {4{wea}};
+wire [3:0] WEB = {4{web}};
+
 genvar width_i, depth_i;
 for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
     for(width_i = 0; width_i < WIDTH_CUTS; width_i++) begin
@@ -43,6 +47,11 @@ for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
             useThisOneA = (addra[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i)? '1 : '0;
             useThisOneB = (addrb[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i)? '1 : '0;
         end end
+        logic [WIDTH_READ-1:0] thisDoa, thisDob;
+        
+        // only assign bits of output if it's our turn
+        assign doa[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ] = useThisOneA ? thisDoa : 'z;
+        assign dob[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ] = useThisOneB ? thisDob : 'z;
         
         // Xilinx HDL Language Template, version 2022.2
         BRAM_TDP_MACRO #(
@@ -51,11 +60,12 @@ for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
            .READ_WIDTH_A (WIDTH_READ), .READ_WIDTH_B (WIDTH_READ),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
            .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
                                          //   "GENERATE_X_ONLY" or "NONE"
+           .INIT_00({2{"ABCDEFGHIJKLMNOP"}}),
            .WRITE_MODE_A("WRITE_FIRST"), .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
            .WRITE_WIDTH_A(WIDTH_WRITE), .WRITE_WIDTH_B(WIDTH_WRITE) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
         ) BRAM_TDP_MACRO_inst (
-           .DOA(doa[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-A data, width defined by READ_WIDTH_A parameter
-           .DOB(dob[WIDTH_READ * (width_i+1)-1 -: WIDTH_READ]),       // Output port-B data, width defined by READ_WIDTH_B parameter
+           .DOA(thisDoa),       // Output port-A data, width defined by READ_WIDTH_A parameter
+           .DOB(thisDob),       // Output port-B data, width defined by READ_WIDTH_B parameter
            .ADDRA(addrb), .ADDRB(addra),   // rely on auto truncation
            .CLKA(clk), .CLKB(clk),     // tik tock goes the clock 
            .DIA(dia[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-A data, width defined by WRITE_WIDTH_A parameter
@@ -64,7 +74,7 @@ for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
            .ENB(enb & useThisOneB),       // 1-bit input port-B enable
            .REGCEA(ena & useThisOneA), .REGCEB(enb & useThisOneB), // register enabler? i hardley know her!
            .RSTA('0), .RSTB('0),     // resets are for chumps
-           .WEA({4{wea}}), .WEB({4{web}})  // just do 4 bits, it'll truncate if that's too many        
+           .WEA, .WEB    
         );
         
         // End of BRAM_TDP_MACRO_inst instantiation

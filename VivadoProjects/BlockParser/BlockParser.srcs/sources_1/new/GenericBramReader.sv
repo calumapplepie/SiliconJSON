@@ -42,8 +42,8 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
         data = ramRead.doa;
         
         // set others to 'x to make the compiler not complain about unassigned vars, and maybe do a bit of optimization
-        ramWrite.dia = 'x; ramWrite.dib = 'x;
-        ramWrite.addrb = 'x;
+        ramWrite.dia = 8'hBA; ramWrite.dib = 8'hBA;
+        ramWrite.addrb = '0;
     end
     
     always_ff @(posedge clk) begin

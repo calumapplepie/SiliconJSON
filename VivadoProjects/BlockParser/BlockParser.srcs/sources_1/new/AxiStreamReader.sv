@@ -27,7 +27,7 @@
 
 // ALSO NOTE: Does not do TDEST or TID handling.  It could tho.  I'm considering making TID randomly generated... a local param with $random()... or maybe make
 // it increment on resets...  thoughts for later
-module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType, type ReadType) (
+module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=StringBlockRamWrite, type ReadType=StringBlockRamRead) (
         output WriteType ramWrite, 
         input ReadType ramRead,
         input logic clk, enable, rst, 

@@ -25,7 +25,7 @@ package Ram;
     } BitmapBlockRamWrite;    
       
     typedef struct {
-        logic [31:0] doa,dob;
+        logic [7:0] doa,dob;
     } StringBlockRamRead;
     
     typedef struct {
