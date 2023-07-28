@@ -62,10 +62,11 @@ module AxiStreamReaderTest import Ram::*; (
     
     
     initial begin
+        #160
         // run the test twice, for Surety
         transferLen = '1;
         runTest(); 
-        transferLen = 8'd24;
+        transferLen = 8'd20;
         runTest();
         $finish();
     end;
