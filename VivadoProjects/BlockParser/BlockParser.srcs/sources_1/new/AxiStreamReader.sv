@@ -40,9 +40,9 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType,
         output logic TLAST, TVALID
     );
     
-    logic updateOutput, wasReset, wasLast;
-    logic reset = rst && !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
+    logic reset, updateOutput, wasReset, wasLast;
     
+    assign reset = rst && !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
     assign updateOutput = reset || TVALID && TREADY;  // (note that reset + enable causes the bram to emit ram[0])
     assign TVALID = enable && !wasReset && !reset && !wasLast; 
     assign TLAST = ramWrite.addra > transferLen - NUMWORDS;

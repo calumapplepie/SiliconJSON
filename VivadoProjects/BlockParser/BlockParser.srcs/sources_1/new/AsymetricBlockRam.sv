@@ -42,7 +42,7 @@ for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
         always_comb begin
             useThisOneA = (addra[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i)? '1 : '0;
             useThisOneB = (addrb[ADDRWIDTH-1 -: $clog2(DEPTH_CUTS)] == depth_i)? '1 : '0;
-        end end 
+        end end
         
         // Xilinx HDL Language Template, version 2022.2
         BRAM_TDP_MACRO #(
@@ -62,7 +62,7 @@ for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
            .DIB(dib[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-B data, width defined by WRITE_WIDTH_B parameter
            .ENA(ena & useThisOneA),       // 1-bit input port-A enable
            .ENB(enb & useThisOneB),       // 1-bit input port-B enable
-           .REGCEA('1), .REGCEB('1), // register enabler? i hardley know her!
+           .REGCEA(ena & useThisOneA), .REGCEB(enb & useThisOneB), // register enabler? i hardley know her!
            .RSTA('0), .RSTB('0),     // resets are for chumps
            .WEA({4{wea}}), .WEB({4{web}})  // just do 4 bits, it'll truncate if that's too many        
         );
