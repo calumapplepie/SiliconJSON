@@ -25,13 +25,13 @@ parameter WORDSIZE_MIN = WORDSIZE_IN > WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN
 parameter WORDSIZE_MAX = WORDSIZE_IN < WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
 
 parameter BRAM_DEPTH = WORDSIZE_MIN * NUMWORDS;
-parameter BRAM_SIZE = BRAM_DEPTH < 16384 ? "18Kb" : "36Kb"; // could in theory improve efficency, but thats AMD's job
+parameter BRAM_SIZE = (BRAM_DEPTH < 16384 && WORDSIZE_MAX <=18 ) ? "18Kb" : "36Kb"; // could in theory improve efficency, but thats AMD's job
 
 parameter int WIDTH_CUTS = int'( $ceil((WORDSIZE_MAX) / (32.0)));//.0 makes this a REAL boy!
 parameter int DEPTH_CUTS = int'( $ceil((BRAM_DEPTH) / (32768.0 * WIDTH_CUTS)));
 
 parameter WIDTH_READ = WORDSIZE_OUT/WIDTH_CUTS; // if someone is using extra wide words, they can be reasonable for me.
-parameter WIDTH_WRITE = WORDSIZE_IN/WIDTH_CUTS;
+parameter WIDTH_WRITE = WORDSIZE_IN/WIDTH_CUTS; // (ie, make sure that their width is divisible by the number of cuts i'll need to do)
 
 genvar width_i, depth_i;
 for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
