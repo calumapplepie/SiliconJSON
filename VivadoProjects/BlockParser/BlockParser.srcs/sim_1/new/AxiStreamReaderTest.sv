@@ -27,7 +27,7 @@ module AxiStreamReaderTest import Ram::*; (
     
     // simulate 8-char string reader with the struct data types
     AxiStreamReader #(.WORDSIZE(8), .NUMWORDS(4), .ReadType(StructBlockRamRead), .WriteType(StringBlockRamWrite)) DUV (
-        .clk, .enable(enb), .rst, .TREADY, .ramWrite, .ramRead
+        .clk, .enable(enb), .rst, .TREADY, .ramWrite, .ramRead, .TRESET('0)
     );
     
     // give 'er a BRAM
@@ -35,22 +35,33 @@ module AxiStreamReaderTest import Ram::*; (
         .clk, .enb('1), .ramW(ramWrite), .ramR(ramRead)
     );
     
-    initial begin
-        rst<='1;
+    task runTest();
+        rst<='1;TREADY <= '1;
         enb <='0; #10;
-        // now lets run it a bit
-        enb <= '1; rst <= '0; TREADY <= '1;
-        #40; // check the outputs, calum!
-        enb <='0; #20; enb <='1; #10;                        // pulse enable
-        TREADY <= '0; #20; TREADY <='1; #10;                 // pulse TREADY
-        // pulse both TREADY and enable
-        enb <='0; TREADY <= '0; #20; TREADY <='1; #10; enb <='1;
-        rst <='1; #10; rst <= '0; #50;                      // confirm reset works
-        TREADY <= '0; rst <= '1; #10; rst <= '0;            // confirm reset with TREADY off works
-        #40; TREADY <= '1; #20; enb <= '0; #20;             // disable, confirm bits
-        
-        #50;
-    end
+                                        // now lets run it a bit
+        enb <= '1; rst <= '0;   #40;    // check the outputs, calum!
+        enb <='0;               #20; 
+        enb <='1;               #10;    // pulse enable
+        TREADY <= '0;           #20; 
+        TREADY <='1;            #10;    // pulse TREADY
+        enb <='0; TREADY <= '0; #20;    // pulse both TREADY and enable
+        TREADY <='1;            #10; 
+        enb <='1; rst <='1;     #10; 
+        rst <= '0;              #50;    // confirm reset works
+        TREADY <= '0;rst <= '1; #10; 
+        rst <= '0;              #40;    // confirm reset with TREADY off works
+        TREADY <= '1;           #20;
+        enb <= '0;              #20;    // disable, confirm bits
+        rst <= '1;              #10;    // how about rst with enable off?
+        rst <= '0; enb <= '1;   #50;
+    endtask
+    
+    
+    initial begin
+        // run the test twice, for Surety
+        runTest(); 
+        runTest();
+    end;
     
     initial forever begin
         clk <= '0; #5;
