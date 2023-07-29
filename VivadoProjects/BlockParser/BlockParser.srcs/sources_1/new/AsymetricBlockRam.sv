@@ -38,10 +38,10 @@ wire [3:0] WEA = {4{wea}};
 wire [3:0] WEB = {4{web}};
 
 
-localparam width_i =0;
-localparam depth_i =0;
-//for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
-  //  for(width_i = 0; width_i < WIDTH_CUTS; width_i++) begin
+genvar depth_i, width_i;
+
+for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
+    for(width_i = 0; width_i < WIDTH_CUTS; width_i++) begin
         logic useThisOneA = '1;
         logic useThisOneB = '1;
         if (DEPTH_CUTS > 1) begin
@@ -62,14 +62,17 @@ localparam depth_i =0;
            .READ_WIDTH_A (WIDTH_READ), .READ_WIDTH_B (WIDTH_READ),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
            .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
                                          //   "GENERATE_X_ONLY" or "NONE"
-           .INIT_00({4{64'h7766554433221100}}),
+           .INIT_00({{8{8'h3}},{8{8'h2}},{8{8'h1}},{8{8'h0}}}),
+           .INIT_01({{8{8'h7}},{8{8'h6}},{8{8'h5}},{8{8'h4}}}),
+           .INIT_02({{8{8'hB}},{8{8'hA}},{8{8'h9}},{8{8'h8}}}),
+           .INIT_03({{8{8'hF}},{8{8'hE}},{8{8'hD}},{8{8'hC}}}),
            .INIT_A(36'hCDCDCDCD),
            .WRITE_MODE_A("WRITE_FIRST"), .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
            .WRITE_WIDTH_A(WIDTH_WRITE), .WRITE_WIDTH_B(WIDTH_WRITE) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
         ) BRAM_TDP_MACRO_inst (
            .DOA(thisDoa),       // Output port-A data, width defined by READ_WIDTH_A parameter
            .DOB(thisDob),       // Output port-B data, width defined by READ_WIDTH_B parameter
-           .ADDRA({5'd0,addra}), .ADDRB({5'd0,addrb}),   // rely on auto truncation
+           .ADDRA({7'd0,addra}), .ADDRB({7'd0,addrb}),   // rely on auto truncation
            .CLKA(clk), .CLKB(clk),     // tik tock goes the clock 
            .DIA(dia[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-A data, width defined by WRITE_WIDTH_A parameter
            .DIB(dib[WIDTH_WRITE * (width_i+1)-1 -: WIDTH_WRITE]),       // Input port-B data, width defined by WRITE_WIDTH_B parameter
@@ -81,8 +84,8 @@ localparam depth_i =0;
         );
         
         // End of BRAM_TDP_MACRO_inst instantiation
-    //end
-//end
+    end
+end
 endgenerate
 `else
 // maybe in is big, maybe out is big; user chooses
