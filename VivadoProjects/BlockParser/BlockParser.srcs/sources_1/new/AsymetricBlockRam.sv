@@ -62,10 +62,8 @@ for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
            .READ_WIDTH_A (WIDTH_READ), .READ_WIDTH_B (WIDTH_READ),   // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")
            .SIM_COLLISION_CHECK ("ALL"), // Collision check enable "ALL", "WARNING_ONLY",
                                          //   "GENERATE_X_ONLY" or "NONE"
-           .INIT_00({{8{8'h3}},{8{8'h2}},{8{8'h1}},{8{8'h0}}}),
-           .INIT_01({{8{8'h7}},{8{8'h6}},{8{8'h5}},{8{8'h4}}}),
-           .INIT_02({{8{8'hB}},{8{8'hA}},{8{8'h9}},{8{8'h8}}}),
-           .INIT_03({{8{8'hF}},{8{8'hE}},{8{8'hD}},{8{8'hC}}}),
+           .INIT_00({{8{4'h7}},{8{8'h6}},{8{4'h5}},{8{4'h4}},{8{4'h3}},{8{4'h2}},{8{4'h1}},{8{4'h0}}}),
+           .INIT_01({{8{4'hF}},{8{4'hE}},{8{4'hD}},{8{4'hC}},{8{4'hB}},{8{4'hA}},{8{4'h9}},{8{4'h8}}}),           
            .INIT_A(36'hCDCDCDCD),
            .WRITE_MODE_A("WRITE_FIRST"), .WRITE_MODE_B("WRITE_FIRST"), // "WRITE_FIRST", "READ_FIRST", or "NO_CHANGE"
            .WRITE_WIDTH_A(WIDTH_WRITE), .WRITE_WIDTH_B(WIDTH_WRITE) // Valid values are 1-36 (19-36 only valid when BRAM_SIZE="36Kb")

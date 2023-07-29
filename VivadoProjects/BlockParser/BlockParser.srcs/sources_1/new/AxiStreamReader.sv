@@ -49,16 +49,20 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
     
     // todo: tkeep support
     assign TKEEP = '1;
+    
+    // handy for simulation verification
+    int CycleNum;
 
     
-    GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType), .STARTDEX(1)) reader (
+    GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType), .STARTDEX(NUMWORDS)) reader (
         .clk, .enable(updateOutput), .rst(reset), .data(TDATA), .ramWrite, .ramRead
     );  
         
     always_ff @(posedge clk) begin
         if(reset) begin
             wasReset <= '1;   
-            wasLast  <= '0;     
+            wasLast  <= '0;   
+            CycleNum <= '0;  
         end
         else if (enable) begin
             if(wasReset) begin // we just reset
@@ -67,6 +71,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
             if(TLAST) begin
                 wasLast <= '1;
             end
+            if(updateOutput) CycleNum <= CycleNum +1;
         end
     end
     
