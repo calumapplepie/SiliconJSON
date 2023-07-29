@@ -27,7 +27,7 @@ module AxiStreamReaderTest import Ram::*; (
     StructBlockRamRead  ramRead;
     StringBlockRamWrite ramWrite;
     
-    logic [7:0] transferLen;
+    logic [15:0] transferLen;
     
     // simulate 8-char string reader with the struct data types
     AxiStreamReader #(.WORDSIZE(8), .NUMWORDS(8), .ReadType(StructBlockRamRead), .WriteType(StringBlockRamWrite)) DUV (
@@ -66,7 +66,7 @@ module AxiStreamReaderTest import Ram::*; (
         // run the test twice, for Surety
         transferLen = '1;
         runTest(); 
-        transferLen = 8'd20;
+        transferLen = 16'd20;
         runTest();
         $finish();
     end;

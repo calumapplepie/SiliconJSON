@@ -68,7 +68,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
             if(wasReset) begin // we just reset
                 wasReset <= '0;
             end
-            if(TLAST) begin
+            if(TLAST && TREADY) begin
                 wasLast <= '1;
             end
             if(updateOutput) CycleNum <= CycleNum +1;
