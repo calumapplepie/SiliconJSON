@@ -28,3 +28,5 @@
         ahead of time, so we can copy 2 strings over at once
         - can't do more than 2, RAMs are dual-port, and asymetry only lets us do multiple words at once
         - can maybe calculate good length estimate by looking at the bitmaps? what does simdjson do?
+            - they don't do that, they do their final parsing stage entirely serial.  which isn't great, but I
+            assume they've benchmarked and know what they're doing
