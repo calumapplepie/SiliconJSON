@@ -25,7 +25,8 @@ package Block;
     
     typedef struct{ 
           BitBlock whitespace;
-          BitBlock pseudoStructural;
+          BitBlock layoutChars;
+          BitBlock structuralStart;
     } ScannedLayoutBlock;
     
     

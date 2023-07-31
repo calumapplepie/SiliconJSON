@@ -3,12 +3,14 @@
 module BitmapToIndicies import Block::*; (
         input BitBlock bitmap, input InputIndex startingIndex, 
         input clk, rst, enb, 
-        output logic holdPipeline, output InputIndex[3:0] oneIndexes, output logic[3:0] valids );
+        output logic holdPipeline, output InputIndex[3:0] oneIndexes,
+        output logic[3:0] valids,  // valids is a bitmap of valid values, numOnes is how many bits are set in valids
+        logic [$clog2(BlockSizeChars):0] numOnes; );// must be extra wide to avoid Problems in all-bits-are-one case
         
         BitBlockIndex [3:0] dexes;
         
         BitBlock bitmap_cur;
-        logic [$clog2(BlockSizeChars):0] numOnes; // must be extra wide to avoid Problems in all-bits-are-one case
+        logic [$clog2(BlockSizeChars):0] numOnes; 
         
         assign holdPipeline = numOnes > 4;
         

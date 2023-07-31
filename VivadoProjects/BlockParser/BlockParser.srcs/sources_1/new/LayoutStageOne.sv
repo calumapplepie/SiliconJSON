@@ -25,31 +25,43 @@ module LayoutStageOne import Block::*; (
         input TextBlock chars, 
         output ScannedJsonBlock scannedBitmaps
     );
-    BitBlock structureChars, whitespace, followsScalar;
+    BitBlock layoutChars, whitespace, followsScalar;
     logic prev_scalar, next_scalar;
     ScannedCharBlock    strings;
     ScannedLayoutBlock  scannedStruct;
         
     
     StringStageOne processString (.clk, .rst, .enb, .chars, .scannedChars(strings));
-    StructureAndWhitespaceBitmapBuilder gimmeSomeBits (.chars, .structureChars, .whitespace);
+    StructureAndWhitespaceBitmapBuilder gimmeSomeBits (.chars, .layoutChars, .whitespace);
     
     always_comb begin
         scannedStruct.whitespace = whitespace;
-        scannedStruct.pseudoStructural = structureChars;
+        scannedStruct.pseudoStructural = layoutChars;
+        scannedStruct.structuralStart = structuralStart;
         scannedBitmaps.strings = strings;
         scannedBitmaps.layout  = scannedStruct;
         scannedBitmaps.followsPotentialScalar = followsScalar;
     end
     
     always_comb begin
+        // models jsonscanner::next
         automatic BitBlock scalar, nonquoteScalar;
-        scalar = ~(whitespace | structureChars);
+        scalar = ~(whitespace | layoutChars);
         nonquoteScalar = scalar & ~strings.quote;
         followsScalar = nonquoteScalar << 1 | prev_scalar;
-        next_scalar = nonquoteScalar[BlockSizeChars];
+        next_scalar = nonquoteScalar[BlockSizeChars-1];
     end
     
+    always_comb begin
+        // model what happens in json_block::structural_start()
+        automatic BitBlock potentialStructStart, string_tail, potentialScalarStart, scalar;
+        scalar = ~(whitespace | layoutChars);
+        potentialScalarStart = scalar &~ followsScalar;
+        potentialStructStart = characters.layoutChars | potentialScalarStart;
+        string_tail = strings.quote ^ strings.in_string;
+        structuralStart = potentialStructStart &~ string_tail;
+    end
+
     always_ff @(posedge clk) begin
         if(rst) prev_scalar <= '0;
         else if(enb) prev_scalar <= next_scalar;

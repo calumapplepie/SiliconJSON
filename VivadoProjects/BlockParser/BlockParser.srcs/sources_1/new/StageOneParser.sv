@@ -22,7 +22,7 @@
 
 module StageOneParser import Block::*; ( input clk, enb, rst,
                         input TextBlock chars, 
-                        output logic holdPipeline
+                        output logic holdPipeline, output Ram::IndexBlockRamWrite indexOut
     );
     LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmapsA);
     ScannedJsonBlock scannedBitmapsA, scannedBitmapsB;
@@ -36,8 +36,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
         end
     end 
     
-    AsymetricBlockRam blocky ();
-    // todo: store indexes
+    
     // todo: testbench
     
     
