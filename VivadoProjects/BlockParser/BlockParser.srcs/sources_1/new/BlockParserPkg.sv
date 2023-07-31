@@ -26,7 +26,6 @@ package Block;
     typedef struct{ 
           BitBlock whitespace;
           BitBlock layoutChars;
-          BitBlock structuralStart;
     } ScannedLayoutBlock;
     
     
@@ -34,6 +33,7 @@ package Block;
         ScannedCharBlock   strings;
         ScannedLayoutBlock layout;
         BitBlock followsPotentialScalar;// they have a whole definition for this but I assume its for a good reason
+        BitBlock structuralStart; // what we really care about at the end of the day (now 100% method free!)
     } ScannedJsonBlock;
     
     

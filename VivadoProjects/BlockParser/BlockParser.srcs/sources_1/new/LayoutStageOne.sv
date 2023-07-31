@@ -37,10 +37,11 @@ module LayoutStageOne import Block::*; (
     always_comb begin
         scannedStruct.whitespace = whitespace;
         scannedStruct.pseudoStructural = layoutChars;
-        scannedStruct.structuralStart = structuralStart;
         scannedBitmaps.strings = strings;
         scannedBitmaps.layout  = scannedStruct;
         scannedBitmaps.followsPotentialScalar = followsScalar;
+        scannedBitmaps.structuralStart = structuralStart;
+
     end
     
     always_comb begin
