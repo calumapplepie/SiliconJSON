@@ -26,16 +26,32 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
     );
     LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmapsA);
     ScannedJsonBlock scannedBitmapsA, scannedBitmapsB;
+    InputIndex startingIndex;
+    InputIndex [3:0] structureStarts;
+    logic [3:0] structureStartsValid;
     
-    BitmapToIndicies (.clk, .rst, .enb, .holdPipeline, .bitmap(scannedBitmapsA.structuralStart)); // includes pipelining all on its own!
+    BitmapToIndicies structure_start_count (.clk, .rst, .enb, .holdPipeline, 
+                                            .bitmap(scannedBitmapsA.structuralStart), .startingIndex, 
+                                            .oneIndexes(structureStarts), .valids(structureStartsValid)
+    ); // includes pipelining all on its own!
     
+    always_ff @(posedge clk) begin
+        if(rst) startingIndex <= '0;
+        else if(enb && !holdPipeline) startingIndex <= startingIndex + BlockSizeChars;
+    
+    end
+
     always_ff @(posedge clk) begin
         if(enb && ! holdPipeline) begin
             scannedBitmapsB <= scannedBitmapsA;  // when we pass a map on to the next stage, it needs to be delayed a bit
         end
     end 
 
-    
+    VariableMultiRecorder #(.BITWIDTH(16), .WriteType(Ram::IndexBlockRamWrite)) structureStartRecorder(
+        .clk, .enb, .rst, 
+        .inputVals(structureStarts), .valids(structureStartsValid), 
+        .ramOut(indexOut)
+    );
     
     
     // todo: testbench

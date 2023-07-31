@@ -1,5 +1,6 @@
 module VariableMultiRecorder #(BITWIDTH = 8, type WriteType) (
-        input [BITWIDTH-1:0][3:0] inputVals, input [3:0] valids, input clk, rst, enb, 
+        input [BITWIDTH-1:0][3:0] inputVals, input [3:0] valids, 
+        input clk, rst, enb, 
         output WriteType ramOut
     );
 
