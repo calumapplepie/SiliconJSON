@@ -25,7 +25,7 @@ module LayoutStageOne import Block::*; (
         input TextBlock chars, 
         output ScannedJsonBlock scannedBitmaps
     );
-    BitBlock layoutChars, whitespace, followsScalar;
+    BitBlock layoutChars, whitespace, followsScalar, structuralStart;
     logic prev_scalar, next_scalar;
     ScannedCharBlock    strings;
     ScannedLayoutBlock  scannedStruct;
@@ -36,7 +36,7 @@ module LayoutStageOne import Block::*; (
     
     always_comb begin
         scannedStruct.whitespace = whitespace;
-        scannedStruct.pseudoStructural = layoutChars;
+        scannedStruct.layoutChars = layoutChars;
         scannedBitmaps.strings = strings;
         scannedBitmaps.layout  = scannedStruct;
         scannedBitmaps.followsPotentialScalar = followsScalar;
@@ -58,7 +58,7 @@ module LayoutStageOne import Block::*; (
         automatic BitBlock potentialStructStart, string_tail, potentialScalarStart, scalar;
         scalar = ~(whitespace | layoutChars);
         potentialScalarStart = scalar &~ followsScalar;
-        potentialStructStart = characters.layoutChars | potentialScalarStart;
+        potentialStructStart = layoutChars | potentialScalarStart;
         string_tail = strings.quote ^ strings.in_string;
         structuralStart = potentialStructStart &~ string_tail;
     end

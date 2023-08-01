@@ -24,7 +24,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
                         input TextBlock chars, 
                         output logic holdPipeline, output Ram::IndexBlockRamWrite indexOut
     );
-    LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmapsA);
+    LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmaps(scannedBitmapsA));
     ScannedJsonBlock scannedBitmapsA, scannedBitmapsB;
     InputIndex startingIndex;
     InputIndex [3:0] structureStarts;
