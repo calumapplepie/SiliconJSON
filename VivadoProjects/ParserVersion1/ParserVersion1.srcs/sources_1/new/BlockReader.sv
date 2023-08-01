@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 07/07/2023 02:45:05 PM
-// Design Name: 
-// Module Name: BlockReader
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 // Yes, this module has a ton of parameters and only two ways we combine them all.
 // Since I am open sourcing this, I should maximize the reusable details for others.

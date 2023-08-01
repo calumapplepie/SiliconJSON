@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 07/27/2023 11:57:24 AM
-// Design Name: 
-// Module Name: GenericBramRecorder
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module GenericBramRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, USEPORTS=2, type WriteType) (
         output WriteType ramWrite, 

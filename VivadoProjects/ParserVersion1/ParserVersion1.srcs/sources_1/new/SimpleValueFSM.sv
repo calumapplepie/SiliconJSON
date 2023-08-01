@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 06/14/2023 03:08:51 PM
-// Design Name: 
-// Module Name: SimpleValueFSM
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 // not actually an FSM!!!
 module SimpleValueFSM import Core::UTF8_Char, Core::ElementType, Core::trueVal, Core::falseVal, Core::nullVal, Core::noType; (

@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 07/07/2023 02:45:05 PM
-// Design Name: 
-// Module Name: BlockReader
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 // Reads a possibly-asymetric BRAM.  ReadType and WriteType should be structs of the form typical in RamPkg.sv , NUMWORDS is the number
 // of words that are read at once (if RAM is asymetric), and WORDSIZE is the bitwidth of each word
