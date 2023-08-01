@@ -24,7 +24,7 @@
 // Verilog's weak typing system makes the fact that the 'data' output is an array not really matter
 // On reset, if enabled, reads the 0th word.  Unless USEPORTS=2, in which case results are undefined.
 // USEPORTS=2 makes it use both port A and port B  
-module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,USEPORTS=1,  // startdex is used by AXI, so that it can start reading ASAP
+module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,USEPORTS=2,  // startdex is used by AXI, so that it can start reading ASAP
                                                 type WriteType, type ReadType ) (
         output WriteType ramWrite, 
         input ReadType ramRead,
@@ -35,7 +35,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,US
     (* mark_debug = "true" *) logic [$bits(ramWrite.addra)-1:0] curAddr;
     
     always_comb begin
-        // Disable port b and all writes.  Tie enable to the input to avoid ram output updating to the next address until the next
+        // Disable all writes.  Tie enable to the input to avoid ram output updating to the next address until the next
         // enable cycle (curAddr is IntendedOutAddr(t)+1 during cycle t regardless of if the enable was dropped to low during the cycle)  
         
         ramWrite.ena = enable;
