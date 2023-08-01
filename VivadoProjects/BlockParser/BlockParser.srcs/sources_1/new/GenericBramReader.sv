@@ -50,7 +50,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,US
             ramWrite.enb = '0;
             data = ramRead.doa;
         end else begin
-            ramWrite.addrb = rst ? '0 : curAddr + NUMWORDS/2;
+            ramWrite.addrb = (rst ? '0 : curAddr) + NUMWORDS/2;
             ramWrite.enb = enable;
 
             data[(NUMWORDS/2)-1:0] = ramRead.doa;

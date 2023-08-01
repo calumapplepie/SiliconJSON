@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module GenericBramRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, USEPORTS=1, type WriteType) (
+module GenericBramRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, USEPORTS=2, type WriteType) (
         output WriteType ramWrite, 
         input logic clk, enable, rst, 
         input logic [NUMWORDS-1:0] [WORDSIZE-1:0] data 
