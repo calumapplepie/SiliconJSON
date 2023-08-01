@@ -21,14 +21,24 @@
 
 
 module StageOneParser import Block::*; ( input clk, enb, rst,
-                        input TextBlock chars, 
-                        output logic holdPipeline, output Ram::IndexBlockRamWrite indexOut
+                        input Ram::InputBlockRamRead readChars,
+                        output Ram::IndexBlockRamWrite indexOut,
+                        output Ram::InputBlockRamWrite inputControl
     );
-    LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmaps(scannedBitmapsA));
+    
+    TextBlock chars;
     ScannedJsonBlock scannedBitmapsA, scannedBitmapsB;
     InputIndex startingIndex;
     InputIndex [3:0] structureStarts;
     logic [3:0] structureStartsValid;
+    logic holdPipeline;
+    
+    GenericBramReader #(.NUMWORDS(BlockSizeChars), .WriteType(Ram::InputBlockRamWrite), .ReadType(Ram::InputBlockRamRead), .USEPORTS(2))  READS(
+        .clk, .rst, .enable(enb && !holdPipeline), 
+        .data(chars), .ramWrite(inputControl), .ramRead(readChars)
+    ); 
+    
+    LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmaps(scannedBitmapsA));
     
     BitmapToIndicies structure_start_count (.clk, .rst, .enb, .holdPipeline, 
                                             .bitmap(scannedBitmapsA.structuralStart), .startingIndex, 
