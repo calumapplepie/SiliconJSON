@@ -27,7 +27,14 @@ module BlockParserTop import Ram::*, Block::*; (
     logic inputRst,    stage1Rst,    stage2Rst,    outputStrRst,    outputLayRst;
     logic inputDone,   stage1Done,   stage2Done,   outputStrDone,   outputLayDone;    
             
-    BramOrchestrator bram_mgr ();
+    
+    
+    StageOrchestrator stage_mgr  ();
+    
+    BramOrchestrator  inputBrams ();
+    BramOrchestrator  indexBrams ();
+    BramOrchestrator  stringBrams();
+    BramOrchestrator  layoutBrams ();
         
     AxiStreamRecorder #(.NUMWORDS(8)) inputStage (
         .clk, .enb(inputEnable), .rst(inputRst),
