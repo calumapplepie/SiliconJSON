@@ -32,11 +32,11 @@ module BlockParserWrapper(
     BlockParserTop TOP (
         // this may be the ugliest thing ever but its what we've gotta do
         .clk(axis_aclk),
-        .inputStreamData(s_axis_tdata), .inputStreamTdest(s_axis_tdest),
-        .inputStreamTvalid(s_axis_tvalid), .inputStreamTlast(s_axis_tlast), .inputStreamReset(s_axis_resetn),
+        .inputStreamData(s_axis_tdata), .inputStreamDest(s_axis_tdest),
+        .inputStreamValid(s_axis_tvalid), .inputStreamLast(s_axis_tlast), .inputStreamReset(s_axis_resetn),
         .inputStreamReady(s_axis_tready),
         .outputStreamReset(m_axis_resetn), .outputStreamReady(m_axis_tready),
-        .outputStreamData(m_axis_tdata), .outputStreamTdest(m_axis_tdest), 
+        .outputStreamData(m_axis_tdata), .outputStreamDest(m_axis_tdest), 
         .outputStreamValid(m_axis_tvalid), .outputStreamLast(m_axis_tlast)
     );
     
