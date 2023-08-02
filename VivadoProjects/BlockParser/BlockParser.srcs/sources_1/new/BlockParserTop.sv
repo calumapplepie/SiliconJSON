@@ -31,10 +31,33 @@ module BlockParserTop import Ram::*, Block::*; (
     
     StageOrchestrator stage_mgr  ();
     
-    BramOrchestrator  inputBrams ();
-    BramOrchestrator  indexBrams ();
-    BramOrchestrator  stringBrams();
-    BramOrchestrator  layoutBrams ();
+    BramOrchestrator #(.NUMWORDS(Core::MaxInputLength), .WriteType(InputBlockRamWrite), .ReadType(InputBlockRamRead)) inputBrams ( .clk,
+        .write1(inputInWrite),  .write2(stage1InWrite), .write3(stage2InRead),
+        .read1(),               .read2(stage1InRead),   .read3(stage2InRead),
+        .sel1('0),              .sel2('0),              .sel3('0),
+        .enb1(inputEnable),     .enb2(stage1Enable),    .enb3(stage2Enable)
+    );
+    
+    BramOrchestrator #(.NUMWORDS(Core::StructTapeLength*2), .WriteType(IndexBlockRamWrite), .ReadType(IndexBlockRamRead)) indexBrams ( .clk,
+        .write1(stage1DexWrite),.write2(stage2DexWrite),.write3(),
+        .read1(),               .read2(stage2DexRead),  .read3(),
+        .sel1('0),              .sel2('0),              .sel3('1),
+        .enb1(stage1Enable),    .enb2(stage2Enable),    .enb3('0)
+    );
+    
+    BramOrchestrator #(.NUMWORDS(Core::StringTapeLength), .WriteType(StringBlockRamWrite), .ReadType(StringBlockRamRead)) stringBrams( .clk,
+        .write1(stage2StrWrite),    .write2(outputStrWrite),.write3(),
+        .read1(),                   .read2(outputStrRead),  .read3(),
+        .sel1('0),                  .sel2('0),              .sel3('1),
+        .enb1(stage2Enable),        .enb2(outputStrEnable), .enb3('0)
+    );
+    
+    BramOrchestrator #(.NUMWORDS(Core::StructTapeLength), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead)) layoutBrams( .clk,
+        .write1(stage2LayWrite),    .write2(outputLayWrite),.write3(),
+        .read1(),                   .read2(outputLayRead),  .read3(),
+        .sel1('0),                  .sel2('0),              .sel3('1),
+        .enb1(stage2Enable),        .enb2(outputLayEnable), .enb3('0)
+    );
         
     AxiStreamRecorder #(.NUMWORDS(8)) inputStage (
         .clk, .enb(inputEnable), .rst(inputRst),

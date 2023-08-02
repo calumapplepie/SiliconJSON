@@ -39,6 +39,10 @@ package Ram;
     } InputBlockRamRead;
     
     typedef struct {
+        logic [16:0] doa,dob;
+    } IndexBlockRamRead;
+    
+    typedef struct {
         logic [63:0] doa,dob;
     } StructBlockRamRead;
     
