@@ -10,7 +10,7 @@ module BlockParserTop import Ram::*, Block::*; (
         output wire outputStreamValid, outputStreamLast
     );  
     // declare the various memory interfaces
-    InputBlockRamWrite  inputInWrite, stage1InWrite, stage2InRead;
+    InputBlockRamWrite  inputInWrite, stage1InWrite, stage2InWrite;
     InputBlockRamRead   stage1InRead, stage2InRead;
     
     IndexBlockRamWrite stage1DexWrite, stage2DexWrite;
@@ -32,7 +32,7 @@ module BlockParserTop import Ram::*, Block::*; (
     StageOrchestrator stage_mgr  ();
     
     BramOrchestrator #(.NUMWORDS(Core::MaxInputLength), .WriteType(InputBlockRamWrite), .ReadType(InputBlockRamRead)) inputBrams ( .clk,
-        .write1(inputInWrite),  .write2(stage1InWrite), .write3(stage2InRead),
+        .write1(inputInWrite),  .write2(stage1InWrite), .write3(stage2InWrite),
         .read1(),               .read2(stage1InRead),   .read3(stage2InRead),
         .sel1('0),              .sel2('0),              .sel3('0),
         .enb1(inputEnable),     .enb2(stage1Enable),    .enb3(stage2Enable)
@@ -45,14 +45,14 @@ module BlockParserTop import Ram::*, Block::*; (
         .enb1(stage1Enable),    .enb2(stage2Enable),    .enb3('0)
     );
     
-    BramOrchestrator #(.NUMWORDS(Core::StringTapeLength), .WriteType(StringBlockRamWrite), .ReadType(StringBlockRamRead)) stringBrams( .clk,
+    BramOrchestrator #(.NUMWORDS(Core::StringTapeLength), .WriteType(StringBlockRamWrite), .ReadType(StringBlockRamRead), .DO_REG(0)) stringBrams( .clk,
         .write1(stage2StrWrite),    .write2(outputStrWrite),.write3(),
         .read1(),                   .read2(outputStrRead),  .read3(),
         .sel1('0),                  .sel2('0),              .sel3('1),
         .enb1(stage2Enable),        .enb2(outputStrEnable), .enb3('0)
     );
     
-    BramOrchestrator #(.NUMWORDS(Core::StructTapeLength), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead)) layoutBrams( .clk,
+    BramOrchestrator #(.NUMWORDS(Core::StructTapeLength), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead), .DO_REG(0)) layoutBrams( .clk,
         .write1(stage2LayWrite),    .write2(outputLayWrite),.write3(),
         .read1(),                   .read2(outputLayRead),  .read3(),
         .sel1('0),                  .sel2('0),              .sel3('1),
@@ -60,7 +60,7 @@ module BlockParserTop import Ram::*, Block::*; (
     );
         
     AxiStreamRecorder #(.NUMWORDS(8)) inputStage (
-        .clk, .enb(inputEnable), .rst(inputRst),
+        .clk, .enable(inputEnable), .rst(inputRst),
         .ramWrite(inputInWrite), .transferLen(), // todo: make use of txfr len
         .TREADY(inputStreamReady), .TDATA(inputStreamData), 
         .TVALID(inputStreamValid), .TLAST(inputStreamLast), .TRESET(inputStreamReset)    
@@ -80,7 +80,7 @@ module BlockParserTop import Ram::*, Block::*; (
     
     
     AxiStreamReader #(.NUMWORDS(8)) outputStr (
-        .clk, .enb(outputStrEnable), .rst(outputStrRst),
+        .clk, .enable(outputStrEnable), .rst(outputStrRst),
         .ramWrite(outputStrWrite), .ramRead(outputStrRead), 
         .transferLen(), // todo!
         .TREADY(outputStreamReady), .TRESET(outputStreamReset),
@@ -88,7 +88,7 @@ module BlockParserTop import Ram::*, Block::*; (
     );
     
     AxiStreamReader #(.WORDSIZE(64), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead)) outputLay (
-        .clk, .enb(outputLayEnable), .rst(outputLayRst),
+        .clk, .enable(outputLayEnable), .rst(outputLayRst),
         .ramWrite(outputLayWrite),  .ramRead(outputLayRead), 
         .transferLen(), // todo!
         .TREADY(outputStreamReady), .TRESET(outputStreamReset),
