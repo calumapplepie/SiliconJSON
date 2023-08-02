@@ -3,6 +3,6 @@
 module BlockParserTop(
         
     );
-    
+    AxiStreamRecorder #(.NUMWORDS(8)) INPUT ();
     
 endmodule

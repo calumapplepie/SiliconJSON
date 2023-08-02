@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=StringBlockRamWrite) (
+module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=InputBlockRamWrite) (
         output WriteType ramWrite, 
         input logic clk, enable, rst, 
         output logic[$bits(ramWrite.addra)-1:0] transferLen,
