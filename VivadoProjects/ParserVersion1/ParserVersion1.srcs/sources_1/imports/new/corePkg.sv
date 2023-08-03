@@ -8,6 +8,7 @@ package Core;
     parameter int MaxInputLength   = 4096;
     parameter int StringTapeLength = 4096; // a full block ram
     parameter int StructTapeLength = 512;  // max value without expanding into 4 block rams
+    parameter int IndexTapeLength = 1024;   // sized to fit in a half-blockram 
     typedef enum logic [3:0] {braceOpen, braceClose, bracketOpen, bracketClose, 
                                 quote, colon, comma, minusSign, backslash,
                                 whitespace, numeric, controlChar, asciiAlphabetical, 
