@@ -51,7 +51,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
         end
     end 
 
-    VariableMultiRecorder #(.BITWIDTH(16), .WriteType(Ram::IndexBlockRamWrite)) structureStartRecorder(
+    VariableMultiRecorder #(.BITWIDTH($bits(InputIndex)), .WriteType(Ram::IndexBlockRamWrite)) structureStartRecorder(
         .clk, .enb(enb && cyclesSinceReset == 3), .rst, 
         .inputVals(structureStarts), .valids(structureStartsValid), 
         .ramOut(indexOut)
