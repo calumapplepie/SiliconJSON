@@ -1,6 +1,8 @@
 `timescale 1ns / 1ps
 
 module StageOneParser import Block::*; ( input clk, enb, rst,
+                        input logic [$clog2(Core::MaxInputLength)-1:0] transferLen,
+                        output logic done,
                         input Ram::InputBlockRamRead readChars,
                         output Ram::IndexBlockRamWrite indexOut,
                         output Ram::InputBlockRamWrite inputControl
@@ -12,6 +14,9 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
     InputIndex [3:0] structureStarts;
     logic [3:0] structureStartsValid;
     logic holdPipeline;
+    logic [1:0] cyclesSinceReset;
+    
+    assign done = startingIndex + BlockSizeChars > transferLen ;
     
     GenericBramReader #(.NUMWORDS(BlockSizeChars), .WriteType(Ram::InputBlockRamWrite), .ReadType(Ram::InputBlockRamRead), .USEPORTS(2))  READS(
         .clk, .rst, .enable(enb && !holdPipeline), 
@@ -26,8 +31,16 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
     ); // includes pipelining all on its own!
     
     always_ff @(posedge clk) begin
-        if(rst) startingIndex <= '0;
-        else if(enb && !holdPipeline) startingIndex <= startingIndex + BlockSizeChars;
+        if(rst) begin
+            startingIndex   <= '0;
+            cyclesSinceReset<= '0; 
+        end
+        else if(enb && !holdPipeline) begin
+            if(cyclesSinceReset != 2'd3) begin // one-hot would be better for this, but also i've already written this down
+                cyclesSinceReset <= cyclesSinceReset +1;
+            end
+            else startingIndex <= startingIndex + BlockSizeChars;
+        end
     
     end
 
@@ -38,7 +51,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
     end 
 
     VariableMultiRecorder #(.BITWIDTH(16), .WriteType(Ram::IndexBlockRamWrite)) structureStartRecorder(
-        .clk, .enb, .rst, 
+        .clk, .enb(enb && cyclesSinceReset == 3), .rst, 
         .inputVals(structureStarts), .valids(structureStartsValid), 
         .ramOut(indexOut)
     );

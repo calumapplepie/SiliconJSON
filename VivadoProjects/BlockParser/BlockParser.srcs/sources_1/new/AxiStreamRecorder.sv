@@ -5,13 +5,15 @@ module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
         input logic clk, enable, rst, 
         output logic[$bits(ramWrite.addra)-1:0] transferLen,
         // AXI signals
-        output logic TREADY, 
+        output logic TREADY, done,
         input logic [WORDSIZE-1:0] [NUMWORDS-1:0] TDATA,
         input logic TLAST, TVALID, TRESET
     );
     
     
     logic reset, writeData, wasLast;
+    
+    assign done = wasLast;
     
     assign reset = rst && !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
     assign writeData = TVALID && TREADY;  

@@ -78,6 +78,14 @@ module BlockParserTop import Ram::*, Block::*; (
     logic       outputStrStreamValid,   outputLayStreamValid;
     logic       outputStrStreamLast,    outputLayStreamLast;
     
+    assign outputStreamData  = outputStrEnable ? outputStrStreamData  : 'z;
+    assign outputStreamData  = outputLayEnable ? outputLayStreamData  : 'z;
+    
+    assign outputStreamValid = outputStrEnable ? outputStrStreamValid : 'z;
+    assign outputStreamValid = outputLayEnable ? outputLayStreamValid : 'z;
+    
+    assign outputStreamLast  = outputStrEnable ? outputStrStreamLast  : 'z;
+    assign outputStreamLast  = outputLayEnable ? outputLayStreamLast  : 'z;
     
     AxiStreamReader #(.NUMWORDS(8)) outputStr (
         .clk, .enable(outputStrEnable), .rst(outputStrRst),
