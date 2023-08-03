@@ -13,7 +13,7 @@ module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
     
     logic reset, writeData, wasLast;
     
-    assign done = wasLast;
+    assign done = TLAST && writeData; // after the first clock edge with TLAST high, we can do ANYTHING
     
     assign reset = rst && !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
     assign writeData = TVALID && TREADY;  

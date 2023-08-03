@@ -26,10 +26,9 @@ module BlockParserTop import Ram::*, Block::*; (
     logic inputEnable, stage1Enable, stage2Enable, outputStrEnable, outputLayEnable;
     logic inputRst,    stage1Rst,    stage2Rst,    outputStrRst,    outputLayRst;
     logic inputDone,   stage1Done,   stage2Done,   outputStrDone,   outputLayDone;    
-            
-    
     
     StageOrchestrator stage_mgr  ();
+    
     
     BramOrchestrator #(.NUMWORDS(Core::MaxInputLength), .WriteType(InputBlockRamWrite), .ReadType(InputBlockRamRead)) inputBrams ( .clk,
         .write1(inputInWrite),  .write2(stage1InWrite), .write3(stage2InWrite),
@@ -60,14 +59,14 @@ module BlockParserTop import Ram::*, Block::*; (
     );
         
     AxiStreamRecorder #(.NUMWORDS(8)) inputStage (
-        .clk, .enable(inputEnable), .rst(inputRst),
+        .clk, .enable(inputEnable), .rst(inputRst), .done(inputDone),
         .ramWrite(inputInWrite), .transferLen(), // todo: make use of txfr len
         .TREADY(inputStreamReady), .TDATA(inputStreamData), 
         .TVALID(inputStreamValid), .TLAST(inputStreamLast), .TRESET(inputStreamReset)    
     );
     
     StageOneParser stage1 (
-        .clk, .enb(stage1Enable), .rst(stage1Rst),
+        .clk, .enb(stage1Enable), .rst(stage1Rst), .done(stage1Done),
         .readChars(stage1InRead), .indexOut(stage1DexWrite), .inputControl(stage1InWrite)
     );
     
@@ -88,7 +87,7 @@ module BlockParserTop import Ram::*, Block::*; (
     assign outputStreamLast  = outputLayEnable ? outputLayStreamLast  : 'z;
     
     AxiStreamReader #(.NUMWORDS(8)) outputStr (
-        .clk, .enable(outputStrEnable), .rst(outputStrRst),
+        .clk, .enable(outputStrEnable), .rst(outputStrRst), .done(outputStrDone),
         .ramWrite(outputStrWrite), .ramRead(outputStrRead), 
         .transferLen(), // todo!
         .TREADY(outputStreamReady), .TRESET(outputStreamReset),
@@ -96,7 +95,7 @@ module BlockParserTop import Ram::*, Block::*; (
     );
     
     AxiStreamReader #(.WORDSIZE(64), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead)) outputLay (
-        .clk, .enable(outputLayEnable), .rst(outputLayRst),
+        .clk, .enable(outputLayEnable), .rst(outputLayRst), .done(outputLayDone),
         .ramWrite(outputLayWrite),  .ramRead(outputLayRead), 
         .transferLen(), // todo!
         .TREADY(outputStreamReady), .TRESET(outputStreamReset),

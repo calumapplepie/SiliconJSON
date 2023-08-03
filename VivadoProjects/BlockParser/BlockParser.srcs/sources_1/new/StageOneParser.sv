@@ -7,6 +7,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
                         output Ram::IndexBlockRamWrite indexOut,
                         output Ram::InputBlockRamWrite inputControl
     );
+    // total latency: 2 reg's from BramReader, 1 from bitmap transform, 1 from writer
     
     TextBlock chars;
     ScannedJsonBlock scannedBitmapsA, scannedBitmapsB;

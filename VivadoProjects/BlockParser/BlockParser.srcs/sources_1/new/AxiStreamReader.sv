@@ -18,7 +18,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
         output logic [WORDSIZE-1:0] [NUMWORDS-1:0] TDATA,
         // Todo: TKEEP support (may not be worth it)
         output logic [WORDSIZE*NUMWORDS/8-1:0] TKEEP, // note: all ones except for when TLAST is asserted.  Xylinx doesn't sopport other things, see PG022
-        output logic TLAST, TVALID
+        output logic TLAST, TVALID, done
     );
     
     logic reset, updateOutput, wasReset, wasLast;
@@ -27,6 +27,8 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
     assign updateOutput = reset || TVALID && TREADY;  // (note that reset + enable causes the bram to emit ram[0])
     assign TVALID = enable && !wasReset && !reset && !wasLast; 
     assign TLAST = ramWrite.addra > transferLen - NUMWORDS;
+    
+    assign done = TLAST && TVALID && TREADY;
     
     // todo: tkeep support
     assign TKEEP = '1;
