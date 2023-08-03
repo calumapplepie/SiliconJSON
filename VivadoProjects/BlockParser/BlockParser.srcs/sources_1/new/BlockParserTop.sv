@@ -27,8 +27,13 @@ module BlockParserTop import Ram::*, Block::*; (
     logic inputRst,    stage1Rst,    stage2Rst,    outputStrRst,    outputLayRst;
     logic inputDone,   stage1Done,   stage2Done,   outputStrDone,   outputLayDone;    
     
-    StageOrchestrator stage_mgr  ();
+    logic [$clog2(Core::MaxInputLength)-1:0] inputInLen,  stage1InLen, stage2InLen; // lengths of input tapes
+    logic [$clog2(Core::MaxInputLength)-1:0] stage1DexLen, stage2DexLen;            // lengths of index tapes 
+
     
+    StageOrchestrator stage_mgr  ();
+    // wait, maybe we should just track this data with the BramOrchestrator? or even wire it in as a core part of the RAM signalling?
+    LengthOrchestrator len_mgr();
     
     BramOrchestrator #(.NUMWORDS(Core::MaxInputLength), .WriteType(InputBlockRamWrite), .ReadType(InputBlockRamRead)) inputBrams ( .clk,
         .write1(inputInWrite),  .write2(stage1InWrite), .write3(stage2InWrite),
