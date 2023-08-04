@@ -4,11 +4,11 @@ module BitmapToIndicies import Block::*; (
         input BitBlock bitmap, input InputIndex startingIndex, 
         input clk, rst, enb, 
         output logic holdPipeline, output InputIndex[3:0] oneIndexes,
-        output logic[3:0] valids );  // valids is a bitmap of valid values     
+        output logic[3:0] valids );  // valids is a bitmap of valid values; 4b0111 means the lower 3 indicies are valid
         
-        BitBlockIndex [3:0] dexes;
+        BitBlockIndex [3:0] dexes; // the interal indicies of ones that we want
         
-        BitBlock bitmap_cur;
+        BitBlock bitmap_cur;    // the current bits we're looking at, after manipulations to handle pipeline holds
         logic [$clog2(BlockSizeChars):0] numOnes; // must be extra wide to avoid Problems in all-bits-are-one case
         
         // if we have more than 4 ones, then we need to hold onto this input for another clock cycle
