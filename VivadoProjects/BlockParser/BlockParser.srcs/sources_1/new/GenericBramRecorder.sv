@@ -15,15 +15,15 @@ module GenericBramRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, USEPORTS=2,
         ramWrite.addra = curAddr;
         
         
-        if(USEPORTS ==1) begin
+        if(USEPORTS ==1) begin // only write to one port
             ramWrite.dia = data;
-            ramWrite.addrb = 'x;
+            ramWrite.addrb = 'x; //mark other port as do not care
             ramWrite.enb = '0;
             ramWrite.dib = 'x;
         end else begin
             ramWrite.addrb = curAddr + NUMWORDS/2;
             ramWrite.enb = enable;
-            ramWrite.dia = data[NUMWORDS/2-1:0];
+            ramWrite.dia = data[NUMWORDS/2-1:0]; // split words in half for writing
             ramWrite.dib = data[NUMWORDS-1:NUMWORDS/2];
         end
         

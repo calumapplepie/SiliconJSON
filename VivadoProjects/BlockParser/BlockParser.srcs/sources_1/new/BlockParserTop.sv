@@ -1,5 +1,8 @@
 `timescale 1ns / 1ps
 
+// like any good top module, this is just a massive pile of module instanciations
+// unlike any good top module, there are a LOT of modules to instanciates
+// wondering if it's possible to do tomfoolery with a generate block
 module BlockParserTop import Ram::*, Block::*; (
         input  wire clk, enb, rst,
         input  wire [63:0] inputStreamData, [3:0] inputStreamDest,

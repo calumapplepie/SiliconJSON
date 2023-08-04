@@ -1,25 +1,6 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 08/02/2023 09:09:24 PM
-// Design Name: 
-// Module Name: LengthOrchestrator
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
-
+// track how long various buffers are
 module LengthOrchestrator import Block::InputIndex;(
         input logic clk, web,
         input logic [3:0] selR1, selR2, selW,

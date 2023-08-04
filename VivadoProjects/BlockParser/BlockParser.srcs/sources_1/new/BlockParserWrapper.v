@@ -1,26 +1,8 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 08/02/2023 05:17:32 PM
-// Design Name: 
-// Module Name: BlockParserWrapper
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module BlockParserWrapper(
+        // vivado requires specific naming conventins for ports to be detected as being part of an AXI interface
+        // we want vivido to detect that so we can make it work with the block device better
         input  wire axis_aclk,
         input  wire [63:0] s_axis_tdata, wire [3:0] s_axis_tdest,
         input  wire s_axis_tvalid, s_axis_tlast, s_axis_resetn, 

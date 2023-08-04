@@ -24,6 +24,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
         .data(chars), .ramWrite(inputControl), .ramRead(readChars)
     ); 
     
+    // convert strings of chars into bitmaps marking where things we care about are
     LayoutStageOne layoutFinder (.clk, .enb, .rst, .chars, .scannedBitmaps(scannedBitmapsA));
     
     BitmapToIndicies structure_start_count (.clk, .rst, .enb, .holdPipeline, 
@@ -37,6 +38,10 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
             cyclesSinceReset<= '0; 
         end
         else if(enb && !holdPipeline) begin
+            // there are three cycles of latency between 'input' and output:
+            // two from the BRAM (one due to the address register one due to the optional, enabled output register)
+            // and a third from the BitmapToIndices module
+            // we could reduce that but haven't yet.
             if(cyclesSinceReset != 2'd3) begin // one-hot would be better for this, but also i've already written this down
                 cyclesSinceReset <= cyclesSinceReset +1;
             end
@@ -51,6 +56,7 @@ module StageOneParser import Block::*; ( input clk, enb, rst,
         end
     end 
 
+    // handles writing of indexes
     VariableMultiRecorder #(.BITWIDTH($bits(InputIndex)), .WriteType(Ram::IndexBlockRamWrite)) structureStartRecorder(
         .clk, .enb(enb && cyclesSinceReset == 3), .rst, 
         .inputVals(structureStarts), .valids(structureStartsValid), 

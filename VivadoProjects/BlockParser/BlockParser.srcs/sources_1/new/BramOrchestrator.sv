@@ -11,16 +11,19 @@ module BramOrchestrator #(NUMWORDS=4096, DO_REG=1, type ReadType, type WriteType
         input logic         enb1='0,enb2='0,enb3='0,
         input logic clk
     );
-    // note: currently just wraps one and assumes no parallel
+    // note: currently just wraps one BRAM and assumes no parallel stuff
     // final verison will want a generate block, but lets KISS for now
+    // tho i did fail to resist the urge to make such a block easy to add
     
-    localparam WriteType undefWrite = '{default:'x};
-    localparam ReadType  undefRead  = '{default:'z};
+    // Undefined vars that we assign to various in's and outs
+    localparam WriteType undefWrite = '{default:'x}; // don't care: BRAM not in use, can have any input
+    localparam ReadType  undefRead  = '{default:'z}; // high-impedance: we don't write to this port from here, but may write elsewhere
     
     integer i = 0;
     WriteType selectedWrite;
     ReadType  selectedRead;
     logic     enableThis;
+    // should this BRAM be enabled at all?
     assign    enableThis =  (sel1==i && enb1) || (sel2==i && enb2) || (sel3==i && enb3);
     
     // todo: consider breaking this apart into distinct assign statements, to avoid priority encoder
@@ -28,6 +31,7 @@ module BramOrchestrator #(NUMWORDS=4096, DO_REG=1, type ReadType, type WriteType
                             sel1 == i ? write1 : (
                             sel2 == i ? write2 : (
                             sel3 == i ? write3 : undefWrite)));
+                            
     // I'm fairly sure vivado supports this: see IEEE Std 1800 6.6.1
     assign read1 = sel1 == i ? selectedRead : undefRead;  
     assign read2 = sel2 == i ? selectedRead : undefRead;
