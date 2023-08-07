@@ -50,6 +50,32 @@ module DMATop import Ram::*, Core::*; (
         .selW(parserBlock), .selR1(outputBlock),  .selR2()
     );
 
+    BramOrchestrator #(.NUMWORDS(Core::MaxInputLength), .WriteType(InputBlockRamWrite), .ReadType(InputBlockRamRead)) inputBrams ( .clk,
+        .write1(inputInWrite),  .write2(parserInWrite), .write3(),
+        .read1(),               .read2(parserInRead),   .read3(),
+        .sel1(inputBlock),      .sel2(parserBlock),     .sel3(),
+        .enb1(inputEnable),     .enb2(parserEnable),    .enb3('0)
+    );
+        
+    BramOrchestrator #(.NUMWORDS(Core::StringTapeLength), .WriteType(StringBlockRamWrite), .ReadType(StringBlockRamRead), .DO_REG(0)) stringBrams( .clk,
+        .write1(parserStrWrite),    .write2(outputStrWrite),.write3(),
+        .read1(),                   .read2(outputStrRead),  .read3(),
+        .sel1(parserBlock),         .sel2(outputBlock),     .sel3(),
+        .enb1(parserEnable),        .enb2(outputEnable),    .enb3('0)
+    );
+    
+    BramOrchestrator #(.NUMWORDS(Core::StructTapeLength), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead), .DO_REG(0)) layoutBrams( .clk,
+        .write1(parserLayWrite),    .write2(outputLayWrite),.write3(),
+        .read1(),                   .read2(outputLayRead),  .read3(),
+        .sel1(parserBlock),         .sel2(outputBlock),     .sel3(),
+        .enb1(parserEnable),        .enb2(outputEnable),    .enb3('0)
+    );
 
+    AxiStreamRecorder #(.NUMWORDS(8)) inputStage (
+        .clk, .enable(inputEnable), .rst(inputRst), .done(inputDone),
+        .ramWrite(inputInWrite), .transferLen(inputInLen),
+        .TREADY(inputStreamReady), .TDATA(inputStreamData), 
+        .TVALID(inputStreamValid), .TLAST(inputStreamLast), .TRESET(inputStreamReset)    
+    );
 
 endmodule
