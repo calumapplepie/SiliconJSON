@@ -6,7 +6,7 @@
 // On reset, if enabled, reads the 0th word.  Unless USEPORTS=2, in which case results are undefined.
 // USEPORTS=2 makes it use both port A and port B  
 module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,USEPORTS=2,  // startdex is used by AXI, so that it can start reading ASAP
-                                                type WriteType, type ReadType ) (
+                                                type WriteType=StringBlockRamWrite, type ReadType=StringBlockRamRead ) (
         output WriteType ramWrite, 
         input ReadType ramRead,
         input logic clk, enable, rst, 
@@ -26,7 +26,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,US
         // set unused to 'x to make the compiler not complain about unassigned vars, and maybe do a bit of optimization
         ramWrite.dia = 'x; ramWrite.dib = 'x;
         
-        if(USEPORTS ==1) begin
+        if(USEPORTS == 1 || NUMWORDS == 1) begin
             ramWrite.addrb = 'x;
             ramWrite.enb = '0;
             data = ramRead.doa;
@@ -34,7 +34,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,US
             ramWrite.addrb = (rst ? '0 : curAddr) + NUMWORDS/2;
             ramWrite.enb = enable;
 
-            data[(NUMWORDS/2)-1:0] = ramRead.doa;
+            data[$ceil(NUMWORDS/2.0)-1:0] = ramRead.doa;
             data[NUMWORDS-1:NUMWORDS/2] = ramRead.dob;
         end
         

@@ -80,7 +80,7 @@ module DMATop import Ram::*, Core::*; (
         .TVALID(inputStreamValid), .TLAST(inputStreamLast), .TRESET(inputStreamReset)    
     );
 
-    GenericBramReader #(.USEPORTS(1)) reader(
+    GenericBramReader reader(
         .clk, .rst(parserRst), .enable(parserEnable),
         .ramRead(parserInRead), .ramWrite(parserInWrite),
         .data(curChar)    
