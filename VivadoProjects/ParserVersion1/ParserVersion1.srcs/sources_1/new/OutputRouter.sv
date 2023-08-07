@@ -23,44 +23,49 @@
 module OutputRouter import Ram::*, Core::InputIndex;(
         input  wire clk, enb, rst,
         output wire done,
-        input  wire outputStreamReset, outputStreamReady,
-        output wire [63:0] outputStreamData, [3:0] outputStreamDest, 
-        output wire outputStreamValid, outputStreamLast
+
+        output StructBlockRamWrite layWrite, output StringBlockRamWrite strWrite,
+        input  StructBlockRamRead  layRead,  input  StringBlockRamRead  strRead,
+        input  InputIndex layLen, strLen,
+
+        input  wire streamReset, streamReady,
+        output wire [63:0] streamData, [3:0] streamDest, 
+        output wire streamValid, streamLast
     );
 
-    logic outputStrEnable, outputStrRst, outputStrDone;
-    logic outputLayEnable, outputLayRst, outputLayDone;
+    logic strEnable, strRst, strDone;
+    logic layEnable, layRst, layDone;
 
-    assign outputStrRst = rst;
-    assign outputLayRst = rst;
+    assign strRst = rst;
+    assign layRst = rst;
 
-    // we have string and struct outputs, they take turns
-    logic[63:0] outputStrStreamData,    outputLayStreamData;
-    logic       outputStrStreamValid,   outputLayStreamValid;
-    logic       outputStrStreamLast,    outputLayStreamLast;
+    // we have string and struct s, they take turns
+    logic[63:0] strStreamData,    layStreamData;
+    logic       strStreamValid,   layStreamValid;
+    logic       strStreamLast,    layStreamLast;
     
-    assign outputStreamData  = outputStrEnable ? outputStrStreamData  : 'z;
-    assign outputStreamData  = outputLayEnable ? outputLayStreamData  : 'z;
+    assign streamData  = strEnable ? strStreamData  : 'z;
+    assign streamData  = layEnable ? layStreamData  : 'z;
     
-    assign outputStreamValid = outputStrEnable ? outputStrStreamValid : 'z;
-    assign outputStreamValid = outputLayEnable ? outputLayStreamValid : 'z;
+    assign streamValid = strEnable ? strStreamValid : 'z;
+    assign streamValid = layEnable ? layStreamValid : 'z;
     
-    assign outputStreamLast  = outputStrEnable ? outputStrStreamLast  : 'z;
-    assign outputStreamLast  = outputLayEnable ? outputLayStreamLast  : 'z;
+    assign streamLast  = strEnable ? strStreamLast  : 'z;
+    assign streamLast  = layEnable ? layStreamLast  : 'z;
     
-    AxiStreamReader #(.NUMWORDS(8)) outputStr (
-        .clk, .enable(outputStrEnable), .rst(outputStrRst), .done(outputStrDone),
-        .ramWrite(outputStrWrite), .ramRead(outputStrRead), 
-        .transferLen(outputStrLen),
-        .TREADY(outputStreamReady), .TRESET(outputStreamReset),
-        .TDATA(outputStrStreamData), .TVALID(outputStrStreamValid), .TLAST(outputLayStreamLast)
+    AxiStreamReader #(.NUMWORDS(8)) str (
+        .clk, .enable(strEnable), .rst(strRst), .done(strDone),
+        .ramWrite(strWrite), .ramRead(strRead), 
+        .transferLen(strLen),
+        .TREADY(streamReady), .TRESET(streamReset),
+        .TDATA(strStreamData), .TVALID(strStreamValid), .TLAST(layStreamLast)
     );
     
-    AxiStreamReader #(.WORDSIZE(64), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead)) outputLay (
-        .clk, .enable(outputLayEnable), .rst(outputLayRst), .done(outputLayDone),
-        .ramWrite(outputLayWrite),  .ramRead(outputLayRead), 
-        .transferLen(outputLayLen),
-        .TREADY(outputStreamReady), .TRESET(outputStreamReset),
-        .TDATA(outputLayStreamData), .TVALID(outputLayStreamValid), .TLAST(outputLayStreamLast)
+    AxiStreamReader #(.WORDSIZE(64), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead)) lay (
+        .clk, .enable(layEnable), .rst(layRst), .done(layDone),
+        .ramWrite(layWrite),  .ramRead(layRead), 
+        .transferLen(layLen),
+        .TREADY(streamReady), .TRESET(streamReset),
+        .TDATA(layStreamData), .TVALID(layStreamValid), .TLAST(layStreamLast)
     );
 endmodule

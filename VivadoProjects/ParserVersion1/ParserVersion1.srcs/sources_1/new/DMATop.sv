@@ -24,9 +24,9 @@ module DMATop import Ram::*, Core::*; (
     logic       inputDone,   parserDone,   outputDone;    
     logic [3:0] inputBlock,  parserBlock,  outputBlock;
     
-    InputIndex inputInLen,    parserInLen;                       // lengths of input tapes
-    InputIndex parserStrLen,  outputStrLen;                                 // lengths of string tape
-    InputIndex parserLayLen,  outputLayLen;                                 // lengths of structure tapes
+    InputIndex inputInLen,    parserInLen;      // lengths of input tapes
+    InputIndex parserStrLen,  outputStrLen;     // lengths of string tape
+    InputIndex parserLayLen,  outputLayLen;     // lengths of structure tapes
 
     DMAOrchestrator dma_mgr  ( .clk, .enb, .rst,
         .inputEnable, .parserEnable, .outputEnable,
@@ -76,6 +76,23 @@ module DMATop import Ram::*, Core::*; (
         .ramWrite(inputInWrite), .transferLen(inputInLen),
         .TREADY(inputStreamReady), .TDATA(inputStreamData), 
         .TVALID(inputStreamValid), .TLAST(inputStreamLast), .TRESET(inputStreamReset)    
+    );
+
+    ParserTop parser (
+        .curChar, .clk, .rst(parserRst), .enable(parserEnable),
+        .stringRam(parserStrWrite), .structRam(parserLayWrite)
+    );
+
+    OutputRouter OUTY (
+        .clk, .enb(outputEnable), .rst(outputRst),.done(outputDone),
+
+        .layWrite(outputLayWrite), .strWrite(outputStrWrite),
+        .layRead(outputLayRead),   .strRead(outputStrRead),
+        .layLen(outputLayLen),     .strLen(outputStrLen),
+
+        .streamReset(outputStreamReset), .streamReady(outputStreamReady),
+        .streamData(outputStreamData),   .streamDest(outputStreamDest), 
+        .streamValid(outputStreamValid), .streamLast(outputStreamLast)
     );
 
 endmodule
