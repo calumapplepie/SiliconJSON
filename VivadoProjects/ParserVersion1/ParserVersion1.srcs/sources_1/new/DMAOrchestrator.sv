@@ -10,6 +10,14 @@ module DMAOrchestrator( input logic clk, rst, enb,
     // NOTE: currently we keep it stupid simple, stupid
     // design v1: non-parallel FSM
     // will need to revise to make it drive select inputs and run stages in parallel
+
+    // make everything all about block 0
+    always_comb begin
+        inputBlock  = '0;
+        parserBlock = '0;
+        outputBlock = '0;
+    end
+
     typedef enum {START, READ_INPUT, PARSE, OUTPUT, ERROR} state_t;
     state_t curState, nextState;
     
