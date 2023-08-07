@@ -93,6 +93,7 @@ module DMATop import Ram::*, Core::*; (
 
     OutputRouter OUTY (
         .clk, .enb(outputEnable), .rst(outputRst),.done(outputDone),
+        .blockSel(outputBlock),
 
         .layWrite(outputLayWrite), .strWrite(outputStrWrite),
         .layRead(outputLayRead),   .strRead(outputStrRead),

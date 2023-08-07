@@ -10,7 +10,8 @@ module TapeWriter
         input JsonTapeElement numberSecondElement,
         input clk, rst, enable,
         output Ram::StringBlockRamWrite stringRam, 
-        output Ram::StructBlockRamWrite structRam
+        output Ram::StructBlockRamWrite structRam,
+        output Core::TapeIndex strTapeLen, layTapeLen
     );
     
     TapeIndex curStringIndex;
@@ -21,7 +22,8 @@ module TapeWriter
     StringTapeAccumulator stringGoHere (
         .nextStringByte, .enable, .active(writeString),
         .startIndex(curStringIndex), .characterEscaped,
-        .clk(clk), .rst(rst), .ramConnection(stringRam)
+        .clk(clk), .rst(rst), .ramConnection(stringRam),
+        .length(strTapeLen)
     );
     
     JsonTapeElement nextElement;
@@ -34,6 +36,6 @@ module TapeWriter
     StructureTapeAccumulator structGoHere(
         .nextTapeEntry(nextElement), .enable,  .active(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement,
-        .clk(clk), .rst(rst), .ramConnection(structRam)
+        .clk(clk), .rst(rst), .ramConnection(structRam), .length(layTapeLen)
     );
 endmodule

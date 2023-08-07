@@ -8,7 +8,8 @@ module ParserTop
         input UTF8_Char curChar,
         input clk, rst, enable,
         output Ram::StringBlockRamWrite stringRam, 
-        output Ram::StructBlockRamWrite structRam
+        output Ram::StructBlockRamWrite structRam,
+        output Core::InputIndex strTapeLen, layTapeLen
     );
     ElementType curElementType;
     JsonTapeElement numberSecondElement;
@@ -47,7 +48,7 @@ module ParserTop
         .writeString(writeString), .writeStructure(writeStructure), 
         .keyValuePairs(keyValuePairs), .numberSecondElement(numberSecondElement),
         .clk(clk),.rst(rst), .characterEscaped(lastCharacterEscaped),
-        .stringRam, .structRam, .enable
+        .stringRam, .structRam, .enable, .strTapeLen, .layTapeLen
     );
     
 endmodule

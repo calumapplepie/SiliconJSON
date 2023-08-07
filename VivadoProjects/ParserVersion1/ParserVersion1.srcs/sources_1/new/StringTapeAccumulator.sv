@@ -7,7 +7,8 @@ module StringTapeAccumulator
         input characterEscaped,
         output TapeIndex startIndex,
         input clk, rst, enable, active,
-        output Ram::StringBlockRamWrite ramConnection
+        output Ram::StringBlockRamWrite ramConnection,
+        output TapeIndex length
     );
 
 typedef logic [23:0] StringLength;
@@ -15,6 +16,7 @@ StringLength strLen;
 TapeIndex curIndex, addressA, addressB;
 logic [1:0] cyclesInactive;
 UTF8_Char byteA, byteB;
+assign length = curIndex+1;
 
 
 /* tried this, but noooo it didnt work

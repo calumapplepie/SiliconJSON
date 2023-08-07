@@ -5,7 +5,8 @@ module StructureTapeAccumulator
         input JsonTapeElement nextTapeEntry, numberSecondElement,
         input logic [23:0] keyValuePairs,
         input clk, rst, enable, active,
-        output Ram::StructBlockRamWrite ramConnection
+        output Ram::StructBlockRamWrite ramConnection,
+        output TapeIndex length
     );
     
     TapeIndex curIndex;
@@ -17,6 +18,7 @@ module StructureTapeAccumulator
     JsonTapeElement dualWriteTapeEntry;
     
     logic [9:0] curDepth;
+    assign length = curIndex + 1;
     
     logic doCloseBraceWrite, doNumberWrite, doDualWrite;
     /*
