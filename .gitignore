@@ -2,3 +2,5 @@
 *.elf
 # dia (diagram software) temp file
 *.dia~
+# exported pngs
+*.png
