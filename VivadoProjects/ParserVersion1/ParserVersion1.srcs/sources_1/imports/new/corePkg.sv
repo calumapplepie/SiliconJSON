@@ -1,14 +1,17 @@
 `timescale 1ns / 1ps
 
 package Core;
-    typedef logic [7:0]  UTF8_Char;
-    typedef logic [63:0] JsonTapeElement;
-    typedef logic [55:0] TapeIndex;
-    
+
     parameter int MaxInputLength   = 4096;
     parameter int StringTapeLength = 4096; // a full block ram
     parameter int StructTapeLength = 512;  // max value without expanding into 4 block rams
     parameter int IndexTapeLength = 1024;   // sized to fit in a half-blockram 
+
+    typedef logic [7:0]  UTF8_Char;
+    typedef logic [63:0] JsonTapeElement;
+    typedef logic [55:0] TapeIndex;
+    typedef logic [$clog2(MaxInputLength)-1:0] InputIndex;
+
     typedef enum logic [3:0] {braceOpen, braceClose, bracketOpen, bracketClose, 
                                 quote, colon, comma, minusSign, backslash,
                                 whitespace, numeric, controlChar, asciiAlphabetical, 

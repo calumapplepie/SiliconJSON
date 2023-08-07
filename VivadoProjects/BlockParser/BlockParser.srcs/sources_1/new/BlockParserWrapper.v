@@ -9,7 +9,7 @@ module BlockParserWrapper(
         output wire s_axis_tready,
         input  wire m_axis_resetn, m_axis_tready,
         output wire [63:0] m_axis_tdata, wire [3:0] m_axis_tdest,
-        input  wire m_axis_tvalid, m_axis_tlast
+        output wire m_axis_tvalid, m_axis_tlast
     );
     BlockParserTop TOP (
         // this may be the ugliest thing ever but its what we've gotta do

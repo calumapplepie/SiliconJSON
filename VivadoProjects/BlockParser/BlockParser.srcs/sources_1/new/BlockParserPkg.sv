@@ -8,7 +8,6 @@ package Block;
     typedef Core::UTF8_Char[BlockSizeChars-1:0] TextBlock;
     typedef logic [BlockSizeChars-1:0]          BitBlock;
     typedef logic [$clog2(BlockSizeChars)-1:0]  BitBlockIndex;
-    typedef logic [$clog2(Core::MaxInputLength)-1:0] InputIndex;
     
     
     

@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 // track how long various buffers are
-module LengthOrchestrator import Block::InputIndex;(
+module LengthOrchestrator import Core::InputIndex;(
         input logic clk, web,
         input logic [3:0] selR1, selR2, selW,
         input InputIndex din,
