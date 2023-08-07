@@ -88,7 +88,9 @@ module DMATop import Ram::*, Core::*; (
 
     ParserTop parser (
         .curChar, .clk, .rst(parserRst), .enable(parserEnable),
-        .stringRam(parserStrWrite), .structRam(parserLayWrite)
+        .stringRam(parserStrWrite), .structRam(parserLayWrite), 
+        .strTapeLen(parserStrLen),  .layTapeLen(parserLayLen),
+        .done(parserDone)
     );
 
     OutputRouter OUTY (

@@ -9,11 +9,13 @@ module ParserTop
         input clk, rst, enable,
         output Ram::StringBlockRamWrite stringRam, 
         output Ram::StructBlockRamWrite structRam,
-        output Core::InputIndex strTapeLen, layTapeLen
+        output Core::InputIndex strTapeLen, layTapeLen,
+        output logic done
     );
     ElementType curElementType;
     JsonTapeElement numberSecondElement;
     wire writeString, writeStructure, characterEscaped;
+    logic fsmDone; // TODO: timing model to see if extra latency is needed
     wire [23:0] keyValuePairs;
     
     
@@ -22,7 +24,7 @@ module ParserTop
     ParserFSM parser (
         .curChar (curChar), .curElementType(curElementType), .keyValuePairsSoFar(keyValuePairs),
         .writeString, .writeStructure, .numberSecondElement, .characterEscaped,
-        .clk(clk), .rst(rst), .enb(enable)
+        .clk(clk), .rst(rst), .enb(enable), .done(fsmDone)
     );
     
     // this needs to be a pipeline for proper functionality
@@ -35,11 +37,13 @@ module ParserTop
             lastChar             <= "{";
             lastCharacterEscaped <= '0;
             lastElementType      <= Core::objOpen;
+            done                 <= '0;
         end
         else if(enable) begin
             lastChar             <= curChar;
             lastCharacterEscaped <= characterEscaped;
             lastElementType      <= curElementType;
+            done                 <= fsmDone;  
         end 
     end
     

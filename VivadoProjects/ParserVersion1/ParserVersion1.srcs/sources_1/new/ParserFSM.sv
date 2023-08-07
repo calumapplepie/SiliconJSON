@@ -4,13 +4,15 @@ module ParserFSM import Core::*, ParserPkg::*; (
     input UTF8_Char curChar,
     input clk, rst, enb,
     output ElementType curElementType,
-    output logic writeString, writeStructure, characterEscaped,
+    output logic writeString, writeStructure, characterEscaped, done,
     output logic [23:0] keyValuePairsSoFar,
     output JsonTapeElement numberSecondElement
     );
 
     (* mark_debug = "true" *) ParserState curState;
     ParserState nextState;
+
+    assign done = curState == EndDocument;
         
     logic simpleValScanComplete;
     ElementType simpleValElement;
@@ -112,7 +114,8 @@ module ParserFSM import Core::*, ParserPkg::*; (
                 end 
                 default : nextState = ReadNumber;
             endcase 
-            
+
+            EndDocument : nextState = EndDocument;       
             default     : nextState = Error;
         endcase
     end
