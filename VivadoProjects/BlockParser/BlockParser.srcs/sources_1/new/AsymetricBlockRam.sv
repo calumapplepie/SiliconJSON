@@ -7,7 +7,10 @@
 // Also, IF inference works properly, then this model is more generalizable; i don't need to worry so much about
 // how to divide this among block rams.  However, it does not work properly in the case of asymetric (read/write) TDP
 // block rams.  As of Vivado 2023.1.1, there is a change request filed to at least make it not crash.
+`ifdef SYNTHESIS
 `define VIVADO_BROKEN 1
+`endif
+
 module AsymetricBlockRam #(
             WORDSIZE=8, WORDSIZE_IN=WORDSIZE, WORDSIZE_OUT=WORDSIZE, // default to symetric, but allow asymetric reading  
             NUMWORDS=64, ADDRWIDTH=$clog2(NUMWORDS), DO_REG=1) (
