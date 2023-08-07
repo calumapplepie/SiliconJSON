@@ -14,6 +14,7 @@ Our directories: (not in tree format because I couldn't bother to check what tha
 |\_ VivadoProjects: Projects for Xylinx Vivado
 |  |\_ TestZedboard: where some tests for messing around with the Zedboard are.  may be removed by Future Calum
 |  |\_ ParserVersion1: a parser that is based on an FSM, parsing one letter at a time.  Now with a block design integrating it into the PS!
+|  |\_ BlockPareser:   a parser built on the same principles as simdjson.  WIP.
 
 
 Some Design notes:

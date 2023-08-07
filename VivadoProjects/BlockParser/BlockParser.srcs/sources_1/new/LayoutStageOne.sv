@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-
+// performs actions based on simdjson to scan a textblock into a bitfield
 module LayoutStageOne import Block::*; (
         input clk, rst, enb, 
         input TextBlock chars, 

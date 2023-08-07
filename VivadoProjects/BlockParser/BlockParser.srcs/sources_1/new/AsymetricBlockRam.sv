@@ -85,7 +85,9 @@ for(depth_i = 0; depth_i < DEPTH_CUTS; depth_i++) begin
     end
 end
 endgenerate
-`else
+
+`else // ie, we aren't trying to do a synthesis in vivado
+
 // maybe in is big, maybe out is big; user chooses
 localparam WORDSIZE_RAM = WORDSIZE_IN > WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
 logic [WORDSIZE_RAM-1:0] ram [0:NUMWORDS-1];
