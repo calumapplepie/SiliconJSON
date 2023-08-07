@@ -28,6 +28,8 @@ module DMATop import Ram::*, Core::*; (
     InputIndex parserStrLen,  outputStrLen;     // lengths of string tape
     InputIndex parserLayLen,  outputLayLen;     // lengths of structure tapes
 
+    UTF8_Char curChar;
+
     DMAOrchestrator dma_mgr  ( .clk, .enb, .rst,
         .inputEnable, .parserEnable, .outputEnable,
         .inputRst,    .parserRst,    .outputRst,
@@ -76,6 +78,12 @@ module DMATop import Ram::*, Core::*; (
         .ramWrite(inputInWrite), .transferLen(inputInLen),
         .TREADY(inputStreamReady), .TDATA(inputStreamData), 
         .TVALID(inputStreamValid), .TLAST(inputStreamLast), .TRESET(inputStreamReset)    
+    );
+
+    GenericBramReader #(.USEPORTS(1)) reader(
+        .clk, .rst(parserRst), .enable(parserEnable),
+        .ramRead(parserInRead), .ramWrite(parserInWrite),
+        .data(curChar)    
     );
 
     ParserTop parser (
