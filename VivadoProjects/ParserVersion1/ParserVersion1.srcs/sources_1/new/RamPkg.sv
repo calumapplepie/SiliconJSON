@@ -1,5 +1,6 @@
-package Ram;
 
+
+package Ram;
     typedef struct {
         logic ena, enb, wea,web;
         logic [$clog2(Core::StringTapeLength)-1:0] addra,addrb;
@@ -26,7 +27,7 @@ package Ram;
     
     typedef struct {
         logic ena, enb, wea,web;
-        logic [$clog2(Core::MaxInputLength/Block::BlockSizeChars)-1:0] addra,addrb;
+        logic [$clog2(Core::MaxInputLength/8)-1:0] addra,addrb;
         logic [3:0] dia, dib;
     } BitmapBlockRamWrite;    
       
@@ -50,15 +51,5 @@ package Ram;
         logic [63:0] doa,dob;
     } StructBlockRamRead;
     
-    // allows me to use parameterized modules, user must ensure proper bitwidths
-    typedef union {
-        StringBlockRamWrite str;
-        StructBlockRamWrite stu;
-    } BlockRamWrite;
-    
-    typedef union {
-        StringBlockRamRead str;
-        StructBlockRamRead stu;
-    } BlockRamRead;
 
 endpackage

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module BitmapToIndicies import Block::*; (
+module BitmapToIndicies import Block::*; ( 
         input BitBlock bitmap, input InputIndex startingIndex, 
         input clk, rst, enb, 
         output logic holdPipeline, output InputIndex[3:0] oneIndexes,
