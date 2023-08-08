@@ -11,9 +11,9 @@
       "validated": "true"
     },
     "design_tree": {
-      "DMATopWrapper_0": "",
       "axis_vip_slv": "",
-      "axis_vip_mst": ""
+      "axis_vip_mst": "",
+      "DMATopWrapper_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -59,6 +59,52 @@
       }
     },
     "components": {
+      "axis_vip_slv": {
+        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
+        "xci_name": "AXIS_Tester_axi4stream_vip_0_0",
+        "xci_path": "ip/AXIS_Tester_axi4stream_vip_0_0/AXIS_Tester_axi4stream_vip_0_0.xci",
+        "inst_hier_path": "axis_vip_slv",
+        "parameters": {
+          "INTERFACE_MODE": {
+            "value": "SLAVE"
+          }
+        }
+      },
+      "axis_vip_mst": {
+        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
+        "xci_name": "AXIS_Tester_axi4stream_vip_1_0",
+        "xci_path": "ip/AXIS_Tester_axi4stream_vip_1_0/AXIS_Tester_axi4stream_vip_1_0.xci",
+        "inst_hier_path": "axis_vip_mst",
+        "parameters": {
+          "HAS_TKEEP": {
+            "value": "0"
+          },
+          "HAS_TLAST": {
+            "value": "0"
+          },
+          "HAS_TREADY": {
+            "value": "1"
+          },
+          "HAS_TSTRB": {
+            "value": "0"
+          },
+          "INTERFACE_MODE": {
+            "value": "MASTER"
+          },
+          "TDATA_NUM_BYTES": {
+            "value": "8"
+          },
+          "TDEST_WIDTH": {
+            "value": "4"
+          },
+          "TID_WIDTH": {
+            "value": "4"
+          },
+          "TUSER_WIDTH": {
+            "value": "0"
+          }
+        }
+      },
       "DMATopWrapper_0": {
         "vlnv": "xilinx.com:module_ref:DMATopWrapper:1.0",
         "xci_name": "AXIS_Tester_DMATopWrapper_0_0",
@@ -269,52 +315,6 @@
             }
           }
         }
-      },
-      "axis_vip_slv": {
-        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
-        "xci_name": "AXIS_Tester_axi4stream_vip_0_0",
-        "xci_path": "ip/AXIS_Tester_axi4stream_vip_0_0/AXIS_Tester_axi4stream_vip_0_0.xci",
-        "inst_hier_path": "axis_vip_slv",
-        "parameters": {
-          "INTERFACE_MODE": {
-            "value": "SLAVE"
-          }
-        }
-      },
-      "axis_vip_mst": {
-        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
-        "xci_name": "AXIS_Tester_axi4stream_vip_1_0",
-        "xci_path": "ip/AXIS_Tester_axi4stream_vip_1_0/AXIS_Tester_axi4stream_vip_1_0.xci",
-        "inst_hier_path": "axis_vip_mst",
-        "parameters": {
-          "HAS_TKEEP": {
-            "value": "0"
-          },
-          "HAS_TLAST": {
-            "value": "0"
-          },
-          "HAS_TREADY": {
-            "value": "1"
-          },
-          "HAS_TSTRB": {
-            "value": "0"
-          },
-          "INTERFACE_MODE": {
-            "value": "MASTER"
-          },
-          "TDATA_NUM_BYTES": {
-            "value": "8"
-          },
-          "TDEST_WIDTH": {
-            "value": "4"
-          },
-          "TID_WIDTH": {
-            "value": "4"
-          },
-          "TUSER_WIDTH": {
-            "value": "0"
-          }
-        }
       }
     },
     "interface_nets": {
@@ -343,9 +343,9 @@
       "reset_rtl_1": {
         "ports": [
           "reset_rtl",
-          "DMATopWrapper_0/s_axis_resetn",
           "axis_vip_mst/aresetn",
           "axis_vip_slv/aresetn",
+          "DMATopWrapper_0/s_axis_resetn",
           "DMATopWrapper_0/m_axis_resetn"
         ]
       }

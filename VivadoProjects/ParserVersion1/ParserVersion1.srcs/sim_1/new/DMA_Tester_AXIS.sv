@@ -20,12 +20,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DMA_Tester_AXIS import axi4stream_vip_pkg::*; ();
-    
+module DMA_Tester_AXIS import axi4stream_vip_pkg::*, AXIS_Tester_axi4stream_vip_1_0_pkg::*, AXIS_Tester_axi4stream_vip_0_0_pkg::*; ();
+    AXIS_Tester_axi4stream_vip_1_0_mst_t                              mst_agent;
+    AXIS_Tester_axi4stream_vip_0_0_slv_t                              slv_agent;
     
     logic clk, rst;
     
-    AXIS_Tester_wrapper dut (.sys_clock(clk), .reset_rtl(!rst));
+    AXIS_Tester_wrapper DUT (.sys_clock(clk), .reset_rtl(!rst));
+    
+    initial begin
+        rst <= '0;
+        mst_agent = new("master vip agent", DUT.AXIS_Tester_i.axis_vip_mst.inst.IF);
+        slv_agent = new("slave vip agent",DUT.AXIS_Tester_i.axis_vip_slv.inst.IF);
+    end
+    
+    
     
     initial forever begin
         clk <= '0; #5;
