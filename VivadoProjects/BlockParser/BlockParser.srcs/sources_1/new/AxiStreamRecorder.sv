@@ -26,6 +26,7 @@ module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
     always_ff @(posedge clk) begin
         if(reset) begin
             transferLen <= '0;  
+            wasLast     <= '0;
         end
         else if (enable) begin
             if(TLAST && writeData) begin
