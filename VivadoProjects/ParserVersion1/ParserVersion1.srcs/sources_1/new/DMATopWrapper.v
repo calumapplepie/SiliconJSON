@@ -13,7 +13,7 @@ module DMATopWrapper(
     );
     DMATop TOP (
         // this may be the ugliest thing ever but its what we've gotta do
-        .clk(axis_aclk), .enb(1'd1), .rst(1'd0),
+        .clk(axis_aclk), .enb(1'd1), .rst(!s_axis_resetn && !m_axis_resetn),
         .inputStreamData(s_axis_tdata), .inputStreamDest(s_axis_tdest),
         .inputStreamValid(s_axis_tvalid), .inputStreamLast(s_axis_tlast), .inputStreamReset(s_axis_resetn),
         .inputStreamReady(s_axis_tready),

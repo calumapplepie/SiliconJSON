@@ -29,9 +29,14 @@ module DMA_Tester_AXIS import axi4stream_vip_pkg::*, AXIS_Tester_axi4stream_vip_
     AXIS_Tester_wrapper DUT (.sys_clock(clk), .reset_rtl(!rst));
     
     initial begin
-        rst <= '0;
+        rst <= '1;
         mst_agent = new("master vip agent", DUT.AXIS_Tester_i.axis_vip_mst.inst.IF);
         slv_agent = new("slave vip agent",DUT.AXIS_Tester_i.axis_vip_slv.inst.IF);
+        
+        #10; rst <= '0;
+        
+        
+        
     end
     
     
