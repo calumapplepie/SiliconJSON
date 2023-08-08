@@ -33,8 +33,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,US
         end else begin
             ramWrite.addrb = (rst ? '0 : curAddr) + NUMWORDS/2;
             ramWrite.enb = enable;
-
-            data[$ceil(NUMWORDS/2.0)-1:0] = ramRead.doa;
+            data[(NUMWORDS/2)-1:0] = ramRead.doa;
             data[NUMWORDS-1:NUMWORDS/2] = ramRead.dob;
         end
         

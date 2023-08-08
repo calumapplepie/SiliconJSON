@@ -86,7 +86,7 @@ module ParserFSM import Core::*, ParserPkg::*; (
 
     // next state determiner
     always_comb begin
-        logic isQuote = curCharType == quote && !characterEscaped;
+        automatic logic isQuote = curCharType == quote && !characterEscaped;
         case(curState)    
             EndObject, EndArray : begin
                 if(atDocRoot)               nextState = EndDocument;

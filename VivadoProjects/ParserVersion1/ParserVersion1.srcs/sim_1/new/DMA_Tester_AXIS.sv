@@ -25,7 +25,7 @@ module DMA_Tester_AXIS import axi4stream_vip_pkg::*; ();
     
     logic clk, rst;
     
-    AXIS_Tester_wrapper dut (.sys_clk(clk), .reset_rtl(!rst));
+    AXIS_Tester_wrapper dut (.sys_clock(clk), .reset_rtl(!rst));
     
     initial forever begin
         clk <= '0; #5;

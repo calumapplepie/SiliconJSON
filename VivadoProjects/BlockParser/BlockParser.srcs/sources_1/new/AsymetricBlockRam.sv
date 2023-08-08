@@ -91,6 +91,11 @@ endgenerate
 
 `else // ie, we aren't trying to do a synthesis in vivado
 
+// we want the stuff to be nets not wires now
+logic [WORDSIZE_OUT-1:0] doaL,dobL;
+assign doa = doaL;
+assign dob = dobL;
+
 // maybe in is big, maybe out is big; user chooses
 localparam WORDSIZE_RAM = WORDSIZE_IN > WORDSIZE_OUT ? WORDSIZE_OUT : WORDSIZE_IN;
 logic [WORDSIZE_RAM-1:0] ram [0:NUMWORDS-1];
@@ -117,12 +122,11 @@ always_ff @(posedge clk) begin
             end
         end
         
-        if(READ_RATIO == 1) doa <= ram[addra];
+        if(READ_RATIO == 1) doaL <= ram[addra];
         else for(integer i = 0; i < READ_RATIO; i++) begin
             automatic logic [ADDRWIDTH-1:0] address = addra+i;
-            doa[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
+            doaL[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
         end
-        
     end
 end
 
@@ -136,10 +140,10 @@ always_ff @(posedge clk) begin
             end
         end
         
-        if(READ_RATIO == 1) dob <= ram[addrb];
+        if(READ_RATIO == 1) dobL <= ram[addrb];
         else for(integer i = 0; i < READ_RATIO; i++) begin
             automatic logic [ADDRWIDTH-1:0] address = addrb+i;
-            dob[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
+            dobL[(i+1)*WORDSIZE_RAM-1 -: WORDSIZE_RAM] <= ram[address]; // saw this in the docs and wondered what it was; now I know!
         end
         
     end

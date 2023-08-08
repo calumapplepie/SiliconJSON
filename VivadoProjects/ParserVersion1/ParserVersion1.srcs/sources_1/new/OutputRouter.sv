@@ -21,17 +21,17 @@
 
 
 module OutputRouter import Ram::*, Core::InputIndex;(
-        input  wire clk, enb, rst,
-        output wire done,
-        input  wire [3:0] blockSel,
+        input  clk, enb, rst,
+        output logic done,
+        input  [3:0] blockSel,
 
         output StructBlockRamWrite layWrite, output StringBlockRamWrite strWrite,
         input  StructBlockRamRead  layRead,  input  StringBlockRamRead  strRead,
         input  InputIndex layLen, strLen,
 
-        input  wire streamReset, streamReady,
-        output wire [63:0] streamData, [3:0] streamDest, 
-        output wire streamValid, streamLast
+        input  streamReset, streamReady,
+        output logic [63:0] streamData, logic [3:0] streamDest, 
+        output logic streamValid, streamLast
     );
 
     logic strEnable, strRst, strDone;
@@ -67,6 +67,7 @@ module OutputRouter import Ram::*, Core::InputIndex;(
         streamData  = 'x;
         streamValid = '0;
         streamLast  = 'x;
+        streamDest  = 'x;
         strEnable = '0; layEnable = '0;
         done = '0;
         case(curState) 
@@ -95,7 +96,7 @@ module OutputRouter import Ram::*, Core::InputIndex;(
         .ramWrite(strWrite), .ramRead(strRead), 
         .transferLen(strLen),
         .TREADY(streamReady), .TRESET(streamReset),
-        .TDATA(strStreamData), .TVALID(strStreamValid), .TLAST(layStreamLast)
+        .TDATA(strStreamData), .TVALID(strStreamValid), .TLAST(strStreamLast)
     );
     
     AxiStreamReader #(.WORDSIZE(64), .WriteType(StructBlockRamWrite), .ReadType(StructBlockRamRead)) lay (
