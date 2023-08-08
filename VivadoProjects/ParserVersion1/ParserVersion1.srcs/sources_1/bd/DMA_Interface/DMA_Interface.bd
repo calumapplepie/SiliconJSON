@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xCC6CFA539DDF0AAD",
+      "boundary_crc": "0xCC6CFA535221FB6E",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../ParserVersion1.gen/sources_1/bd/DMA_Interface",
       "name": "DMA_Interface",
@@ -35,9 +35,7 @@
           "auto_pc": "",
           "auto_us": ""
         }
-      },
-      "axi4stream_vip_0": "",
-      "axi4stream_vip_1": ""
+      }
     },
     "interface_ports": {
       "DDR": {
@@ -2298,43 +2296,19 @@
             ]
           }
         }
-      },
-      "axi4stream_vip_0": {
-        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
-        "xci_name": "DMA_Interface_axi4stream_vip_0_1",
-        "xci_path": "ip/DMA_Interface_axi4stream_vip_0_1/DMA_Interface_axi4stream_vip_0_1.xci",
-        "inst_hier_path": "axi4stream_vip_0"
-      },
-      "axi4stream_vip_1": {
-        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
-        "xci_name": "DMA_Interface_axi4stream_vip_1_0",
-        "xci_path": "ip/DMA_Interface_axi4stream_vip_1_0/DMA_Interface_axi4stream_vip_1_0.xci",
-        "inst_hier_path": "axi4stream_vip_1"
       }
     },
     "interface_nets": {
       "DMATopWrapper_0_m_axis": {
         "interface_ports": [
           "DMATopWrapper_0/m_axis",
-          "axi4stream_vip_1/S_AXIS"
-        ]
-      },
-      "axi4stream_vip_0_M_AXIS": {
-        "interface_ports": [
-          "axi4stream_vip_0/M_AXIS",
-          "DMATopWrapper_0/s_axis"
-        ]
-      },
-      "axi4stream_vip_1_M_AXIS": {
-        "interface_ports": [
-          "axi4stream_vip_1/M_AXIS",
           "axi_mcdma_0/S_AXIS_S2MM"
         ]
       },
       "axi_mcdma_0_M_AXIS_MM2S": {
         "interface_ports": [
-          "axi_mcdma_0/M_AXIS_MM2S",
-          "axi4stream_vip_0/S_AXIS"
+          "DMATopWrapper_0/s_axis",
+          "axi_mcdma_0/M_AXIS_MM2S"
         ]
       },
       "axi_mcdma_0_M_AXI_MM2S": {
@@ -2433,9 +2407,7 @@
           "axi_mem_intercon_2/S00_ACLK",
           "processing_system7_0/S_AXI_HP1_ACLK",
           "axi_mem_intercon_2/M00_ACLK",
-          "axi_mem_intercon_2/ACLK",
-          "axi4stream_vip_0/aclk",
-          "axi4stream_vip_1/aclk"
+          "axi_mem_intercon_2/ACLK"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -2459,9 +2431,7 @@
           "axi_mem_intercon_1/ARESETN",
           "axi_mem_intercon_2/S00_ARESETN",
           "axi_mem_intercon_2/M00_ARESETN",
-          "axi_mem_intercon_2/ARESETN",
-          "axi4stream_vip_0/aresetn",
-          "axi4stream_vip_1/aresetn"
+          "axi_mem_intercon_2/ARESETN"
         ]
       }
     },
