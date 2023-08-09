@@ -19,7 +19,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,US
         // Disable all writes.  Tie enable to the input to avoid ram output updating to the next address until the next
         // enable cycle (curAddr is IntendedOutAddr(t)+1 during cycle t regardless of if the enable was dropped to low during the cycle)  
         
-        ramWrite.ena = enable;
+        ramWrite.ena = enable ;
         ramWrite.wea = '0; ramWrite.web = '0;
         
         ramWrite.addra = rst ? '0 : curAddr;
@@ -32,7 +32,7 @@ module GenericBramReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, STARTDEX=0,US
             data = ramRead.doa;
         end else begin
             ramWrite.addrb = (rst ? '0 : curAddr) + NUMWORDS/2;
-            ramWrite.enb = enable;
+            ramWrite.enb = enable ;
             data[(NUMWORDS/2)-1:0] = ramRead.doa;
             data[NUMWORDS-1:NUMWORDS/2] = ramRead.dob;
         end

@@ -37,8 +37,8 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
     int CycleNum;
 
     
-    GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType), .STARTDEX(NUMWORDS)) reader (
-        .clk, .enable(updateOutput), .rst(reset), .data(TDATA), .ramWrite, .ramRead
+    GenericBramReader #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType), .ReadType(ReadType), .STARTDEX(0)) reader (
+        .clk, .enable(updateOutput || wasReset && enable), .rst(reset), .data(TDATA), .ramWrite, .ramRead
     );  
         
     always_ff @(posedge clk) begin
@@ -51,7 +51,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
             if(wasReset) begin // we just reset
                 wasReset <= '0;
             end
-            if(TLAST && TREADY) begin
+            if(TLAST && updateOutput) begin
                 wasLast <= '1;
             end
             if(updateOutput) CycleNum <= CycleNum +1;

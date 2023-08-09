@@ -6,7 +6,7 @@ module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
         output logic[$bits(ramWrite.addra)-1:0] transferLen,
         // AXI signals
         output logic TREADY, done,
-        input logic [WORDSIZE-1:0] [NUMWORDS-1:0] TDATA,
+        input logic [NUMWORDS-1:0] [WORDSIZE-1:0] TDATA,
         input logic TLAST, TVALID, TRESET
     );
     
@@ -19,8 +19,12 @@ module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
     assign writeData = TVALID && TREADY;  // true if a write will occur on the next clock edge
     assign TREADY = enable && !reset && !wasLast;  // we're always ready to receive a read when enabled, unless we're already done
             
-    GenericBramRecorder #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType)) reader (
-        .clk, .enable(writeData), .rst(reset), .data(TDATA), .ramWrite
+    logic [NUMWORDS-1:0] [WORDSIZE-1:0] newdata;
+    assign newdata = {<<8{TDATA}};
+    
+    GenericBramRecorder #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType)) recorder (
+        .clk, .enable(writeData), .rst(reset), .ramWrite,
+        .data(newdata) // reorder the data stream before recording it
     );  
         
     always_ff @(posedge clk) begin

@@ -32,7 +32,7 @@ module DMA_Tester_AXIS import axi4stream_vip_pkg::*, AXIS_Tester_axi4stream_vip_
     logic clk, rst;
     
     AXIS_Tester_wrapper DUT (.sys_clock(clk), .reset_rtl(!rst));
-    logic [63:0] testData = "{\"H\":\"I\"}";
+    logic [63:0] testData = "{\"H\":1}";
     initial begin
         rst <= '1;
         // init our agents

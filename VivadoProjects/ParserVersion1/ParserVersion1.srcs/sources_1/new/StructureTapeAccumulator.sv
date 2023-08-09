@@ -18,7 +18,7 @@ module StructureTapeAccumulator
     JsonTapeElement dualWriteTapeEntry;
     
     logic [9:0] curDepth;
-    assign length = curIndex + 1;
+    assign length = curIndex - 1;
     
     logic doCloseBraceWrite, doNumberWrite, doDualWrite;
     /*

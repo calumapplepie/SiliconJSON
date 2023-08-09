@@ -28,9 +28,9 @@ module BramOrchestrator #(NUMWORDS=4096, DO_REG=1, type ReadType, type WriteType
     
     // todo: consider breaking this apart into distinct assign statements, to avoid priority encoder
     assign selectedWrite = !enableThis? undefWrite    : ( 
-                            sel1 == i ? write1 : (
-                            sel2 == i ? write2 : (
-                            sel3 == i ? write3 : undefWrite)));
+                            sel1 == i  && enb1 ? write1 : (
+                            sel2 == i  && enb2 ? write2 : (
+                            sel3 == i  && enb3 ? write3 : undefWrite)));
                             
     // I'm fairly sure vivado supports this: see IEEE Std 1800 6.6.1
     assign read1 = sel1 == i ? selectedRead : undefRead;  
