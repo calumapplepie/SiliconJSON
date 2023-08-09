@@ -15,12 +15,12 @@ module AxiStreamRecorder import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteTyp
     
     assign done = TLAST && writeData; // after the first clock edge with TLAST high, we can do ANYTHING; the data is already latched in ram
     
-    assign reset = rst && !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
+    assign reset = rst || !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
     assign writeData = TVALID && TREADY;  // true if a write will occur on the next clock edge
     assign TREADY = enable && !reset && !wasLast;  // we're always ready to receive a read when enabled, unless we're already done
             
     logic [NUMWORDS-1:0] [WORDSIZE-1:0] newdata;
-    assign newdata = {<<8{TDATA}};
+    assign newdata = TDATA ;//  {<<8{TDATA}}; // reverse byte order (if needed)
     
     GenericBramRecorder #(.WORDSIZE(WORDSIZE), .NUMWORDS(NUMWORDS), .WriteType(WriteType)) recorder (
         .clk, .enable(writeData), .rst(reset), .ramWrite,
