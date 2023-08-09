@@ -26,7 +26,7 @@ module AxiStreamReader import Ram::*;  #(WORDSIZE=8, NUMWORDS=1, type WriteType=
     assign reset = rst && !TRESET; // can the controller cause a reset, independent of global reset? I dunno.  Better to be safe tho.
     assign updateOutput = reset || TVALID && TREADY;  // (note that reset + enable causes the bram to emit ram[0])
     assign TVALID = enable && !wasReset && !reset && !wasLast; 
-    assign TLAST = ramWrite.addra > transferLen - NUMWORDS;
+    assign TLAST = ramWrite.addra + NUMWORDS > transferLen ;
     
     assign done = TLAST && TVALID && TREADY;
     
