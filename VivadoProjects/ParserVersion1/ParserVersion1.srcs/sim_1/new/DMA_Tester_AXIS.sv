@@ -83,9 +83,12 @@ module DMA_Tester_AXIS import axi4stream_vip_pkg::*, AXIS_Tester_axi4stream_vip_
         // init our ready signal
         ready_gen = slv_agent.driver.create_ready("ready_gen");    
         ready_gen.set_ready_policy(XIL_AXI4STREAM_READY_GEN_RANDOM);
+        ready_gen.set_use_variable_ranges();
+        slv_agent.driver.seq_item_port.put_item(ready_gen);
         
         mst_agent.start_master();
         slv_agent.start_slave();
+        
         #10; rst <= '0;
         #40;
         sendDataPacket(testData1);
