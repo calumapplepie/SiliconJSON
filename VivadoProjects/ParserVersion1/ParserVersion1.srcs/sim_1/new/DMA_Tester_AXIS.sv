@@ -98,7 +98,9 @@ module DMA_Tester_AXIS import axi4stream_vip_pkg::*, AXIS_Tester_axi4stream_vip_
         #90;
         sendDataPacket(testData2);
 
-        
+        // TODO: verify data success.
+        // see axi4stream_monitor class in the package
+        // or maybe we skip this and just write the damn code so I can move on w/ my project...
         
         
     end
