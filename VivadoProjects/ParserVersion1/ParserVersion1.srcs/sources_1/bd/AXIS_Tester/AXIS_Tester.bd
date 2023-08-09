@@ -80,7 +80,7 @@
             "value": "0"
           },
           "HAS_TLAST": {
-            "value": "0"
+            "value": "1"
           },
           "HAS_TREADY": {
             "value": "1"

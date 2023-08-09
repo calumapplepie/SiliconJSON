@@ -57,10 +57,15 @@ module DMA_Tester_AXIS import axi4stream_vip_pkg::*, AXIS_Tester_axi4stream_vip_
         
         wr_transaction.set_data_beat(testData);
         wr_transaction.set_dest(1'b0);
+        wr_transaction.set_last(1'd0);
+        mst_agent.driver.send(wr_transaction);
+        #60;
+        wr_transaction.set_data_beat('0);
         wr_transaction.set_last(1'b1);
         mst_agent.driver.send(wr_transaction);
-        #30;
         
+        #30;
+        #50;
 
         
         
