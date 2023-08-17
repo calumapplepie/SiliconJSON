@@ -1138,6 +1138,12 @@
         "xci_path": "ip/DMA_Interface_axi_mcdma_0_0/DMA_Interface_axi_mcdma_0_0.xci",
         "inst_hier_path": "axi_mcdma_0",
         "parameters": {
+          "c_include_mm2s_dre": {
+            "value": "1"
+          },
+          "c_include_s2mm_dre": {
+            "value": "1"
+          },
           "c_m_axi_mm2s_data_width": {
             "value": "64"
           },
@@ -1149,6 +1155,9 @@
           },
           "c_mm2s_burst_size": {
             "value": "256"
+          },
+          "c_mm2s_scheduler": {
+            "value": "1"
           },
           "c_num_mm2s_channels": {
             "value": "8"
