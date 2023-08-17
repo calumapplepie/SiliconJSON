@@ -73,3 +73,10 @@ platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/
 platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
 platform config -updatehw {/home/user/SiliconJSON/VivadoProjects/ParserVersion1/GPIO_Cpu_Interface_wrapper.xsa}
 platform generate -domains 
+platform generate
+platform active {GPIO_Cpu_Interface_wrapper}
+domain active {zynq_fsbl}
+bsp reload
+domain active {standalone_ps7_cortexa9_0}
+bsp reload
+bsp reload

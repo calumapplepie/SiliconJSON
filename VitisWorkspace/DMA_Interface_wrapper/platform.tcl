@@ -20,3 +20,24 @@ domain active {zynq_fsbl}
 domain active {standalone_ps7_cortexa9_0}
 platform generate -quick
 platform generate
+platform clean
+platform generate
+platform clean
+platform generate
+platform active {DMA_Interface_wrapper}
+domain active {zynq_fsbl}
+bsp reload
+bsp reload
+bsp reload
+domain active {standalone_ps7_cortexa9_0}
+bsp reload
+bsp config stdin "ps7_uart_1"
+bsp config stdout "ps7_uart_1"
+bsp config xil_interrupt "false"
+bsp config enable_sw_intrusive_profiling "false"
+bsp setlib -name xilpm -ver 5.0
+bsp removelib -name xilpm
+bsp setlib -name xilffs -ver 5.0
+bsp removelib -name xilffs
+bsp reload
+platform generate -domains 
