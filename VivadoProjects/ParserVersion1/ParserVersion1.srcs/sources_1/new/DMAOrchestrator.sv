@@ -19,7 +19,8 @@ module DMAOrchestrator( input logic clk, rst, enb,
     end
 
     typedef enum {START, READ_INPUT, PARSE, OUTPUT, ERROR} state_t;
-    state_t curState, nextState;
+    (* mark_debug = "true" *) state_t curState;
+    state_t nextState;
     
     always_ff @(posedge clk)begin
         if(rst) curState <= START;

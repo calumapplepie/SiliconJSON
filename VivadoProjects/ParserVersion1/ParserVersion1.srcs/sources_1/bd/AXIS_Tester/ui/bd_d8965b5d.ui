@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-52,-144",
+   "Default View_ScaleFactor":"0.615572",
+   "Default View_TopLeft":"-200,-213",
    "DisplayPinAutomationMissing":"1",
    "DisplayTieOff":"1",
    "ExpandedHierarchyInLayout":"",
@@ -12,10 +12,10 @@ preplace port port-id_reset_rtl -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
 preplace inst axis_vip_slv -pg 1 -lvl 4 -x 1101 -y 180 -defaultsOSRD
 preplace inst axis_vip_mst -pg 1 -lvl 2 -x 340 -y 120 -defaultsOSRD
 preplace inst DMATopWrapper_0 -pg 1 -lvl 3 -x 712 -y 180 -defaultsOSRD
-preplace netloc clk_wiz_1_clk_out1 1 0 4 N 80 190 240 532 320 880J
-preplace netloc reset_rtl_1 1 0 4 N 50 200 250 542 330 890J
-preplace netloc DMATopWrapper_0_m_axis 1 3 1 880 110n
-preplace netloc axi4stream_vip_1_M_AXIS 1 2 1 490 60n
+preplace netloc clk_wiz_1_clk_out1 1 0 4 N 80 240 50 572 270 860J
+preplace netloc reset_rtl_1 1 0 4 N 50 230 40 582 280 870J
+preplace netloc DMATopWrapper_0_m_axis 1 3 1 850 160n
+preplace netloc axi4stream_vip_1_M_AXIS 1 2 1 440 120n
 levelinfo -pg 1 0 40 340 712 1101 1220
 pagesize -pg 1 -db -bbox -sgen -120 0 1220 340
 "

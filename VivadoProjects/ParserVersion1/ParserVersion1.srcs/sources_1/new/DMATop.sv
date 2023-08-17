@@ -28,7 +28,7 @@ module DMATop import Ram::*, Core::*; (
     InputIndex parserStrLen,  outputStrLen;     // lengths of string tape
     InputIndex parserLayLen,  outputLayLen;     // lengths of structure tapes
 
-    UTF8_Char curChar;
+    (* mark_debug = "true" *) UTF8_Char curChar;
 
     DMAOrchestrator dma_mgr  ( .clk, .enb, .rst,
         .inputEnable, .parserEnable, .outputEnable,
