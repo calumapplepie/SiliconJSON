@@ -2,6 +2,7 @@
 <sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="DmaTest1" location="/home/user/SiliconJSON/VitisWorkspace/DmaTest1" platform="/home/user/SiliconJSON/VitisWorkspace/DMA_Interface_wrapper/export/DMA_Interface_wrapper/DMA_Interface_wrapper.xpfm" platformUID="xilinx:zed::0.0(custom)" systemProject="DmaTest1_system" sysConfig="DMA_Interface_wrapper" runtime="cpp" cpu="standalone_ps7_cortexa9_0" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="145c997e61d17313a0808c2cc63ff89f">
   <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1457857302" dirty="true">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
   </configuration>
   <configuration name="Release" id="xilinx.gnu.armv7.exe.release.288202271" dirty="true">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
