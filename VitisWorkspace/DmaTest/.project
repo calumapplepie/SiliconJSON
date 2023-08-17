@@ -25,4 +25,26 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/SimdjsonStealer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-5-ECLIPSE_HOME/SiliconJSON/VitisWorkspace/GpioTesting/src/SimdjsonStealer.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/SimdjsonStealer.h</name>
+			<type>1</type>
+			<locationURI>PARENT-5-ECLIPSE_HOME/SiliconJSON/VitisWorkspace/GpioTesting/src/SimdjsonStealer.h</locationURI>
+		</link>
+		<link>
+			<name>src/simdjson.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/simdjson_test/simdjson.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/simdjson.h</name>
+			<type>1</type>
+			<locationURI>PARENT-5-ECLIPSE_HOME/SiliconJSON/VitisWorkspace/GpioTesting/src/simdjson.h</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
