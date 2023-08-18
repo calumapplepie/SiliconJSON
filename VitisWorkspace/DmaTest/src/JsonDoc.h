@@ -6,7 +6,7 @@
 
 class JsonDoc {
 public:
-	JsonDoc(std::string in){unparsed = in;};
+	JsonDoc(std::string in): unparsed(in){};
 	const int   getUnparsedLen(){return unparsed.length();};
 	const char* getUnparsedBuffer(){return unparsed.c_str();};
 
@@ -23,9 +23,9 @@ public:
 
 private:
 	const std::string unparsed;
-	char* str_buf;
+	uint8_t* str_buf;
 	uint16_t str_buf_len;
-	uint64_t lay_buf;
+	uint64_t* lay_buf;
 	uint16_t lay_buf_len;
 };
 #endif /* JSONDOC_H_ */
