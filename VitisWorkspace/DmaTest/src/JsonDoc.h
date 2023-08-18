@@ -28,5 +28,6 @@ private:
 	uint64_t* lay_buf;
 	uint16_t lay_buf_len;
 };
+
 #endif /* JSONDOC_H_ */
 
