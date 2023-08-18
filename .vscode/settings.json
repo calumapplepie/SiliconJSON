@@ -86,5 +86,8 @@
         "xutility": "cpp",
         "xparameters.h": "c",
         "set": "cpp"
-    }
+    },
+    "clangd.fallbackFlags": [
+        "-I${workspaceFolder}/VitisWorkspace/DMA_Interface_wrapper/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/ps7_cortexa9_0/include"
+    ]
 }

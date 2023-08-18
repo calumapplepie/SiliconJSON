@@ -3,7 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/VitisWorkspace/GPIO_Wrapped/zynq_fsbl/zynq_fsbl_bsp/ps7_cortexa9_0/include",
+                "${workspaceFolder}/VitisWorkspace/DMA_Interface_wrapper/ps7_cortexa9_0/standalone_ps7_cortexa9_0/bsp/ps7_cortexa9_0/include",
                 "${workspaceFolder}/**"
             ],
             "defines": [],
