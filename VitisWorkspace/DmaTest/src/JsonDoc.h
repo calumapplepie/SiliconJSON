@@ -12,16 +12,6 @@ public:
 	const int   getUnparsedLen(){return unparsed.length();};
 	const char* getUnparsedBuffer(){return unparsed.c_str();};
 
-	// todo: encapsulate these
-	void setCharBuffer(uint8_t* chars, uint16_t len){
-		str_buf = chars;
-		str_buf_len = len;
-	};
-	void setLayoutBuffer(uint64_t* lay, uint16_t len){
-		lay_buf = lay;
-		lay_buf_len = len;
-	};
-
 
 private:
 	// currently, a doc is inextricably tied with its string
@@ -33,6 +23,12 @@ private:
 	uint16_t str_buf_len;
 	std::unique_ptr<uint64_t[]> lay_buf;
 	uint16_t lay_buf_len;
+	
+	// make the relevant dma driver bits friends
+	// do we wrap that in a class? nah.... not rn, i'm tired
+	friend void setupDocSendBuf(JsonDoc &doc, int channel);
+	friend void setupDocRecvBuf(JsonDoc &doc, int channel);
+
 };
 
 #endif /* JSONDOC_H_ */
