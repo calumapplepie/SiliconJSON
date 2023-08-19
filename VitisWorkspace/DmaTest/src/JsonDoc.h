@@ -8,9 +8,15 @@
 class JsonDoc {
 public:
 	JsonDoc(std::string in);
+	// use this at some point for a better API
+	bool isDone;
 
+	// i have these, i should use them
 	const int   getUnparsedLen(){return unparsed.length();};
 	const char* getUnparsedBuffer(){return unparsed.c_str();};
+
+
+
 
 
 private:
@@ -25,7 +31,7 @@ private:
 	uint16_t lay_buf_len;
 	
 	// make the relevant dma driver bits friends
-	// do we wrap that in a class? nah.... not rn, i'm tired
+	// better ways to do this
 	friend void setupDocSendBuf(JsonDoc &doc, int channel);
 	friend void setupDocRecvBuf(JsonDoc &doc, int channel);
 

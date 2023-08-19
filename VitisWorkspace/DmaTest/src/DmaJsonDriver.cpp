@@ -1,10 +1,12 @@
 #include "DmaJsonDriver.h"
 #include "xil_assert.h"
 #include "xil_types.h"
+#include "xmcdma_bd.h"
 #include "xparameters.h"
 #include "xmcdma.h"
 #include <cstdint>
 #include <bitset>
+#include <array>
 
 // why yes this was inspired by Xylinx examples available online
 // i use the bits of their structure that don't seem like BS
@@ -25,6 +27,7 @@ static XMcdma_Bd BD_BUF_RX [(XPARAM(NUM_S2MM_CHANNELS) + 1)][2];
 // actual object
 XMcdma AxiMcdma;
 
+// only have one document per channel.
 std::bitset<XPARAM(NUM_MM2S_CHANNELS)> BusyChannels;
 
 void setupTx(XMcdma* McDmaInstPtr){ 
@@ -88,7 +91,7 @@ void setupDocSendBuf(JsonDoc &doc, int channelID){
     }
 
     // fire it off!
-    setupDocRecvBuf(doc, chanID);
+    Xil_AssertVoid(XMcDma_ChanToHw(channel));
 
 }
 
@@ -107,7 +110,6 @@ void setupDocRecvBuf(JsonDoc &doc, int channelID){
     Xil_AssertVoid(XMcDma_ChanToHw(layChannel));
 
 
-
 }
 
 // send a json document to be parsed
@@ -119,8 +121,42 @@ void queue_doc(JsonDoc &doc){
     // set up receive first to ensure its ready before we send
     setupDocRecvBuf(doc, chanID);
     setupDocSendBuf(doc, chanID);
-    
-    
-    
+}
 
+int poll_finished(){
+    auto Chan_SerMask = XMcdma_ReadReg(AxiMcdma.Config.BaseAddress,
+                                      XMCDMA_RX_OFFSET + XMCDMA_RXCH_SER_OFFSET);
+
+    for(int i = 0; i < XPARAM(NUM_MM2S_CHANNELS); i++){
+        if(Chan_SerMask & (1 << (i + 8))){
+            XMcdma_ChanCtrl* layChannel = XMcdma_GetMcdmaRxChan(&AxiMcdma, i+8);
+            XMcdma_Bd* layoutBD;
+            int numDone = XMcdma_BdChainFromHW(layChannel,
+                                                1,
+                                                &layoutBD);
+            if(numDone){
+                // factor out into separate function sometime
+                XMcdma_BdChainFree(layChannel, 1, layoutBD);
+                
+                // read n clear other BDs
+                XMcdma_Bd* strBD:
+                XMcdma_ChanCtrl* strChannel = XMcdma_GetMcdmaRxChan(&AxiMcdma, i);
+                XMcdma_BdChainFromHW(strChannel,1,&layoutBD);
+                XMcdma_BdChainFree(strChannel, 1,layoutBD);
+
+                XMcdma_Bd* inputBD:
+                XMcdma_ChanCtrl* inChannel = XMcdma_GetMcdmaTxChan(&AxiMcdma, i);
+                XMcdma_BdChainFromHW(inChannel,1,&inputBD);
+                XMcdma_BdChainFree(inChannel, 1,inputBD);
+
+                
+                
+                // todo: use the "actual length" information
+
+
+                return i; // can only handle 1 channel at a time
+            }       
+        }
+    }
+    return -1;
 }
