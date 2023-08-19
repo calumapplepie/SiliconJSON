@@ -16,8 +16,8 @@
 static XMcdma_Bd BD_BUF_TX [(XPARAM(NUM_MM2S_CHANNELS) + 1)][2];
 static XMcdma_Bd BD_BUF_RX [(XPARAM(NUM_S2MM_CHANNELS) + 1)][2];
 
-// note: xylinx seems to have a very buggy driver; eg, it never sets TLAST.
-// will need to fix/work around
+// note: xylinx seems to have a very buggy driver; we have to make it set TLAST ourselves. Bleh.
+// will need to work around
 
 // actual object
 XMcdma AxiMcdma;
@@ -32,6 +32,8 @@ void setupTx(XMcdma* McDmaInstPtr){
         Xil_AssertVoid(  XMcDma_ChanBdCreate(Tx_Chan, (uintptr_t) BD_BUF_TX[ChanId-1], 2) );
 
         // they botched their copy-paste and re-enable interrupts here in the polled example
+        // also the whole rest of the polled example for tx is just... rx, with *some* character changes
+        // ALSO also they do stuff in setup and then again in send packet... ugh...
     }
 }
 
@@ -43,8 +45,6 @@ void setupRx(XMcdma* McDmaInstPtr){
 		XMcdma_IntrDisable(Rx_Chan, XMCDMA_IRQ_ALL_MASK);
         
         Xil_AssertVoid(  XMcDma_ChanBdCreate(Rx_Chan, (uintptr_t) BD_BUF_RX[ChanId-1], 2) );
-
-        // they botched their copy-paste and re-enable interrupts here in the polled example
     }
 }
 
@@ -54,10 +54,8 @@ void init_driver(){
 	XMcdma_Config* Mcdma_Config = XMcdma_LookupConfig(XPARAM(DEVICE_ID));
     int status;
     Xil_AssertVoid( XMcDma_CfgInitialize(&AxiMcdma, Mcdma_Config) );
-
-
-
-
+    setupTx(&AxiMcdma);
+    setupRx(&AxiMcdma);
 }
 
 // send a json document to be parsed
