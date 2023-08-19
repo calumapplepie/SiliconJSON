@@ -1,26 +1,36 @@
 #include "DmaJsonDriver.h"
 #include "xparameters.h"
 #include "xmcdma.h"
+#include <cstdint>
+
+// why yes this was inspired by Xylinx examples available online
+// i use the bits of their structure that don't seem like BS
 
 // convenience macro gives the full XPARAMETERS name of a given id
 // because they have a standard prefix, writing it over and over again is a lot,
 // and what if someone wants 2 MCDMAs?
 #define XPARAM(NAME)   XPAR_AXI_MCDMA_0_ ## NAME 
 
-
-#define NUM_TX_BDS 1
-#define NUM_RX_BDS 1
-
 // we store the BD's here, with a little extra buffer just in case
 // note: maybe use LD script to... not do this?
-static XMcdma_Bd BD_BUF [NUM_TX_BDS * XPARAM(NUM_MM2S_CHANNELS)  + NUM_RX_BDS* XPARAM(NUM_S2MM_CHANNELS) + 4];
+static XMcdma_Bd BD_BUF [2*(XPARAM(NUM_MM2S_CHANNELS)  + XPARAM(NUM_S2MM_CHANNELS) + 4)];
 static XMcdma_Bd* BD_BUF_POS = BD_BUF;
 
 // actual object
 XMcdma AxiMcdma;
 
-void setupTx(){
+void setupTx(XMcdma* McDmaInstPtr){ 
+    for (int ChanId = 1; ChanId <= XPARAM(NUM_MM2S_CHANNELS); ChanId++){ 
+        XMcdma_ChanCtrl *Tx_Chan = XMcdma_GetMcdmaTxChan(McDmaInstPtr, ChanId);
 
+        /* Disable all interrupts */
+		XMcdma_IntrDisable(Tx_Chan, XMCDMA_IRQ_ALL_MASK);
+        
+        Xil_AssertVoid(  XMcDma_ChanBdCreate(Tx_Chan, (uintptr_t) BD_BUF_POS, 2) );
+        BD_BUF_POS++;
+
+        // they botched their copy-paste and re-enable interrupts here in the polled example
+    }
 }
 
 void setupRx(){
@@ -32,7 +42,9 @@ void setupRx(){
 void init_driver(){
 	XMcdma_Config* Mcdma_Config = XMcdma_LookupConfig(XPARAM(DEVICE_ID));
     int status;
-    XMcDma_CfgInitialize(&AxiMcdma, Mcdma_Config);
+    Xil_AssertVoid( XMcDma_CfgInitialize(&AxiMcdma, Mcdma_Config) );
+
+
 
 
 }
