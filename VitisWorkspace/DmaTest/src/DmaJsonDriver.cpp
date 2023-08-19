@@ -87,11 +87,26 @@ void setupDocSendBuf(JsonDoc &doc, int channelID){
         XMcDma_BdSetCtrl(channel->BdTail, XMCDMA_BD_CTRL_EOF_MASK);
     }
 
-    
+    // fire it off!
+    setupDocRecvBuf(doc, chanID);
 
 }
 
-void setupDocRecvBuf(JsonDoc &doc, int channel){
+void setupDocRecvBuf(JsonDoc &doc, int channelID){
+    XMcdma_ChanCtrl* strChannel = XMcdma_GetMcdmaTxChan(&AxiMcdma, channelID);
+    XMcdma_ChanCtrl* layChannel = XMcdma_GetMcdmaTxChan(&AxiMcdma, channelID+8);
+    Xil_AssertVoid( 
+        XMcDma_ChanSubmit(strChannel, 
+        (UINTPTR) doc.str_buf.get(), 
+        doc.lay_buf_len)  );
+    Xil_AssertVoid(  
+        XMcDma_ChanSubmit(layChannel, 
+        (UINTPTR) doc.lay_buf.get(),  
+        doc.str_buf_len)  );
+    Xil_AssertVoid(XMcDma_ChanToHw(strChannel));
+    Xil_AssertVoid(XMcDma_ChanToHw(layChannel));
+
+
 
 }
 
@@ -101,6 +116,10 @@ void queue_doc(JsonDoc &doc){
     // HW doesn't yet support stream switching mid packet (yet)
     int chanID = getFirstFreeChanID();
     Xil_AssertVoid(chanID > 0);
+    // set up receive first to ensure its ready before we send
+    setupDocRecvBuf(doc, chanID);
+    setupDocSendBuf(doc, chanID);
+    
     
     
 
