@@ -139,12 +139,12 @@ int poll_finished(){
                 XMcdma_BdChainFree(layChannel, 1, layoutBD);
                 
                 // read n clear other BDs
-                XMcdma_Bd* strBD:
+                XMcdma_Bd* strBD;
                 XMcdma_ChanCtrl* strChannel = XMcdma_GetMcdmaRxChan(&AxiMcdma, i);
                 XMcdma_BdChainFromHW(strChannel,1,&layoutBD);
                 XMcdma_BdChainFree(strChannel, 1,layoutBD);
 
-                XMcdma_Bd* inputBD:
+                XMcdma_Bd* inputBD;
                 XMcdma_ChanCtrl* inChannel = XMcdma_GetMcdmaTxChan(&AxiMcdma, i);
                 XMcdma_BdChainFromHW(inChannel,1,&inputBD);
                 XMcdma_BdChainFree(inChannel, 1,inputBD);
