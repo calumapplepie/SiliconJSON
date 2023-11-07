@@ -1,0 +1,58 @@
+
+digraph {
+    START -> StartObject
+    FindValueOp[shape="rect";]; FindKeyOp[shape="rect"];
+    EndObject; EndArray;
+    EndObject -> EndDocument [label="atDocRoot"];
+    EndObject -> FindValueOp   [label="!atDocRoot &&\n wasInArray"];
+    EndObject -> FindKeyOp     [label="!atDocRoot &&\n !wasInArray"];
+
+    EndArray    -> EndDocument [label="atDocRoot"];
+    EndArray    -> FindValueOp   [label="!atDocRoot &&\n wasInArray"];
+    EndArray    -> FindKeyOp     [label="!atDocRoot &&\n !wasInArray"];
+ 
+
+    EndSimple   -> FindValueOp  [label="inArray"]
+    EndSimple   -> FindKeyOp    [label="!inArray"]
+
+    FindKey     -> FindKeyOp
+    StartObject -> FindKeyOp
+    FindValue   -> FindValueOp
+    StartArray  -> FindValueOp
+
+    StartKey    -> FindValue [label = "isQuote"]
+    StartKey    -> ReadKey [label = "!isQuote"]
+    ReadKey     -> FindValue [label = "isQuote"]
+    ReadKey     -> ReadKey [label = "!isQuote"]
+
+    StartString -> ReadString [label="!isQuote"]
+    StartString -> FindValue  [label="isQuote &&\ninArray"]
+    StartString -> FindKey  [label="isQuote &&\n!inArray"]
+    ReadString  -> ReadString [label="!isQuote"]
+    ReadString  -> FindValue  [label="isQuote &&\ninArray"]
+    ReadString  -> FindKey  [label="isQuote &&\n!inArray"]
+
+    ReadSimple  -> ReadSimple[label="!simpleValueDone"];
+    ReadSimple  -> EndSimple[label=simpleValueDone];
+    ReadNumber  -> ReadNumber[label="!numberDone"];
+    ReadNumber  -> FindValueOp[label="numberDone && inArray"]
+    ReadNumber  -> FindKeyOp [label="numberDone && !inArray"]
+    
+
+    FindValueOp -> StartObject [label="' { '"];
+    FindValueOp -> EndArray    [label="' ] '"];
+    FindValueOp -> StartArray  [label="' [ '"];
+    FindValueOp -> StartString [label="' \" '"];
+    FindValueOp -> ReadSimple  [label="alphabetical"];
+    FindValueOp -> ReadNumber  [label="' - '"];
+    FindValueOp -> ReadNumber  [label="numeric"];
+    FindValueOp -> FindValue   [label="default"]
+    
+
+    FindKeyOp -> StartKey  [label="' \" '"];
+    FindKeyOp -> EndObject [label="' } '"]
+    FindKeyOp -> FindKey   [label="default"]
+
+
+    
+}
